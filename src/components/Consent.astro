@@ -5,10 +5,9 @@
 // plain link out to ChurchDesk, so it sets no cookies on our pages.)
 ---
 <aside class="consent" data-consent-banner hidden aria-label="Cookie consent">
-  <div class="wrap consent__inner">
+  <div class="consent__inner">
     <p class="consent__text">
-      We use privacy-friendly analytics and, with your agreement, embeds such as Google Maps
-      and YouTube, which may set cookies.
+      We use privacy-friendly analytics. Optional embeds (maps, video) may set cookies.
     </p>
     <div class="consent__actions">
       <button class="btn" type="button" data-consent="essential">Essential only</button>
@@ -44,28 +43,30 @@
 <style>
   .consent {
     position: fixed;
-    left: 0; right: 0; bottom: 0;
+    left: 1rem; right: 1rem; bottom: 1rem;
     z-index: 300;
+    max-width: 19rem;
+    margin-left: auto;
     background: var(--ink);
     color: var(--white-soft);
-    border-top: 2px solid var(--burgundy);
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(12, 9, 5, .18);
   }
   .consent[hidden] { display: none; }
   .consent__inner {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem 2rem;
-    padding-block: 1.1rem;
+    flex-direction: column;
+    gap: .55rem;
+    padding: .7rem .75rem;
   }
-  .consent__text { margin: 0; max-width: 64ch; font-size: .92rem; }
-  .consent__actions { display: flex; gap: .8rem; flex: none; }
-  .consent .btn { border-color: var(--white-soft); color: var(--white); }
+  .consent__text { margin: 0; font-size: .74rem; line-height: 1.4; }
+  .consent__actions { display: flex; gap: .4rem; }
+  .consent .btn {
+    flex: 1;
+    padding: .32rem .5rem; font-size: .68rem; text-align: center;
+    border-color: var(--white-soft); color: var(--white);
+  }
   .consent .btn:hover { background: var(--white); color: var(--ink); }
   .consent .btn--solid { background: var(--burgundy); border-color: var(--burgundy); }
   .consent .btn--solid:hover { background: var(--burgundy-deep); color: var(--white); }
-  @media (max-width: 640px) {
-    .consent__inner { flex-direction: column; align-items: flex-start; }
-  }
 </style>
