@@ -26,7 +26,14 @@ npm test         # liturgical-engine unit tests
   `src/data/nav.ts` (navigation).
 - **Deploy** — `public/_redirects` (301s incl. the blog map) and `public/_headers`.
 
-## Maintenance
+## Editing content (no code)
+
+Non-technical editors manage content through **Sveltia CMS** at `/admin` — log in with
+GitHub, edit in simple forms, click Publish, and the site rebuilds automatically. Collections
+cover News, This Sunday's Music, Events, Who's Who, Documents and the main pages. One-time
+GitHub-login setup and the editor guide are in **[CMS-SETUP.md](./CMS-SETUP.md)**.
+
+## Maintenance (by hand)
 
 - **Weekly music list:** add `src/content/services/YYYY-MM-DD.json` (see existing files).
 - **News post:** add `src/content/news/<slug>.md` with `title` + `date` frontmatter.
