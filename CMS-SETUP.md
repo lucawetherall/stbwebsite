@@ -125,7 +125,7 @@ That’s it. The editor is now live at `https://www.barnabites.org/admin`.
 | **This Sunday’s Music** | The music list in the “This Sunday” block — add a sheet per Sunday: pick the date, the feast, then each service (Sung Mass, Evensong…) and its lines (Setting, Psalm, Anthem…). |
 | **Events** | Special services / events on Worship → Special Services. |
 | **Service times** | The regular weekly Sunday & weekday pattern shown on the Worship pages. |
-| **Who’s Who** | Clergy and people on About Us → Who’s Who. |
+| **Who’s Who** | Clergy and people on About Us → Who’s Who. Each person also has their own page — add a Photo and a Bio and it appears there automatically. |
 | **Documents** | PDFs and links on the Documents page (upload a PDF or paste a link). |
 | **Main Pages** | The wording of every standalone and section page — now including the deeper pages (Accessibility, Pastoral Care, the Organ, Food Pantry, etc.). |
 | **Site settings** | Church contact details, key people, and the links used across the whole site. |

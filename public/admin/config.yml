@@ -168,13 +168,15 @@ collections:
     identifier_field: name
     sortable_fields: [order]
     summary: '{{order}}. {{name}} — {{role}}'
+    media_folder: /public/images/staff
+    public_folder: /images/staff
     fields:
       - { name: name, label: Name, widget: string }
       - { name: role, label: Role, widget: string }
-      - { name: photo, label: Photo (optional), widget: image, required: false, hint: 'A square photo works best. Around 800px is plenty — very large phone photos just make pages slower.' }
+      - { name: photo, label: Photo (optional), widget: image, required: false, hint: 'A portrait (tall) headshot works best. Around 800px is plenty — very large phone photos just make pages slower.' }
       - { name: photoAlt, label: Photo description (for screen readers), widget: string, required: false, hint: 'Briefly describe the photo, e.g. “Revd Jane Smith in cassock by the altar”. Leave blank to use the name.' }
       - { name: email, label: Email, widget: string, type: email, required: false }
-      - { name: bio, label: Short bio, widget: text, required: false }
+      - { name: bio, label: Bio, widget: text, required: false, hint: 'Shown on this person’s own page. Leave a blank line between paragraphs.' }
       - { name: order, label: Order (lower shows first), widget: number, value_type: int, required: false }
 
   # ── Documents (PDFs etc.) ────────────────────────────────────────────────────
