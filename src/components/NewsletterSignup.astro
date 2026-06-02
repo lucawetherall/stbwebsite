@@ -4,61 +4,22 @@ import { site } from '../data/site';
 interface Props { ground?: 'paper' | 'paper-2' }
 const { ground = 'paper-2' } = Astro.props;
 ---
-<section class:list={['newsletter', `is-${ground}`]} data-newsletter data-org-id={site.churchdeskOrgId} aria-labelledby="nl-heading">
+<section class:list={['newsletter', `is-${ground}`]} aria-labelledby="nl-heading">
   <div class="wrap newsletter__inner">
     <p class="label">Weekly News</p>
     <h2 id="nl-heading" class="newsletter__title serif">Keep in touch</h2>
     <p class="newsletter__body">
       Our Weekly News goes out by email every Friday — services, events and notices from the
-      life of the parish.
+      life of the parish. Sign up and we'll keep you in touch.
     </p>
 
-    <div class="newsletter__widget" data-cd-signup hidden></div>
-
-    <div class="newsletter__actions" data-nl-actions>
-      <button class="btn btn--solid" type="button" data-nl-subscribe>Subscribe by email</button>
-      <a class="txt-link" href={site.newsletterArchive} target="_blank" rel="noopener">Read the latest edition</a>
+    <div class="newsletter__actions">
+      <a class="btn btn--solid" href={site.newsletterArchive} target="_blank" rel="noopener">
+        Sign up for our newsletter
+      </a>
     </div>
-    <p class="newsletter__note" data-nl-consent-note hidden>
-      Subscribing loads our newsletter form from ChurchDesk, which may set cookies.
-    </p>
   </div>
 </section>
-
-<script>
-  function initNewsletter(root: HTMLElement) {
-    const orgId = Number(root.getAttribute('data-org-id'));
-    const btn = root.querySelector('[data-nl-subscribe]');
-    const widget = root.querySelector<HTMLElement>('[data-cd-signup]');
-    const note = root.querySelector<HTMLElement>('[data-nl-consent-note]');
-    if (!widget) return;
-    let loaded = false;
-
-    function loadWidget() {
-      if (loaded) return;
-      loaded = true;
-      widget!.hidden = false;
-      if (note) note.hidden = false;
-      const s = document.createElement('script');
-      s.src = 'https://edge.churchdesk.com/signup-loader.js';
-      s.async = true;
-      s.onload = () => {
-        try {
-          const NS = (window as any).CHURCH_DESK_SIGNUP_NAMESPACE;
-          if (NS && NS.SignUp) new NS.SignUp({ organizationId: orgId, element: widget });
-        } catch (e) {
-          /* the archive fallback link remains available */
-        }
-      };
-      document.body.appendChild(s);
-    }
-
-    btn?.addEventListener('click', loadWidget);
-    if ((window as any).__consent?.newsletter) loadWidget();
-    window.addEventListener('stb:consent', (e: any) => { if (e.detail?.newsletter) loadWidget(); });
-  }
-  document.querySelectorAll<HTMLElement>('[data-newsletter]').forEach(initNewsletter);
-</script>
 
 <style>
   .newsletter.is-paper { background: var(--paper); }
@@ -67,7 +28,5 @@ const { ground = 'paper-2' } = Astro.props;
   .newsletter__inner { max-width: 640px; }
   .newsletter__title { margin-top: .9rem; font-weight: 500; font-size: clamp(1.8rem, 3.6vw, 2.5rem); }
   .newsletter__body { margin-top: 1rem; color: var(--ink-soft); }
-  .newsletter__widget { margin-top: 1.6rem; }
   .newsletter__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 1.8rem; margin-top: 1.8rem; }
-  .newsletter__note { margin-top: 1rem; font-size: .82rem; color: var(--ink-soft); }
 </style>
