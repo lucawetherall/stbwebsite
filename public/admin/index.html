@@ -7,6 +7,32 @@
     <meta name="theme-color" content="#6A1B2D" />
     <link rel="icon" href="/admin/logo.svg" />
     <title>St Barnabas Content Manager</title>
+    <script>
+      // Default the editor to light mode. Sveltia has no theme config option and
+      // otherwise follows the OS; we intercept ONLY the prefers-color-scheme query
+      // (every other media query passes through untouched) so the app's default is
+      // light. Relies only on the standard matchMedia API — not Sveltia internals —
+      // so it stays safe across CMS updates. A user can still switch to dark in-app.
+      (function () {
+        var native = window.matchMedia.bind(window);
+        window.matchMedia = function (query) {
+          if (/prefers-color-scheme/i.test(query)) {
+            var wantsLight = /light/i.test(query);
+            return {
+              matches: wantsLight,
+              media: query,
+              onchange: null,
+              addListener: function () {},
+              removeListener: function () {},
+              addEventListener: function () {},
+              removeEventListener: function () {},
+              dispatchEvent: function () { return false; },
+            };
+          }
+          return native(query);
+        };
+      })();
+    </script>
     <style>
       /* Brand splash shown until Sveltia mounts and replaces the body. */
       @font-face {
