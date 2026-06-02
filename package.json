@@ -1,0 +1,29 @@
+{
+  "name": "barnabites",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "vitest run",
+    "scrape": "node scripts/scrape-blog.mjs"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^6.0.1",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^6.4.2",
+    "cheerio": "^1.2.0",
+    "node-ical": "^0.26.1",
+    "sharp": "^0.34.5",
+    "turndown": "^7.2.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  }
+}

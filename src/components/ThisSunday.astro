@@ -1,0 +1,149 @@
+---
+import { getCollection } from 'astro:content';
+import { serviceTimes } from '../data/serviceTimes';
+
+// All published music sheets, ascending by date.
+const services = (await getCollection('services'))
+  .map((e) => e.data)
+  .sort((a, b) => +a.date - +b.date);
+
+// Normalise "today" (local calendar date) onto a UTC-midnight instant so it
+// compares cleanly with the UTC-midnight service dates (no off-by-one by tz).
+const now = new Date();
+const t = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+const dow = t.getUTCDay();
+const upcoming = new Date(t);
+upcoming.setUTCDate(t.getUTCDate() + ((7 - dow) % 7));
+
+const DAY = 86_400_000;
+const exact = services.find((s) => +s.date === +upcoming);
+const nextFuture = services.find((s) => +s.date >= +t);
+const sheet =
+  exact ?? (nextFuture && +nextFuture.date - +t <= 14 * DAY ? nextFuture : null);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-GB', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+
+// Split "Composer, Work title" so the work can be italicised, matching the sheets.
+function fmt(v: string) {
+  const i = v.indexOf(',');
+  if (i === -1) return { lead: v, work: '' };
+  return { lead: v.slice(0, i), work: v.slice(i + 1).trim() };
+}
+---
+<section class="this-sunday section" aria-labelledby="this-sunday-heading">
+  <div class="wrap">
+    <p class="label">This Sunday</p>
+
+    {sheet ? (
+      <>
+        <h2 id="this-sunday-heading" class="this-sunday__feast serif">{sheet.feast}</h2>
+        <p class="this-sunday__date"><em>{fmtDate(sheet.date)}</em></p>
+
+        {sheet.offices.map((office) => (
+          <div class="office">
+            <h3 class="office__heading">{office.time} · {office.name}</h3>
+            <dl class="office__items">
+              {office.items.map((it) => (
+                <div class="office__row">
+                  <dt class="office__label">{it.label}</dt>
+                  <dd class="office__values">
+                    {it.values.map((v) => {
+                      const { lead, work } = fmt(v);
+                      return (
+                        <span class="office__value">
+                          {lead}{work && <>, <em>{work}</em></>}
+                        </span>
+                      );
+                    })}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </>
+    ) : (
+      <>
+        <h2 id="this-sunday-heading" class="this-sunday__feast serif">The Sung Mass</h2>
+        <p class="this-sunday__date"><em>Every Sunday at 10.30am</em></p>
+        <dl class="office__items">
+          {serviceTimes.sundays.map((s) => (
+            <div class="office__row">
+              <dt class="office__label">{s.time}</dt>
+              <dd class="office__values">
+                <span class="office__value">{s.name}</span>
+                {s.when && <span class="office__sub"><em>{s.when}</em></span>}
+                {s.note && <span class="office__sub">{s.note}</span>}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </>
+    )}
+
+    <p class="this-sunday__more">
+      <a class="txt-link" href="/worship/music">Music &amp; readings</a>
+      <a class="txt-link" href="/worship/sundays">All service times</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .this-sunday { background: var(--paper); }
+  .this-sunday .label { margin-bottom: 1.1rem; }
+  .this-sunday__feast { font-weight: 500; font-size: clamp(2rem, 4vw, 3rem); }
+  .this-sunday__date {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    margin-top: .4rem;
+  }
+
+  .office { margin-top: 2.4rem; }
+  .office__heading {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    font-size: .74rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .office__items { display: grid; gap: .55rem; }
+  .office__row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1rem;
+    align-items: baseline;
+  }
+  .office__label {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    padding-top: .15rem;
+  }
+  .office__values { display: flex; flex-direction: column; gap: .2rem; }
+  .office__value { font-size: 1.06rem; }
+  .office__value em { font-family: var(--font-display); font-style: italic; font-size: 1.16rem; }
+  .office__sub { font-size: .92rem; color: var(--ink-soft); }
+  .office__sub em { font-style: italic; }
+
+  .this-sunday__more { display: flex; flex-wrap: wrap; gap: 1.2rem 2rem; margin-top: 2.6rem; }
+
+  @media (max-width: 560px) {
+    .office__row { grid-template-columns: 1fr; gap: .15rem; }
+    .office__label { padding-top: .4rem; }
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+interface Img { src: string; alt: string; }
+interface Props { images: Img[] }
+const { images } = Astro.props;
+---
+<div class="gallery" data-gallery>
+  <ul class="gallery__grid">
+    {images.map((img, i) => (
+      <li class="gallery__item">
+        <button class="gallery__thumb" type="button" data-index={i} aria-label={`View image: ${img.alt}`}>
+          <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
+        </button>
+      </li>
+    ))}
+  </ul>
+
+  <dialog class="lightbox" data-lightbox aria-label="Image viewer">
+    <button class="lightbox__btn lightbox__close" type="button" data-close aria-label="Close viewer">&times;</button>
+    <button class="lightbox__btn lightbox__prev" type="button" data-prev aria-label="Previous image">&#8249;</button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" data-lightbox-img alt="" />
+      <figcaption class="lightbox__cap" data-lightbox-cap></figcaption>
+    </figure>
+    <button class="lightbox__btn lightbox__next" type="button" data-next aria-label="Next image">&#8250;</button>
+  </dialog>
+</div>
+
+<script>
+  function initGallery(root: HTMLElement) {
+    const dialog = root.querySelector<HTMLDialogElement>('[data-lightbox]');
+    const imgEl = root.querySelector<HTMLImageElement>('[data-lightbox-img]');
+    const capEl = root.querySelector<HTMLElement>('[data-lightbox-cap]');
+    if (!dialog || !imgEl || !capEl) return;
+    const thumbs = [...root.querySelectorAll<HTMLButtonElement>('[data-index]')];
+    const images = thumbs.map((b) => {
+      const im = b.querySelector('img');
+      return { src: im?.src ?? '', alt: im?.alt ?? '' };
+    });
+    let current = 0;
+
+    function show(i: number) {
+      current = (i + images.length) % images.length;
+      imgEl!.src = images[current].src;
+      imgEl!.alt = images[current].alt;
+      capEl!.textContent = images[current].alt;
+    }
+    function open(i: number) { show(i); if (!dialog!.open) dialog!.showModal(); }
+
+    thumbs.forEach((b, i) => b.addEventListener('click', () => open(i)));
+    root.querySelector('[data-close]')?.addEventListener('click', () => dialog.close());
+    root.querySelector('[data-prev]')?.addEventListener('click', () => show(current - 1));
+    root.querySelector('[data-next]')?.addEventListener('click', () => show(current + 1));
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+  }
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach(initGallery);
+</script>
+
+<style>
+  .gallery__grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: .8rem;
+  }
+  .gallery__thumb {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: var(--paper-2);
+    overflow: hidden;
+  }
+  .gallery__thumb img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform .4s ease, opacity .3s;
+  }
+  .gallery__thumb:hover img { transform: scale(1.04); opacity: .94; }
+
+  .lightbox {
+    border: none;
+    padding: 0;
+    background: transparent;
+    max-width: min(94vw, 1100px);
+    max-height: 94vh;
+    color: var(--white);
+  }
+  .lightbox::backdrop { background: rgba(12, 9, 5, .86); }
+  .lightbox__figure { margin: 0; display: grid; justify-items: center; gap: .8rem; }
+  .lightbox__img { max-width: 100%; max-height: 82vh; object-fit: contain; display: block; }
+  .lightbox__cap { font-family: var(--font-display); font-style: italic; color: var(--white-soft); font-size: 1rem; }
+  .lightbox__btn {
+    position: fixed;
+    background: rgba(12, 9, 5, .5);
+    color: var(--white);
+    border: 1px solid rgba(251, 249, 244, .3);
+    width: 3rem; height: 3rem;
+    font-size: 1.5rem; line-height: 1;
+    display: grid; place-items: center;
+  }
+  .lightbox__close { top: 1.2rem; right: 1.2rem; }
+  .lightbox__prev { left: 1.2rem; top: 50%; transform: translateY(-50%); }
+  .lightbox__next { right: 1.2rem; top: 50%; transform: translateY(-50%); }
+  .lightbox__btn:hover { background: var(--burgundy); }
+</style>

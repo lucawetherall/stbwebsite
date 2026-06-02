@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ServiceTimes from '../../components/ServiceTimes.astro';
+---
+<Base
+  title="During the Week"
+  description="Weekday worship at St Barnabas, Ealing — Midweek Mass on Wednesdays, dementia-friendly worship on Thursdays, and Morning Prayer Tuesday to Thursday."
+>
+  <PageHeader
+    kicker="Worship"
+    title="During the Week"
+    intro="Quieter, said worship through the week, mostly in the Lady Chapel."
+  />
+  <div class="wrap page-body">
+    <ServiceTimes only="weekdays" />
+    <p class="page-aside">
+      The Lady Chapel is reached by the small south door. The dementia-friendly service on
+      Thursdays follows our <a href="/memory-cafe">Memory Café</a>.
+    </p>
+  </div>
+</Base>

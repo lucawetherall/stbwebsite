@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../data/site';
+const oneOff = 'https://donate.churchdesk.com/en-gb/1/CFopNzPKS';
+---
+<Base
+  title="Giving"
+  description="Support St Barnabas Church, Ealing. We receive no diocesan, national Church or government funding — regular and one-off gifts keep this church open and its work going."
+>
+  <PageHeader
+    kicker="Giving"
+    title="Help sustain this church"
+    intro="St Barnabas receives no funding from the diocese, the national Church or government. We are a self-supporting charity."
+  />
+  <div class="wrap page-body">
+    <div class="prose">
+      <p>
+        We do all we can to look after our finances well, including finding ways of generating
+        income that fit with our values and serve our community. But we also rely on the
+        generosity of our worshippers and friends.
+      </p>
+      <p>
+        Your giving enables us to remain a hub for local events, a space for all to enjoy and
+        gather, and a place of worship that is sacred, dignified and welcoming of all. If you
+        are able to make a regular gift, it makes an enormous difference.
+      </p>
+    </div>
+
+    <section class="give-ways">
+      <div class="give-way">
+        <h2 class="label give-way__label">Regular giving</h2>
+        <p>The simplest way to give regularly, with Gift Aid handled for you, is through the Parish Giving Scheme. You can start, change or pause your gift at any time.</p>
+        <a class="btn btn--solid" href={site.giving} target="_blank" rel="noopener">Give via Parish Giving</a>
+      </div>
+
+      <div class="give-way">
+        <h2 class="label give-way__label">A one-off gift</h2>
+        <p>To make a single donation — for the church’s work or the Food Pantry — you can give securely online in a moment.</p>
+        <a class="btn" href={oneOff} target="_blank" rel="noopener">Make a one-off gift</a>
+      </div>
+
+      <div class="give-way">
+        <h2 class="label give-way__label">A gift in your will</h2>
+        <p>A legacy is a lasting way to help secure the future of St Barnabas for generations to come. To discuss leaving a bequest, please <a class="content-link" href="/contact-us">contact the parish office</a>.</p>
+      </div>
+    </section>
+
+    <p class="page-aside">
+      <strong>Gift Aid</strong> lets us reclaim 25p for every £1 you give, at no cost to you, if
+      you are a UK taxpayer. If you would like to know more about how gifts are used, just ask.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .give-ways { display: grid; gap: 2.4rem; margin-top: 2.8rem; }
+  .give-way { border-top: 1px solid var(--line); padding-top: 1.4rem; max-width: 60ch; }
+  .give-way__label { color: var(--burgundy); display: block; margin-bottom: .7rem; }
+  .give-way p { margin-bottom: 1.2rem; }
+  .give-way a.content-link { display: inline; }
+</style>

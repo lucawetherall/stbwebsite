@@ -1,0 +1,28 @@
+{
+  "date": "2026-06-07",
+  "feast": "Corpus Christi",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        { "label": "Psalm", "values": ["33. 1–12"] },
+        { "label": "Setting", "values": ["Shephard, Wiltshire Service"] },
+        {
+          "label": "Anthems",
+          "values": ["Walford Davies, God be in my head", "Mozart, Ave verum corpus"]
+        }
+      ]
+    },
+    {
+      "time": "6.00pm",
+      "name": "Choral Evensong",
+      "items": [
+        { "label": "Responses", "values": ["Ayleward"] },
+        { "label": "Psalm", "values": ["147"] },
+        { "label": "Canticles", "values": ["Dyson in F"] },
+        { "label": "Anthem", "values": ["S. S. Wesley, Blessed be the God and Father"] }
+      ]
+    }
+  ]
+}

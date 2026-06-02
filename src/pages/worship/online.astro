@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { site } from '../../data/site';
+---
+<Base
+  title="Worship Online"
+  description="Join the Sunday Sung Mass at St Barnabas, Ealing, by livestream on YouTube — or watch past services any time."
+>
+  <PageHeader
+    kicker="Worship"
+    title="Worship Online"
+    intro="Join us for the Sunday Mass by livestream — or catch up afterwards."
+  />
+  <div class="wrap page-body">
+    <div class="prose">
+      <p>
+        We livestream the <strong>10.30am Sung Mass</strong> each Sunday on our YouTube channel,
+        where past services are also archived. If you cannot be with us in person, you are very
+        welcome to worship with us from home — and to follow along with the order of service.
+      </p>
+    </div>
+
+    <div class="online-actions">
+      <a class="btn btn--solid" href={`${site.social.youtube}/live`} target="_blank" rel="noopener">Watch this Sunday live</a>
+      <a class="btn" href={`${site.social.youtube}/streams`} target="_blank" rel="noopener">Watch past services</a>
+      <a class="btn" href="/documents/order-of-service.pdf">Order of service</a>
+    </div>
+
+    <p class="page-aside">
+      The church is heavily dependent on those who are able to support it. If you worship with
+      us online, please consider <a href="/give">giving to St Barnabas</a>.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .online-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.2rem; margin-top: 2rem; }
+</style>

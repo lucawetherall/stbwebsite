@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  limit?: number;
+  heading?: string;
+  showHeading?: boolean;
+}
+const { limit, heading = 'From the parish', showHeading = true } = Astro.props;
+
+const posts = (await getCollection('news', ({ data }) => !data.draft)).sort(
+  (a, b) => +b.data.date - +a.data.date
+);
+const shown = limit ? posts.slice(0, limit) : posts;
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+{shown.length > 0 && (
+  <section class="news-index section" aria-labelledby="news-heading">
+    <div class="wrap">
+      {showHeading && (
+        <div class="news-index__head">
+          <p class="label" id="news-heading">{heading}</p>
+          {limit && <a class="txt-link" href="/news">All news</a>}
+        </div>
+      )}
+      <ul class="news-list">
+        {shown.map((post) => (
+          <li class="news-row">
+            <a class="news-row__link" href={`/news/${post.id}/`}>
+              <time class="news-row__date" datetime={post.data.date.toISOString().slice(0, 10)}>
+                {fmtDate(post.data.date)}
+              </time>
+              <span class="news-row__body">
+                <span class="news-row__title serif">{post.data.title}</span>
+                {post.data.category && <span class="news-row__cat">{post.data.category}</span>}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .news-index { background: var(--paper); }
+  .news-index__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+  .news-list { list-style: none; }
+  .news-row { border-top: 1px solid var(--line); }
+  .news-row:last-child { border-bottom: 1px solid var(--line); }
+  .news-row__link {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    text-decoration: none;
+    color: inherit;
+    padding-block: 1.3rem;
+    transition: background .2s;
+  }
+  .news-row__link:hover { background: var(--paper-2); }
+  .news-row__link:hover .news-row__title { color: var(--burgundy); }
+  .news-row__date {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: .7rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    padding-top: .35rem;
+  }
+  .news-row__title {
+    display: block;
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    font-weight: 500;
+    line-height: 1.15;
+    transition: color .2s;
+  }
+  .news-row__cat {
+    display: inline-block;
+    margin-top: .5rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .64rem;
+    font-weight: 600;
+    color: var(--burgundy);
+  }
+  @media (max-width: 560px) {
+    .news-row__link { grid-template-columns: 1fr; gap: .4rem; }
+  }
+</style>

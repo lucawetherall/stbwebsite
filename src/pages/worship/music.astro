@@ -1,0 +1,95 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { site } from '../../data/site';
+---
+<Base
+  title="Music"
+  description="Music at St Barnabas, Ealing — a thriving choir in the Anglican choral tradition leading the Sung Mass each Sunday, with paid choral scholarships and young singers welcome."
+  image="/images/hero/altar.webp"
+>
+  <PageHeader
+    kicker="Worship"
+    title="Music"
+    intro="Music is woven through everything we do — and it carries the prayer of this place."
+  />
+  <div class="wrap page-body music-page">
+    <div class="prose">
+      <p>
+        We are fortunate to have a well-established and thriving choir, rooted in the Anglican
+        choral tradition, that leads our musical offering and helps us encounter God in our
+        common worship. The choir sings the <strong>Sung Mass every Sunday at 10.30am</strong> —
+        a sung setting or the leading of congregational settings, hymns, a sung psalm and a
+        communion anthem — and also sings Choral Evensong and the great festivals of the year.
+      </p>
+    </div>
+
+    <section class="music-section">
+      <h2 class="label music-section__label">The choir</h2>
+      <div class="prose">
+        <p>
+          Our singers span a wide range of ages and experience: two paid choral scholars sing
+          alongside a committed body of voluntary singers. The main choir rehearses on
+          <strong>Sundays from 9.30 to 10.15am</strong>, before the Mass.
+        </p>
+        <p>
+          We actively welcome young people aged 10 and over who are interested in liturgical
+          singing — many find that the experience earns encouragement, and sometimes credit, at
+          school. Young singers join the same Sunday rehearsal.
+        </p>
+      </div>
+    </section>
+
+    <aside class="scholarship" aria-labelledby="scholarship-heading">
+      <p class="label scholarship__kicker">Choral Scholarships 2026/27</p>
+      <h2 id="scholarship-heading" class="scholarship__title serif">Sing with us as a Choral Scholar</h2>
+      <p class="scholarship__body">
+        We offer two paid choral scholarships each year — a wonderful opportunity to develop as
+        a singer within a warm, supportive choir and a fine acoustic. Scholarships for the
+        2026/27 season are <strong>open now</strong>; applications close on <strong>12 June</strong>.
+      </p>
+      <p class="scholarship__actions">
+        <a class="btn btn--solid" href={`mailto:${site.emails.music}?subject=Choral%20Scholarship%20enquiry`}>Email the Director of Music</a>
+        <a class="txt-link" href="/documents/choral-scholar-role-description.pdf">Read the role description</a>
+      </p>
+    </aside>
+
+    <section class="music-section">
+      <h2 class="label music-section__label">Listen</h2>
+      <div class="prose">
+        <p>
+          Many of our services are livestreamed and archived on our
+          <a href={site.social.youtube} target="_blank" rel="noopener">YouTube channel</a>, where
+          you can hear the choir and organ. You are always welcome to come and listen in person.
+        </p>
+      </div>
+    </section>
+
+    <p class="page-aside">
+      The choir is directed by <strong>{site.people.directorOfMusic}</strong>, Director of
+      Music. For any enquiry — singing with us, scholarships, or music for a wedding or funeral —
+      please <a href={`mailto:${site.emails.music}`}>get in touch</a>.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .music-section { margin-top: 2.8rem; }
+  .music-section__label { color: var(--burgundy); display: block; margin-bottom: 1rem; }
+
+  .scholarship {
+    margin-top: 3rem;
+    background: var(--paper-2);
+    border-top: 2px solid var(--burgundy);
+    padding: 2.2rem clamp(1.4rem, 4vw, 2.6rem);
+  }
+  .scholarship__kicker { color: var(--burgundy); }
+  .scholarship__title {
+    margin-top: .8rem;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    max-width: 20ch;
+  }
+  .scholarship__body { margin-top: 1rem; max-width: 58ch; }
+  .scholarship__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 1.8rem; margin-top: 1.8rem; }
+</style>

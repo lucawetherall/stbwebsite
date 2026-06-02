@@ -1,0 +1,49 @@
+---
+interface Props {
+  label?: string;
+  statement: string;
+}
+const { label = 'Welcome', statement } = Astro.props;
+---
+<section class="welcome section" aria-labelledby="welcome-heading">
+  <div class="wrap welcome__grid">
+    <div class="welcome__aside">
+      <p class="label" id="welcome-heading">{label}</p>
+    </div>
+    <div class="welcome__main">
+      <p class="welcome__statement serif">{statement}</p>
+      <div class="welcome__body">
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .welcome { background: var(--paper-2); }
+  .welcome__grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 2rem 3.5rem; align-items: start; }
+  .welcome__aside .label { padding-top: .5rem; }
+  .welcome__statement {
+    font-weight: 500;
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    line-height: 1.22;
+    text-wrap: balance;
+  }
+  .welcome__body { margin-top: 1.8rem; color: var(--ink); }
+  .welcome__body :global(p + p) { margin-top: 1.1rem; }
+  .welcome__body :global(a) {
+    text-decoration: none;
+    border-bottom: 1px solid var(--burgundy);
+    transition: color .2s, border-color .2s;
+  }
+  .welcome__body :global(a:hover) { color: var(--burgundy-deep); border-color: var(--burgundy-deep); }
+  .welcome__body :global(.welcome__note) {
+    margin-top: 1.6rem;
+    font-size: .98rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 760px) {
+    .welcome__grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+interface Props {
+  kicker?: string;
+  title: string;
+  body: string;
+  link?: { label: string; href: string };
+  image?: string;
+}
+const {
+  kicker = 'Music',
+  title,
+  body,
+  link = { label: 'The music of St Barnabas', href: '/worship/music' },
+  image = '/images/hero/altar.webp',
+} = Astro.props;
+const imgSm = image.endsWith('.webp') ? image.replace(/\.webp$/, '-1280.webp') : image;
+---
+<section
+  class="music-band"
+  style={`--mb-lg:url('${image}'); --mb-sm:url('${imgSm}');`}
+>
+  <p class="sr-only">The high altar and sanctuary of St Barnabas during the liturgy.</p>
+  <div class="wrap music-band__inner">
+    <p class="music-band__kicker">{kicker}</p>
+    <h2 class="music-band__title serif">{title}</h2>
+    <p class="music-band__body">{body}</p>
+    {link && <a class="music-band__link" href={link.href}>{link.label}</a>}
+  </div>
+</section>
+
+<style>
+  .music-band {
+    position: relative;
+    color: var(--white);
+    background-image: var(--mb-sm);
+    background-size: cover;
+    background-position: center 35%;
+    isolation: isolate;
+  }
+  .music-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--scrim);
+    z-index: -1;
+  }
+  .music-band__inner {
+    padding-block: clamp(4rem, 12vh, 7rem);
+    max-width: 760px;
+  }
+  .music-band__kicker {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: .72rem;
+    font-weight: 600;
+    margin-bottom: 1.1rem;
+  }
+  .music-band__title {
+    font-weight: 500;
+    font-size: clamp(2rem, 4.6vw, 3.2rem);
+    line-height: 1.05;
+    max-width: 16ch;
+  }
+  .music-band__body {
+    margin-top: 1.3rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+    line-height: 1.4;
+    max-width: 52ch;
+    color: var(--white-soft);
+  }
+  .music-band__link {
+    display: inline-block;
+    margin-top: 1.8rem;
+    text-decoration: none;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: .72rem;
+    padding-bottom: .3rem;
+    border-bottom: 1px solid var(--white);
+    transition: opacity .2s;
+  }
+  .music-band__link:hover { opacity: .72; }
+
+  @media (min-width: 800px) {
+    .music-band { background-image: var(--mb-lg); }
+  }
+</style>

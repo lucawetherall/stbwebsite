@@ -1,0 +1,68 @@
+---
+import { serviceTimes, type ServiceTime } from '../data/serviceTimes';
+
+interface Props {
+  only?: 'sundays' | 'weekdays';
+}
+const { only } = Astro.props;
+
+const blocks: { title: string; items: ServiceTime[] }[] = [];
+if (only !== 'weekdays') blocks.push({ title: 'Sundays', items: serviceTimes.sundays });
+if (only !== 'sundays')
+  blocks.push({ title: 'Weekdays · in the Lady Chapel', items: serviceTimes.weekdays });
+---
+<div class="service-times">
+  {blocks.map((block) => (
+    <section class="service-block">
+      <h3 class="service-block__title label">{block.title}</h3>
+      <dl class="service-list">
+        {block.items.map((s) => (
+          <div class="service-row">
+            <dt class="service-row__time">{s.time}</dt>
+            <dd class="service-row__detail">
+              <span class="service-row__name">{s.name}</span>
+              {s.when && <span class="service-row__when">{s.when}</span>}
+              {s.note && <span class="service-row__note">{s.note}</span>}
+              {s.description && <span class="service-row__desc">{s.description}</span>}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  ))}
+</div>
+
+<style>
+  .service-times { display: grid; gap: 2.8rem; }
+  .service-block__title { color: var(--burgundy); margin-bottom: 1.2rem; }
+  .service-list { display: grid; gap: 1.1rem; }
+  .service-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.2rem;
+    align-items: baseline;
+    border-top: 1px solid var(--line);
+    padding-top: 1.1rem;
+  }
+  .service-row__time {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .service-row__detail { display: flex; flex-direction: column; gap: .25rem; }
+  .service-row__name { font-size: 1.12rem; }
+  .service-row__when {
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--burgundy);
+  }
+  .service-row__note { color: var(--ink-soft); font-size: .98rem; }
+  .service-row__desc { margin-top: .35rem; max-width: 56ch; }
+
+  @media (max-width: 520px) {
+    .service-row { grid-template-columns: 1fr; gap: .3rem; }
+  }
+</style>

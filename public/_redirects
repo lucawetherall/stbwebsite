@@ -1,0 +1,150 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Cloudflare Pages redirects for barnabites.org  (first match wins — order matters)
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Apex → www (also enforced at DNS; belt-and-braces here)
+https://barnabites.org/*  https://www.barnabites.org/:splat  301!
+
+# Legacy worship-online landing pages → new /worship/online
+/worship/p1663                                  /worship/online/  301
+/b/worship-with-us-in-person-or-online-52308    /worship/online/  301
+
+# Thin /venues page merged into /venue-hire
+/venues  /venue-hire/  301
+
+# ── Blog posts: 129 ChurchDesk /b/blog-* URLs → /news/<slug>/  (generated) ──
+/b/blog-112361-two-ministry-team-announcements  /news/two-ministry-team-announcements/  301
+/b/blog-109150-giving-campaign-2022  /news/giving-campaign-2022/  301
+/b/blog-112064-come-thou-long-expected-jesus  /news/come-thou-long-expected-jesus/  301
+/b/blog-124647-curacy-in-coventry-for-robin  /news/curacy-in-coventry-for-robin/  301
+/b/blog-97927-ukraine-crisis-appeal  /news/ukraine-crisis-appeal/  301
+/b/blog-114870-prayer-vigil-for-the-living-in-love-and-faith-process  /news/prayer-vigil-for-the-living-in-love-and-faith-process/  301
+/b/blog-124983-welcome-sanjit-sir-as-the-st-barnabas-operations-manager  /news/welcome-sanjit-sir-as-the-st-barnabas-operations-manager/  301
+/b/blog-121417-st-barnabas-appoints-new-director-of-music  /news/st-barnabas-appoints-new-director-of-music/  301
+/b/blog-145641-st-barnabas-appoints-new-vicar  /news/st-barnabas-appoints-new-vicar/  301
+/b/blog-121485-indaba-with-catherine-pepinster  /news/indaba-with-catherine-pepinster/  301
+/b/blog-136682-memory-cafe-receives-a-warm-welcome-from-around-ealing  /news/memory-cafe-receives-a-warm-welcome-from-around-ealing/  301
+/b/blog-128154-memory-cafe  /news/memory-cafe/  301
+/b/blog-123102-annual-meeting-sunday-21-may-2023-10-30-am  /news/annual-meeting-sunday-21-may-2023-10-30-am/  301
+/b/blog-88492-henry-returns-to-noisy-mass  /news/henry-returns-to-noisy-mass/  301
+/b/blog-91573-ealing-citizens-local-jobs-secured-and-commitments-for-living-wage-roles  /news/ealing-citizens-local-jobs-secured-and-commitments-for-living-wage-roles/  301
+/b/blog-73843-lent-a-season-of-recovery  /news/lent-a-season-of-recovery/  301
+/b/blog-79243-race-equality-commission  /news/race-equality-commission/  301
+/b/blog-82092-sign-up-for-the-psalmathon  /news/sign-up-for-the-psalmathon/  301
+/b/blog-85846-late-summer-bbq  /news/late-summer-bbq/  301
+/b/blog-74835-pcc-induction-pack  /news/pcc-induction-pack/  301
+/b/blog-92895-introducing-jazz-on-the-lane-nights  /news/introducing-jazz-on-the-lane-nights/  301
+/b/blog-108411-remembering-her-majesty-the-queen  /news/remembering-her-majesty-the-queen/  301
+/b/blog-102442-annual-meeting-sunday-29-may-2022-10-30-am-please-note-postponed-date  /news/annual-meeting-sunday-29-may-2022-10-30-am-please-note-postponed-date/  301
+/b/blog-97626-a-message-from-robin-griffiths  /news/a-message-from-robin-griffiths/  301
+/b/blog-88927-introducing-mtr-jenny-krige  /news/introducing-mtr-jenny-krige/  301
+/b/blog-89016-volunteer-mentors-needed-plias-resettlement  /news/volunteer-mentors-needed-plias-resettlement/  301
+/b/blog-89017-recruitment-willesden-area-finance-adviser  /news/recruitment-willesden-area-finance-adviser/  301
+/b/blog-90439-parish-outing-to-st-paul-s-advent-carol-service  /news/parish-outing-to-st-paul-s-advent-carol-service/  301
+/b/blog-101635-housing-living-wages-mental-health-sen-for-ealing  /news/housing-living-wages-mental-health-sen-for-ealing/  301
+/b/blog-113880-nominated-charities  /news/nominated-charities/  301
+/b/blog-71414-sunday-indabas-after-covid-reorientation-and-renewal  /news/sunday-indabas-after-covid-reorientation-and-renewal/  301
+/b/blog-64233-sacred-sounds  /news/sacred-sounds/  301
+/b/blog-74949-extra-surge-testing-for-ealing  /news/extra-surge-testing-for-ealing/  301
+/b/blog-49997-covid19-guidance  /news/covid19-guidance/  301
+/b/blog-58667-opening-the-church-for-private-prayer  /news/opening-the-church-for-private-prayer/  301
+/b/blog-78858-london-mayoral-assembly-and-evening-prayer  /news/london-mayoral-assembly-and-evening-prayer/  301
+/b/blog-69916-farewell-gift-for-jill-scott  /news/farewell-gift-for-jill-scott/  301
+/b/blog-78797-church-electoral-roll  /news/church-electoral-roll/  301
+/b/blog-65816-join-a-pastoral-care-group  /news/join-a-pastoral-care-group/  301
+/b/blog-61733-online-celebration-assembly-community-organising-during-lockdown  /news/online-celebration-assembly-community-organising-during-lockdown/  301
+/b/blog-89367-st-barnabas-artist-in-residence-program  /news/st-barnabas-artist-in-residence-program/  301
+/b/blog-87469-curious-about-christianity  /news/curious-about-christianity/  301
+/b/blog-85422-volunteers-needed-at-new-c-a-p-debt-centre  /news/volunteers-needed-at-new-c-a-p-debt-centre/  301
+/b/blog-79339-remembering-john-mcglashan  /news/remembering-john-mcglashan/  301
+/b/blog-87897-hallowe-en-special-screening-of-the-hunchback-of-notre-dame  /news/hallowe-en-special-screening-of-the-hunchback-of-notre-dame/  301
+/b/blog-87632-revision-of-all-souls-list-2021  /news/revision-of-all-souls-list-2021/  301
+/b/blog-59818-noisy-mass-copy  /news/noisy-mass-copy/  301
+/b/blog-59708-anti-racism-resources  /news/anti-racism-resources/  301
+/b/blog-59140-listening-organising-and-responding-to-covid-19  /news/listening-organising-and-responding-to-covid-19/  301
+/b/blog-59821-parent-support-group  /news/parent-support-group/  301
+/b/blog-52583-holy-week-services  /news/holy-week-services/  301
+/b/blog-59819-mydearnewfriend-project  /news/mydearnewfriend-project/  301
+/b/blog-54827-welcome-amy-merriman  /news/welcome-amy-merriman/  301
+/b/blog-47885-noisy-mass  /news/noisy-mass/  301
+/b/blog-59981-q-a-food-pantry-tuesdays-1-4-pm  /news/q-a-food-pantry-tuesdays-1-4-pm/  301
+/b/blog-63261-climate-listening-groups  /news/climate-listening-groups/  301
+/b/blog-59099-church-reopen-for-private-prayer-on-tuesdays  /news/church-reopen-for-private-prayer-on-tuesdays/  301
+/b/blog-48079-lent-at-st-barnabas-2020-7-sacred-spaces  /news/lent-at-st-barnabas-2020-7-sacred-spaces/  301
+/b/blog-60360-sunday-indabas-copy  /news/sunday-indabas-copy/  301
+/b/blog-59098-fr-gerald-reddington-rip  /news/fr-gerald-reddington-rip/  301
+/b/blog-60091-q-a-outdoor-mass-tuesday-1-pm  /news/q-a-outdoor-mass-tuesday-1-pm/  301
+/b/blog-64321-viewing-sublime-sacred-sounds  /news/viewing-sublime-sacred-sounds/  301
+/b/blog-64562-harvest-donations  /news/harvest-donations/  301
+/b/blog-65820-remembrance-sunday-for-children-s-church  /news/remembrance-sunday-for-children-s-church/  301
+/b/blog-40863-jazz-on-the-lane-2019  /news/jazz-on-the-lane-2019/  301
+/b/blog-40567-come-and-sing  /news/come-and-sing/  301
+/b/blog-44880-hymns-pimms-2019  /news/hymns-pimms-2019/  301
+/b/blog-41787-worship-july-2019  /news/worship-july-2019/  301
+/b/blog-36447-sermon-nine-lessons-and-carols-20-december-2018-fr-justin-dodd  /news/sermon-nine-lessons-and-carols-20-december-2018-fr-justin-dodd/  301
+/b/blog-44878-regular-events-activities-november-2019  /news/regular-events-activities-november-2019/  301
+/b/blog-33974-pitshanger-pictures-even-when-i-fall-12a  /news/pitshanger-pictures-even-when-i-fall-12a/  301
+/b/blog-32356-mozart-festival  /news/mozart-festival/  301
+/b/blog-33130-back-to-school-celebration-mass-10-30am-9th-september  /news/back-to-school-celebration-mass-10-30am-9th-september/  301
+/b/blog-34012-ealing-food-bank-donations  /news/ealing-food-bank-donations/  301
+/b/blog-31769-worship-july-2018  /news/worship-july-2018/  301
+/b/blog-34014-worship-october-2018  /news/worship-october-2018/  301
+/b/blog-33976-pilgrimage-to-westminster  /news/pilgrimage-to-westminster/  301
+/b/blog-34015-regular-events-activities-october-2018  /news/regular-events-activities-october-2018/  301
+/b/blog-35222-week-of-giving  /news/week-of-giving/  301
+/b/blog-34829-worship-november-2018  /news/worship-november-2018/  301
+/b/blog-38236-christ-and-the-chocolaterie-lent-course  /news/christ-and-the-chocolaterie-lent-course/  301
+/b/blog-34019-bangers-sparklers  /news/bangers-sparklers/  301
+/b/blog-35715-advent-app  /news/advent-app/  301
+/b/blog-34833-to-live-again-advent-course  /news/to-live-again-advent-course/  301
+/b/blog-44877-worship-november-2019  /news/worship-november-2019/  301
+/b/blog-32315-choir-survey  /news/choir-survey/  301
+/b/blog-41786-regular-events-and-activities-july-2019  /news/regular-events-and-activities-july-2019/  301
+/b/blog-46245-advent-and-christmas-2019-copy  /news/advent-and-christmas-2019-copy/  301
+/b/blog-38235-regular-activities-and-events-march-2019  /news/regular-activities-and-events-march-2019/  301
+/b/blog-43937-sunday-indabas  /news/sunday-indabas/  301
+/b/blog-28978-the-pain-of-failure  /news/the-pain-of-failure/  301
+/b/blog-30571-jazz-on-the-lane  /news/jazz-on-the-lane/  301
+/b/blog-30573-housing-follow-up-action-at-ealing-town-hall  /news/housing-follow-up-action-at-ealing-town-hall/  301
+/b/blog-31128-regular-events-and-activities-june-2018  /news/regular-events-and-activities-june-2018/  301
+/b/blog-29455-holy-week-a  /news/holy-week-a/  301
+/b/blog-30207-plant-sale  /news/plant-sale/  301
+/b/blog-30347-the-way-introducing-the-riches-of-christianity  /news/the-way-introducing-the-riches-of-christianity/  301
+/b/blog-31131-the-big-brekkie-2018  /news/the-big-brekkie-2018/  301
+/b/blog-29826-games-night-2018  /news/games-night-2018/  301
+/b/blog-28864-the-need-for-dignity  /news/the-need-for-dignity/  301
+/b/blog-30572-poetry-by-candlelight-daphne-gloag  /news/poetry-by-candlelight-daphne-gloag/  301
+/b/blog-32312-regular-events-activities-august-2018  /news/regular-events-activities-august-2018/  301
+/b/blog-30351-regular-activities-events-may-2018  /news/regular-activities-events-may-2018/  301
+/b/blog-30569-worship-may-2018  /news/worship-may-2018/  301
+/b/blog-32313-worship-august-2018  /news/worship-august-2018/  301
+/b/blog-31771-regular-events-activities-july-2018  /news/regular-events-activities-july-2018/  301
+/b/blog-32219-pop-in-day-at-the-seaside  /news/pop-in-day-at-the-seaside/  301
+/b/blog-30570-thykingdomcome  /news/thykingdomcome/  301
+/b/blog-31127-worship-june-2018  /news/worship-june-2018/  301
+/b/blog-31441-late-summer-ball-2018  /news/late-summer-ball-2018/  301
+/b/blog-33083-the-way-introducing-the-riches-of-christianity  /news/the-way-introducing-the-riches-of-christianity-33083/  301
+/b/blog-31709-reflective-morning-oxygen-for-the-soul  /news/reflective-morning-oxygen-for-the-soul/  301
+/b/blog-28045-bread-of-life-da  /news/bread-of-life-da/  301
+/b/blog-28339-lent-boxes  /news/lent-boxes/  301
+/b/blog-28417-40-ideas-for-keeping-lent-holy  /news/40-ideas-for-keeping-lent-holy/  301
+/b/blog-28681-female-helpers-for-overnight-urgently-needed  /news/female-helpers-for-overnight-urgently-needed/  301
+/b/blog-29274-easter-egg-hunt-2018  /news/easter-egg-hunt-2018/  301
+/b/blog-28679-ealing-housing-assembly  /news/ealing-housing-assembly/  301
+/b/blog-29244-evensong  /news/evensong/  301
+/b/blog-30029-godparents-sunday  /news/godparents-sunday/  301
+/b/blog-29857-gdpr  /news/gdpr/  301
+/b/blog-28435-the-magic-of-stuff  /news/the-magic-of-stuff/  301
+/b/blog-28636-the-problem-of-suffering  /news/the-problem-of-suffering/  301
+/b/blog-28338-more-questions-than-answers  /news/more-questions-than-answers/  301
+/b/blog-28863-children-s-activity-morning  /news/children-s-activity-morning/  301
+/b/blog-29814-data-protection-notice  /news/data-protection-notice/  301
+/b/blog-30050-ealing-housing-assembly  /news/ealing-housing-assembly-30050/  301
+/b/blog-30208-ealing-at-the-tate-making-sacred-space-18th-may-2018  /news/ealing-at-the-tate-making-sacred-space-18th-may-2018/  301
+/b/blog-28037-pancake-evening-volunteers-needed  /news/pancake-evening-volunteers-needed/  301
+
+# Remaining ephemeral ChurchDesk event-occurrence & hall-booking pages → What's On
+# (catch-all MUST stay last so the specific rules above take precedence)
+/b/*  /worship/special-services/  301
+
+# Core editorial paths (/about-us, /worship, /community, …) are preserved 1:1 — no redirect needed.
