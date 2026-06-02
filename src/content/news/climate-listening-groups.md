@@ -18,4 +18,4 @@ Come share your stories, fears and hopes in our climate listening groups:
 
 Sign up by registering here: [https://forms.churchdesk.com/f...](https://forms.churchdesk.com/f/-XYxsotIpJ)  
 
-In partnership with London citizens we are building climate policies that will restore our city, create 100000 new green jobs and protect our future health. This will be achieved by transforming London into the first “Just Transition City” in the UK and playing our part as St Barnabas Ealing.
+In partnership with London citizens we are building climate policies that will restore our city, create 100000 new green jobs and protect our future health. This will be achieved by transforming London into the first ‘Just Transition City’ in the UK and playing our part as St Barnabas Ealing.

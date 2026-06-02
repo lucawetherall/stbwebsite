@@ -6,11 +6,11 @@ author: "St Barnabas Church"
 legacySlug: "b/blog-40863-jazz-on-the-lane-2019"
 ---
 
-Join us for a fantastic day, in celebration of the patronal festival of St Barnabas, at Ealing's favourite summer event!  
+Join us for a fantastic day, in celebration of the patronal festival of St Barnabas, at Ealing’s favourite summer event!  
   
 10.30am JAZZ MASS  
   
-A lively Jazz Mass to celebrate St Barnabas day led by a jazz band and extended choir. It's a very energetic service that is suitable for ALL AGES!  
+A lively Jazz Mass to celebrate St Barnabas day led by a jazz band and extended choir. It’s a very energetic service that is suitable for ALL AGES!  
   
 1pm to 6pm JAZZ IN THE GARDEN  
   

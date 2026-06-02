@@ -1,5 +1,5 @@
 ---
-title: "Memory Café Receives \"A Warm Welcome\" from Around Ealing"
+title: "Memory Café Receives ‘A Warm Welcome’ from Around Ealing"
 date: 2023-12-13
 category: "News"
 author: "St Barnabas Church"

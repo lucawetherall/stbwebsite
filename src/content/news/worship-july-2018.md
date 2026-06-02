@@ -19,7 +19,7 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 **All Age** **Mass** | 10.30am, 1st July
 
-This is truly a 'Shh-free' form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
+This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
 <img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.png" alt="Worship | July 2018" loading="lazy" decoding="async">
 
@@ -29,8 +29,8 @@ A [beautiful service](https://landing.churchdesk.com/b/29244/evensong) of trad
 
 <img src="/images/news/850cb254-st.barnabas.carols-2.2.jpg" alt="Worship | July 2018" loading="lazy" decoding="async">
 
-**Children's Service** | 9.30am, 15th July
+**Children’s Service** | 9.30am, 15th July
 
-Join our 30-minute children's service for young children. It includes songs and a very visual bible story with shared child-friendly breakfast afterwards. 
+Join our 30-minute children’s service for young children. It includes songs and a very visual bible story with shared child-friendly breakfast afterwards. 
 
 <img src="/images/news/c44ed152-pancake-10.jpg" alt="Worship | July 2018" loading="lazy" decoding="async">

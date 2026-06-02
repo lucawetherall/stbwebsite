@@ -8,6 +8,6 @@ legacySlug: "b/blog-28863-children-s-activity-morning"
 
 Join us from **_10am to 11.30am_** on **_Saturday 10th March_** 
 
-for Children's crafts and daffodil bunching in the Church.  
+for Children’s crafts and daffodil bunching in the Church.  
 
 Everybody is welcome!

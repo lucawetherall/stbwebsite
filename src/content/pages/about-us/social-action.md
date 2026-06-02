@@ -1,7 +1,7 @@
 ---
 title: Social Action
 kicker: About Us
-intro: “But I am among you as one who serves.” — Luke 22:27
+intro: ‘But I am among you as one who serves.’ — Luke 22:27
 description: Service is central to the Christian life at St Barnabas — caring for one another, offering hospitality to our community, and acting as informed citizens.
 ---
 

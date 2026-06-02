@@ -66,5 +66,5 @@ _GUIDE_: Please follow this guide, as the ticketing system is originally meant f
 
 -   Choosing the number of tickets - Please note that each ticket will get its own special access code to view the event. You should not share your link.
 -   Extra Info - Please enter your organisation, as well as the name and organisation of the person who invited you.
--   Login - Scroll down and click “Continue as Guest”. You do not have to create an account.
+-   Login - Scroll down and click ‘Continue as Guest’. You do not have to create an account.
 -   Your Details - You do not need to enter an address. A phone number is required in case your email address bounces.

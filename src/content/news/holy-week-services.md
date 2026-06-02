@@ -6,7 +6,7 @@ author: "Justin Dodd"
 legacySlug: "b/blog-52583-holy-week-services"
 ---
 
-_All of the below will be available on_ [Facebook here](https://www.facebook.com/barnabites/) _and the [](https://landing.churchdesk.com/b/52308/worship-with-us-in-person-or-online)_ [St Barnabas Website here](https://landing.churchdesk.com/b/52308/worship-with-us-in-person-or-online) _EXCEPT for [Tuesday Morning Prayer here](https://landing.churchdesk.com/b/52571/login-details-for-morning-prayer)._   
+_All of the below will be available on_ [Facebook here](https://www.facebook.com/barnabites/) _and the _ [St Barnabas Website here](https://landing.churchdesk.com/b/52308/worship-with-us-in-person-or-online) _EXCEPT for [Tuesday Morning Prayer here](https://landing.churchdesk.com/b/52571/login-details-for-morning-prayer)._   
 
   
 
@@ -20,7 +20,7 @@ Wed, 12:30 pm: **_7 Sacred Spaces Lent Course_** 
 
 Maundy Thurs, 8 pm: _**\*Mass of the Last Supper**_ (with washing of hands)     
 
-\*[Email us](mailto:ministry.admin@barnabites.net) _short videos of you washing each other's hands_ 
+\*[Email us](mailto:ministry.admin@barnabites.net) _short videos of you washing each other’s hands_ 
 
 Good Fri:  
 

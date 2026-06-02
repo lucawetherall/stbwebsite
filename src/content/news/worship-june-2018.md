@@ -21,7 +21,7 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 **All Age** **Mass** | 10.30am, 3rd June
 
-This is truly a 'Shh-free' form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
+This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
 <img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.png" alt="Worship | June 2018" loading="lazy" decoding="async">
 
@@ -35,6 +35,6 @@ A [beautiful service](https://www.barnabites.org/blog/29244) of traditional ev
 
 **Jazz Mass** | 10.30am, 10th June  
 
-Join us for a special Jazz Mass to celebrate the patronal festival of St Barnabas. The service brings together an expanded choir and jazz trio, leading Chilcott's foot-tapping 'jazz mass' setting. 
+Join us for a special Jazz Mass to celebrate the patronal festival of St Barnabas. The service brings together an expanded choir and jazz trio, leading Chilcott’s foot-tapping ’jazz mass’ setting. 
 
 <img src="/images/news/054ed68a-black-and-white-hand-jazz-164934.jpg" alt="Worship | June 2018" loading="lazy" decoding="async">

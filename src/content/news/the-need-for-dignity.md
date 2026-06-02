@@ -5,7 +5,7 @@ category: "News"
 legacySlug: "b/blog-28864-the-need-for-dignity"
 ---
 
-_The third weekly reflection based on our Lent course “The Mystery of Everything”._ 
+_The third weekly reflection based on our Lent course ‘The Mystery of Everything’._ 
 
 If you read Stephen Hawking’s autobiographical work, My Brief History, he speaks very little about marriage and family or his illness. It is noticeable that he gives his ex-wife Jane no credit whatsoever for the personal care she gave him over many years of marriage. One wonders whether he needed to avoid acknowledging the reality of his physical dependency so as to keep his dignity intact. For someone with a proud and independent spirit, it must have felt somewhat demeaning to see himself wearing a label saying disabled, or just a man in a wheelchair. 
 

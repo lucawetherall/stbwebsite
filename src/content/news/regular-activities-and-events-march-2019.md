@@ -29,7 +29,7 @@ Come along for a cup of tea and a chat in the large hall on Thursday afternoons.
 
 **Ealing Gospel Choir | Sunday 10th, 17th, 24th March, 3 - 5 pm**
 
-The Gospel Choir is open to anyone who is enthusiastic about community singing. No experience is necessary. We sing everything from energetic Gospel praise to soul-warming standards. Besides performing on the first Sunday of the month at the "Shh-free" Mass (3rd March), the Gospel Choir also regularly sings at local community events. Rehearsals are usually 2nd and 3rd Sunday of the month, although this may vary depending on term holidays. For more information, feel free to email the conductor [Henry Tozer](mailto:henrytozer@gmail.com). 
+The Gospel Choir is open to anyone who is enthusiastic about community singing. No experience is necessary. We sing everything from energetic Gospel praise to soul-warming standards. Besides performing on the first Sunday of the month at the ‘Shh-free’ Mass (3rd March), the Gospel Choir also regularly sings at local community events. Rehearsals are usually 2nd and 3rd Sunday of the month, although this may vary depending on term holidays. For more information, feel free to email the conductor [Henry Tozer](mailto:henrytozer@gmail.com). 
 
 <img src="/images/news/f0dbecf0-christingle-109.jpg" alt="Regular Activities and Events | March 2019" loading="lazy" decoding="async"> 
 

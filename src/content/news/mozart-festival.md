@@ -5,7 +5,7 @@ category: "News"
 legacySlug: "b/blog-32356-mozart-festival"
 ---
 
-Join us for Pitshanger Pictures' Mozart Festival |16th August - 19th August 2018
+Join us for Pitshanger Pictures’ Mozart Festival |16th August - 19th August 2018
 
   
 

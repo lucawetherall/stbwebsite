@@ -19,4 +19,4 @@ They are currently looking for people to volunteer for the following roles:
 
 _The most urgent role we are seeking to cover is for Befrienders as we are already seeing a large number of clients due to the current financial climate._
 
-[Click here](https://www.youtube.com/watch?v=zRWzbqAc_nY) to view a video message from the Centre's new Manager, Mark Dishley.
+[Click here](https://www.youtube.com/watch?v=zRWzbqAc_nY) to view a video message from the Centre’s new Manager, Mark Dishley.

@@ -16,7 +16,7 @@ We all know how important it is for us to help our people to pray and reflect du
 
 The app is suitable for Christians or people on the edges of faith who wish to make the most of the season. It contains an introduction from Bishop Sarah and a set of brilliant daily meditations by Dr Jane Williams for each day of Advent; including a reflection, discussion point, prayer, bible reading and call to action.
 
-As the nights draw in and London fills up with lights and a sense of expectation, Bishop Sarah says in her foreword: “To appreciate the light and hope, you need to wait in the darkness. Advent is a time to be still in the midst of our busy lives. We should make space in the darkness to appreciate the light, and to find time to focus on hope.” There is of course also a booklet for those who don’t use technology. 
+As the nights draw in and London fills up with lights and a sense of expectation, Bishop Sarah says in her foreword: ‘To appreciate the light and hope, you need to wait in the darkness. Advent is a time to be still in the midst of our busy lives. We should make space in the darkness to appreciate the light, and to find time to focus on hope.’ There is of course also a booklet for those who don’t use technology. 
 
 I’d love to see our people keeping Advent counterculturally. Today is that benighted festival of consumerism – so called Black Friday. 
 

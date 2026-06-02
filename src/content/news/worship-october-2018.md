@@ -18,9 +18,9 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 **Special Services in October:**
 
-**'S**hh\-Free' **Harvest Festival Mass** | 10.30am, 7th October
+**’S**hh\-Free’ **Harvest Festival Mass** | 10.30am, 7th October
 
-This is truly a 'Shh-free' form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
+This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
 <img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.png" alt="Worship | October 2018" loading="lazy" decoding="async">
 
@@ -30,8 +30,8 @@ A [beautiful service](https://www.barnabites.org/blog/29244) of traditional ev
 
 <img src="/images/news/850cb254-st.barnabas.carols-2.2.jpg" alt="Worship | October 2018" loading="lazy" decoding="async">
 
-**Children's Mass** | 9.30am, 21st October
+**Children’s Mass** | 9.30am, 21st October
 
-Join our 30-minute children's service for young children. It includes songs and a visual bible story with shared child-friendly breakfast afterwards. 
+Join our 30-minute children’s service for young children. It includes songs and a visual bible story with shared child-friendly breakfast afterwards. 
 
 <img src="/images/news/c44ed152-pancake-10.jpg" alt="Worship | October 2018" loading="lazy" decoding="async">

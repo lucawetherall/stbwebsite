@@ -22,4 +22,4 @@ Returns in the first week of September in the Lady Chapel at 12.30pm
 
 **All Age** **Mass** | 10.30am, 5th August
 
-This is truly a 'Shh-free' form of Eucharistic worship that is open to all ages, but particularly suitable for families.
+This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families.

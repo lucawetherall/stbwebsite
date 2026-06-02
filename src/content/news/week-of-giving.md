@@ -7,7 +7,7 @@ legacySlug: "b/blog-35222-week-of-giving"
 
 **Week of Giving |** **Sunday 2 December to Sunday 9 December**
 
-St Barnabas is a thriving community hub. Over 500 people come through our doors every week and we subsidise the work of 7 charities on site. We are proud to be a place of worship, fellowship,  and care for people of all ages, backgrounds and indeed faiths. But we need your help to meet our rising running costs. A financial gift during the “Week of Giving” will make all the difference. 
+St Barnabas is a thriving community hub. Over 500 people come through our doors every week and we subsidise the work of 7 charities on site. We are proud to be a place of worship, fellowship,  and care for people of all ages, backgrounds and indeed faiths. But we need your help to meet our rising running costs. A financial gift during the ‘Week of Giving’ will make all the difference. 
 
 -   **TEXT: ‘BARN16’ + your amount to 70070 to give via mobile.**
 

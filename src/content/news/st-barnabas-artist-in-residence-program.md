@@ -1,5 +1,5 @@
 ---
-title: "St Barnabas Artist in Residence Program"
+title: "St Barnabas Artist in Residence Programme"
 date: 2021-10-22
 category: "News"
 author: "Justin Dodd"
@@ -16,18 +16,15 @@ _**Where will the sessions take place?**_ Helen is located in the upper room of
 
 * * *
 
-**_(Watch Mtr. Fiona interview Helen about the 2021/22 artist in residence program after a recent Sunday mass)_**
+**_(Watch Mtr Fiona interview Helen about the 2021/22 artist in residence programme after a recent Sunday mass)_**
 
-**_**_&amp;lt;span id="selection-marker-1" class="redactor-selection-marker"&amp;gt;&amp;lt;/span&amp;gt;  
 _**_**
 
-**_What is this about?_** In September 2021 we launched an exciting Artist in Residence program at St Barnabas. During this 12 month period Helen Charlemagne (a local artist) will meet with parishioners and members of the community to create a collection of art centered on the themes of faith, hope and love. Each of the themes will be explored over a 4 month period beginning with “faith” during the months of September–December 2021.   
+**_What is this about?_** In September 2021 we launched an exciting Artist in Residence programme at St Barnabas. During this 12-month period Helen Charlemagne (a local artist) will meet with parishioners and members of the community to create a collection of art centred on the themes of faith, hope and love. Each of the themes will be explored over a 4-month period beginning with ‘faith’ during the months of September–December 2021.   
 
-**(Watch Fr. Justin explain his choice of object and it's connection to his faith experience of the pandemic.)**
+**(Watch Fr Justin explain his choice of object and it’s connection to his faith experience of the pandemic.)**
 
-&amp;lt;span id="selection-marker-1" class="redactor-selection-marker"&amp;gt;&amp;lt;/span&amp;gt;  
-
-_**How do I participate?**_ Start by identifying an object that represents your experience of “faith” during the past 18 months. Then, make an appointment to see Helen on this page. Bring your object along to discuss why you chose it and how it relates to faith for you. Helen will then produce an artistic rendering of the object as interpreted through your conversation. 
+_**How do I participate?**_ Start by identifying an object that represents your experience of ‘faith’ during the past 18 months. Then, make an appointment to see Helen on this page. Bring your object along to discuss why you chose it and how it relates to faith for you. Helen will then produce an artistic rendering of the object as interpreted through your conversation. 
 
 **What principles are guiding this project?**
 
@@ -35,9 +32,9 @@ _Collaborative creativity_ \- community, congregation and artist come together 
 
 _The beauty of the ordinary_ \- we know God is at work in the everyday details of our lives. Each object has personal meaning for the individual, their life experience and their spiritual journey. We receive it as sacred.   
 
-_Our story rooted in God’s story_ \- we offer something of ourselves to be woven into a collective public representation of God's saving love in our lives at this time and in this community.  
+_Our story rooted in God’s story_ \- we offer something of ourselves to be woven into a collective public representation of God’s saving love in our lives at this time and in this community.  
 
-_**Can you explain a little more about the themes?**_ Although life has just started to return to something resembling normal, we’re still grappling with the unprecedented impact of a global pandemic on our lives. The Apostle Paul in 1 Corinthians 13 offers these words of encouragement to the Christians struggling in that city, “And now **faith, hope, and love** abide, these three; and the greatest of these is love.” During this 12 month program, we have the opportunity to creatively explore our experiences as individuals and members of the community here. Where do we find the signs of faith, hope, and love in the wake of COVID-19?    
+_**Can you explain a little more about the themes?**_ Although life has just started to return to something resembling normal, we’re still grappling with the unprecedented impact of a global pandemic on our lives. The Apostle Paul in 1 Corinthians 13 offers these words of encouragement to the Christians struggling in that city, ‘And now **faith, hope, and love** abide, these three; and the greatest of these is love.’ During this 12-month programme, we have the opportunity to creatively explore our experiences as individuals and members of the community here. Where do we find the signs of faith, hope, and love in the wake of COVID-19?    
 
 * * *
 

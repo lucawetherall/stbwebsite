@@ -8,7 +8,7 @@ legacySlug: "b/blog-30570-thykingdomcome"
 
 In the days between Ascension (Thursday 10 May) and Pentecost (Sunday 20 May) we will be joining in the global prayer initiative - #ThyKingdomCome. During this time Christians of different denominations around the world will be praying for the health and mission of the Church. Here are some three ways you can be involved. 
 
-**1\.** [](http://www.thykingdomcome.global)**[www.thykingdomcome.global](http://www.thykingdomcome.global)**
+**1\.** **[www.thykingdomcome.global](http://www.thykingdomcome.global)**
 
 Go online and visit the website to find
 

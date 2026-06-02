@@ -14,12 +14,12 @@ We’re inviting you to join us as we make our way through the whole book of Psa
 
   
 
-Here's how you can participate:  
+Here’s how you can participate:  
 
 1. [Click here to sign up](https://www.signupgenius.com/go/10c0c44a8ad2ca5fdc25-reading)!
 
-2\. You'll have a choice of 15 minute "slots"
+2\. You’ll have a choice of 15 minute ‘slots’
 
-3\. Once you've signed up, we'll send you a link. Use that link to gather online donations (of course, you're more than welcome to gather cash donations. Just pop it through the post box at the parish office clearly marked with your name and "Psalmathon" in big letters.).
+3\. Once you’ve signed up, we’ll send you a link. Use that link to gather online donations (of course, you’re more than welcome to gather cash donations. Just pop it through the post box at the parish office clearly marked with your name and ‘Psalmathon’ in big letters.).
 
 Any questions, email vicar@barnabites.net.

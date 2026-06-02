@@ -26,7 +26,7 @@ ADMISSION IS FREE.
 
   
 
-There will also be food and drink available for purchase including a Hog Roast, salad lunch and bar. Plus, family-friendly entertainment with children's entertainer.
+There will also be food and drink available for purchase including a Hog Roast, salad lunch and bar. Plus, family-friendly entertainment with children’s entertainer.
 
   
 
