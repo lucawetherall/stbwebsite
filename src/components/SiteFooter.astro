@@ -1,0 +1,148 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+
+const links = [
+  { label: 'Contact', href: '/contact-us' },
+  { label: 'Give', href: '/give' },
+  { label: 'Safeguarding', href: '/safeguarding' },
+  { label: 'Accessibility', href: '/about-us/accessibility' },
+  { label: 'Inclusive Church', href: site.affiliations[0].url, external: true },
+  { label: 'Church of England', href: site.affiliations[1].url, external: true },
+];
+const tel = `tel:${site.phoneIntl.replace(/\s+/g, '')}`;
+---
+<footer class="site-footer">
+  <div class="wrap footer-top">
+    <a href="/" class="footer-brand" aria-label="St Barnabas Church, Ealing — home">
+      <Logo size={32} />
+      <span class="footer-brand__text">
+        <span class="serif footer-brand__name">St Barnabas Church, Ealing</span>
+        <span class="serif footer-brand__locality">The Church of England parish church of Pitshanger</span>
+      </span>
+    </a>
+
+    <ul class="footer-social" aria-label="Social media">
+      <li>
+        <a href={site.social.facebook} aria-label="Facebook" rel="me noopener" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3l.4-3H14V4.3c0-.9.3-1.5 1.6-1.5H17V.1C16.7.1 15.6 0 14.4 0 11.9 0 10.2 1.5 10.2 4.3V6H7v3h3.2v9h3.8V9z"/></svg>
+        </a>
+      </li>
+      <li>
+        <a href={site.social.instagram} aria-label="Instagram" rel="me noopener" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </li>
+      <li>
+        <a href={site.social.youtube} aria-label="YouTube" rel="me noopener" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.5c-.2-1.6-.9-2.4-2.5-2.6C18.4 4.5 12 4.5 12 4.5s-6.4 0-8.5.4C1.9 5.1 1.2 5.9 1 7.5.6 9.6.6 12 .6 12s0 2.4.4 4.5c.2 1.6.9 2.4 2.5 2.6 2.1.4 8.5.4 8.5.4s6.4 0 8.5-.4c1.6-.2 2.3-1 2.5-2.6.4-2.1.4-4.5.4-4.5s0-2.4-.4-4.5zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="wrap footer-base">
+    <p class="footer-info">
+      <span>{site.address.street}, {site.address.city} {site.address.postcode}</span>
+      <a href={tel}>{site.phone}</a>
+      <a href={`mailto:${site.emails.office}`}>{site.emails.office}</a>
+      <span class="footer-muted">&copy; {year} {site.name}</span>
+      <span class="footer-season" data-season-line></span>
+    </p>
+    <ul class="footer-links">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink);
+    color: var(--white-soft);
+    padding-block: clamp(1.8rem, 3.5vw, 2.6rem) 1.6rem;
+    margin-top: 3.5rem;
+  }
+  .site-footer a { color: var(--white-soft); text-decoration: none; transition: color .2s; }
+  .site-footer a:hover { color: var(--white); }
+
+  .footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem 2rem;
+    flex-wrap: wrap;
+  }
+  .footer-brand { display: inline-flex; align-items: center; gap: .75rem; color: var(--white); }
+  .footer-brand__text { display: flex; flex-direction: column; line-height: 1.18; }
+  .footer-brand__name { font-size: 1.2rem; font-weight: 600; }
+  .footer-brand__locality { font-style: italic; font-size: .92rem; color: var(--white-soft); }
+  .footer-social { list-style: none; display: flex; gap: 1rem; }
+  .footer-social a { display: inline-flex; }
+
+  .footer-base {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem 1.6rem;
+    margin-top: 1.4rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(251, 249, 244, .14);
+  }
+  .footer-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .2rem 1rem;
+    margin: 0;
+    max-width: none;
+    font-size: .8rem;
+    color: rgb(178, 168, 153);
+  }
+  /* thin separators between the inline info items */
+  .footer-info > * + *::before {
+    content: '·';
+    margin-right: 1rem;
+    color: rgba(251, 249, 244, .3);
+  }
+  .footer-info a { color: var(--white-soft); }
+  .footer-season { font-family: var(--font-display); font-style: italic; font-size: .88rem; color: var(--white-soft); }
+  /* before the client script fills it, the season span is empty — hide it so it
+     doesn't leave a dangling separator */
+  .footer-season:empty { display: none; }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem 1.3rem;
+  }
+  .footer-links a {
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .66rem;
+    color: rgb(178, 168, 153);
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  @media (max-width: 760px) {
+    .footer-base { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    /* drop the inline separators when items stack tightly */
+    .footer-info { flex-direction: column; align-items: flex-start; gap: .25rem; }
+    .footer-info > * + *::before { content: none; }
+  }
+</style>
+
+<script>
+  // Compute the liturgical season line client-side (per brief §6).
+  import { seasonLine } from '../lib/liturgy';
+  const el = document.querySelector('[data-season-line]');
+  if (el) el.textContent = seasonLine(new Date());
+</script>

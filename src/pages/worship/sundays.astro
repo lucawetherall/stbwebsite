@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ServiceTimes from '../../components/ServiceTimes.astro';
+---
+<Base
+  title="Sundays"
+  description="Sunday worship at St Barnabas, Ealing — the Sung Mass at 10.30am, with a Said Mass and Choral Evensong on the first Sunday of the month."
+>
+  <PageHeader
+    kicker="Worship"
+    title="Sundays"
+    intro="The Sung Mass at 10.30am is the heart of our week."
+  />
+  <div class="wrap page-body">
+    <ServiceTimes only="sundays" />
+    <p class="page-aside">
+      Children are welcome at every service — there is <a href="/families-children">Noisy Mass,
+      Children’s Church and a Youth Group</a> each Sunday. Can’t be with us in person?
+      <a href="/worship/online">Join the Mass online</a>.
+    </p>
+  </div>
+</Base>

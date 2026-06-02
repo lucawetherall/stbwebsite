@@ -1,0 +1,15 @@
+{
+  "date": "2026-07-19",
+  "feast": "The Feast of St Mary Magdalene",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        { "label": "Psalm", "values": ["86. 11–end"] },
+        { "label": "Setting", "values": ["Darke in F"] },
+        { "label": "Anthem", "values": ["Briggs, O Lord, support us"] }
+      ]
+    }
+  ]
+}

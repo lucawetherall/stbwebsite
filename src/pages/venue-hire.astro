@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../data/site';
+
+const halls = [
+  { name: 'Large Hall', size: '56′ × 30′', capacity: '180 standing · 150 theatre · 130 seated', day: '£57 / hr', eve: '£68 / hr' },
+  { name: 'Small Hall', size: '19′ × 30′', capacity: '50 standing · 40 theatre · 24 seated', day: '£40 / hr', eve: '£47.50 / hr' },
+  { name: 'Both Halls', size: '—', capacity: 'Combined', day: '£93 / hr', eve: '£108 / hr' },
+];
+---
+<Base
+  title="Venue Hire"
+  description="Hire the church and halls at St Barnabas, Ealing — an excellent London performance and events space with fine acoustics, a concert organ, a grand piano and two flexible halls."
+>
+  <PageHeader
+    kicker="Hire our space"
+    title="Venue Hire"
+    intro="An excellent London performance and events space, with convenient transport links."
+  />
+  <div class="wrap page-body">
+    <div class="prose">
+      <p>
+        The church itself is a valued place for recordings, rehearsals, filming, concerts and
+        community events, with fine acoustics, a concert-standard organ and a grand piano. Local
+        ensembles are welcome at reduced rates.
+      </p>
+      <p>
+        Our two halls are flexible spaces for events and parties, equipped with a kitchen,
+        disabled access, baby-changing, chairs, tables, a piano, staging, a PA system and a
+        projector.
+      </p>
+    </div>
+
+    <section class="venue-section">
+      <h2 class="label venue-section__label">The halls at a glance</h2>
+      <div class="rate-table-wrap">
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th scope="col">Space</th>
+              <th scope="col">Size</th>
+              <th scope="col">Capacity</th>
+              <th scope="col">Daytime<span class="rate-table__sub">to 6pm</span></th>
+              <th scope="col">Evening<span class="rate-table__sub">6–11pm</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {halls.map((h) => (
+              <tr>
+                <th scope="row">{h.name}</th>
+                <td>{h.size}</td>
+                <td>{h.capacity}</td>
+                <td>{h.day}</td>
+                <td>{h.eve}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="venue-note">Wedding receptions: <strong>£1,619</strong> (9am–11pm). Availability: Monday–Saturday 8am–11pm, Sundays 1–6pm.</p>
+    </section>
+
+    <section class="venue-section">
+      <h2 class="label venue-section__label">How to book</h2>
+      <p>
+        To check availability or arrange a visit, contact <strong>Sanjit Sil</strong> at the
+        parish office on <a class="content-link" href={`tel:${site.phoneIntl.replace(/\s+/g, '')}`}>{site.phone}</a>
+        or <a class="content-link" href={`mailto:${site.emails.office}`}>{site.emails.office}</a>.
+        You can also <a class="content-link" href="/documents">download a booking form</a>.
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .venue-section { margin-top: 2.8rem; }
+  .venue-section__label { color: var(--burgundy); display: block; margin-bottom: 1.2rem; }
+  .rate-table-wrap { overflow-x: auto; }
+  .rate-table { width: 100%; border-collapse: collapse; font-size: .98rem; }
+  .rate-table th, .rate-table td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rate-table thead th { font-family: var(--font-body); text-transform: uppercase; letter-spacing: .1em; font-size: .66rem; font-weight: 600; color: var(--burgundy); border-bottom-color: var(--ink); }
+  .rate-table tbody th { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; }
+  .rate-table__sub { display: block; text-transform: none; letter-spacing: 0; font-size: .62rem; color: var(--ink-soft); font-weight: 400; margin-top: .15rem; }
+  .venue-note { margin-top: 1.2rem; color: var(--ink-soft); }
+</style>

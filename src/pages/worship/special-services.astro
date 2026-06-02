@@ -1,0 +1,110 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import EventsList from '../../components/EventsList.astro';
+import { getEvents } from '../../lib/events';
+import { site } from '../../data/site';
+
+const upcoming = await getEvents();
+
+const eventLd = upcoming.map((e) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: e.title,
+  startDate: e.start.toISOString().slice(0, 10),
+  ...(e.end ? { endDate: e.end.toISOString().slice(0, 10) } : {}),
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  ...(e.description ? { description: e.description } : {}),
+  location: {
+    '@type': 'Place',
+    name: site.name,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: site.address.street,
+      addressLocality: site.address.area,
+      addressRegion: site.address.city,
+      postalCode: site.address.postcode,
+      addressCountry: 'GB',
+    },
+  },
+  organizer: { '@type': 'Organization', name: site.name, url: site.url },
+}));
+const groups = [
+  {
+    title: 'Lent, Holy Week & Easter',
+    feasts: [
+      'Ash Wednesday',
+      'Palm Sunday',
+      'Maundy Thursday',
+      'Good Friday',
+      'The Great Vigil & First Mass of Easter',
+      'Easter Sunday',
+    ],
+  },
+  {
+    title: 'Remembrance, Advent & Christmas',
+    feasts: [
+      'All Souls’ Requiem',
+      'A Festival of Nine Lessons & Carols',
+      'Midnight Mass',
+      'Christmas Day',
+    ],
+  },
+];
+---
+<Base
+  title="Special Services"
+  description="The great feasts and special services of the Church's year at St Barnabas, Ealing — from Ash Wednesday and Holy Week to Nine Lessons & Carols and Midnight Mass."
+>
+  {eventLd.map((ld) => (
+    <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(ld)} />
+  ))}
+
+  <PageHeader
+    kicker="Worship"
+    title="Special Services"
+    intro="We celebrate the Christian year in its fullness. These are some of the services we keep through the year."
+  />
+  <div class="wrap page-body">
+    {upcoming.length > 0 && (
+      <section class="upcoming">
+        <h2 class="label upcoming__label">Coming up</h2>
+        <EventsList />
+      </section>
+    )}
+
+    <div class="feast-groups">
+      {groups.map((group) => (
+        <section class="feast-group">
+          <h2 class="label feast-group__title">{group.title}</h2>
+          <ul class="feast-list">
+            {group.feasts.map((f) => <li class="feast-list__item serif">{f}</li>)}
+          </ul>
+        </section>
+      ))}
+    </div>
+    <p class="page-aside">
+      Dates and times are announced in our <a href="/news">weekly newsletter</a> and on the
+      noticeboards along the Lane. To be kept in touch, do
+      <a href="/contact-us">join the mailing list</a>.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .upcoming { margin-bottom: 3.4rem; }
+  .upcoming__label { color: var(--burgundy); display: block; margin-bottom: 1.2rem; }
+  .feast-groups { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem 3.5rem; }
+  .feast-group__title { color: var(--burgundy); margin-bottom: 1.2rem; }
+  .feast-list { list-style: none; display: grid; gap: .9rem; }
+  .feast-list__item {
+    font-size: 1.4rem;
+    font-weight: 500;
+    border-top: 1px solid var(--line);
+    padding-top: .9rem;
+  }
+  @media (max-width: 640px) {
+    .feast-groups { grid-template-columns: 1fr; gap: 2.2rem; }
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ThisSunday from '../components/ThisSunday.astro';
+import WelcomeBand from '../components/WelcomeBand.astro';
+import MusicBand from '../components/MusicBand.astro';
+import NewsIndex from '../components/NewsIndex.astro';
+import GiveCTA from '../components/GiveCTA.astro';
+import { site } from '../data/site';
+---
+<Base title={site.name} overlay={true}>
+  <Hero
+    kicker="The Church of England parish church of Pitshanger"
+    title="A warm welcome awaits you"
+    serviceLine="Sung Mass · Sundays · 10.30am"
+    links={[
+      { label: 'Plan your visit', href: '/visit' },
+      { label: 'Our worship', href: '/worship' },
+    ]}
+  />
+
+  <ThisSunday />
+
+  <WelcomeBand statement="We aim to be an inclusive Christian community that shares God’s unexpected, joyful and life-changing hospitality — with one another, our neighbours, and those on the margins.">
+    <p>
+      Our worship is in the modern Catholic tradition of the Church of England. We follow the
+      seasons of the liturgical year, are fed by the sacraments, and are committed to music as
+      part of worship, seeking to encounter God in and through a warm and dignified liturgy.
+      Whether you have a strong faith, none, or something in between, we welcome you.
+    </p>
+    <p class="welcome__note">
+      Every Sunday there is <a href="/families-children">Noisy Mass for under-5s, Children’s
+      Church and a Youth Group</a> — and children are welcome at all our services.
+    </p>
+  </WelcomeBand>
+
+  <MusicBand
+    title="A warm acoustic, and a warm welcome"
+    body="Our choir leads the Sung Mass each Sunday in the Anglican choral tradition. Choral Scholarships for 2026/27 are open now — apply by 12 June."
+    link={{ label: 'The music of St Barnabas', href: '/worship/music' }}
+  />
+
+  <NewsIndex limit={3} />
+
+  <GiveCTA />
+</Base>

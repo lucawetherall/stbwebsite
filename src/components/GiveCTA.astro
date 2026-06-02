@@ -1,0 +1,46 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  body?: string;
+  ground?: 'paper' | 'paper-2';
+}
+const {
+  title = 'Help sustain this church and its work',
+  body = 'St Barnabas receives no funding from the diocese, the national Church or government. We are a self-supporting charity, kept going by the generosity of our worshippers and friends.',
+  ground = 'paper-2',
+} = Astro.props;
+---
+<section class:list={['give-cta section', `is-${ground}`]} aria-labelledby="give-heading">
+  <div class="wrap give-cta__inner">
+    <p class="label">Giving</p>
+    <h2 id="give-heading" class="give-cta__title serif">{title}</h2>
+    <p class="give-cta__body">{body}</p>
+    <p class="give-cta__actions">
+      <a class="btn" href={site.giving} target="_blank" rel="noopener">Give via Parish Giving</a>
+      <a class="txt-link" href="/give">More ways to give</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .give-cta.is-paper { background: var(--paper); }
+  .give-cta.is-paper-2 { background: var(--paper-2); }
+  .give-cta__inner { max-width: 720px; }
+  .give-cta__title {
+    margin-top: 1rem;
+    font-weight: 500;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    line-height: 1.08;
+    max-width: 18ch;
+  }
+  .give-cta__body { margin-top: 1.1rem; color: var(--ink-soft); max-width: 56ch; }
+  .give-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.4rem 2rem;
+    margin-top: 2rem;
+  }
+</style>

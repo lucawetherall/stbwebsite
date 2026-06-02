@@ -1,0 +1,47 @@
+---
+import { getEvents } from '../lib/events';
+const events = await getEvents();
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+---
+{events.length > 0 && (
+  <ul class="events-list">
+    {events.map((e) => (
+      <li class="event-row">
+        <time class="event-row__date" datetime={e.start.toISOString().slice(0, 10)}>{fmt(e.start)}</time>
+        <div class="event-row__body">
+          <h3 class="event-row__title serif">{e.title}</h3>
+          {e.location && <p class="event-row__loc">{e.location}</p>}
+          {e.description && <p class="event-row__desc">{e.description}</p>}
+        </div>
+      </li>
+    ))}
+  </ul>
+)}
+
+<style>
+  .events-list { list-style: none; display: grid; gap: 0; }
+  .event-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1.5rem;
+    border-top: 1px solid var(--line);
+    padding-block: 1.3rem;
+  }
+  .event-row:last-child { border-bottom: 1px solid var(--line); }
+  .event-row__date {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: .7rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    padding-top: .3rem;
+  }
+  .event-row__title { font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 500; }
+  .event-row__loc { margin-top: .3rem; text-transform: uppercase; letter-spacing: .1em; font-size: .66rem; color: var(--ink-soft); }
+  .event-row__desc { margin-top: .5rem; color: var(--ink-soft); }
+  @media (max-width: 560px) {
+    .event-row { grid-template-columns: 1fr; gap: .4rem; }
+  }
+</style>

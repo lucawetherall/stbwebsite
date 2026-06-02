@@ -1,0 +1,106 @@
+---
+import '../styles/tokens.css';
+import '../styles/fonts.css';
+import '../styles/base.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import Consent from '../components/Consent.astro';
+import { site } from '../data/site';
+
+// Privacy-friendly analytics is emitted only when a domain is configured, so we
+// never ship a broken/unowned analytics tag. (See DECISIONS.md.)
+const plausibleDomain = process.env.PLAUSIBLE_DOMAIN;
+
+interface Props {
+  title: string;
+  description?: string;
+  /** OG/social image, absolute path under /images or full URL */
+  image?: string;
+  /** Header overlays a full-bleed hero (white text) */
+  overlay?: boolean;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = 'An inclusive Christian community in the modern Catholic tradition of the Church of England, in Pitshanger, Ealing. Sung Mass on Sundays at 10.30am.',
+  image = '/images/og-default.jpg',
+  overlay = false,
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const pageTitle = title === site.name ? title : `${title} · ${site.shortName}`;
+const ogImage = image.startsWith('http') ? image : new URL(image, site.url).href;
+
+const churchJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Church',
+  name: site.name,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.area,
+    addressRegion: site.address.city,
+    postalCode: site.address.postcode,
+    addressCountry: 'GB',
+  },
+  telephone: site.phoneIntl,
+  url: site.url,
+  geo: { '@type': 'GeoCoordinates', latitude: 51.52709, longitude: -0.3115 },
+  sameAs: [site.social.facebook, site.social.instagram, site.social.youtube],
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#6A1B2D" />
+
+    <!-- Preload primary font weights for first paint -->
+    <link rel="preload" href="/fonts/cormorant-garamond-600-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/source-serif-4-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(churchJsonLd)} />
+
+    {/* Read stored consent early so embeds can decide whether to load on first paint */}
+    <script is:inline>
+      try { window.__consent = JSON.parse(localStorage.getItem('stb-consent') || 'null') || {}; }
+      catch (e) { window.__consent = {}; }
+    </script>
+
+    {plausibleDomain && (
+      <script is:inline defer data-domain={plausibleDomain} src="https://plausible.io/js/script.js"></script>
+    )}
+
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader overlay={overlay} />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+    <Consent />
+  </body>
+</html>

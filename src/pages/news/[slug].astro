@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Prose from '../../components/Prose.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('news', ({ data }) => !data.draft);
+  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, date, category, author, description } = entry.data;
+const fmtDate = date.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+const metaDesc = description ?? `${category ?? 'News'} from St Barnabas Church, Ealing — ${title}.`;
+---
+<Base title={title} description={metaDesc}>
+  <article class="news-article">
+    <header class="wrap news-article__head">
+      <p class="label news-article__kicker">{category ?? 'News'}</p>
+      <h1 class="news-article__title serif">{title}</h1>
+      <p class="news-article__meta">
+        <time datetime={date.toISOString().slice(0, 10)}>{fmtDate}</time>
+        {author && <span> · {author}</span>}
+      </p>
+    </header>
+    <div class="wrap page-body">
+      <Prose><Content /></Prose>
+      <p class="news-article__back">
+        <a class="txt-link" href="/news">All news &amp; notices</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .news-article__head { padding-top: clamp(2.6rem, 6vw, 4.5rem); padding-bottom: 1rem; }
+  .news-article__kicker { margin-bottom: 1rem; }
+  .news-article__title {
+    font-weight: 500;
+    font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+    line-height: 1.06;
+    max-width: 24ch;
+    text-wrap: balance;
+  }
+  .news-article__meta {
+    margin-top: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .news-article__back { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
+</style>

@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StaffGrid from '../../components/StaffGrid.astro';
+import { site } from '../../data/site';
+---
+<Base
+  title="Who’s Who"
+  description="The clergy and people who lead the life of St Barnabas Church, Ealing — vicar, associate and assistant priests, Director of Music, organist and verger."
+>
+  <PageHeader
+    kicker="About Us"
+    title="Who’s Who"
+    intro="St Barnabas is led through a collaboration between ordained and lay leaders."
+  />
+  <div class="wrap page-body">
+    <div class="prose" style="margin-bottom:2.6rem">
+      <p>
+        We are very blessed with a gifted and diverse clergy and congregation, who offer their
+        skills to the mission and ministry of the church.
+      </p>
+    </div>
+
+    <StaffGrid />
+
+    <p class="page-aside">
+      For churchwardens, PCC officers and other parish roles, or for safeguarding contacts,
+      please see <a href="/safeguarding">Safeguarding</a> or
+      <a href="/contact-us">contact the parish office</a> on {site.phone}.
+    </p>
+  </div>
+</Base>

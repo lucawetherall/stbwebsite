@@ -1,0 +1,121 @@
+---
+import { getLiturgicalDay } from '../lib/liturgy';
+import { heroFor } from '../data/artwork';
+
+interface Props {
+  kicker?: string;
+  title: string;
+  serviceLine?: string;
+  links?: { label: string; href: string }[];
+  /** Override the liturgical artwork (e.g. an interior page hero). */
+  image?: string;
+  alt?: string;
+  focal?: string;
+  credit?: string;
+}
+
+const { kicker, title, serviceLine, links = [], image, alt, focal, credit } = Astro.props;
+
+const auto = heroFor(getLiturgicalDay().key);
+const img = image ?? auto.image;
+const altText = alt ?? auto.alt;
+const focalPos = focal ?? auto.focal ?? 'center center';
+const creditText = credit ?? auto.credit;
+const imgSm = img.endsWith('.webp') ? img.replace(/\.webp$/, '-1280.webp') : img;
+---
+<section
+  class="hero"
+  style={`--hero-lg:url('${img}'); --hero-sm:url('${imgSm}'); --hero-focal:${focalPos};`}
+>
+  <p class="sr-only">{altText}</p>
+  <div class="wrap hero__inner fade-in">
+    {kicker && <p class="hero__kicker">{kicker}</p>}
+    <h1 class="hero__title serif">{title}</h1>
+    {serviceLine && <p class="hero__service">{serviceLine}</p>}
+    {links.length > 0 && (
+      <p class="hero__links">
+        {links.map((l) => <a class="hero__link" href={l.href}>{l.label}</a>)}
+      </p>
+    )}
+  </div>
+  {creditText && <p class="hero__credit">{creditText}</p>}
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: clamp(560px, 90vh, 860px);
+    display: flex;
+    align-items: flex-end;
+    color: var(--white);
+    background-image: var(--hero-sm);
+    background-size: cover;
+    background-position: var(--hero-focal);
+    background-repeat: no-repeat;
+    isolation: isolate;
+  }
+  /* flat scrim — NOT a gradient */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--scrim);
+    z-index: -1;
+  }
+  .hero__inner {
+    width: 100%;
+    padding-top: 8rem;
+    padding-bottom: clamp(3rem, 8vh, 5.5rem);
+  }
+  .hero__kicker {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+  .hero__title {
+    font-weight: 500;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    line-height: 1.02;
+    max-width: 16ch;
+    text-wrap: balance;
+  }
+  .hero__service {
+    margin-top: 1.6rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--white-soft);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.4vw, 1.6rem);
+    max-width: none;
+  }
+  .hero__links { display: flex; flex-wrap: wrap; gap: 1.4rem 2rem; margin-top: 1.8rem; }
+  .hero__link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: .72rem;
+    padding-bottom: .3rem;
+    border-bottom: 1px solid var(--white);
+    transition: opacity .2s;
+  }
+  .hero__link:hover { opacity: .72; }
+  .hero__credit {
+    position: absolute;
+    right: 1rem;
+    bottom: .6rem;
+    font-size: .62rem;
+    letter-spacing: .08em;
+    color: var(--white-soft);
+    z-index: 1;
+  }
+
+  @media (min-width: 800px) {
+    .hero { background-image: var(--hero-lg); }
+  }
+</style>

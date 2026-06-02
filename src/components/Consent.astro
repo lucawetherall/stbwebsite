@@ -1,0 +1,71 @@
+---
+// Lightweight consent banner. Replaces Cookiebot. Gates third-party embeds that
+// may set cookies (Google Maps, YouTube, the ChurchDesk newsletter widget).
+// Privacy-first: embeds stay as click-to-load placeholders until consent is given.
+---
+<aside class="consent" data-consent-banner hidden aria-label="Cookie consent">
+  <div class="wrap consent__inner">
+    <p class="consent__text">
+      We use privacy-friendly analytics and, with your agreement, embeds such as Google Maps,
+      YouTube and our newsletter form, which may set cookies.
+    </p>
+    <div class="consent__actions">
+      <button class="btn" type="button" data-consent="essential">Essential only</button>
+      <button class="btn btn--solid" type="button" data-consent="all">Accept all</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+  (() => {
+    const KEY = 'stb-consent';
+    const banner = document.querySelector('[data-consent-banner]') as HTMLElement | null;
+    if (!banner) return;
+    if (!localStorage.getItem(KEY)) banner.hidden = false;
+
+    function decide(all: boolean) {
+      const consent = {
+        analytics: all,
+        maps: all,
+        youtube: all,
+        newsletter: all,
+      };
+      localStorage.setItem(KEY, JSON.stringify(consent));
+      (window as any).__consent = consent;
+      if (banner) banner.hidden = true;
+      window.dispatchEvent(new CustomEvent('stb:consent', { detail: consent }));
+    }
+
+    banner.querySelector('[data-consent="all"]')?.addEventListener('click', () => decide(true));
+    banner.querySelector('[data-consent="essential"]')?.addEventListener('click', () => decide(false));
+  })();
+</script>
+
+<style>
+  .consent {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 300;
+    background: var(--ink);
+    color: var(--white-soft);
+    border-top: 2px solid var(--burgundy);
+  }
+  .consent[hidden] { display: none; }
+  .consent__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    padding-block: 1.1rem;
+  }
+  .consent__text { margin: 0; max-width: 64ch; font-size: .92rem; }
+  .consent__actions { display: flex; gap: .8rem; flex: none; }
+  .consent .btn { border-color: var(--white-soft); color: var(--white); }
+  .consent .btn:hover { background: var(--white); color: var(--ink); }
+  .consent .btn--solid { background: var(--burgundy); border-color: var(--burgundy); }
+  .consent .btn--solid:hover { background: var(--burgundy-deep); color: var(--white); }
+  @media (max-width: 640px) {
+    .consent__inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

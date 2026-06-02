@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import NewsIndex from '../../components/NewsIndex.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { getCollection } from 'astro:content';
+
+const count = (await getCollection('news', ({ data }) => !data.draft)).length;
+---
+<Base
+  title="News & Notices"
+  description="News, notices and reflections from St Barnabas Church, Ealing — and our weekly newsletter."
+>
+  <PageHeader
+    kicker="From the parish"
+    title="News & Notices"
+    intro="Reflections, announcements and the life of the parish, week by week."
+  />
+  {count > 0 ? (
+    <NewsIndex showHeading={false} />
+  ) : (
+    <div class="wrap page-body">
+      <p>There are no posts here yet — please check back soon.</p>
+    </div>
+  )}
+
+  <NewsletterSignup />
+
+  <div class="wrap news-extra">
+    <p class="page-aside">You can also <a href="/news/rss.xml">subscribe by RSS</a>.</p>
+  </div>
+</Base>
+
+<style>
+  .news-extra { padding-block: 0 clamp(3rem, 7vw, 5rem); }
+</style>

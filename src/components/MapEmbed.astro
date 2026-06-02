@@ -1,0 +1,58 @@
+---
+import { site } from '../data/site';
+const title = `Map showing ${site.name}, ${site.address.postcode}`;
+---
+<div class="map-embed" data-map-embed data-consent="maps" data-map-src={site.mapEmbed} data-map-title={title}>
+  <div class="map-embed__placeholder" data-map-placeholder>
+    <p class="map-embed__text">
+      The map is provided by Google Maps, which may set cookies on your device.
+    </p>
+    <button class="btn" type="button" data-map-load>Show the map</button>
+    <p class="map-embed__addr">
+      {site.name}, {site.address.street}, {site.address.area}, {site.address.postcode}
+    </p>
+  </div>
+</div>
+
+<script>
+  function initMap(wrap: HTMLElement) {
+    const src = wrap.getAttribute('data-map-src') ?? '';
+    const title = wrap.getAttribute('data-map-title') ?? 'Map';
+    const btn = wrap.querySelector('[data-map-load]');
+    let loaded = false;
+    function load() {
+      if (loaded || !src) return;
+      loaded = true;
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.title = title;
+      iframe.width = '100%';
+      iframe.height = '440';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.style.cssText = 'border:0; display:block;';
+      wrap.replaceChildren(iframe);
+    }
+    btn?.addEventListener('click', load);
+    if (window.__consent && window.__consent.maps) load();
+    window.addEventListener('stb:consent', (e: any) => { if (e.detail?.maps) load(); });
+  }
+  document.querySelectorAll<HTMLElement>('[data-map-embed]').forEach(initMap);
+</script>
+
+<style>
+  .map-embed {
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    min-height: 280px;
+    display: grid;
+  }
+  .map-embed__placeholder {
+    place-self: center;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    max-width: 36ch;
+  }
+  .map-embed__text { margin: 0 auto 1.3rem; color: var(--ink-soft); font-size: .95rem; }
+  .map-embed__addr { margin: 1.3rem auto 0; font-family: var(--font-display); font-style: italic; color: var(--ink-soft); }
+</style>

@@ -1,0 +1,16 @@
+:root {
+  --paper:    #F6F2EA;             /* warm near-white, primary ground */
+  --paper-2:  #EFEADD;             /* secondary panel (welcome band)  */
+  --ink:      #1A1611;             /* near-black body + headings      */
+  --ink-soft: #6A6051;             /* muted warm grey, secondary text */
+  --line:     rgba(26, 22, 17, .20); /* hairline rules                */
+  --white:    #FBF9F4;             /* type over imagery               */
+  --white-soft: rgba(251, 249, 244, .78);
+  --burgundy:      #6A1B2D;        /* single accent (deep Sarum wine) */
+  --burgundy-deep: #551521;        /* accent hover / pressed          */
+  --scrim:    rgba(12, 9, 5, .42); /* flat image scrim (NOT a gradient) */
+  --maxw: 1180px;
+  --pad: 2rem;
+  --font-display: "Cormorant Garamond", Garamond, "Times New Roman", serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+}

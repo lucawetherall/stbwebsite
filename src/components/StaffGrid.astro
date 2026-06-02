@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+
+const people = (await getCollection('staff')).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
+---
+<ul class="staff-grid">
+  {people.map((person) => (
+    <li class="staff-card">
+      <p class="staff-card__role label">{person.data.role}</p>
+      <h2 class="staff-card__name serif">{person.data.name}</h2>
+      {person.data.bio && <p class="staff-card__bio">{person.data.bio}</p>}
+      {person.data.email && (
+        <a class="staff-card__email txt-link" href={`mailto:${person.data.email}`}>Email</a>
+      )}
+    </li>
+  ))}
+</ul>
+
+<style>
+  .staff-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.4rem 3rem;
+  }
+  .staff-card {
+    border-top: 1px solid var(--line);
+    padding-top: 1.3rem;
+  }
+  .staff-card__role { color: var(--burgundy); }
+  .staff-card__name {
+    margin-top: .6rem;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+    line-height: 1.1;
+  }
+  .staff-card__bio { margin-top: .7rem; color: var(--ink-soft); font-size: 1rem; }
+  .staff-card__email { margin-top: 1rem; }
+  @media (max-width: 640px) {
+    .staff-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+  }
+</style>

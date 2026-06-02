@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { getCollection } from 'astro:content';
+
+const docs = (await getCollection('documents')).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
+
+// group by category, preserving order
+const groups = new Map<string, typeof docs>();
+for (const d of docs) {
+  const key = d.data.category ?? 'Other';
+  if (!groups.has(key)) groups.set(key, [] as unknown as typeof docs);
+  groups.get(key)!.push(d);
+}
+
+const typeOf = (file: string) => {
+  const m = file.split('?')[0].match(/\.([a-z0-9]+)$/i);
+  return m ? m[1].toUpperCase() : 'LINK';
+};
+---
+<Base
+  title="Documents"
+  description="Download orders of service, forms, reports and policies from St Barnabas Church, Ealing."
+>
+  <PageHeader
+    kicker="Downloads"
+    title="Documents"
+    intro="Orders of service, forms, reports and policies to read or download."
+  />
+  <div class="wrap page-body">
+    {[...groups.entries()].map(([category, items]) => (
+      <section class="doc-group">
+        <h2 class="label doc-group__label">{category}</h2>
+        <ul class="doc-list">
+          {items.map((d) => (
+            <li class="doc-row">
+              <a
+                class="doc-row__link"
+                href={d.data.file}
+                {...(d.data.external ? { target: '_blank', rel: 'noopener' } : {})}
+              >
+                <span class="doc-row__main">
+                  <span class="doc-row__title serif">{d.data.title}</span>
+                  {d.data.description && <span class="doc-row__desc">{d.data.description}</span>}
+                </span>
+                <span class="doc-row__type">{typeOf(d.data.file)}{d.data.external ? ' ↗' : ''}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .doc-group { margin-bottom: 2.8rem; }
+  .doc-group__label { color: var(--burgundy); display: block; margin-bottom: 1rem; }
+  .doc-list { list-style: none; }
+  .doc-row { border-top: 1px solid var(--line); }
+  .doc-row:last-child { border-bottom: 1px solid var(--line); }
+  .doc-row__link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    padding-block: 1.1rem;
+    transition: background .2s;
+  }
+  .doc-row__link:hover { background: var(--paper-2); }
+  .doc-row__link:hover .doc-row__title { color: var(--burgundy); }
+  .doc-row__title { display: block; font-size: 1.3rem; font-weight: 500; transition: color .2s; }
+  .doc-row__desc { display: block; margin-top: .3rem; color: var(--ink-soft); font-size: .98rem; }
+  .doc-row__type {
+    flex: none;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: .66rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    padding-top: .35rem;
+  }
+</style>

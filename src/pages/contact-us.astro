@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { site } from '../data/site';
+---
+<Base
+  title="Contact Us"
+  description="Contact St Barnabas Church, Ealing — Pitshanger Lane, London W5 1QG. Parish office 020 8998 4079, parish.office@barnabites.org. Office open Monday and Wednesday."
+>
+  <PageHeader
+    kicker="Get in touch"
+    title="Contact Us"
+    intro="We would love to hear from you — whether you are planning a visit, an enquiry or a booking."
+  />
+  <div class="wrap page-body contact">
+    <div class="contact__details">
+      <div class="contact__block">
+        <h2 class="label">Address</h2>
+        <address>
+          {site.name}<br />
+          {site.address.street}<br />
+          {site.address.area}, {site.address.city}<br />
+          {site.address.postcode}
+        </address>
+        <p class="contact__note">On the corner of Pitshanger Lane and Denison Road.</p>
+      </div>
+
+      <div class="contact__block">
+        <h2 class="label">Telephone</h2>
+        <p><a class="content-link" href={`tel:${site.phoneIntl.replace(/\s+/g, '')}`}>{site.phone}</a></p>
+      </div>
+
+      <div class="contact__block">
+        <h2 class="label">Email</h2>
+        <p>
+          <a class="content-link" href={`mailto:${site.emails.office}`}>{site.emails.office}</a><br />
+          <span class="contact__sub">Parish enquiries &amp; hall bookings</span>
+        </p>
+        <p>
+          <a class="content-link" href={`mailto:${site.emails.vicar}`}>{site.emails.vicar}</a><br />
+          <span class="contact__sub">Pastoral enquiries &amp; emergencies</span>
+        </p>
+      </div>
+
+      <div class="contact__block">
+        <h2 class="label">Parish office hours</h2>
+        <p>Monday and Wednesday, 10am–6pm</p>
+        <p class="contact__sub">Vicar: {site.people.vicar}</p>
+      </div>
+
+      <div class="contact__block">
+        <h2 class="label">Getting here</h2>
+        <p>
+          Nearest stations: Ealing Broadway (Central &amp; District) and Hanger Lane (Central) —
+          about a 15-minute walk from Hanger Lane via Brunswick Road. The E2 and E9 buses run
+          from Ealing Broadway, taxis wait outside the station, and there is street parking
+          nearby.
+        </p>
+      </div>
+    </div>
+
+    <div class="contact__map">
+      <MapEmbed />
+    </div>
+  </div>
+</Base>
+
+<style>
+  .contact { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: start; }
+  .contact__details { display: grid; gap: 1.8rem; }
+  .contact__block address { font-style: normal; line-height: 1.7; }
+  .contact__block .label { display: block; margin-bottom: .6rem; color: var(--burgundy); }
+  .contact__note { margin-top: .6rem; color: var(--ink-soft); font-size: .95rem; }
+  .contact__sub { color: var(--ink-soft); font-size: .9rem; }
+  @media (max-width: 820px) {
+    .contact { grid-template-columns: 1fr; gap: 2.4rem; }
+  }
+</style>

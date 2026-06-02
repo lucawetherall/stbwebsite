@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+---
+<Base
+  title="Pitshanger Pictures"
+  description="Pitshanger Pictures is the community cinema at St Barnabas, Ealing — films that inform, entertain and spark conversation. Walk in, no booking needed."
+>
+  <PageHeader
+    kicker="Community"
+    title="Pitshanger Pictures"
+    intro="Films that inform, entertain and strengthen community in this corner of Ealing."
+  />
+  <div class="wrap page-body">
+    <div class="prose">
+      <p>
+        Pitshanger Pictures exists to inform, entertain and strengthen community in this part of
+        Ealing — screening films that stimulate conversation and discussion about the questions
+        of life. We are a place for meaningful conversation around film, not just passive
+        viewing.
+      </p>
+      <p>
+        Screenings work on a casual, walk-in basis — there is no need to reserve tickets. Doors
+        open thirty minutes before each film, and a bar is available before the screening and
+        during the interval.
+      </p>
+    </div>
+
+    <section class="pp-section">
+      <h2 class="label pp-section__label">What’s on</h2>
+      <p>
+        Our programme ranges from new releases to classics and live opera screenings (opera
+        tickets £10). Keep an eye out for our posters along Pitshanger Lane for all forthcoming
+        showings, or watch our <a class="content-link" href="/news">weekly newsletter</a>.
+      </p>
+    </section>
+
+    <p class="page-aside">
+      Pitshanger Pictures is part of the wider <a href="/community">community life</a> of St
+      Barnabas. To get involved, please <a href="/contact-us">contact the parish office</a>.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .pp-section { margin-top: 2.6rem; max-width: 62ch; }
+  .pp-section__label { color: var(--burgundy); display: block; margin-bottom: 1rem; }
+</style>

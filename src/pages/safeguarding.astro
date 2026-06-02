@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../data/site';
+
+const helplines = [
+  { name: 'NSPCC Helpline', detail: '0808 800 5000', href: 'tel:08088005000' },
+  { name: 'Childline', detail: '0800 1111', href: 'tel:08001111' },
+  { name: 'Samaritans', detail: '116 123', href: 'tel:116123' },
+];
+---
+<Base
+  title="Safeguarding"
+  description="Safeguarding at St Barnabas Church, Ealing. We have adopted the House of Bishops' 'Promoting a Safer Church' policy and are committed to the welfare of children, young people and vulnerable adults."
+>
+  <PageHeader
+    kicker="Everyone’s responsibility"
+    title="Safeguarding"
+    intro="St Barnabas is committed to the safety and wellbeing of everyone, especially children, young people and vulnerable adults."
+  />
+  <div class="wrap page-body">
+    <div class="prose">
+      <p>
+        St Barnabas Ealing has adopted the House of Bishops’ <em>“Promoting a Safer Church”</em>
+        safeguarding policy statement. We believe that safeguarding is the responsibility of
+        everyone, and we are committed to safeguarding and promoting the welfare of all those who
+        are vulnerable — children, young people and vulnerable adults.
+      </p>
+      <p>
+        We expect everyone who worships, works, volunteers or uses our premises to share this
+        commitment, and we are grateful for the support of our congregation in keeping our
+        community safe.
+      </p>
+    </div>
+
+    <section class="sg-section sg-concern">
+      <h2 class="label sg-section__label">If you have a concern</h2>
+      <p>
+        If you are worried that someone is at risk of harm, please speak to our Parish
+        Safeguarding Officer. <strong>In an emergency, or if someone is in immediate danger,
+        call the police on 999.</strong>
+      </p>
+    </section>
+
+    <section class="sg-section">
+      <h2 class="label sg-section__label">Who to contact</h2>
+      <ul class="sg-leads">
+        {site.safeguardingLeads.map((lead) => (
+          <li class="sg-lead">
+            <span class="sg-lead__role">{lead.role}</span>
+            <span class="sg-lead__name">{lead.name}</span>
+            {lead.email && (
+              <a class="content-link sg-lead__email" href={`mailto:${lead.email}`}>{lead.email}</a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="sg-section">
+      <h2 class="label sg-section__label">Helplines</h2>
+      <ul class="sg-leads">
+        {helplines.map((h) => (
+          <li class="sg-lead">
+            <span class="sg-lead__name">{h.name}</span>
+            <a class="content-link" href={h.href}>{h.detail}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="sg-section">
+      <h2 class="label sg-section__label">Policies</h2>
+      <ul class="sg-links">
+        <li><a class="content-link" href={site.diocesanSafeguardingPolicy} target="_blank" rel="noopener">Diocese of London Safeguarding Policy (PDF)</a></li>
+        <li><a class="content-link" href="/documents/data-protection-notice.docx">Data Protection Notice (Word)</a></li>
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .sg-section { margin-top: 2.6rem; max-width: 64ch; }
+  .sg-section__label { color: var(--burgundy); display: block; margin-bottom: 1rem; }
+  .sg-concern { background: var(--paper-2); border-left: 2px solid var(--burgundy); padding: 1.4rem 1.6rem; }
+  .sg-leads { list-style: none; display: grid; gap: 1.4rem; }
+  .sg-lead { border-top: 1px solid var(--line); padding-top: 1rem; display: grid; gap: .25rem; }
+  .sg-lead__role { text-transform: uppercase; letter-spacing: .12em; font-size: .68rem; font-weight: 600; color: var(--ink-soft); }
+  .sg-lead__name { font-family: var(--font-display); font-size: 1.3rem; }
+  .sg-links { list-style: none; display: grid; gap: .7rem; }
+</style>

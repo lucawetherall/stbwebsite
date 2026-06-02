@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="St Barnabas">
+  <rect width="64" height="64" fill="#F6F2EA"/>
+  <g transform="translate(10,1)" fill="none" stroke="#6A1B2D" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M5 61 L5 22 C5 10 13 3 22 3 C31 3 39 10 39 22 L39 61"/>
+    <line x1="4" y1="61" x2="40" y2="61"/>
+    <line x1="14" y1="61" x2="14" y2="27"/><line x1="22" y1="61" x2="22" y2="21"/>
+    <line x1="30" y1="61" x2="30" y2="27"/>
+    <path d="M22 21 C18 16 19 10 22 7 C25 10 26 16 22 21 Z"/>
+  </g>
+</svg>
