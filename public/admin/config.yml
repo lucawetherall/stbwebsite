@@ -7,14 +7,17 @@ backend:
   name: github
   repo: lucawetherall/stbwebsite
   branch: main
-  # ↓↓↓ REPLACE this with your deployed auth Worker URL (see CMS-SETUP.md, step 4) ↓↓↓
-  base_url: https://sveltia-cms-auth.YOUR-SUBDOMAIN.workers.dev
+  # Auth Worker (sveltia-cms-auth). MOCKUP value below; at go-live re-point this at the
+  # church-owned Worker if the account/repo moves (see DECISIONS.md go-live checklist).
+  base_url: https://sveltia-cms-auth.luca-wetherall.workers.dev
 
 # Lets you edit locally without GitHub by running:  npx @sveltia/cms-proxy-server
 local_backend: true
 
-display_url: https://www.barnabites.org
-site_url: https://www.barnabites.org
+# MOCKUP URLs — point "view live"/preview links at the temporary Pages site.
+# Revert both to https://www.barnabites.org at go-live.
+display_url: https://barnabites.pages.dev
+site_url: https://barnabites.pages.dev
 
 # Where uploaded images are stored / served from
 media_folder: public/images/uploads
