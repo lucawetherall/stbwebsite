@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Prose from '../components/Prose.astro';
 import Gallery from '../components/Gallery.astro';
+import OrganSpec from '../components/OrganSpec.astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages', ({ data }) => !data.draft);
@@ -13,12 +14,14 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, description, kicker, intro, gallery } = entry.data;
+const showOrganSpec = entry.id === 'worship/st-barnabas-organ';
 ---
 <Base title={title} description={description}>
   <PageHeader kicker={kicker} title={title} intro={intro} />
   <div class="wrap page-body">
     <Prose><Content /></Prose>
     {gallery && gallery.length > 0 && <Gallery images={gallery} />}
+    {showOrganSpec && <OrganSpec />}
   </div>
 </Base>
 

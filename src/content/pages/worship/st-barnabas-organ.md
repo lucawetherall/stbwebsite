@@ -6,14 +6,17 @@ description: The history of the St Barnabas organ — built by Gerard Smith, enl
 ---
 
 The organ was previously at St Jude’s Church, Southsea. It was originally built by **Gerard
-Smith** as a two-manual instrument, and opened by **S. S. Wesley in 1851**. In **1877** it was
-enlarged by **Hill & Son** to three manuals and forty-five ranks.
+Smith** as a two-manual instrument and first heard in **1851**, with **S. S. Wesley** at the
+console. It was enlarged to three manuals in **1869** and, after a fire in **1870**, rebuilt by
+**Gray & Davison in 1872**. **William Hill & Son** of London rebuilt and enlarged the
+instrument in **1877**, renewing the action in **1912**; their forty-five-stop scheme survives
+essentially intact today.
 
-Removed from St Jude’s in **2007**, it was rebuilt and restored at St Barnabas by **Nicholson
-& Co of Malvern in 2011** — converted to electro-pneumatic action, its pitch lowered to A=440,
-and modern playing aids added, while carefully preserving Hill’s 1877 stop specification. The
-result is a fine English Romantic instrument, suited to a wide repertoire, sited in the
-west-end gallery. The manuals have a compass of 56 notes, the pedals 30.
+Rebuilt and restored at St Barnabas by **Nicholson & Co. of Malvern**, the organ was completed
+in **2011** — converted to electro-pneumatic action, its pitch lowered to A=440, and modern
+playing aids added, while carefully preserving Hill’s **1877** stop specification. The result
+is a fine English Romantic instrument, suited to a wide repertoire and sited in the west-end
+gallery. The manuals have a compass of 56 notes, the pedals 30.
 
 ## A community achievement
 
