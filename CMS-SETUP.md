@@ -41,8 +41,9 @@ How the mockup is wired (for whoever maintains it):
   move the repo into a church GitHub org, and re-create the OAuth app there.
 - **Attach the real domain** to the same Pages project and run the DNS cutover (see
   `DECISIONS.md` §6).
-- **Revert the mockup URLs:** set `display_url`/`site_url` back to `https://www.barnabites.org`,
-  and update `ALLOWED_DOMAINS` + the OAuth app's Homepage/Callback to the real domain.
+- **Revert the mockup URLs:** in `public/admin/config.yml` set `display_url`, `site_url` **and
+  `logout_redirect_url`** back to `https://www.barnabites.org`, and update `ALLOWED_DOMAINS` +
+  the OAuth app's Homepage/Callback to the real domain.
 
 The rest of this document describes that one-time setup from scratch (useful if the church
 rebuilds it under its own accounts at go-live).
@@ -123,31 +124,37 @@ That’s it. The editor is now live at `https://www.barnabites.org/admin`.
 | **News** | News posts / notices (newest shows first). |
 | **This Sunday’s Music** | The music list in the “This Sunday” block — add a sheet per Sunday: pick the date, the feast, then each service (Sung Mass, Evensong…) and its lines (Setting, Psalm, Anthem…). |
 | **Events** | Special services / events on Worship → Special Services. |
+| **Service times** | The regular weekly Sunday & weekday pattern shown on the Worship pages. |
 | **Who’s Who** | Clergy and people on About Us → Who’s Who. |
 | **Documents** | PDFs and links on the Documents page (upload a PDF or paste a link). |
-| **Main Pages** | The wording of the main pages (Visit, About Us, Worship, etc.). |
+| **Main Pages** | The wording of every standalone and section page — now including the deeper pages (Accessibility, Pastoral Care, the Organ, Food Pantry, etc.). |
+| **Site settings** | Church contact details, key people, and the links used across the whole site. |
 
 ### A few tips
 - **Photos:** use the image button in a News post to upload a picture; it’s stored with the site.
 - **Drafts:** tick **Draft** to save something without putting it live yet.
-- **Main Pages:** edit the wording freely, but leave anything inside `< >` or any line that
-  starts with `import` exactly as it is — those are layout instructions, not text.
+- **Main Pages:** edit the wording freely — the formatting buttons are all you need, and the
+  pages are plain text, so there is nothing you can type that will break the site.
 
 ---
 
 ## Notes for whoever maintains the site
 
-- **What’s deliberately *not* in the CMS:** the deeper sub-pages (e.g. Accessibility, the
-  children’s pages, the organ history) and any page containing layout components (the Worship
-  page’s photo gallery). These are edited in the repo. They could be added to the CMS later by
-  converting those pages to an index-file layout.
+- **What’s deliberately *not* in the CMS:** genuinely code-driven pages (the homepage layout,
+  the News listing, the music archive) and the site navigation. The Worship page’s photo gallery
+  is now an editable frontmatter field in the Main Pages collection. All other standalone and
+  section pages — including the deeper sub-pages such as Accessibility, the children’s pages,
+  and the organ history — are editable via the **Main Pages** file collection.
 - **Events** can alternatively be managed in **ChurchDesk** once the iCal feed is wired
   (`CHURCHDESK_ICAL_URL`, see `DECISIONS.md`) — then the `Events` collection becomes a manual
   fallback only.
 - **Updating Sveltia CMS:** the version is pinned in `public/admin/index.html`. Bump it and
   check the [releases](https://github.com/sveltia/sveltia-cms/releases) when you want updates.
-- **Editing locally without GitHub:** run `npx @sveltia/cms-proxy-server` and open
-  `http://localhost:4321/admin` with the dev server running (`local_backend: true` is set).
+- **Editing locally without GitHub:** with the dev server running, open
+  `http://localhost:4321/admin/index.html` and click **“Work with Local Repository”**, then pick
+  the project folder when prompted. Sveltia reads and writes the files directly via the browser’s
+  File System Access API (Chrome/Edge), so there is **no proxy server to run** — Sveltia does not
+  use Decap’s `local_backend`/`cms-proxy-server`.
 - **Security:** `/admin` is marked `noindex` and disallowed in `robots.txt`, and only invited
   GitHub collaborators can sign in. There is no database to maintain or patch.
 - **No lock-in:** content stays as plain Markdown/JSON in the repo, and the config uses the

@@ -8,11 +8,8 @@ backend:
   repo: lucawetherall/stbwebsite
   branch: main
   # Auth Worker (sveltia-cms-auth). MOCKUP value below; at go-live re-point this at the
-  # church-owned Worker if the account/repo moves (see DECISIONS.md go-live checklist).
+  # church-owned Worker if the account/repo moves (see the go-live checklist in CMS-SETUP.md).
   base_url: https://sveltia-cms-auth.luca-wetherall.workers.dev
-
-# Lets you edit locally without GitHub by running:  npx @sveltia/cms-proxy-server
-local_backend: true
 
 # MOCKUP URLs — point "view live"/preview links at the temporary Pages site.
 # Revert both to https://www.barnabites.org at go-live.
@@ -23,10 +20,21 @@ site_url: https://barnabites.pages.dev
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
+# -- Branding (St Barnabas) ------------------------------------
+# Window mark shown in the header, on the login screen, and as the tab favicon.
+logo:
+  src: /admin/logo.svg
+  show_in_header: true
+# Friendly title on the login screen and browser tab.
+app_title: St Barnabas Content Manager
+# MOCKUP value -- revert to https://www.barnabites.org at go-live (like display_url/site_url).
+logout_redirect_url: https://barnabites.pages.dev
+
 collections:
+  # ════════ EVERYDAY ════════
   # ── News & notices ──────────────────────────────────────────────────────────
   - name: news
-    label: News
+    label: 📰 News
     label_singular: News post
     description: Notices, reflections and announcements. Newest appears first.
     folder: src/content/news
@@ -36,22 +44,29 @@ collections:
     slug: '{{slug}}'
     sortable_fields: [date, title]
     summary: '{{date}} — {{title}}'
-    editor:
-      preview: false
     fields:
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, picker_utc: true }
       - { name: category, label: Category, widget: string, required: false, default: News, hint: 'e.g. News, Music, Reflection' }
       - { name: author, label: Author, widget: string, required: false }
       - { name: description, label: Summary (shown to search engines), widget: text, required: false }
+      - { name: hero, label: Header image (optional), widget: image, required: false, hint: 'Shown at the top of the post and as a small thumbnail in the news list. A landscape photo around 1600px wide works well — huge phone photos just slow the page down.' }
+      - { name: heroAlt, label: Header image description, widget: string, required: false, hint: 'Describe the picture for people using screen readers.' }
       - { name: draft, label: Draft (hide from the site), widget: boolean, default: false }
-      - { name: body, label: Body, widget: markdown }
+      - name: body
+        label: Body
+        widget: markdown
+        modes: [rich_text]
+        buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list, quote]
+        editor_components: [image]
+      # Hidden: preserves the original blog URL for redirects. Do not remove.
+      - { name: legacySlug, widget: hidden }
 
-  # ── This Sunday’s music (service sheets) ─────────────────────────────────────
+  # ── This Sunday's music (service sheets) ─────────────────────────────────────
   - name: services
-    label: This Sunday’s Music
+    label: 🎵 This Sunday's Music
     label_singular: Service sheet
-    description: The music list for a Sunday, shown in the “This Sunday” block.
+    description: The music list for a Sunday, shown in the "This Sunday" block.
     folder: src/content/services
     create: true
     extension: json
@@ -81,12 +96,12 @@ collections:
               - name: values
                 label: Value(s)
                 widget: list
-                hint: 'One per line. Put the composer first, then a comma — e.g. “Mozart, Ave verum corpus”.'
+                hint: 'One per line. Put the composer first, then a comma — e.g. "Mozart, Ave verum corpus".'
                 field: { name: value, label: Entry, widget: string }
 
-  # ── Events / What’s on ───────────────────────────────────────────────────────
+  # ── Events / What's on ───────────────────────────────────────────────────────
   - name: events
-    label: Events
+    label: 📅 Events
     label_singular: Event
     description: Special services and events shown on Worship → Special Services.
     folder: src/content/events
@@ -101,14 +116,50 @@ collections:
       - { name: start, label: Date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, picker_utc: true }
       - { name: end, label: End date (optional), widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false, picker_utc: true }
       - { name: location, label: Location, widget: string, required: false, default: St Barnabas Church }
-      - { name: description, label: Description, widget: text, required: false, hint: 'Service times can go here, e.g. “Sung Mass at 10.30am”.' }
-      - { name: url, label: Link (optional), widget: string, required: false }
+      - { name: description, label: Description, widget: text, required: false, hint: 'Service times can go here, e.g. "Sung Mass at 10.30am".' }
+      - { name: url, label: Link (optional), widget: string, type: url, required: false }
 
-  # ── Who’s Who (clergy & people) ──────────────────────────────────────────────
+  - divider: true
+
+  # ════════ NOW & THEN ════════
+  # ── Standing service times ───────────────────────────────────────────────────
+  - name: service_times
+    label: ⏰ Service times
+    description: The regular weekly Sunday & weekday pattern (the "This Sunday" fallback and Worship pages).
+    files:
+      - name: standing
+        label: Service times
+        file: src/content/settings/serviceTimes.json
+        description: The standing weekly pattern. For a one-off Sunday's music, use "This Sunday's Music" instead.
+        fields:
+          - name: sundays
+            label: Sunday services
+            label_singular: Sunday service
+            widget: list
+            summary: '{{fields.time}} · {{fields.name}}'
+            fields:
+              - { name: time, label: Time, widget: string, hint: 'e.g. 10.30am' }
+              - { name: name, label: Service name, widget: string }
+              - { name: when, label: When (optional), widget: string, required: false, hint: 'e.g. first Sunday of the month — leave blank if every Sunday.' }
+              - { name: note, label: Note (optional), widget: string, required: false }
+              - { name: description, label: Description (optional), widget: text, required: false }
+          - name: weekdays
+            label: Weekday services
+            label_singular: Weekday service
+            widget: list
+            summary: '{{fields.time}} · {{fields.name}}'
+            fields:
+              - { name: time, label: Time, widget: string, hint: 'e.g. 12.30pm' }
+              - { name: name, label: Service name, widget: string }
+              - { name: when, label: When (optional), widget: string, required: false, hint: 'e.g. Wednesdays' }
+              - { name: note, label: Note (optional), widget: string, required: false }
+              - { name: description, label: Description (optional), widget: text, required: false }
+
+  # ── Who's Who (clergy & people) ──────────────────────────────────────────────
   - name: staff
-    label: Who’s Who
+    label: 👥 Who's Who
     label_singular: Person
-    description: The people listed on About Us → Who’s Who.
+    description: The people listed on About Us → Who's Who.
     folder: src/content/staff
     create: true
     extension: json
@@ -120,13 +171,15 @@ collections:
     fields:
       - { name: name, label: Name, widget: string }
       - { name: role, label: Role, widget: string }
-      - { name: email, label: Email, widget: string, required: false }
+      - { name: photo, label: Photo (optional), widget: image, required: false, hint: 'A square photo works best. Around 800px is plenty — very large phone photos just make pages slower.' }
+      - { name: photoAlt, label: Photo description (for screen readers), widget: string, required: false, hint: 'Briefly describe the photo, e.g. “Revd Jane Smith in cassock by the altar”. Leave blank to use the name.' }
+      - { name: email, label: Email, widget: string, type: email, required: false }
       - { name: bio, label: Short bio, widget: text, required: false }
       - { name: order, label: Order (lower shows first), widget: number, value_type: int, required: false }
 
   # ── Documents (PDFs etc.) ────────────────────────────────────────────────────
   - name: documents
-    label: Documents
+    label: 📄 Documents
     label_singular: Document
     description: Downloads listed on the Documents page. Upload a PDF or link out.
     folder: src/content/documents
@@ -147,25 +200,127 @@ collections:
       - { name: category, label: Category, widget: string, required: false, hint: 'e.g. Worship, Forms, Governance & policies' }
       - { name: order, label: Order, widget: number, value_type: int, required: false }
 
-  # ── Main pages (text) ────────────────────────────────────────────────────────
-  # Top-level section/standalone pages only. Deeper sub-pages and any page that
-  # contains layout code are managed by a developer (see CMS-SETUP.md).
+  - divider: true
+
+  # ════════ SET UP ONCE (rarely touched) ════════
+  # ── Main pages (text of every standalone & section page) ─────────────────────
+  # File collection enumerating each page (Sveltia has no nested-folder tree until v1.0).
+  # `&pf` defines the shared field set once; `*pf` reuses it. Worship has its own set (gallery).
   - name: pages
-    label: Main Pages
-    label_singular: Page
-    description: Edit the wording of the main pages. Leave anything in < > or any line starting with “import” unchanged.
-    folder: src/content/pages
-    create: false
-    extension: mdx
-    format: frontmatter
-    editor:
-      preview: false
-    identifier_field: title
-    summary: '{{title}}'
-    fields:
-      - { name: title, label: Title, widget: string }
-      - { name: kicker, label: Kicker (small label above the title), widget: string, required: false }
-      - { name: intro, label: Intro line, widget: string, required: false }
-      - { name: description, label: Summary (shown to search engines), widget: text, required: false }
-      - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
-      - { name: body, label: Body, widget: markdown, hint: 'Edit the wording only. Do not change lines starting with “import” or text inside < >.' }
+    label: 📖 Main Pages
+    description: Edit the wording of any page. The formatting buttons are all you need.
+    files:
+      - name: about-us
+        label: About Us
+        file: src/content/pages/about-us.md
+        fields: &pf
+          - { name: title, label: Title, widget: string }
+          - { name: kicker, label: Kicker (small label above the title), widget: string, required: false }
+          - { name: intro, label: Intro line, widget: string, required: false }
+          - { name: description, label: Summary (shown to search engines), widget: text, required: false }
+          - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
+          - name: body
+            label: Body
+            widget: markdown
+            modes: [rich_text]
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list, quote]
+            editor_components: [image]
+            hint: Edit the wording freely. There is no code to break here.
+      - { name: about-accessibility, label: 'About · Accessibility', file: src/content/pages/about-us/accessibility.md, fields: *pf }
+      - { name: about-pastoral-care, label: 'About · Pastoral Care', file: src/content/pages/about-us/pastoral-care.md, fields: *pf }
+      - { name: about-social-action, label: 'About · Social Action', file: src/content/pages/about-us/social-action.md, fields: *pf }
+      - { name: about-winter-night-shelter, label: 'About · Winter Night Shelter', file: src/content/pages/about-us/social-action/winter-night-shelter.md, fields: *pf }
+      - { name: community, label: Community, file: src/content/pages/community.md, fields: *pf }
+      - { name: community-food-pantry, label: 'Community · Food Pantry', file: src/content/pages/community/food-pantry-at-st-barnabas.md, fields: *pf }
+      - { name: curious-about-christianity, label: Curious about Christianity, file: src/content/pages/curious-about-christianity.md, fields: *pf }
+      - { name: families-children, label: Families & Children, file: src/content/pages/families-children.md, fields: *pf }
+      - { name: families-childrens-church, label: "Families · Children's Church", file: src/content/pages/families-children/childrens-church-ages-5-9.md, fields: *pf }
+      - { name: families-noisy, label: 'Families · Noisy Mass', file: src/content/pages/families-children/noisy.md, fields: *pf }
+      - { name: families-youth-group, label: 'Families · Youth Group', file: src/content/pages/families-children/youth-group.md, fields: *pf }
+      - { name: life-events, label: Life Events, file: src/content/pages/life-events.md, fields: *pf }
+      - { name: memory-cafe, label: Memory Café, file: src/content/pages/memory-cafe.md, fields: *pf }
+      - { name: visit, label: Visit, file: src/content/pages/visit.md, fields: *pf }
+      - { name: worship-organ, label: 'Worship · St Barnabas Organ', file: src/content/pages/worship/st-barnabas-organ.md, fields: *pf }
+      - name: worship
+        label: Worship
+        file: src/content/pages/worship.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: kicker, label: Kicker (small label above the title), widget: string, required: false }
+          - { name: intro, label: Intro line, widget: string, required: false }
+          - { name: description, label: Summary (shown to search engines), widget: text, required: false }
+          - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
+          - name: body
+            label: Body
+            widget: markdown
+            modes: [rich_text]
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list, quote]
+            editor_components: [image]
+            hint: Edit the wording freely. There is no code to break here.
+          - name: gallery
+            label: Photo gallery
+            widget: list
+            required: false
+            summary: '{{fields.alt}}'
+            fields:
+              - { name: src, label: Image, widget: image, hint: 'A landscape photo around 1600px wide is plenty.' }
+              - { name: alt, label: Image description (for screen readers), widget: string }
+
+  # ── Site-wide settings (contact details, people, links) ──────────────────────
+  - name: site_settings
+    label: ⚙️ Site settings
+    description: Church contact details, key people and links used across the whole site.
+    files:
+      - name: general
+        label: Site settings
+        file: src/content/settings/site.json
+        description: Changing these updates the footer, Contact Us and every page that shows them.
+        fields:
+          - { name: name, label: Church name, widget: string }
+          - { name: shortName, label: Short name, widget: string }
+          - { name: locality, label: Locality line, widget: string, hint: 'e.g. Pitshanger Lane, London W5 1QG' }
+          - { name: tagline, label: Tagline, widget: string }
+          - { name: phone, label: Phone, widget: string, hint: 'Shown in the footer and on Contact Us. Use the UK 0… format, e.g. 020 8998 4079.' }
+          - name: emails
+            label: Email addresses
+            widget: object
+            fields:
+              - { name: office, label: Parish office, widget: string, type: email }
+              - { name: vicar, label: Vicar, widget: string, type: email }
+              - { name: music, label: Music, widget: string, type: email }
+              - { name: safeguarding, label: Safeguarding, widget: string, type: email }
+              - { name: childrensChampion, label: Children's Champion, widget: string, type: email }
+          - name: people
+            label: Key people
+            widget: object
+            fields:
+              - { name: vicar, label: Vicar, widget: string }
+              - { name: directorOfMusic, label: Director of Music, widget: string }
+              - { name: organist, label: Organist, widget: string }
+          - name: social
+            label: Social media links
+            widget: object
+            fields:
+              - { name: facebook, label: Facebook, widget: string, type: url }
+              - { name: instagram, label: Instagram, widget: string, type: url }
+              - { name: youtube, label: YouTube, widget: string, type: url }
+          - { name: giving, label: Giving page link, widget: string, type: url }
+          - { name: newsletterArchive, label: Newsletter archive link, widget: string, type: url }
+          - { name: diocesanSafeguardingPolicy, label: Diocesan safeguarding policy link, widget: string, type: url }
+          - name: affiliations
+            label: Affiliations
+            label_singular: Affiliation
+            widget: list
+            summary: '{{fields.name}}'
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: url, label: Link, widget: string, type: url }
+          - name: safeguardingLeads
+            label: Safeguarding leads
+            label_singular: Safeguarding lead
+            widget: list
+            summary: '{{fields.role}} — {{fields.name}}'
+            fields:
+              - { name: role, label: Role, widget: string }
+              - { name: name, label: Name, widget: string }
+              - { name: email, label: Email, widget: string, type: email }
