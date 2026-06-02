@@ -9,6 +9,46 @@ There are two parts: a **one-time technical setup** (done once, ~15 minutes), an
 
 ---
 
+## Current status — temporary mockup is LIVE
+
+A working mockup is deployed at **<https://barnabites.pages.dev/admin>** (the real
+`barnabites.org` domain is **not** touched yet). The one-time setup in Part 1 has already been
+done *for the mockup*, so editors can skip straight to **Part 2** on that URL.
+
+How the mockup is wired (for whoever maintains it):
+
+- **Hosting:** Cloudflare Pages project `barnabites` on the `luca.wetherall@barnabites.org`
+  Cloudflare account.
+- **Login helper:** the `sveltia-cms-auth` Worker is deployed at
+  `https://sveltia-cms-auth.luca-wetherall.workers.dev`. Its GitHub OAuth credentials and
+  `ALLOWED_DOMAINS` are stored as **Worker variables/secrets** (`GITHUB_CLIENT_ID`,
+  `GITHUB_CLIENT_SECRET`, `ALLOWED_DOMAINS`) — not in this repo.
+- **Auto-rebuild on Publish:** instead of Cloudflare's native Git integration, a GitHub Action
+  (`.github/workflows/deploy.yml`) builds and deploys on every push to `main`. It reads two
+  **repository secrets** by name: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. (We used
+  the Action because the GitHub account was already linked to a different Cloudflare account,
+  which blocked the native connector.)
+- `public/admin/config.yml` `base_url` points at the Worker above; `display_url`/`site_url`
+  point at the mockup URL (both flagged in-file to revert at go-live).
+
+### Before this becomes more than a mockup (go-live checklist)
+
+- **Rotate the shared credentials.** The GitHub OAuth **client secret** and the Cloudflare
+  **API token** were shared in plain text during setup — regenerate both and re-store them
+  (`wrangler secret put GITHUB_CLIENT_SECRET` for the Worker; the repo secret
+  `CLOUDFLARE_API_TOKEN` via GitHub → Settings → Secrets). Never commit either value.
+- **Re-own under the church.** Move the Cloudflare account to a role mailbox (e.g. `office@`),
+  move the repo into a church GitHub org, and re-create the OAuth app there.
+- **Attach the real domain** to the same Pages project and run the DNS cutover (see
+  `DECISIONS.md` §6).
+- **Revert the mockup URLs:** set `display_url`/`site_url` back to `https://www.barnabites.org`,
+  and update `ALLOWED_DOMAINS` + the OAuth app's Homepage/Callback to the real domain.
+
+The rest of this document describes that one-time setup from scratch (useful if the church
+rebuilds it under its own accounts at go-live).
+
+---
+
 ## Part 1 — One-time setup (do this once)
 
 This connects the editor to GitHub so people can sign in. You only do it once.
