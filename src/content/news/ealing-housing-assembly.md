@@ -23,7 +23,7 @@ Specifically, we will be asking for the following: 
 
      ○ by running housing rights workshops 
 
-     ○ supporting tenants who “Name and shame” rogue landlords 
+     ○ supporting tenants who ‘Name and shame’ rogue landlords 
 
 -   Public commitment from Ealing council for Community Land Trusts (CLT) - specifically to include Old Oak Common and Southall Gas works as potential sites for CLT.
 
@@ -31,7 +31,7 @@ You can make an immediate difference to the complex issue of affordable housing 
 
 **Who can I talk to for more information?**
 
-During March and early April, Paul Robinson, Dn Jane Robinson, Dn Jill Scott and Fr. Justin Dodd will be conducting 1-2-1s with members of the congregation. Speak to one of them or email JJ in the parish office on ministry.admin@barnabites.net to arrange a meeting.   
+During March and early April, Paul Robinson, Dn Jane Robinson, Dn Jill Scott and Fr Justin Dodd will be conducting 1-2-1s with members of the congregation. Speak to one of them or email JJ in the parish office on ministry.admin@barnabites.net to arrange a meeting.   
 
 **What is an Accountability Assembly?**
 

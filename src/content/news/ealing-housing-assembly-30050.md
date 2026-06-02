@@ -10,7 +10,7 @@ West London Citizens
 
 **Make a lasting difference to affordable housing in our borough!**
 
-In the lead up to the local elections in May, West London Citizens Housing Accountability Assembly was held on on **Wednesday 18 April at Twyford High School**. The assembly brought together hundreds of local citizens of all ages, backgrounds and religious affiliations (or none) to engage with the two main party leaders, including Cllr Julian Bell the council leader.
+In the lead up to the local elections in May, West London Citizens Housing Accountability Assembly was held on **Wednesday 18 April at Twyford High School**. The assembly brought together hundreds of local citizens of all ages, backgrounds and religious affiliations (or none) to engage with the two main party leaders, including Cllr Julian Bell the council leader.
 
 Specifically, we asked for the following: 
 
@@ -20,7 +20,7 @@ Specifically, we asked for the following: 
 
      ○ by running housing rights workshops 
 
-     ○ supporting tenants who “Name and shame” rogue landlords 
+     ○ supporting tenants who ‘Name and shame’ rogue landlords 
 
 -   Public commitment from Ealing council for Community Land Trusts (CLT) - specifically to include Old Oak Common and Southall Gas works as potential sites for CLT.
 

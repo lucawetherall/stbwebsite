@@ -17,7 +17,7 @@ legacySlug: "b/blog-112064-come-thou-long-expected-jesus"
     **The Service of Nine Lessons and Carols is a beautiful traditional service by candlelight. Our expanded choir will sing a wide variety of Christmas music, interspersed by the traditional bible readings recounting the Bethlehem story. A magical service not to be missed.
 
 -   **Crib Service on Sat 24 Dec | 4pm  
-    **A chance for all the children to gather as the excitement mounts and spend a short time re-enacting the Christmas story in an impromptu Nativity Play. Come dressed for the part you’d like to play, bring mums and dads, grannies and grandpas and all family to join in all the familiar carols and hear the story of Jesus' birth in Bethlehem. For those who are far away you can still join by watching this service on your livestream.
+    **A chance for all the children to gather as the excitement mounts and spend a short time re-enacting the Christmas story in an impromptu Nativity Play. Come dressed for the part you’d like to play, bring mums and dads, grannies and grandpas and all family to join in all the familiar carols and hear the story of Jesus’ birth in Bethlehem. For those who are far away you can still join by watching this service on your livestream.
 
 -   **Said Mass on Sun 24 Dec | 10:30am**  
     A simple said service for Christmas Eve.
@@ -26,4 +26,4 @@ legacySlug: "b/blog-112064-come-thou-long-expected-jesus"
     **The first mass of Christmas celebrating the Incarnation and with the blessing of the crib. A candlelit service of reverence and beauty as we welcome Jesus, born in a stable in Bethlehem and listen in awe and wonder to the story told in word and music.
 
 -   **High Mass for Christmas Day on Mon 25 Dec | 10:30am  
-    **A joyful celebration of Christmas to which all the St Barnabas Family and Friends are invited. PLEASE NOTE: No Noisy Mass or Children's Church on Christmas Day.****
+    **A joyful celebration of Christmas to which all the St Barnabas Family and Friends are invited. PLEASE NOTE: No Noisy Mass or Children’s Church on Christmas Day.****

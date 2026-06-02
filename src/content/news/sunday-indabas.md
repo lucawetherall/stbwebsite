@@ -41,12 +41,12 @@ _
 
 * * *
 
-**Sunday 8 December: Fr. Simon Cuff on _Love in Action_**
+**Sunday 8 December: Fr Simon Cuff on _Love in Action_**
 
 **12:30 pm - The Large Hall**
 
 This Advent we ask ourselves the question: How does the church engage meaningfully with the needs of contemporary society? 
 
-The Archbishop of Canterbury has called Catholic Social Teaching (CTS) “the Catholic churches best kept secret’. Fr Simon Cuff, in his new book Love in Action shows why with eloquence and power. Join us as Fr Simon makes accessible that rich tradition of Western Christianity and explains how churches like our own can draw on it to make God’s love tangible in our church, home, neighbourhood and city. 
+The Archbishop of Canterbury has called Catholic Social Teaching (CTS) ‘the Catholic churches best kept secret’. Fr Simon Cuff, in his new book Love in Action shows why with eloquence and power. Join us as Fr Simon makes accessible that rich tradition of Western Christianity and explains how churches like our own can draw on it to make God’s love tangible in our church, home, neighbourhood and city. 
 
 <img src="/images/news/8feb170a-love.in.action.simon.cuff.jpg" alt="Sunday Indabas" loading="lazy" decoding="async">

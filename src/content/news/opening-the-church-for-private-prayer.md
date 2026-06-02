@@ -41,4 +41,4 @@ rebuilding lives, communities and your City. Amen  
 
 With many blessings, 
 
-Fr. Justin and the Churchwardens
+Fr Justin and the Churchwardens

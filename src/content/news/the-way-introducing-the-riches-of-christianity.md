@@ -5,13 +5,13 @@ category: "News"
 legacySlug: "b/blog-30347-the-way-introducing-the-riches-of-christianity"
 ---
 
-'Would you describe yourself as spiritual but not religious?' 
+’Would you describe yourself as spiritual but not religious?’ 
 
-'Do you have questions (or niggling reservations) about religion, spirituality and the big philosophical issues?'
+’Do you have questions (or niggling reservations) about religion, spirituality and the big philosophical issues?’
 
 _Sunday 24 June to Sunday 22 July_  
 
-‘The Way’ is an opportunity to explore the beauty of the Christian tradition in an setting that encourages curiosity and debate without any expectations or obligations. Some of the themes explored in the 6 session course will include contemplation and prayer, the meaning and power of community, the ancient practices of Christians and the mystic/revolutionary/teacher called Jesus Christ who claimed to be God.
+‘The Way’ is an opportunity to explore the beauty of the Christian tradition in a setting that encourages curiosity and debate without any expectations or obligations. Some of the themes explored in the 6 session course will include contemplation and prayer, the meaning and power of community, the ancient practices of Christians and the mystic/revolutionary/teacher called Jesus Christ who claimed to be God.
 
 **How does it work?**
 

@@ -24,5 +24,5 @@ church, for anyone who would like to stay.
 - **Contact:** Mother Valerie Aitken, 07968 345992.
 - **Getting here:** the E2 and E9 buses stop nearby, and there is street parking.
 
-The Memory Café is supported by Ealing Council’s “Warm Spaces” grant and by charitable
+The Memory Café is supported by Ealing Council’s ‘Warm Spaces’ grant and by charitable
 donations.

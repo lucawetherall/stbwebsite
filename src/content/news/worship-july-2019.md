@@ -18,13 +18,13 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 **Special Services in July:**
 
-**'S**hh\-Free' Mass | 10.30am, 7th July
+**’S**hh\-Free’ Mass | 10.30am, 7th July
 
-This is truly a 'Shh-free' form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
+This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
 <img src="/images/news/a8bc0715-shh.free.service.colour.png" alt="Worship | July 2019" loading="lazy" decoding="async">
 
 **  
-Children's Breakfast Mass** | 9.30am, 21st July  
+Children’s Breakfast Mass** | 9.30am, 21st July  
 
 A 30-minute Mass for young children. It includes songs and a visual bible story with shared child-friendly breakfast afterwards.

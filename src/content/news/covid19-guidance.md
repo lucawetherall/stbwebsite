@@ -6,7 +6,7 @@ author: "St Barnabas Church"
 legacySlug: "b/blog-49997-covid19-guidance"
 ---
 
-"The Lord is my shepherd; 
+‘The Lord is my shepherd; 
 
    therefore can I lack nothing.
 
@@ -14,7 +14,7 @@ He makes me lie down in green pastures 
 
    and leads me beside still waters.
 
-He shall refresh my soul"   
+He shall refresh my soul’   
 
 Psalm 23:1-3
 
@@ -64,7 +64,7 @@ We know how important it is for everyone to stay connected in this way and have 
 
 **UPDATE 20 March 2020:**
 
-1. The Lent course, '7 Sacred Spaces' will now be live streamed by Mother Valerie Aitken on Saturday 21 March (details and link to be confirmed shortly).   
+1. The Lent course, ’7 Sacred Spaces’ will now be live streamed by Mother Valerie Aitken on Saturday 21 March (details and link to be confirmed shortly).   
 
 2. The 10:30 am Mass on Sunday 22 March (Communion by Extension) will be live streamed. The order of service will be available for download. Please join in with the service wherever you are. 
 
@@ -84,7 +84,7 @@ Please continue to pray for frontline key workers and their families, those wh
 
 **UPDATE 17 March 2020:**
 
-**A letter from Fr. Justin Dodd - Vicar, 17 March 2020** 
+**A letter from Fr Justin Dodd - Vicar, 17 March 2020** 
 
 Dear Friends,
 
@@ -98,18 +98,18 @@ Here are a few of the ways the church is organising to stay united in prayer a
 
 2) A list of parishioners who would like phone check-ins or who may need practical help (e.g. shopping) is being compiled. **Please let us know if you would like to come onto this list or alternatively can volunteer support** (phone calls, shopping etc...).
 
-3) Consider sharing your telephone number with other members of the congregation in order to keep in contact. Some people are dropping [postcards through neighbour's doors](https://www.bbc.co.uk/news/uk-england-cornwall-51880695) offering help if it is needed. 
+3) Consider sharing your telephone number with other members of the congregation in order to keep in contact. Some people are dropping [postcards through neighbour’s doors](https://www.bbc.co.uk/news/uk-england-cornwall-51880695) offering help if it is needed. 
 
 The charity _Mind_ has put together [some very helpful information](https://www.mind.org.uk/information-support/coronavirus-and-your-wellbeing/) for those who are unwell, self-isolating, or - and this will apply to almost everyone - those who are simply worried. 
 
-I encourage you to build prayer into the routine of your day. For example, you may like to pray the "Prayer for the Outbreak" below on a daily basis or [sign up](https://www.churchofengland.org/our-faith/living-out-our-faith/lent-holy-week-and-easter/livelent-care-gods-creation) for the Church of England's online Lent resource [#LiveLent here](https://www.churchofengland.org/our-faith/living-out-our-faith/lent-holy-week-and-easter/livelent-care-gods-creation).  
+I encourage you to build prayer into the routine of your day. For example, you may like to pray the ‘Prayer for the Outbreak’ below on a daily basis or [sign up](https://www.churchofengland.org/our-faith/living-out-our-faith/lent-holy-week-and-easter/livelent-care-gods-creation) for the Church of England’s online Lent resource [#LiveLent here](https://www.churchofengland.org/our-faith/living-out-our-faith/lent-holy-week-and-easter/livelent-care-gods-creation).  
 
-Finally, remember that I am here together with the rest of the Ministry Team. We will be praying for everyone and available by phone or email. Don't be alone and held captive to fear. If you need a phone call **let us know**. The Lord is here. His Spirit is with us!  
+Finally, remember that I am here together with the rest of the Ministry Team. We will be praying for everyone and available by phone or email. Don’t be alone and held captive to fear. If you need a phone call **let us know**. The Lord is here. His Spirit is with us!  
 
 With every blessing,
 
-Fr. Justin Dodd
+Fr Justin Dodd
 
 _Vicar_
 
-Lord Jesus Christ, you taught us to love our neighbour, and to care for those in need as if we were caring for you. In this time of anxiety, give us strength to comfort the fearful, to tend the sick, and to assure the isolated of our love, and your love, for your name's sake. **Amen.**
+Lord Jesus Christ, you taught us to love our neighbour, and to care for those in need as if we were caring for you. In this time of anxiety, give us strength to comfort the fearful, to tend the sick, and to assure the isolated of our love, and your love, for your name’s sake. **Amen.**

@@ -13,11 +13,11 @@ Here are some of the ways we will be commemorating the late Queen at St Barnabas
 
 **Sunday 18 September  |  Evensong on the Eve of the State Funeral  |  6 pm** 
 
-This service will combine prayers and music specifically created to honor the Queen's memory as well as a hymn composed by one of our church musicians, Henry Tozer, written in tribute of the late Sovereign. Join us to pray for the Royal Family and with the nation.
+This service will combine prayers and music specifically created to honour the Queen’s memory as well as a hymn composed by one of our church musicians, Henry Tozer, written in tribute of the late Sovereign. Join us to pray for the Royal Family and with the nation.
 
 **Monday 19 September  |  Screening of the State Funeral  |  10 am**
 
-You are warmly invited to join us in church to watch the late Queen's funeral on the large screen. It will be a lovely opportunity to be together to share this historic occasion with the added advantage of the large screen. We will serve tea, coffee and homemade cake and as we watch, I am sure there will be opportunities to exchange our own memories of Her Majesty.
+You are warmly invited to join us in church to watch the late Queen’s funeral on the large screen. It will be a lovely opportunity to be together to share this historic occasion with the added advantage of the large screen. We will serve tea, coffee and homemade cake and as we watch, I am sure there will be opportunities to exchange our own memories of Her Majesty.
 
 Everyone is welcome, and please do invite friends. Please RSVP to Mother Valerie on Sunday, or send a message to 07968345992.
 
@@ -25,7 +25,7 @@ Condolences can be recorded in a book alongside the portrait of the Queen at the
 
 With every blessing,
 
-Fr. Justin
+Fr Justin
 
   
 

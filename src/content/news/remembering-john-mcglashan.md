@@ -16,7 +16,7 @@ Inspired by seeing Casablanca to seek a job in filming, his first assignment as 
 
 Highlights during that time were working with the poet Sir John Betjeman on his programmes Metroland, A Passion for Churches and Summoned by Bells, and with Jonathan Stedall, who directed the latter. Both became friends. With Jonathan, he subsequently made several films in India, igniting a lifelong love of that country.
 
-John went on to become Lighting Director on many television dramas, and a member of the British Society of Cinematographers. He was nominated for four BAFTA awards. He retired from the BBC in 1994, but continued to work freelance for another ten years on a variety of dramas and series such “Silent Witness” and “Monarch of the Glen”.
+John went on to become Lighting Director on many television dramas, and a member of the British Society of Cinematographers. He was nominated for four BAFTA awards. He retired from the BBC in 1994, but continued to work freelance for another ten years on a variety of dramas and series such ‘Silent Witness’ and ‘Monarch of the Glen’.
 
 Despite considerable success in his professional field, there was another very important spiritual dimension to John’s life. In 1973, he was ordained to the Liberal Catholic Church. For twenty five years he was non-stipendiary Priest-in-Charge of St Francis Church, Camberley, running spiritual camps for families locally at Tekels Park. More recently he served for two years as a Deacon here at St Barnabas.
 

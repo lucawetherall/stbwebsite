@@ -5,9 +5,9 @@ category: "News"
 legacySlug: "b/blog-73843-lent-a-season-of-recovery"
 ---
 
-> "He took our infirmities and bore our diseases.” Matthew 8: 17b 
+> ‘He took our infirmities and bore our diseases.’ Matthew 8: 17b 
 
-Each of us is a precious and holy vessel of embodied love. We have been through a harrowing time since last Lent that has shattered our sense of wholeness–body, mind, and spirit–like a glass or porcelain vessel fractured into pieces. In this Lenten “season of recovery” for our physical, communal, mental, intellectual, and environmental health, we will explore the healing narratives of Jesus that tell of divine solidarity with human suffering and remind us that we can begin a journey toward making something beautiful from that which is seemingly broken.
+Each of us is a precious and holy vessel of embodied love. We have been through a harrowing time since last Lent that has shattered our sense of wholeness–body, mind, and spirit–like a glass or porcelain vessel fractured into pieces. In this Lenten ‘season of recovery’ for our physical, communal, mental, intellectual, and environmental health, we will explore the healing narratives of Jesus that tell of divine solidarity with human suffering and remind us that we can begin a journey toward making something beautiful from that which is seemingly broken.
 
 #### Resources for Lent
 

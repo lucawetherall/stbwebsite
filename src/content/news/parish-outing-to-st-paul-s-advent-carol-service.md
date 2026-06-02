@@ -6,9 +6,9 @@ author: "Justin Dodd"
 legacySlug: "b/blog-90439-parish-outing-to-st-paul-s-advent-carol-service"
 ---
 
-Unfortunately we will not be holding an Advent Carol Service this year. However, we are making a parish outing to the **Advent Carol Service at St Paul's Cathedral** **on Saturday the 27th of November, 5:30pm.** This will be a truly moving experience: 
+Unfortunately we will not be holding an Advent Carol Service this year. However, we are making a parish outing to the **Advent Carol Service at St Paul’s Cathedral** **on Saturday the 27th of November, 5:30pm.** This will be a truly moving experience: 
 
-_"One of the year’s most dramatic services sung by the Choir of St Paul’s Cathedral. A candlelit procession moves from darkness to light as words and music help us focus on the Advent themes of light in darkness, hope in despair and a new relationship with God in Christ."  – [St Paul's Cathedral](https://www.stpauls.co.uk/christmas-2021)_  
+_‘One of the year’s most dramatic services sung by the Choir of St Paul’s Cathedral. A candlelit procession moves from darkness to light as words and music help us focus on the Advent themes of light in darkness, hope in despair and a new relationship with God in Christ.’  – [St Paul’s Cathedral](https://www.stpauls.co.uk/christmas-2021)_  
 
 * * *
 

@@ -10,13 +10,13 @@ legacySlug: "b/blog-109150-giving-campaign-2022"
 
 On Sunday 18 September we launched a 5-week giving campaign. Each week we will be exploring an aspect of building a stable and flourishing suburban church with God in the suburbs of London. See themes below. 
 
-At present, St Barnabas is a story of two worlds - a vibrant, growing and impactful local church **BUT** we have serious financial challenges and an overstretched group of committed volunteers. Our central theme is the promise of Christ “the harvest is plentiful but the workers are few” (Luke 10:2). The “but” is the hinge on which intention turns into action. To see that God’s harvest is abundant is wonderful **BUT** this will remain dormant hope unless our faith is embodied. 
+At present, St Barnabas is a story of two worlds - a vibrant, growing and impactful local church **BUT** we have serious financial challenges and an overstretched group of committed volunteers. Our central theme is the promise of Christ ‘the harvest is plentiful but the workers are few’ (Luke 10:2). The ‘but’ is the hinge on which intention turns into action. To see that God’s harvest is abundant is wonderful **BUT** this will remain dormant hope unless our faith is embodied. 
 
 So crucially, this campaign will prod each and every one of us with the question: how can I offer my **time, talents and treasure** as we join God to build a better world? This is why we are asking **every parishioner** to complete a **[pledge form.](https://forms.churchdesk.com/f/V49ni4oRlm)** Click on the button below to fill in yours online or email [vicar@barnabites.net](mailto:vicar@barnabites.net) if you’d like to do it on paper.  You may want to join the [parish giving scheme](https://www.parishgiving.org.uk/home/) immediately. 
 
 **How does God resource his church for its work through Jesus Christ?**
 
-Fr. Justin’s opening sermon for the giving campaign.
+Fr Justin’s opening sermon for the giving campaign.
 
   
 

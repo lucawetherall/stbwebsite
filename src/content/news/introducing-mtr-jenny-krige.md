@@ -22,7 +22,7 @@ We have been attending St Barnabas since July while staying with our daughter, D
 
 Paul and I belonged to St Thomas Church in Linden Johannesburg, where I served as an assistant priest for 14 years. St Thomas is known for its high anglican services, choir and beautiful organ music.  
 
-I've always had a twin vocation to minister and teach.  
+I’ve always had a twin vocation to minister and teach.  
 
 For the last 10 years I have been at St Mary’s Junior School for girls in Waverley. St Mary’s is an Anglican Church school and for the last few years I facilitated Divinity lessons across the primary school and supported the school chaplain with confirmation classes and weekly Chapel services for the staff and students.
 

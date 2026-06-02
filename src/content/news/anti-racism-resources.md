@@ -5,7 +5,7 @@ category: "News"
 legacySlug: "b/blog-59708-anti-racism-resources"
 ---
 
-["When the word of the prophet comes true"](https://youtu.be/EJ_WijeGuTI) - Fr. Justin Dodd's sermon on Sunday 28 June 2020 in response to #BlackLivesMatter protests. 
+[‘When the word of the prophet comes true’](https://youtu.be/EJ_WijeGuTI) - Fr Justin Dodd’s sermon on Sunday 28 June 2020 in response to #BlackLivesMatter protests. 
 
 [Continuum on Becoming an Anti-Racist Multicultural Organisation](https://landing.churchdesk.com/file/925257) - from [CrossRoads](http://crossroadsantiracism.org) Antiracism Organising and Training, Chicago, USA  
 
@@ -13,11 +13,11 @@ legacySlug: "b/blog-59708-anti-racism-resources"
 
 [Uncomfortable Conversations with a Black Man](https://uncomfortableconvos.com/watch) - Emmanuel Acho on YouTube
 
-[Living God's Future Now: Chine McDonald](https://www.facebook.com/theHeartEdge/videos/3114301365319992)\- HeartEdge   
+[Living God’s Future Now: Chine McDonald](https://www.facebook.com/theHeartEdge/videos/3114301365319992)\- HeartEdge   
 
 **Media Resources:**
 
-[We Can't Go Back to...Breathlessness](https://viamedia.news/2020/06/07/we-cant-go-back-to-breathlessness/) - Rt Revd Philip North, Bishop of Burnley
+[We Can’t Go Back to...Breathlessness](https://viamedia.news/2020/06/07/we-cant-go-back-to-breathlessness/) - Rt Revd Philip North, Bishop of Burnley
 
 [White Debt](https://www.nytimes.com/2015/12/06/magazine/white-debt.html) -  Eula Biss, The New York Times
 
@@ -37,13 +37,13 @@ legacySlug: "b/blog-59708-anti-racism-resources"
 
 [‘Why I’m No Longer Talking to White People About Race’](https://www.waterstones.com/book/why-im-no-longer-talking-to-white-people-about-race/reni-eddo-lodge/9781408870587) - Reni Eddo-Lodge  
 
-[White Fragility: Why It's So Hard for White People to Talk About Racism](https://www.waterstones.com/book/white-fragility/robin-diangelo/9780141990569) - Robin DiAngelo.   
+[White Fragility: Why It’s So Hard for White People to Talk About Racism](https://www.waterstones.com/book/white-fragility/robin-diangelo/9780141990569) - Robin DiAngelo.   
 
   
 
 **Documentaries:**
 
-[The 13'th](https://www.youtube.com/watch?v=krfcq5pF8u8) - Youtube and Netflix 
+[The 13’th](https://www.youtube.com/watch?v=krfcq5pF8u8) - Youtube and Netflix 
 
 [The School that Tried to End Racism](https://www.channel4.com/programmes/the-school-that-tried-to-end-racism) - Channel 4
 

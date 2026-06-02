@@ -8,11 +8,11 @@ legacySlug: "b/blog-59821-parent-support-group"
 
 What is the parent support group?
 
-This is a group to provide a safe and non-judgemental space for parents to support each other. It will take the form of a 45 minute Zoom call every two weeks with a focus on parents of children that are preschool and primary school age. (Parents of teenagers are very welcome but we recognise that age and stage brings different sets of needs and demands.) The group is facilitated by Fr Justin, Dr. Caroline Bryant, and Jill Dodd. 
+This is a group to provide a safe and non-judgemental space for parents to support each other. It will take the form of a 45 minute Zoom call every two weeks with a focus on parents of children that are preschool and primary school age. (Parents of teenagers are very welcome but we recognise that age and stage brings different sets of needs and demands.) The group is facilitated by Fr Justin, Dr Caroline Bryant, and Jill Dodd. 
 
 Do I need to attend each one?
 
-You don't need to attend each one and are very welcome to join us when you're able. 
+You don’t need to attend each one and are very welcome to join us when you’re able. 
 
   
 

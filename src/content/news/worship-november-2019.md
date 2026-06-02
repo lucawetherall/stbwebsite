@@ -20,15 +20,15 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 **Special Services in November:**
 
-****'S**hh-Free' Mass - All Saint's Day | 10.30am, 3rd November**
+****’S**hh-Free’ Mass - All Saint’s Day | 10.30am, 3rd November**
 
-This is truly a 'Shh-free' form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
+This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
 <img src="/images/news/a8bc0715-shh.free.service.colour.png" alt="Worship | November 2019" loading="lazy" decoding="async">
 
 * * *
 
-**All Soul's Evensong | 6pm, 3rd November**
+**All Soul’s Evensong | 6pm, 3rd November**
 
 A [beautiful service](https://landing.churchdesk.com/b/29244/evensong) for which the choir will sing the Fauré Requiem with commemoration of the faithful departed.  
   
@@ -41,11 +41,11 @@ A [beautiful service](https://landing.churchdesk.com/b/29244/evensong) for whi
 
 <img src="/images/news/59570ce4-poppies_0.jpg" alt="Worship | November 2019" loading="lazy" decoding="async">  
   
-During the High Mass we make solemn procession from the church to the war memorial on the corner of Pitshanger Lane and Denison Road for an 'Act of Remembrance' including the traditional 2 minutes silence. 
+During the High Mass we make solemn procession from the church to the war memorial on the corner of Pitshanger Lane and Denison Road for an ’Act of Remembrance’ including the traditional 2 minutes silence. 
 
 * * *
 
-**Children's Mass | 9.30am, 17 November**  
+**Children’s Mass | 9.30am, 17 November**  
 
 A 30-minute Mass for young children. It includes songs and a visual bible story with shared child-friendly breakfast afterwards.   
 

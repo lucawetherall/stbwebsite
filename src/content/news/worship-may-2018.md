@@ -13,9 +13,9 @@ legacySlug: "b/blog-30569-worship-may-2018"
 
 **Special Services in May:**
 
-**Children's Service** | 9.30am, 20th May
+**Children’s Service** | 9.30am, 20th May
 
-Join our 30-minute children's service for young children. It includes songs and a very visual bible story with shared child-friendly breakfast afterwards. 
+Join our 30-minute children’s service for young children. It includes songs and a very visual bible story with shared child-friendly breakfast afterwards. 
 
 <img src="/images/news/c44ed152-pancake-10.jpg" alt="Worship | May 2018" loading="lazy" decoding="async">
 
