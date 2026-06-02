@@ -149,7 +149,7 @@ const isActive = (href: string) =>
   }
   .primary-nav__link:hover { border-bottom-color: currentColor; }
   .primary-nav__link.is-active { border-bottom-color: var(--burgundy); }
-  .is-solid .primary-nav__link.is-active { color: var(--burgundy); }
+  .is-solid .primary-nav__link.is-active:not(.primary-nav__link--cta) { color: var(--burgundy); }
 
   /* Give: outlined CTA button — burgundy frame, fills on hover (readable on both headers) */
   .primary-nav__link--cta {
