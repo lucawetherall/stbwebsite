@@ -149,8 +149,11 @@ That’s it. The editor is now live at `https://www.barnabites.org/admin`.
   fallback only.
 - **Updating Sveltia CMS:** the version is pinned in `public/admin/index.html`. Bump it and
   check the [releases](https://github.com/sveltia/sveltia-cms/releases) when you want updates.
-- **Editing locally without GitHub:** run `npx @sveltia/cms-proxy-server` and open
-  `http://localhost:4321/admin` with the dev server running (`local_backend: true` is set).
+- **Editing locally without GitHub:** with the dev server running, open
+  `http://localhost:4321/admin/index.html` and click **“Work with Local Repository”**, then pick
+  the project folder when prompted. Sveltia reads and writes the files directly via the browser’s
+  File System Access API (Chrome/Edge), so there is **no proxy server to run** — Sveltia does not
+  use Decap’s `local_backend`/`cms-proxy-server`.
 - **Security:** `/admin` is marked `noindex` and disallowed in `robots.txt`, and only invited
   GitHub collaborators can sign in. There is no database to maintain or patch.
 - **No lock-in:** content stays as plain Markdown/JSON in the repo, and the config uses the

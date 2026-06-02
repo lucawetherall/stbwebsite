@@ -65,5 +65,36 @@
         { raw: true }
       );
     </script>
+    <script>
+      // Sveltia mounts its UI as a sibling of the splash (it does not clear <body>),
+      // so fade the splash out as soon as the editor's own element appears.
+      (function () {
+        var splash = document.getElementById('stb-splash');
+        if (!splash) return;
+        function isAppNode(el) {
+          return el.id !== 'stb-splash' && el.tagName !== 'SCRIPT';
+        }
+        function removeSplash() {
+          if (!splash) return;
+          splash.style.transition = 'opacity .4s ease';
+          splash.style.opacity = '0';
+          var s = splash;
+          splash = null;
+          setTimeout(function () { s.remove(); }, 450);
+        }
+        function check() {
+          for (var i = 0; i < document.body.children.length; i++) {
+            if (isAppNode(document.body.children[i])) { removeSplash(); return true; }
+          }
+          return false;
+        }
+        if (!check()) {
+          var obs = new MutationObserver(function () { if (check()) obs.disconnect(); });
+          obs.observe(document.body, { childList: true });
+          // Fallback: never let the splash linger if mount detection ever misses.
+          setTimeout(function () { obs.disconnect(); removeSplash(); }, 8000);
+        }
+      })();
+    </script>
   </body>
 </html>

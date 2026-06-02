@@ -11,9 +11,6 @@ backend:
   # church-owned Worker if the account/repo moves (see DECISIONS.md go-live checklist).
   base_url: https://sveltia-cms-auth.luca-wetherall.workers.dev
 
-# Lets you edit locally without GitHub by running:  npx @sveltia/cms-proxy-server
-local_backend: true
-
 # MOCKUP URLs — point "view live"/preview links at the temporary Pages site.
 # Revert both to https://www.barnabites.org at go-live.
 display_url: https://barnabites.pages.dev
