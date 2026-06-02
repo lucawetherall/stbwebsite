@@ -29,7 +29,7 @@ const isActive = (href: string) =>
           <li class:list={['primary-nav__item', item.children && 'has-children']}>
             <a
               href={item.href}
-              class:list={['primary-nav__link', isActive(item.href) && 'is-active']}
+              class:list={['primary-nav__link', item.cta && 'primary-nav__link--cta', isActive(item.href) && 'is-active']}
               aria-current={isActive(item.href) ? 'page' : undefined}
               aria-haspopup={item.children ? 'true' : undefined}
             >{item.label}</a>
@@ -74,7 +74,6 @@ const isActive = (href: string) =>
       aria-label="Open menu"
     >
       <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
-      <span class="nav-toggle__label label">Menu</span>
     </button>
   </div>
 </header>
@@ -139,8 +138,9 @@ const isActive = (href: string) =>
 
   /* desktop nav */
   .primary-nav { display: none; }
-  .primary-nav__list { display: flex; align-items: center; gap: 1.35rem; list-style: none; }
+  .primary-nav__list { display: flex; align-items: center; gap: 1.35rem; list-style: none; flex-wrap: nowrap; }
   .primary-nav__item { position: relative; }
+  .primary-nav__link { white-space: nowrap; }
   .primary-nav__link {
     display: inline-block; text-decoration: none; color: inherit;
     font-family: var(--font-body); text-transform: uppercase; letter-spacing: .15em;
@@ -150,6 +150,17 @@ const isActive = (href: string) =>
   .primary-nav__link:hover { border-bottom-color: currentColor; }
   .primary-nav__link.is-active { border-bottom-color: var(--burgundy); }
   .is-solid .primary-nav__link.is-active { color: var(--burgundy); }
+
+  /* Give: outlined CTA button — burgundy frame, fills on hover (readable on both headers) */
+  .primary-nav__link--cta {
+    background: transparent;
+    padding: .5rem 1.1rem; border: 1px solid var(--burgundy); border-radius: 2px;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .primary-nav__link--cta:hover,
+  .primary-nav__link--cta.is-active {
+    color: var(--white); background: var(--burgundy); border-color: var(--burgundy);
+  }
 
   /* dropdown panels (always readable: paper ground, ink text) */
   .submenu {

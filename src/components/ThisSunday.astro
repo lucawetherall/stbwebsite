@@ -21,6 +21,16 @@ const nextFuture = services.find((s) => +s.date >= +t);
 const sheet =
   exact ?? (nextFuture && +nextFuture.date - +t <= 14 * DAY ? nextFuture : null);
 
+// Eyebrow label adapts to what we're actually showing:
+//  - a sheet dated on a Sunday  → "This Sunday"
+//  - a sheet on any other day   → "Next service" (e.g. a weekday feast)
+//  - no sheet (generic fallback) → "Sunday services"
+const eyebrow = sheet
+  ? sheet.date.getUTCDay() === 0
+    ? 'This Sunday'
+    : 'Next service'
+  : 'Sunday services';
+
 const fmtDate = (d: Date) =>
   d.toLocaleDateString('en-GB', {
     weekday: 'long',
@@ -39,7 +49,7 @@ function fmt(v: string) {
 ---
 <section class="this-sunday section" aria-labelledby="this-sunday-heading">
   <div class="wrap">
-    <p class="label">This Sunday</p>
+    <p class="label">{eyebrow}</p>
 
     {sheet ? (
       <>

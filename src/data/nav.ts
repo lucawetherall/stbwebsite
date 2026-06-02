@@ -2,12 +2,13 @@ export interface NavItem {
   label: string;
   href: string;
   children?: NavItem[];
+  cta?: boolean;
 }
 
 export const nav: NavItem[] = [
   { label: 'Visit', href: '/visit' },
   {
-    label: 'About Us',
+    label: 'About',
     href: '/about-us',
     children: [
       { label: "Who's Who", href: '/about-us/whos-who' },
@@ -29,6 +30,7 @@ export const nav: NavItem[] = [
       { label: 'Sundays', href: '/worship/sundays' },
       { label: 'Weekdays', href: '/worship/weekdays' },
       { label: 'Special Services', href: '/worship/special-services' },
+      { label: 'Life Events', href: '/life-events' },
       { label: 'Worship Online', href: '/worship/online' },
       { label: 'Music', href: '/worship/music' },
       { label: 'St Barnabas Organ', href: '/worship/st-barnabas-organ' },
@@ -40,10 +42,11 @@ export const nav: NavItem[] = [
     children: [
       { label: 'Pitshanger Pictures', href: '/community/pitshanger-pictures' },
       { label: 'Food Pantry', href: '/community/food-pantry-at-st-barnabas' },
+      { label: 'Memory Café', href: '/memory-cafe' },
     ],
   },
   {
-    label: 'Families & Children',
+    label: 'Families',
     href: '/families-children',
     children: [
       { label: 'Youth Group', href: '/families-children/youth-group' },
@@ -51,11 +54,10 @@ export const nav: NavItem[] = [
       { label: 'Noisy Mass', href: '/families-children/noisy' },
     ],
   },
-  { label: 'Memory Café', href: '/memory-cafe' },
-  { label: 'Venue Hire', href: '/venue-hire' },
-  { label: 'Life Events', href: '/life-events' },
+  { label: 'Hire', href: '/venue-hire' },
   { label: 'News', href: '/news' },
-  { label: 'Give', href: '/give' },
+  { label: 'Contact', href: '/contact-us' },
+  { label: 'Give', href: '/give', cta: true },
 ];
 
 // Utility links (footer / overflow)
