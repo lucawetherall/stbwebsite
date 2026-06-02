@@ -39,4 +39,10 @@ describe('assertSiteSettings — build guard', () => {
   it('throws when emails.office is missing', () => {
     expect(() => assertSiteSettings({ ...ok, emails: {} as EditableSettings['emails'] })).toThrow(/emails\.office/);
   });
+
+  it('lists every missing field when several are blank', () => {
+    expect(() => assertSiteSettings({ ...ok, name: '', tagline: '  ' } as unknown as EditableSettings)).toThrow(
+      /name.*tagline|tagline.*name/
+    );
+  });
 });

@@ -33,6 +33,8 @@ assertSiteSettings(editable);
 // so editors never maintain two numbers.
 const phoneIntl = '+44 ' + editable.phone.replace(/^0/, '').replace(/\s+/g, ' ');
 
-export const site = { ...technical, ...editable, phoneIntl } as const;
+// `technical` is spread LAST so developer-only constants always win over the
+// editor-owned JSON — a CMS editor must never be able to override url/geo/mapEmbed/etc.
+export const site = { ...editable, ...technical, phoneIntl } as const;
 
 export type Site = typeof site;
