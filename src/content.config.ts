@@ -14,6 +14,9 @@ const pages = defineCollection({
     order: z.number().optional(),
     updated: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    gallery: z
+      .array(z.object({ src: z.string(), alt: z.string() }))
+      .optional(),
   }),
 });
 
