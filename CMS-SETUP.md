@@ -123,9 +123,11 @@ That’s it. The editor is now live at `https://www.barnabites.org/admin`.
 | **News** | News posts / notices (newest shows first). |
 | **This Sunday’s Music** | The music list in the “This Sunday” block — add a sheet per Sunday: pick the date, the feast, then each service (Sung Mass, Evensong…) and its lines (Setting, Psalm, Anthem…). |
 | **Events** | Special services / events on Worship → Special Services. |
+| **Service times** | The regular weekly Sunday & weekday pattern shown on the Worship pages. |
 | **Who’s Who** | Clergy and people on About Us → Who’s Who. |
 | **Documents** | PDFs and links on the Documents page (upload a PDF or paste a link). |
-| **Main Pages** | The wording of the main pages (Visit, About Us, Worship, etc.). |
+| **Main Pages** | The wording of every standalone and section page — now including the deeper pages (Accessibility, Pastoral Care, the Organ, Food Pantry, etc.). |
+| **Site settings** | Church contact details, key people, and the links used across the whole site. |
 
 ### A few tips
 - **Photos:** use the image button in a News post to upload a picture; it’s stored with the site.
@@ -137,10 +139,11 @@ That’s it. The editor is now live at `https://www.barnabites.org/admin`.
 
 ## Notes for whoever maintains the site
 
-- **What’s deliberately *not* in the CMS:** the deeper sub-pages (e.g. Accessibility, the
-  children’s pages, the organ history) and any page containing layout components (the Worship
-  page’s photo gallery). These are edited in the repo. They could be added to the CMS later by
-  converting those pages to an index-file layout.
+- **What’s deliberately *not* in the CMS:** genuinely code-driven pages (the homepage layout,
+  the News listing, the music archive) and the site navigation. The Worship page’s photo gallery
+  is now an editable frontmatter field in the Main Pages collection. All other standalone and
+  section pages — including the deeper sub-pages such as Accessibility, the children’s pages,
+  and the organ history — are editable via the **Main Pages** file collection.
 - **Events** can alternatively be managed in **ChurchDesk** once the iCal feed is wired
   (`CHURCHDESK_ICAL_URL`, see `DECISIONS.md`) — then the `Events` collection becomes a manual
   fallback only.
