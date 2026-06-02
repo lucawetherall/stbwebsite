@@ -11,7 +11,10 @@ backend:
   # church-owned Worker if the account/repo moves (see DECISIONS.md go-live checklist).
   base_url: https://sveltia-cms-auth.luca-wetherall.workers.dev
 
-# Lets you edit locally without GitHub by running:  npx @sveltia/cms-proxy-server
+# Local editing without GitHub: run `npm run dev`, open http://localhost:4321/admin/index.html
+# (the dev server doesn't serve the bare /admin/ index; production hosts do), and click
+# "Work with Local Repository" in Chrome/Edge. Sveltia uses the browser's File System Access
+# API — no proxy server or extra package needed.
 local_backend: true
 
 # MOCKUP URLs — point "view live"/preview links at the temporary Pages site.
