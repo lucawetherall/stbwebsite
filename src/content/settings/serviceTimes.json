@@ -3,12 +3,14 @@
     {
       "time": "10.30am",
       "name": "Sung Mass",
+      "when": "",
       "note": "with Children's Church (ages 5–9) and a Youth Group (ages 10–16)",
       "description": "Our main service — around an hour and a quarter — combining choral music, the depth of the liturgy and accessible preaching, with groups for every age."
     },
     {
       "time": "10.30am",
       "name": "Noisy Mass",
+      "when": "",
       "note": "in the small hall — ages 0–4 and their carers, with Stay & Play",
       "description": "A short, lively and interactive service for under-5s, with the Eucharist offered, followed by toys and time to play."
     },
@@ -16,12 +18,14 @@
       "time": "8.00am",
       "name": "Said Mass (BCP)",
       "when": "first Sunday of the month",
+      "note": "",
       "description": "A reflective, contemplative service of about 45 minutes in the language of the 1662 Book of Common Prayer, with a short sermon."
     },
     {
       "time": "6.00pm",
       "name": "Choral Evensong",
       "when": "first Sunday of the month",
+      "note": "",
       "description": "Sung psalms, canticles and hymns to close the day."
     }
   ],
@@ -43,7 +47,7 @@
     {
       "time": "9.30am",
       "name": "Morning Prayer",
-      "when": "Tuesday, Wednesday & Thursday",
+      "when": "Tuesday, Wednesday, and Thursday",
       "note": "in the Lady Chapel — enter by the south door",
       "description": "Praying the Daily Office to begin the day — about 20 minutes of scripture and prayer for the world and ourselves."
     }
