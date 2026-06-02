@@ -10,6 +10,9 @@ node_modules/
 *.log
 npm-debug.log*
 
+# tooling artifacts
+.playwright-mcp/
+
 # env
 .env
 .env.*
