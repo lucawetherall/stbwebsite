@@ -50,7 +50,7 @@ collections:
       - { name: category, label: Category, widget: string, required: false, default: News, hint: 'e.g. News, Music, Reflection' }
       - { name: author, label: Author, widget: string, required: false }
       - { name: description, label: Summary (shown to search engines), widget: text, required: false }
-      - { name: hero, label: Header image (optional), widget: image, required: false, hint: 'A picture shown at the top of the post.' }
+      - { name: hero, label: Header image (optional), widget: image, required: false, hint: 'Shown at the top of the post and as a small thumbnail in the news list. A landscape photo around 1600px wide works well — huge phone photos just slow the page down.' }
       - { name: heroAlt, label: Header image description, widget: string, required: false, hint: 'Describe the picture for people using screen readers.' }
       - { name: draft, label: Draft (hide from the site), widget: boolean, default: false }
       - name: body
@@ -171,7 +171,8 @@ collections:
     fields:
       - { name: name, label: Name, widget: string }
       - { name: role, label: Role, widget: string }
-      - { name: photo, label: Photo (optional), widget: image, required: false, hint: 'A square photo works best.' }
+      - { name: photo, label: Photo (optional), widget: image, required: false, hint: 'A square photo works best. Around 800px is plenty — very large phone photos just make pages slower.' }
+      - { name: photoAlt, label: Photo description (for screen readers), widget: string, required: false, hint: 'Briefly describe the photo, e.g. “Revd Jane Smith in cassock by the altar”. Leave blank to use the name.' }
       - { name: email, label: Email, widget: string, type: email, required: false }
       - { name: bio, label: Short bio, widget: text, required: false }
       - { name: order, label: Order (lower shows first), widget: number, value_type: int, required: false }
@@ -262,7 +263,7 @@ collections:
             required: false
             summary: '{{fields.alt}}'
             fields:
-              - { name: src, label: Image, widget: image }
+              - { name: src, label: Image, widget: image, hint: 'A landscape photo around 1600px wide is plenty.' }
               - { name: alt, label: Image description (for screen readers), widget: string }
 
   # ── Site-wide settings (contact details, people, links) ──────────────────────

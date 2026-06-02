@@ -12,7 +12,7 @@ const people = (await getCollection('staff')).sort(
         <img
           class="staff-card__photo"
           src={person.data.photo}
-          alt={person.data.name}
+          alt={person.data.photoAlt ?? person.data.name}
           loading="lazy"
           decoding="async"
         />

@@ -70,6 +70,7 @@ const staff = defineCollection({
     email: z.string().optional(),
     bio: z.string().optional(),
     photo: z.string().optional(),
+    photoAlt: z.string().optional(),
     order: z.number().optional(),
   }),
 });
