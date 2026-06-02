@@ -23,11 +23,21 @@ site_url: https://barnabites.pages.dev
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
+# -- Branding (St Barnabas) ------------------------------------
+# Window mark shown in the header, on the login screen, and as the tab favicon.
+logo:
+  src: /admin/logo.svg
+  show_in_header: true
+# Friendly title on the login screen and browser tab.
+app_title: St Barnabas Content Manager
+# MOCKUP value -- revert to https://www.barnabites.org at go-live (like display_url/site_url).
+logout_redirect_url: https://barnabites.pages.dev
+
 collections:
   # ════════ EVERYDAY ════════
   # ── News & notices ──────────────────────────────────────────────────────────
   - name: news
-    label: News
+    label: 📰 News
     label_singular: News post
     description: Notices, reflections and announcements. Newest appears first.
     folder: src/content/news
@@ -37,8 +47,6 @@ collections:
     slug: '{{slug}}'
     sortable_fields: [date, title]
     summary: '{{date}} — {{title}}'
-    editor:
-      preview: false
     fields:
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, picker_utc: true }
@@ -59,7 +67,7 @@ collections:
 
   # ── This Sunday's music (service sheets) ─────────────────────────────────────
   - name: services
-    label: This Sunday's Music
+    label: 🎵 This Sunday's Music
     label_singular: Service sheet
     description: The music list for a Sunday, shown in the "This Sunday" block.
     folder: src/content/services
@@ -96,7 +104,7 @@ collections:
 
   # ── Events / What's on ───────────────────────────────────────────────────────
   - name: events
-    label: Events
+    label: 📅 Events
     label_singular: Event
     description: Special services and events shown on Worship → Special Services.
     folder: src/content/events
@@ -119,7 +127,7 @@ collections:
   # ════════ NOW & THEN ════════
   # ── Standing service times ───────────────────────────────────────────────────
   - name: service_times
-    label: Service times
+    label: ⏰ Service times
     description: The regular weekly Sunday & weekday pattern (the "This Sunday" fallback and Worship pages).
     files:
       - name: standing
@@ -152,7 +160,7 @@ collections:
 
   # ── Who's Who (clergy & people) ──────────────────────────────────────────────
   - name: staff
-    label: Who's Who
+    label: 👥 Who's Who
     label_singular: Person
     description: The people listed on About Us → Who's Who.
     folder: src/content/staff
@@ -173,7 +181,7 @@ collections:
 
   # ── Documents (PDFs etc.) ────────────────────────────────────────────────────
   - name: documents
-    label: Documents
+    label: 📄 Documents
     label_singular: Document
     description: Downloads listed on the Documents page. Upload a PDF or link out.
     folder: src/content/documents
@@ -201,10 +209,8 @@ collections:
   # File collection enumerating each page (Sveltia has no nested-folder tree until v1.0).
   # `&pf` defines the shared field set once; `*pf` reuses it. Worship has its own set (gallery).
   - name: pages
-    label: Main Pages
+    label: 📖 Main Pages
     description: Edit the wording of any page. The formatting buttons are all you need.
-    editor:
-      preview: false
     files:
       - name: about-us
         label: About Us
@@ -264,7 +270,7 @@ collections:
 
   # ── Site-wide settings (contact details, people, links) ──────────────────────
   - name: site_settings
-    label: Site settings
+    label: ⚙️ Site settings
     description: Church contact details, key people and links used across the whole site.
     files:
       - name: general
