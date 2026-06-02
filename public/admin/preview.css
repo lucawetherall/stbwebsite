@@ -1,0 +1,307 @@
+/* ============================================================================
+   St Barnabas — Sveltia CMS preview styling
+   ----------------------------------------------------------------------------
+   Loaded into the editor's preview <iframe> via:
+       CMS.registerPreviewStyle('/admin/preview.css');   (see index.html)
+
+   WHY THIS FILE EXISTS / WHAT IT CAN AND CANNOT DO
+   Sveltia CMS (pinned 0.165.x) does NOT implement custom preview *templates*
+   (registerPreviewTemplate is a documented no-op: "Custom preview templates are
+   not yet supported in Sveltia CMS"). The only supported lever is preview
+   *styles* — CSS injected into the preview iframe. So this file cannot rebuild
+   the site's bespoke layouts; it brands Sveltia's default field-by-field preview
+   and makes the Markdown collections (News, Main Pages) read almost exactly like
+   the live site.
+
+   HOW THE DEFAULT PREVIEW IS STRUCTURED (the DOM we target)
+   The iframe body is a flat list of fields, one <section> each:
+       <section data-field-type="string" data-key-path="title">
+         <h4>Title</h4>                 <- the field LABEL
+         <p class="… title">…</p>       <- the VALUE (string/text → <p>)
+       </section>
+       <section data-field-type="markdown" data-key-path="body">
+         <h4>Body</h4>
+         <div> …rendered Markdown HTML… </div>   <- prose (h2/p/ul/blockquote/…)
+       </section>
+   We hook onto data-key-path (field name) and data-field-type — these are stable
+   (the field vocabulary from config.yml), unlike the per-build `svelte-xxxx`
+   class hashes, which we deliberately never target.
+
+   FIDELITY NOTE
+   • News & Main Pages → near-identical to the site (big serif title, kicker,
+     italic intro, full prose body).
+   • JSON collections (music list, events, who's who, documents, service times,
+     site settings) → cleanly *branded* field lists (labels + values in the house
+     style), not a pixel rebuild of the site layout. That ceiling is the
+     templates limitation above, not this CSS.
+
+   MAINTENANCE: values mirror src/styles/tokens.css + base.css + the component
+   styles. If those change, mirror the change here. If you bump the Sveltia
+   version, re-check this preview (and whether registerPreviewTemplate has finally
+   shipped — if so, the JSON collections can be done properly with templates).
+   ============================================================================ */
+
+/* ---- fonts: the exact self-hosted faces the site uses (src/styles/fonts.css) -
+   Absolute /fonts/… paths resolve against the site origin inside the iframe. --- */
+@font-face { font-family:'Cormorant Garamond'; font-style:italic; font-weight:400; font-display:swap;
+  src:url('/fonts/cormorant-garamond-400-italic-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Cormorant Garamond'; font-style:italic; font-weight:400; font-display:swap;
+  src:url('/fonts/cormorant-garamond-400-italic-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Cormorant Garamond'; font-style:italic; font-weight:500; font-display:swap;
+  src:url('/fonts/cormorant-garamond-500-italic-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Cormorant Garamond'; font-style:italic; font-weight:500; font-display:swap;
+  src:url('/fonts/cormorant-garamond-500-italic-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Cormorant Garamond'; font-style:normal; font-weight:400; font-display:swap;
+  src:url('/fonts/cormorant-garamond-400-normal-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Cormorant Garamond'; font-style:normal; font-weight:400; font-display:swap;
+  src:url('/fonts/cormorant-garamond-400-normal-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Cormorant Garamond'; font-style:normal; font-weight:500; font-display:swap;
+  src:url('/fonts/cormorant-garamond-500-normal-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Cormorant Garamond'; font-style:normal; font-weight:500; font-display:swap;
+  src:url('/fonts/cormorant-garamond-500-normal-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Cormorant Garamond'; font-style:normal; font-weight:600; font-display:swap;
+  src:url('/fonts/cormorant-garamond-600-normal-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Cormorant Garamond'; font-style:normal; font-weight:600; font-display:swap;
+  src:url('/fonts/cormorant-garamond-600-normal-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Source Serif 4'; font-style:italic; font-weight:400; font-display:swap;
+  src:url('/fonts/source-serif-4-400-italic-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Source Serif 4'; font-style:italic; font-weight:400; font-display:swap;
+  src:url('/fonts/source-serif-4-400-italic-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:400; font-display:swap;
+  src:url('/fonts/source-serif-4-400-normal-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:400; font-display:swap;
+  src:url('/fonts/source-serif-4-400-normal-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:600; font-display:swap;
+  src:url('/fonts/source-serif-4-600-normal-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:600; font-display:swap;
+  src:url('/fonts/source-serif-4-600-normal-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+
+/* ---- design tokens (mirror of src/styles/tokens.css) ---------------------- */
+:root {
+  --paper:#F6F2EA; --paper-2:#EFEADD; --ink:#1A1611; --ink-soft:#6A6051;
+  --line:rgba(26,22,17,.20); --white:#FBF9F4;
+  --burgundy:#6A1B2D; --burgundy-deep:#551521;
+  --font-display:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --font-body:"Source Serif 4",Georgia,serif;
+}
+
+/* ---- the preview canvas (the site's <body>, reproduced) -------------------- */
+html { -webkit-text-size-adjust:100%; }
+body {
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:18px;
+  line-height:1.7;
+  font-optical-sizing:auto;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  margin:0;
+  /* the wrap() container: centred, padded, matches .wrap on the site */
+  padding:clamp(1.6rem,4vw,3rem) clamp(1.25rem,5vw,2.5rem) clamp(3rem,7vw,5rem);
+  max-width:var(--maxw,860px);
+  margin-inline:auto;
+}
+/* the constant top burgundy ribbon from the live site (base.css body::before) */
+body::before { content:""; display:block; height:2px; background:var(--burgundy);
+  margin:calc(-1*clamp(1.6rem,4vw,3rem)) calc(-1*clamp(1.25rem,5vw,2.5rem)) clamp(1.6rem,4vw,3rem); }
+
+::selection { background:rgba(106,27,45,.14); }
+a { color:var(--burgundy); text-decoration:none; border-bottom:1px solid var(--burgundy); }
+
+/* ============================================================================
+   GENERIC FIELD FRAMING — every collection's default preview is a list of
+   <section> blocks. Brand them so any JSON collection reads as a tidy
+   St Barnabas document. (Markdown/article overrides come afterwards.)
+   ============================================================================ */
+
+/* one field block */
+section[data-key-path] {
+  margin:0 0 1.5rem;
+  padding:0;
+}
+/* Hide empty fields — Sveltia renders a bare label for an unset optional field,
+   but the live site never shows empties. A section with no value element (only
+   its <h4>) is empty, so drop it. Keeps the preview reading like a real page. */
+section[data-key-path]:not(:has(> :not(h4))) { display:none; }
+/* a hairline rule between top-level fields, like the site's sectioning.
+   :not([data-key-path*="."]) keeps rules off nested list/object children. */
+section[data-key-path]:not([data-key-path*="."]) + section[data-key-path]:not([data-key-path*="."]) {
+  border-top:1px solid var(--line);
+  padding-top:1.4rem;
+}
+
+/* field LABEL (the <h4>) → the site's tracked small-caps .label, in burgundy.
+   !important: Sveltia's own preview sheet styles this <h4> with higher-specificity
+   class selectors that reference undefined --sui-* vars; we must win. */
+section[data-key-path] > h4 {
+  font-family:var(--font-body) !important;
+  text-transform:uppercase !important;
+  letter-spacing:.18em !important;
+  font-size:.66rem !important;
+  font-weight:600 !important;
+  color:var(--burgundy) !important;
+  margin:0 0 .55rem !important;
+  line-height:1.3 !important;
+}
+
+/* field VALUE (string/text/number/url/boolean render as <p>) → body serif */
+section[data-key-path] > p,
+section[data-key-path] > ul,
+section[data-key-path] > ol,
+section[data-key-path] > span {
+  font-family:var(--font-body);
+  color:var(--ink);
+  font-size:1.06rem;
+  line-height:1.55;
+  margin:0;
+  max-width:66ch;
+}
+
+/* images (hero, staff photo, gallery) — site treatment */
+section[data-key-path] img {
+  display:block;
+  max-width:100%;
+  height:auto;
+  border-radius:4px;
+  border:1px solid var(--line);
+  margin:.2rem 0;
+}
+
+/* links inside values keep the burgundy underline */
+section[data-key-path] a { color:var(--burgundy); border-bottom:1px solid var(--burgundy); }
+
+/* ---- nested list / object fields (music list, service times, settings) -----
+   Sveltia nests child fields as <section data-key-path="parent.0.child">. Indent
+   them so deep structures stay readable. Labels stay the standard burgundy
+   small-caps — which is exactly how the live site renders these (e.g. the music
+   list's "Setting"/"Psalm" labels, service-time "when" notes). */
+section[data-key-path*="."] {
+  margin:.2rem 0 .55rem !important;
+  padding-left:1rem;
+  border-left:2px solid var(--line);
+}
+section[data-key-path*="."] > p { font-size:1rem; }
+
+/* ============================================================================
+   ARTICLE PROMOTION — make the Markdown collections (News, Main Pages) read
+   like the live article. These field names also appear in a couple of other
+   collections; promoting them there (e.g. an event/document title as a heading)
+   is benign and still on-brand.
+   ============================================================================ */
+
+/* TITLE / FEAST / NAME → the site's display H1 (PageHeader/news-article title).
+   Hide the redundant "Title" label and render the value as a serif heading. */
+section[data-key-path="title"] > h4,
+section[data-key-path="feast"] > h4,
+section[data-key-path="name"] > h4 { display:none; }
+
+section[data-key-path="title"] > p,
+section[data-key-path="feast"] > p,
+section[data-key-path="name"] > p {
+  /* !important: beats Sveltia's `.title.svelte-xxxx { font-size/font-weight }`
+     default, whose --sui-* values are undefined inside the preview iframe. */
+  font-family:var(--font-display) !important;
+  font-weight:500 !important;
+  color:var(--burgundy) !important;
+  font-size:clamp(2.2rem,4.6vw,3.4rem) !important;
+  line-height:1.08 !important;
+  letter-spacing:.005em;
+  max-width:24ch;
+  text-wrap:balance;
+  margin:.1rem 0 .3rem;
+}
+
+/* KICKER (Main Pages) → small label sitting above the title. */
+section[data-key-path="kicker"] > h4 { display:none; }
+section[data-key-path="kicker"] > p {
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.7rem;
+  font-weight:600;
+  color:var(--burgundy);
+}
+
+/* INTRO (Main Pages) → the site's serif-italic standfirst. */
+section[data-key-path="intro"] > h4 { display:none; }
+section[data-key-path="intro"] > p {
+  font-family:var(--font-display);
+  font-style:italic;
+  font-size:clamp(1.3rem,2.6vw,1.7rem);
+  line-height:1.35;
+  color:var(--ink-soft);
+  max-width:44ch;
+}
+
+/* ROLE (Who's Who) → small label under the name. */
+section[data-key-path="role"] > h4 { display:none; }
+section[data-key-path="role"] > p {
+  text-transform:uppercase; letter-spacing:.16em; font-size:.7rem;
+  font-weight:600; color:var(--burgundy);
+}
+
+/* ---- BODY (Markdown) → the site's .prose (src/styles/base.css) ------------- */
+section[data-field-type="markdown"] > h4 { display:none; }   /* hide "Body" label */
+section[data-field-type="markdown"] > div { max-width:68ch; }
+section[data-field-type="markdown"] > div > * + * { margin-top:1.15rem; }
+
+section[data-field-type="markdown"] :is(h2,h3,h4) {
+  font-family:var(--font-display); font-weight:600; line-height:1.1; color:var(--ink);
+}
+section[data-field-type="markdown"] h2 { font-size:clamp(1.9rem,3.4vw,2.6rem); margin-top:2.8rem; }
+section[data-field-type="markdown"] h3 { font-size:clamp(1.5rem,2.4vw,1.9rem); margin-top:2.2rem; }
+section[data-field-type="markdown"] :is(h2,h3) + * { margin-top:1rem; }
+section[data-field-type="markdown"] > div > :is(h2,h3):first-child { margin-top:0; }
+
+section[data-field-type="markdown"] p { max-width:none; font-size:1.06rem; }
+section[data-field-type="markdown"] > div > p:first-of-type { font-size:1.15rem; } /* lead para */
+
+section[data-field-type="markdown"] ul,
+section[data-field-type="markdown"] ol { padding-left:1.4rem; }
+section[data-field-type="markdown"] li { margin-top:.4rem; }
+section[data-field-type="markdown"] ul { list-style:disc; }
+section[data-field-type="markdown"] ol { list-style:decimal; }
+section[data-field-type="markdown"] ul li::marker { color:var(--burgundy); }
+section[data-field-type="markdown"] ol li::marker { color:var(--ink-soft); }
+
+section[data-field-type="markdown"] blockquote {
+  border-left:2px solid var(--burgundy);
+  padding-left:1.4rem;
+  font-family:var(--font-display);
+  font-style:italic;
+  font-size:1.4rem;
+  line-height:1.4;
+  color:var(--ink);
+}
+section[data-field-type="markdown"] blockquote p { max-width:none; font-size:inherit; }
+section[data-field-type="markdown"] strong { font-weight:600; }
+section[data-field-type="markdown"] em { font-style:italic; }
+section[data-field-type="markdown"] a { color:var(--ink); border-bottom:1px solid var(--burgundy); }
+section[data-field-type="markdown"] img { margin-block:1.6rem; border:0; }
+section[data-field-type="markdown"] hr { border:0; border-top:1px solid var(--line); margin-block:2.4rem; }
+
+/* ============================================================================
+   HIDE PURELY-TECHNICAL FIELDS that never render on the public site, so the
+   preview reads like a page rather than a form. (All safe field names.)
+   ============================================================================ */
+section[data-key-path="heroAlt"],
+section[data-key-path="photoAlt"],
+section[data-key-path="draft"],
+section[data-key-path="legacySlug"],
+section[data-key-path="external"] { display:none; }
