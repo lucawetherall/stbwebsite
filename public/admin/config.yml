@@ -8,7 +8,7 @@ backend:
   repo: lucawetherall/stbwebsite
   branch: main
   # Auth Worker (sveltia-cms-auth). MOCKUP value below; at go-live re-point this at the
-  # church-owned Worker if the account/repo moves (see DECISIONS.md go-live checklist).
+  # church-owned Worker if the account/repo moves (see the go-live checklist in CMS-SETUP.md).
   base_url: https://sveltia-cms-auth.luca-wetherall.workers.dev
 
 # MOCKUP URLs — point "view live"/preview links at the temporary Pages site.
@@ -211,7 +211,7 @@ collections:
     files:
       - name: about-us
         label: About Us
-        file: src/content/pages/about-us.mdx
+        file: src/content/pages/about-us.md
         fields: &pf
           - { name: title, label: Title, widget: string }
           - { name: kicker, label: Kicker (small label above the title), widget: string, required: false }
@@ -225,24 +225,24 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list, quote]
             editor_components: [image]
             hint: Edit the wording freely. There is no code to break here.
-      - { name: about-accessibility, label: 'About · Accessibility', file: src/content/pages/about-us/accessibility.mdx, fields: *pf }
-      - { name: about-pastoral-care, label: 'About · Pastoral Care', file: src/content/pages/about-us/pastoral-care.mdx, fields: *pf }
-      - { name: about-social-action, label: 'About · Social Action', file: src/content/pages/about-us/social-action.mdx, fields: *pf }
-      - { name: about-winter-night-shelter, label: 'About · Winter Night Shelter', file: src/content/pages/about-us/social-action/winter-night-shelter.mdx, fields: *pf }
-      - { name: community, label: Community, file: src/content/pages/community.mdx, fields: *pf }
-      - { name: community-food-pantry, label: 'Community · Food Pantry', file: src/content/pages/community/food-pantry-at-st-barnabas.mdx, fields: *pf }
-      - { name: curious-about-christianity, label: Curious about Christianity, file: src/content/pages/curious-about-christianity.mdx, fields: *pf }
-      - { name: families-children, label: Families & Children, file: src/content/pages/families-children.mdx, fields: *pf }
-      - { name: families-childrens-church, label: "Families · Children's Church", file: src/content/pages/families-children/childrens-church-ages-5-9.mdx, fields: *pf }
-      - { name: families-noisy, label: 'Families · Noisy Mass', file: src/content/pages/families-children/noisy.mdx, fields: *pf }
-      - { name: families-youth-group, label: 'Families · Youth Group', file: src/content/pages/families-children/youth-group.mdx, fields: *pf }
-      - { name: life-events, label: Life Events, file: src/content/pages/life-events.mdx, fields: *pf }
-      - { name: memory-cafe, label: Memory Café, file: src/content/pages/memory-cafe.mdx, fields: *pf }
-      - { name: visit, label: Visit, file: src/content/pages/visit.mdx, fields: *pf }
-      - { name: worship-organ, label: 'Worship · St Barnabas Organ', file: src/content/pages/worship/st-barnabas-organ.mdx, fields: *pf }
+      - { name: about-accessibility, label: 'About · Accessibility', file: src/content/pages/about-us/accessibility.md, fields: *pf }
+      - { name: about-pastoral-care, label: 'About · Pastoral Care', file: src/content/pages/about-us/pastoral-care.md, fields: *pf }
+      - { name: about-social-action, label: 'About · Social Action', file: src/content/pages/about-us/social-action.md, fields: *pf }
+      - { name: about-winter-night-shelter, label: 'About · Winter Night Shelter', file: src/content/pages/about-us/social-action/winter-night-shelter.md, fields: *pf }
+      - { name: community, label: Community, file: src/content/pages/community.md, fields: *pf }
+      - { name: community-food-pantry, label: 'Community · Food Pantry', file: src/content/pages/community/food-pantry-at-st-barnabas.md, fields: *pf }
+      - { name: curious-about-christianity, label: Curious about Christianity, file: src/content/pages/curious-about-christianity.md, fields: *pf }
+      - { name: families-children, label: Families & Children, file: src/content/pages/families-children.md, fields: *pf }
+      - { name: families-childrens-church, label: "Families · Children's Church", file: src/content/pages/families-children/childrens-church-ages-5-9.md, fields: *pf }
+      - { name: families-noisy, label: 'Families · Noisy Mass', file: src/content/pages/families-children/noisy.md, fields: *pf }
+      - { name: families-youth-group, label: 'Families · Youth Group', file: src/content/pages/families-children/youth-group.md, fields: *pf }
+      - { name: life-events, label: Life Events, file: src/content/pages/life-events.md, fields: *pf }
+      - { name: memory-cafe, label: Memory Café, file: src/content/pages/memory-cafe.md, fields: *pf }
+      - { name: visit, label: Visit, file: src/content/pages/visit.md, fields: *pf }
+      - { name: worship-organ, label: 'Worship · St Barnabas Organ', file: src/content/pages/worship/st-barnabas-organ.md, fields: *pf }
       - name: worship
         label: Worship
-        file: src/content/pages/worship.mdx
+        file: src/content/pages/worship.md
         fields:
           - { name: title, label: Title, widget: string }
           - { name: kicker, label: Kicker (small label above the title), widget: string, required: false }

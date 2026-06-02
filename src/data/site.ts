@@ -29,9 +29,16 @@ export function assertSiteSettings(s: typeof editable): void {
 
 assertSiteSettings(editable);
 
-// International phone derived from the single editable `phone` (UK 0… → +44 …),
-// so editors never maintain two numbers.
-const phoneIntl = '+44 ' + editable.phone.replace(/^0/, '').replace(/\s+/g, ' ');
+// International phone derived from the single editable `phone`, tolerant of however an
+// editor types it — "020 8998 4079", "+44 20 8998 4079" or "0044 …" all yield "+44 20 …".
+// Strip non-digit/space chars, then drop the international/trunk prefix; the rest keeps
+// its spacing. (Avoids "+44 +44 …" when someone enters the number already in +44 form.)
+const phoneIntl =
+  '+44 ' +
+  editable.phone
+    .replace(/[^\d ]/g, '')
+    .trim()
+    .replace(/^(?:0044|44|0)\s*/, '');
 
 // `technical` is spread LAST so developer-only constants always win over the
 // editor-owned JSON — a CMS editor must never be able to override url/geo/mapEmbed/etc.

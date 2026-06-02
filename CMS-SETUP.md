@@ -41,8 +41,9 @@ How the mockup is wired (for whoever maintains it):
   move the repo into a church GitHub org, and re-create the OAuth app there.
 - **Attach the real domain** to the same Pages project and run the DNS cutover (see
   `DECISIONS.md` §6).
-- **Revert the mockup URLs:** set `display_url`/`site_url` back to `https://www.barnabites.org`,
-  and update `ALLOWED_DOMAINS` + the OAuth app's Homepage/Callback to the real domain.
+- **Revert the mockup URLs:** in `public/admin/config.yml` set `display_url`, `site_url` **and
+  `logout_redirect_url`** back to `https://www.barnabites.org`, and update `ALLOWED_DOMAINS` +
+  the OAuth app's Homepage/Callback to the real domain.
 
 The rest of this document describes that one-time setup from scratch (useful if the church
 rebuilds it under its own accounts at go-live).
@@ -132,8 +133,8 @@ That’s it. The editor is now live at `https://www.barnabites.org/admin`.
 ### A few tips
 - **Photos:** use the image button in a News post to upload a picture; it’s stored with the site.
 - **Drafts:** tick **Draft** to save something without putting it live yet.
-- **Main Pages:** edit the wording freely, but leave anything inside `< >` or any line that
-  starts with `import` exactly as it is — those are layout instructions, not text.
+- **Main Pages:** edit the wording freely — the formatting buttons are all you need, and the
+  pages are plain text, so there is nothing you can type that will break the site.
 
 ---
 
