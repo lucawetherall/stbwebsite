@@ -1,19 +1,30 @@
 ---
-import { getCollection } from 'astro:content';
+import { getRoster, staffInitials } from '../lib/staff';
 
-const people = (await getCollection('staff')).sort(
-  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
-);
+const people = await getRoster();
 ---
 <ul class="staff-grid">
   {people.map((person) => (
-    <li class="staff-card">
-      <p class="staff-card__role label">{person.data.role}</p>
-      <h2 class="staff-card__name serif">{person.data.name}</h2>
-      {person.data.bio && <p class="staff-card__bio">{person.data.bio}</p>}
-      {person.data.email && (
-        <a class="staff-card__email txt-link" href={`mailto:${person.data.email}`}>Email</a>
-      )}
+    <li>
+      <a class="staff-card" href={`/about-us/whos-who/${person.slug}`}>
+        <span class="staff-card__portrait">
+          {person.data.photo ? (
+            <img
+              class="staff-card__photo"
+              src={person.data.photo}
+              alt={`Portrait of ${person.data.name}`}
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <span class="staff-card__monogram serif" aria-hidden="true">
+              {staffInitials(person.data.name)}
+            </span>
+          )}
+        </span>
+        <span class="staff-card__role label">{person.data.role}</span>
+        <span class="staff-card__name serif">{person.data.name}</span>
+      </a>
     </li>
   ))}
 </ul>
@@ -23,22 +34,75 @@ const people = (await getCollection('staff')).sort(
     list-style: none;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.4rem 3rem;
+    gap: 2rem 1.6rem;
   }
   .staff-card {
-    border-top: 1px solid var(--line);
-    padding-top: 1.3rem;
+    display: block;
+    text-decoration: none;
+    color: inherit;
   }
-  .staff-card__role { color: var(--burgundy); }
-  .staff-card__name {
-    margin-top: .6rem;
+  .staff-card__portrait {
+    display: block;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+  }
+  .staff-card__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease;
+  }
+  .staff-card__monogram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
     font-weight: 500;
-    font-size: clamp(1.5rem, 2.6vw, 1.9rem);
-    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: var(--burgundy);
+    background:
+      radial-gradient(120% 120% at 50% 0%, rgba(106, 27, 45, 0.08), transparent 60%),
+      var(--paper-2);
   }
-  .staff-card__bio { margin-top: .7rem; color: var(--ink-soft); font-size: 1rem; }
-  .staff-card__email { margin-top: 1rem; }
-  @media (max-width: 640px) {
-    .staff-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+  .staff-card__role {
+    display: block;
+    margin-top: 1rem;
+  }
+  .staff-card__name {
+    display: inline-block;
+    margin-top: 0.45rem;
+    font-weight: 500;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    line-height: 1.12;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .staff-card:hover .staff-card__name,
+  .staff-card:focus-visible .staff-card__name {
+    border-color: var(--burgundy);
+  }
+  .staff-card:hover .staff-card__photo {
+    transform: scale(1.04);
+  }
+  .staff-card:focus-visible {
+    outline: 2px solid var(--burgundy);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  @media (min-width: 640px) {
+    .staff-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.6rem 2.4rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .staff-card__photo { transition: none; }
+    .staff-card:hover .staff-card__photo { transform: none; }
   }
 </style>

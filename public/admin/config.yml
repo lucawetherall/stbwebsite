@@ -117,11 +117,14 @@ collections:
     identifier_field: name
     sortable_fields: [order]
     summary: '{{order}}. {{name}} — {{role}}'
+    media_folder: /public/images/staff
+    public_folder: /images/staff
     fields:
       - { name: name, label: Name, widget: string }
       - { name: role, label: Role, widget: string }
       - { name: email, label: Email, widget: string, required: false }
-      - { name: bio, label: Short bio, widget: text, required: false }
+      - { name: photo, label: Photo, widget: image, required: false, hint: 'A portrait (tall) headshot works best. Click on a person’s name on the website to see their page.' }
+      - { name: bio, label: Bio, widget: text, required: false, hint: 'Shown on the person’s own page. Leave a blank line between paragraphs.' }
       - { name: order, label: Order (lower shows first), widget: number, value_type: int, required: false }
 
   # ── Documents (PDFs etc.) ────────────────────────────────────────────────────

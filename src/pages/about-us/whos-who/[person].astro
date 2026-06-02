@@ -1,0 +1,137 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getRoster, staffInitials, staffFirstName } from '../../../lib/staff';
+
+export async function getStaticPaths() {
+  const people = await getRoster();
+  return people.map((person) => ({ params: { person: person.slug }, props: { person } }));
+}
+
+const { person } = Astro.props;
+const { name, role, email, photo, bio } = person.data;
+
+const paragraphs = (bio ?? '')
+  .split(/\n{2,}/)
+  .map((p) => p.trim())
+  .filter(Boolean);
+
+const metaDesc = paragraphs.length
+  ? `${role} at St Barnabas Church, Ealing. ${paragraphs[0]}`.slice(0, 200)
+  : `${role} at St Barnabas Church, Ealing.`;
+---
+<Base title={name} description={metaDesc} image={photo}>
+  <article class="person">
+    <div class="wrap person__top">
+      <a class="person__back txt-link" href="/about-us/whos-who">← Who’s Who</a>
+    </div>
+
+    <div class="wrap person__layout">
+      <div class="person__media">
+        {photo ? (
+          <img
+            class="person__photo"
+            src={photo}
+            alt={`Portrait of ${name}`}
+            decoding="async"
+          />
+        ) : (
+          <span class="person__monogram serif" aria-hidden="true">{staffInitials(name)}</span>
+        )}
+      </div>
+
+      <div class="person__body">
+        <p class="label person__role">{role}</p>
+        <h1 class="person__name serif">{name}</h1>
+
+        {email && (
+          <a class="btn person__email" href={`mailto:${email}`}>Email {staffFirstName(name)}</a>
+        )}
+
+        {paragraphs.length > 0 && (
+          <div class="person__bio">
+            {paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div class="wrap">
+      <p class="person__foot">
+        <a class="txt-link" href="/about-us/whos-who">Back to all of Who’s Who</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .person__top {
+    padding-top: clamp(2rem, 5vw, 3.4rem);
+    padding-bottom: clamp(1.4rem, 3vw, 2.2rem);
+  }
+  .person__back { border-bottom-color: transparent; }
+  .person__back:hover { border-bottom-color: var(--burgundy-deep); }
+
+  .person__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.6rem, 4vw, 2.6rem);
+    align-items: start;
+  }
+  .person__media {
+    max-width: 300px;
+  }
+  .person__photo,
+  .person__monogram {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+  }
+  .person__photo {
+    height: auto;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .person__monogram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(3rem, 9vw, 4.6rem);
+    font-weight: 500;
+    color: var(--burgundy);
+    background:
+      radial-gradient(120% 120% at 50% 0%, rgba(106, 27, 45, 0.08), transparent 60%),
+      var(--paper-2);
+  }
+
+  .person__role { margin-bottom: 0.9rem; }
+  .person__name {
+    font-weight: 500;
+    font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+    line-height: 1.06;
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+  .person__email { margin-top: 1.6rem; }
+  .person__bio {
+    margin-top: 1.8rem;
+    max-width: 60ch;
+  }
+  .person__bio > p + p { margin-top: 1.1rem; }
+
+  .person__foot {
+    margin-top: clamp(2.6rem, 6vw, 4rem);
+    margin-bottom: clamp(3rem, 7vw, 6rem);
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (min-width: 760px) {
+    .person__layout {
+      grid-template-columns: minmax(240px, 300px) 1fr;
+      gap: clamp(2.4rem, 5vw, 4.5rem);
+    }
+    .person__media { max-width: none; }
+  }
+</style>
