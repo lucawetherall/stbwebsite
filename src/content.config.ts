@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const pages = defineCollection({
@@ -14,6 +14,9 @@ const pages = defineCollection({
     order: z.number().optional(),
     updated: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    gallery: z
+      .array(z.object({ src: z.string(), alt: z.string() }))
+      .optional(),
   }),
 });
 
@@ -67,6 +70,7 @@ const staff = defineCollection({
     email: z.string().optional(),
     bio: z.string().optional(),
     photo: z.string().optional(),
+    photoAlt: z.string().optional(),
     order: z.number().optional(),
   }),
 });

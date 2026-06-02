@@ -4,11 +4,123 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <title>Content Manager · St Barnabas Church, Ealing</title>
+    <meta name="theme-color" content="#6A1B2D" />
+    <link rel="icon" href="/admin/logo.svg" />
+    <title>St Barnabas Content Manager</title>
+    <script>
+      // Default the editor to light mode. Sveltia has no theme config option and
+      // otherwise follows the OS; we intercept ONLY the prefers-color-scheme query
+      // (every other media query passes through untouched) so the app's default is
+      // light. Relies only on the standard matchMedia API — not Sveltia internals —
+      // so it stays safe across CMS updates. A user can still switch to dark in-app.
+      (function () {
+        var native = window.matchMedia.bind(window);
+        window.matchMedia = function (query) {
+          if (/prefers-color-scheme/i.test(query)) {
+            var wantsLight = /light/i.test(query);
+            return {
+              matches: wantsLight,
+              media: query,
+              onchange: null,
+              addListener: function () {},
+              removeListener: function () {},
+              addEventListener: function () {},
+              removeEventListener: function () {},
+              dispatchEvent: function () { return false; },
+            };
+          }
+          return native(query);
+        };
+      })();
+    </script>
+    <style>
+      /* Brand splash shown until Sveltia mounts and replaces the body. */
+      @font-face {
+        font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 500;
+        font-display: swap;
+        src: url('/fonts/cormorant-garamond-500-normal-latin.woff2') format('woff2');
+      }
+      #stb-splash {
+        position: fixed; inset: 0; z-index: 9999;
+        display: grid; place-items: center;
+        background: #F6F2EA; color: #6A1B2D;
+        font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
+      }
+      #stb-splash .stb-splash__inner { text-align: center; }
+      #stb-splash img { width: 76px; height: 76px; }
+      #stb-splash p { margin-top: 1rem; font-size: 1.45rem; letter-spacing: .01em; }
+    </style>
   </head>
   <body>
-    <!-- Sveltia CMS — pinned for stability. To update, bump the version below and
-         check the changelog: https://github.com/sveltia/sveltia-cms/releases -->
-    <script src="https://unpkg.com/@sveltia/cms@0.165.1/dist/sveltia-cms.js" type="module"></script>
+    <!-- Removed automatically when Sveltia CMS mounts into <body>. -->
+    <div id="stb-splash">
+      <div class="stb-splash__inner">
+        <img src="/admin/logo.svg" alt="St Barnabas" width="76" height="76" />
+        <p>Preparing the editor…</p>
+      </div>
+    </div>
+
+    <!-- Sveltia CMS — pinned for stability. Loaded as a CLASSIC script (no type=module)
+         so the global `CMS` exists synchronously for registerPreviewStyle below.
+         To update, bump the version and check the changelog:
+         https://github.com/sveltia/sveltia-cms/releases -->
+    <script src="https://unpkg.com/@sveltia/cms@0.165.1/dist/sveltia-cms.js"></script>
+    <script>
+      // Brand the editor's preview pane so a News post / page previews like the live site.
+      CMS.registerPreviewStyle(
+        `
+        @font-face { font-family:'Cormorant Garamond'; font-style:normal; font-weight:500;
+          src:url('/fonts/cormorant-garamond-500-normal-latin.woff2') format('woff2'); }
+        @font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:400;
+          src:url('/fonts/source-serif-4-400-normal-latin.woff2') format('woff2'); }
+        @font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:600;
+          src:url('/fonts/source-serif-4-600-normal-latin.woff2') format('woff2'); }
+        body { background:#F6F2EA; color:#1A1611; line-height:1.6;
+          font-family:'Source Serif 4', Georgia, serif;
+          padding:2rem clamp(1rem,4vw,3rem); }
+        h1,h2,h3,h4 { font-family:'Cormorant Garamond', Garamond, serif; color:#6A1B2D;
+          font-weight:500; line-height:1.1; margin:1.6rem 0 .6rem; }
+        h1 { font-size:2.4rem; } h2 { font-size:1.8rem; } h3 { font-size:1.4rem; }
+        a { color:#6A1B2D; }
+        p, li { max-width:66ch; }
+        blockquote { border-left:3px solid #6A1B2D; margin:1.2rem 0; padding:.2rem 0 .2rem 1.1rem;
+          color:#6A6051; font-style:italic; }
+        img { max-width:100%; height:auto; border-radius:4px; }
+        hr { border:0; border-top:1px solid rgba(26,22,17,.2); margin:2rem 0; }
+        `,
+        { raw: true }
+      );
+    </script>
+    <script>
+      // Sveltia mounts its UI as a sibling of the splash (it does not clear <body>),
+      // so fade the splash out as soon as the editor's own element appears.
+      (function () {
+        var splash = document.getElementById('stb-splash');
+        if (!splash) return;
+        function isAppNode(el) {
+          return el.id !== 'stb-splash' && el.tagName !== 'SCRIPT';
+        }
+        function removeSplash() {
+          if (!splash) return;
+          splash.style.transition = 'opacity .4s ease';
+          splash.style.opacity = '0';
+          var s = splash;
+          splash = null;
+          setTimeout(function () { s.remove(); }, 450);
+        }
+        function check() {
+          for (var i = 0; i < document.body.children.length; i++) {
+            if (isAppNode(document.body.children[i])) { removeSplash(); return true; }
+          }
+          return false;
+        }
+        if (!check()) {
+          var obs = new MutationObserver(function () { if (check()) obs.disconnect(); });
+          obs.observe(document.body, { childList: true });
+          // Fallback: never let the splash linger if mount detection ever misses.
+          setTimeout(function () { obs.disconnect(); removeSplash(); }, 8000);
+        }
+      })();
+    </script>
   </body>
 </html>

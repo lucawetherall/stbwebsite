@@ -12,7 +12,7 @@ const people = await getRoster();
             <img
               class="staff-card__photo"
               src={person.data.photo}
-              alt={`Portrait of ${person.data.name}`}
+              alt={person.data.photoAlt ?? `Portrait of ${person.data.name}`}
               loading="lazy"
               decoding="async"
             />

@@ -36,6 +36,17 @@ const fmtDate = (d: Date) =>
                 <span class="news-row__title serif">{post.data.title}</span>
                 {post.data.category && <span class="news-row__cat">{post.data.category}</span>}
               </span>
+              {post.data.hero && (
+                <img
+                  class="news-row__thumb"
+                  src={post.data.hero}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  width="128"
+                  height="80"
+                />
+              )}
             </a>
           </li>
         ))}
@@ -58,7 +69,7 @@ const fmtDate = (d: Date) =>
   .news-row:last-child { border-bottom: 1px solid var(--line); }
   .news-row__link {
     display: grid;
-    grid-template-columns: 180px 1fr;
+    grid-template-columns: 180px 1fr auto;
     gap: 1.5rem;
     align-items: baseline;
     text-decoration: none;
@@ -93,7 +104,16 @@ const fmtDate = (d: Date) =>
     font-weight: 600;
     color: var(--burgundy);
   }
+  /* Optional header-image thumbnail — only present when a post has one. */
+  .news-row__thumb {
+    width: 128px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    align-self: center;
+  }
   @media (max-width: 560px) {
     .news-row__link { grid-template-columns: 1fr; gap: .4rem; }
+    .news-row__thumb { width: 100%; height: auto; aspect-ratio: 16 / 9; margin-top: .5rem; }
   }
 </style>

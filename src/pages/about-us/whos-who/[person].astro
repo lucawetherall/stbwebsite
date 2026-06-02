@@ -8,7 +8,7 @@ export async function getStaticPaths() {
 }
 
 const { person } = Astro.props;
-const { name, role, email, photo, bio } = person.data;
+const { name, role, email, photo, photoAlt, bio } = person.data;
 
 const paragraphs = (bio ?? '')
   .split(/\n{2,}/)
@@ -31,7 +31,7 @@ const metaDesc = paragraphs.length
           <img
             class="person__photo"
             src={photo}
-            alt={`Portrait of ${name}`}
+            alt={photoAlt ?? `Portrait of ${name}`}
             decoding="async"
           />
         ) : (
