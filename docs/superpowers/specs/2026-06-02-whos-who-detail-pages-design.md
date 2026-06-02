@@ -15,7 +15,8 @@ own page with a portrait photo and full bio. Content is ported from the current 
   `src/content/staff/` set of 7.
 - **Everyone is clickable.** People without a photo/bio (Hugh Mather) get a thin page with a
   **monogram** (initials) in place of a portrait and just their role.
-- **Bios** are taken **verbatim** from the live site (editable later in the CMS).
+- **Bios** are taken from the live site **with small, unambiguous typo/grammar fixes only**
+  (listed under "Bio copy-edits" below); editable later in the CMS.
 - **Email moves off the grid cards** onto the detail pages; the grid card shows portrait + role + name.
 
 ## Architecture
@@ -62,7 +63,8 @@ Astro. The detail route is more specific than `src/pages/[...slug].astro`, so th
 - Grid: 1 col (mobile) → 2 (tablet) → 3 (desktop) via `auto-fill minmax(~220px, 1fr)`.
 
 ### Content & assets
-- Populate the 6 live bios into the matching `src/content/staff/*.json` `bio` fields (verbatim).
+- Populate the 6 live bios into the matching `src/content/staff/*.json` `bio` fields (live copy with
+  the "Bio copy-edits" below applied).
 - Download the 6 portraits from the live ChurchDesk `/uploads/...webp` URLs into
   `public/images/staff/<slug>.webp` (normalise/cap width ~800px with `sharp`); set `photo:` on each.
 - Hugh Mather: no bio/photo → monogram + role-only page.
@@ -85,8 +87,18 @@ Astro. The detail route is more specific than `src/pages/[...slug].astro`, so th
 | Nick Barnes | Verger | parish.office@barnabites.org | `/uploads/HlgIaXUS/320x0_320x0/thumbnail_img_1664_1__msi___jpg.webp` |
 | Hugh Mather | Organist | — | (none — monogram) |
 
-Full bio text for each is captured from `https://www.barnabites.org/about-us/whos-who` and will be
-pasted verbatim into the JSON `bio` fields during implementation.
+Full bio text for each is captured from `https://www.barnabites.org/about-us/whos-who` and pasted
+into the JSON `bio` fields during implementation, with the small fixes below applied.
+
+### Bio copy-edits (small fixes only — no stylistic rewriting)
+
+- **Valerie Aitken** — run-on split: "I married Stephen in 1967 we moved back to Ealing in 1977…"
+  → "I married Stephen in 1967. We moved back to Ealing in 1977…"
+- **Valerie Aitken** — "Institut Francais" → "Institut Français" (cedilla).
+- **Luca Wetherall** — "a degree in Music **at** the University of Oxford" → "…**from** the
+  University of Oxford".
+
+Sarah Howard-Jones, Felicity Mather, Jenny Krige and Nick Barnes need no corrections.
 
 ## Verification
 
@@ -100,8 +112,9 @@ pasted verbatim into the JSON `bio` fields during implementation.
 
 - **Photo reuse rights** — these are already-public parish headshots, but confirm at go-live
   alongside `DECISIONS.md` §3.7 (photography rights).
-- **Roster freshness** — a web search hinted the team may have changed (a "Harry Guthrie" as Director
-  of Music; a Gospel Choir director). The live page as fetched on 2026-06-02 still shows the lineup
-  above; user confirmed "live 6 + Hugh Mather." Revisit if the parish updates the team.
+- **Roster freshness** — resolved. A web search had surfaced a "Harry Guthrie" (Director of Music)
+  and "Henry Tozer" (Gospel Choir); the user confirmed on 2026-06-02 that **both have since left**,
+  so they are correctly excluded. Roster stands at live 6 + Hugh Mather. Revisit if the parish
+  updates the team.
 - The `bio` paragraph-splitting is deliberately plain (no markdown engine). If rich bios (links,
   lists) are ever needed, upgrade `bio` to a rendered-markdown field then.
