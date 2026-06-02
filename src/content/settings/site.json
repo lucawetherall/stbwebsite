@@ -1,0 +1,36 @@
+{
+  "name": "St Barnabas Church, Ealing",
+  "shortName": "St Barnabas, Ealing",
+  "locality": "Pitshanger Lane, London W5 1QG",
+  "tagline": "The Church of England parish church of Pitshanger",
+  "phone": "020 8998 4079",
+  "emails": {
+    "office": "parish.office@barnabites.org",
+    "vicar": "vicar@barnabites.org",
+    "music": "music@barnabites.org",
+    "safeguarding": "safeguarding@barnabites.org",
+    "childrensChampion": "childrens.champion@barnabites.org"
+  },
+  "people": {
+    "vicar": "Mother Sarah Howard-Jones",
+    "directorOfMusic": "Luca Wetherall",
+    "organist": "Hugh Mather"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/barnabites/",
+    "instagram": "https://www.instagram.com/ealingbarnabites",
+    "youtube": "https://www.youtube.com/@stbarnabasealing2270"
+  },
+  "giving": "https://www.parishgiving.org.uk/donors/find-your-parish/ealing-st-barnabas-ealing/",
+  "newsletterArchive": "https://app.churchdesk.com/public/newsletter/6b44359c-38fc-4441-812f-3a62e1fce3c2",
+  "diocesanSafeguardingPolicy": "https://www.london.anglican.org/wp-content/uploads/2025/07/Diocese-of-London-Safeguarding-policy-v10.3.pdf",
+  "affiliations": [
+    { "name": "Inclusive Church", "url": "https://www.inclusive-church.org/" },
+    { "name": "Church of England", "url": "https://www.churchofengland.org/" }
+  ],
+  "safeguardingLeads": [
+    { "role": "Parish Safeguarding Officer", "name": "Pat Chapman", "email": "safeguarding@barnabites.org" },
+    { "role": "Children's Champion", "name": "Helen Ward", "email": "childrens.champion@barnabites.org" },
+    { "role": "Diocesan Safeguarding Advisor", "name": "Angela Colman", "email": "angela.colman@london.anglican.org" }
+  ]
+}
