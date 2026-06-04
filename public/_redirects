@@ -12,6 +12,9 @@ https://barnabites.org/*  https://www.barnabites.org/:splat  301!
 # Thin /venues page merged into /venue-hire
 /venues  /venue-hire/  301
 
+# Memory Café page moved under its Community section
+/memory-cafe  /community/memory-cafe/  301
+
 # ── Blog posts: 129 ChurchDesk /b/blog-* URLs → /news/<slug>/  (generated) ──
 /b/blog-112361-two-ministry-team-announcements  /news/two-ministry-team-announcements/  301
 /b/blog-109150-giving-campaign-2022  /news/giving-campaign-2022/  301

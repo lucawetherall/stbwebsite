@@ -5,7 +5,7 @@ category: "News"
 legacySlug: "b/blog-123102-annual-meeting-sunday-21-may-2023-10-30-am"
 ---
 
-This year the Annual Meeting and Annual Meeting of Parishioners will be underpinned by worship at **10:30 am on Sunday 21 May**. 
+This year the Annual Meeting and Annual Meeting of Parishioners will be underpinned by worship at **10.30am on Sunday 21 May**. 
 
 A visual summary report of the Social Impact of St Barnabas 2022-2023 [can be found here](https://stbarnabasealing.churchdesk.com/file/1604607).
 

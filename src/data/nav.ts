@@ -8,22 +8,6 @@ export interface NavItem {
 export const nav: NavItem[] = [
   { label: 'Visit', href: '/visit' },
   {
-    label: 'About',
-    href: '/about-us',
-    children: [
-      { label: "Who's Who", href: '/about-us/whos-who' },
-      { label: 'Accessibility', href: '/about-us/accessibility' },
-      { label: 'Pastoral Care', href: '/about-us/pastoral-care' },
-      {
-        label: 'Social Action',
-        href: '/about-us/social-action',
-        children: [
-          { label: 'Winter Night Shelter', href: '/about-us/social-action/winter-night-shelter' },
-        ],
-      },
-    ],
-  },
-  {
     label: 'Worship',
     href: '/worship',
     children: [
@@ -32,38 +16,58 @@ export const nav: NavItem[] = [
       { label: 'Special Services', href: '/worship/special-services' },
       { label: 'Life Events', href: '/life-events' },
       { label: 'Worship Online', href: '/worship/online' },
-      { label: 'Music', href: '/worship/music' },
+    ],
+  },
+  {
+    label: 'Music',
+    href: '/worship/music',
+    children: [
       { label: 'St Barnabas Organ', href: '/worship/st-barnabas-organ' },
     ],
   },
   {
-    label: 'Community',
-    href: '/community',
+    label: 'About',
+    href: '/about-us',
     children: [
-      { label: 'Pitshanger Pictures', href: '/community/pitshanger-pictures' },
-      { label: 'Food Pantry', href: '/community/food-pantry-at-st-barnabas' },
-      { label: 'Memory Café', href: '/memory-cafe' },
+      { label: "Who's Who", href: '/about-us/whos-who' },
+      { label: 'Pastoral Care', href: '/about-us/pastoral-care' },
+      {
+        label: 'Social Action',
+        href: '/about-us/social-action',
+        children: [
+          { label: 'Winter Night Shelter', href: '/about-us/social-action/winter-night-shelter' },
+        ],
+      },
+      { label: 'Curious about Christianity?', href: '/curious-about-christianity' },
+      { label: 'Accessibility', href: '/about-us/accessibility' },
     ],
   },
   {
     label: 'Families',
     href: '/families-children',
     children: [
-      { label: 'Youth Group', href: '/families-children/youth-group' },
-      { label: "Children's Church", href: '/families-children/childrens-church-ages-5-9' },
       { label: 'Noisy Mass', href: '/families-children/noisy' },
+      { label: "Children's Church", href: '/families-children/childrens-church-ages-5-9' },
+      { label: 'Youth Group', href: '/families-children/youth-group' },
     ],
   },
-  { label: 'Hire', href: '/venue-hire' },
+  {
+    label: 'Community',
+    href: '/community',
+    children: [
+      { label: 'Food Pantry', href: '/community/food-pantry-at-st-barnabas' },
+      { label: 'Memory Café', href: '/community/memory-cafe' },
+      { label: 'Pitshanger Pictures', href: '/community/pitshanger-pictures' },
+    ],
+  },
   { label: 'News', href: '/news' },
-  { label: 'Contact', href: '/contact-us' },
   { label: 'Give', href: '/give', cta: true },
 ];
 
 // Utility links (footer / overflow)
 export const utilityNav: NavItem[] = [
-  { label: 'Contact Us', href: '/contact-us' },
-  { label: 'Safeguarding', href: '/safeguarding' },
-  { label: 'Curious about Christianity?', href: '/curious-about-christianity' },
+  { label: 'Contact', href: '/contact-us' },
+  { label: 'Venue hire', href: '/venue-hire' },
   { label: 'Documents', href: '/documents' },
+  { label: 'Safeguarding', href: '/safeguarding' },
 ];

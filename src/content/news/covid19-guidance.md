@@ -66,7 +66,7 @@ We know how important it is for everyone to stay connected in this way and have 
 
 1. The Lent course, ’7 Sacred Spaces’ will now be live streamed by Mother Valerie Aitken on Saturday 21 March (details and link to be confirmed shortly).   
 
-2. The 10:30 am Mass on Sunday 22 March (Communion by Extension) will be live streamed. The order of service will be available for download. Please join in with the service wherever you are. 
+2. The 10.30am Mass on Sunday 22 March (Communion by Extension) will be live streamed. The order of service will be available for download. Please join in with the service wherever you are. 
 
 3. Morning Prayer on Tuesday 24 March will be lived streamed at 9:30 am.
 
@@ -94,7 +94,7 @@ This is a time of anxiety and uncertainty. However, we are a strong, creative a
 
 Here are a few of the ways the church is organising to stay united in prayer and to meet the needs of neighbours: 
 
-1) We are investigating how the 10:30am High Mass can be offered by a skeleton team and live-streamed on the internet. More details to follow.
+1) We are investigating how the 10.30am High Mass can be offered by a skeleton team and live-streamed on the internet. More details to follow.
 
 2) A list of parishioners who would like phone check-ins or who may need practical help (e.g. shopping) is being compiled. **Please let us know if you would like to come onto this list or alternatively can volunteer support** (phone calls, shopping etc...).
 

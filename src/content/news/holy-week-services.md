@@ -30,4 +30,4 @@ Good Fri:
 
 Holy Sat, 8 pm - **_Great Vigil of Easter_** (with lighting of the new fire)  
 
-Easter Sun, 10:30 am - **_First Mass of Easter_** (remember your hand bells!)
+Easter Sun, 10.30am - **_First Mass of Easter_** (remember your hand bells!)

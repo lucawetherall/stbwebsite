@@ -1,5 +1,5 @@
 ---
-title: "Advent and Christmas 2019 (Copy)"
+title: "Advent and Christmas 2019"
 date: 2019-12-09
 category: "News"
 author: "Justin Dodd"

@@ -6,4 +6,4 @@ author: "Justin Dodd"
 legacySlug: "b/blog-88492-henry-returns-to-noisy-mass"
 ---
 
-That’s right! Henry is back at Noisy Mass, every Sunday at 10:30 am in the hall, to lead to lead favourite music for the littles during the service. Check out him warming up with the much loved calypso doxology:
+That’s right! Henry is back at Noisy Mass, every Sunday at 10.30am in the hall, to lead favourite music for the littles during the service. Check out him warming up with the much loved calypso doxology:

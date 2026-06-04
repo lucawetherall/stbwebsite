@@ -16,7 +16,7 @@ where we share a call to be signs of hope and to walk alongside people in every 
   1–3pm, no referral needed.
 - **[Pitshanger Pictures](/community/pitshanger-pictures)** — our community cinema, screening
   films that spark conversation.
-- **[Memory Café](/memory-cafe)** — a warm welcome every Thursday morning for those living
+- **[Memory Café](/community/memory-cafe)** — a warm welcome every Thursday morning for those living
   with memory difficulties, and their carers.
 - **Garden Team** — tends our churchyard and garden, meeting on the first Saturday morning of
   the month (with refreshments). New hands are always welcome.

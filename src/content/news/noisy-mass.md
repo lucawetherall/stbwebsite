@@ -8,7 +8,7 @@ legacySlug: "b/blog-47885-noisy-mass"
 
 <img src="/images/news/419c042a-noisy.mass.with.stay.play.png" alt="Noisy Mass" loading="lazy" decoding="async">
 
-A short, lively and interactive service, yummy breakfast and STAY & PLAY! Come to our child-friendly space with lots of toys and fun to be shared. It's a great opportunity for parents to chat over tea and coffee, while little ones are having fun with their friends. And it's FREE! Hope to see you there <img src="/images/news/62da5191-1f603.png" alt="Noisy Mass" loading="lazy" decoding="async">
+A short, lively and interactive service, yummy breakfast and STAY & PLAY! Come to our child-friendly space with lots of toys and fun to be shared. It's a great opportunity for parents to chat over tea and coffee, while little ones are having fun with their friends. And it's FREE! Hope to see you there.
 
 * * *
 
