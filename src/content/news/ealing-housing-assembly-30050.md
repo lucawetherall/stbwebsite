@@ -30,7 +30,7 @@ An Accountability Assembly is a means of delivering active citizenship and publi
 
 **Isn’t this just another political protest?**
 
-Citizens Assemblies are not a political hustings. There is.a strict code of conduct during proceedings - for example no heckling or jeering will be tolerated. The agenda is controlled and the political leaders attending will have been briefed in advance. Overall, assemblies are run on the principles of organised engagement with decision-makers, clear asks, courtesy and broad based citizen representation. 
+Citizens Assemblies are not a political hustings. There is a strict code of conduct during proceedings - for example no heckling or jeering will be tolerated. The agenda is controlled and the political leaders attending will have been briefed in advance. Overall, assemblies are run on the principles of organised engagement with decision-makers, clear asks, courtesy and broad based citizen representation. 
 
 **How does housing affordability affect St Barnabas and our local community?**
 

@@ -808,7 +808,7 @@ collections:
       - { name: families-noisy, label: 'Families · Noisy Mass', file: src/content/pages/families-children/noisy.mdx, fields: *pf }
       - { name: families-youth-group, label: 'Families · Youth Group', file: src/content/pages/families-children/youth-group.mdx, fields: *pf }
       - { name: life-events, label: Life Events, file: src/content/pages/life-events.mdx, fields: *pf }
-      - { name: memory-cafe, label: Memory Café, file: src/content/pages/memory-cafe.mdx, fields: *pf }
+      - { name: community-memory-cafe, label: 'Community · Memory Café', file: src/content/pages/community/memory-cafe.md, fields: *pf }
       - { name: visit, label: Visit, file: src/content/pages/visit.mdx, fields: *pf }
       - { name: worship-organ, label: 'Worship · St Barnabas Organ', file: src/content/pages/worship/st-barnabas-organ.mdx, fields: *pf }
       - name: worship

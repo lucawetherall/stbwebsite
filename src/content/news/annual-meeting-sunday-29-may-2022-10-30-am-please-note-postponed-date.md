@@ -1,11 +1,11 @@
 ---
-title: "Annual Meeting, Sunday 29 May 2022, 10:30 am (PLEASE NOTE postponed date)"
+title: "Annual Meeting, Sunday 29 May 2022, 10.30am (PLEASE NOTE postponed date)"
 date: 2022-05-13
 category: "News"
 legacySlug: "b/blog-102442-annual-meeting-sunday-29-may-2022-10-30-am-please-note-postponed-date"
 ---
 
-This year the Annual Meeting and Annual Meeting of Parishioners will be underpinned by worship at **10:30 am on Sunday 29 May**. 
+This year the Annual Meeting and Annual Meeting of Parishioners will be underpinned by worship at **10.30am on Sunday 29 May**. 
 
 The revised [Electoral Roll for 2022/2023 can be found here.](https://landing.churchdesk.com/file/1117179) 
 

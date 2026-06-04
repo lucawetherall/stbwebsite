@@ -234,13 +234,13 @@ collections:
       - { name: about-winter-night-shelter, label: 'About · Winter Night Shelter', file: src/content/pages/about-us/social-action/winter-night-shelter.md, fields: *pf }
       - { name: community, label: Community, file: src/content/pages/community.md, fields: *pf }
       - { name: community-food-pantry, label: 'Community · Food Pantry', file: src/content/pages/community/food-pantry-at-st-barnabas.md, fields: *pf }
+      - { name: community-memory-cafe, label: 'Community · Memory Café', file: src/content/pages/community/memory-cafe.md, fields: *pf }
       - { name: curious-about-christianity, label: Curious about Christianity, file: src/content/pages/curious-about-christianity.md, fields: *pf }
       - { name: families-children, label: Families & Children, file: src/content/pages/families-children.md, fields: *pf }
       - { name: families-childrens-church, label: "Families · Children's Church", file: src/content/pages/families-children/childrens-church-ages-5-9.md, fields: *pf }
       - { name: families-noisy, label: 'Families · Noisy Mass', file: src/content/pages/families-children/noisy.md, fields: *pf }
       - { name: families-youth-group, label: 'Families · Youth Group', file: src/content/pages/families-children/youth-group.md, fields: *pf }
       - { name: life-events, label: Life Events, file: src/content/pages/life-events.md, fields: *pf }
-      - { name: memory-cafe, label: Memory Café, file: src/content/pages/memory-cafe.md, fields: *pf }
       - { name: visit, label: Visit, file: src/content/pages/visit.md, fields: *pf }
       - { name: worship-organ, label: 'Worship · St Barnabas Organ', file: src/content/pages/worship/st-barnabas-organ.md, fields: *pf }
       - name: worship
