@@ -1,0 +1,115 @@
+---
+interface Item {
+  title: string;
+  blurb: string;
+  href: string;
+}
+
+// Homepage layout is developer-owned (the "cornerstone" layer); these cards link
+// out to the editor-owned pages for each ministry.
+const items: Item[] = [
+  {
+    title: 'Food Pantry',
+    blurb: 'Affordable food and a friendly welcome, every Wednesday.',
+    href: '/community/food-pantry-at-st-barnabas',
+  },
+  {
+    title: 'Memory Café',
+    blurb: 'Company and support for people living with memory loss, and their carers.',
+    href: '/community/memory-cafe',
+  },
+  {
+    title: 'Winter Night Shelter',
+    blurb: 'Hosting and volunteering with the Ealing Churches night shelter.',
+    href: '/about-us/social-action/winter-night-shelter',
+  },
+  {
+    title: 'Pitshanger Pictures',
+    blurb: 'Our community cinema — a fine film on the big screen.',
+    href: '/community/pitshanger-pictures',
+  },
+];
+---
+<section class="community-band" aria-labelledby="community-band-heading">
+  <div class="wrap">
+    <p class="label community-band__kicker">In our community</p>
+    <h2 id="community-band-heading" class="community-band__title serif">Open through the week</h2>
+    <p class="community-band__intro">
+      St Barnabas is more than a Sunday congregation — our doors are open to our neighbours across
+      the week.
+    </p>
+
+    <ul class="community-band__grid">
+      {items.map((item) => (
+        <li class="community-card">
+          <a class="community-card__link" href={item.href}>
+            <span class="community-card__title serif">{item.title}</span>
+            <span class="community-card__blurb">{item.blurb}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="community-band__foot">
+      Marking a baptism, wedding or funeral?
+      <a class="txt-link" href="/life-events">Life Events →</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .community-band {
+    background: var(--paper-2);
+    border-top: 2px solid var(--burgundy);
+    padding-block: clamp(2.6rem, 6vw, 4rem);
+  }
+  .community-band__kicker { color: var(--burgundy); display: block; }
+  .community-band__title {
+    margin-top: 0.9rem;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+    line-height: 1.04;
+    max-width: 18ch;
+  }
+  .community-band__intro {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 54ch;
+  }
+  .community-band__grid {
+    list-style: none;
+    margin-top: 1.8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .community-card { background: var(--paper); }
+  .community-card__link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    height: 100%;
+    padding: 1.2rem 1.3rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.2s;
+  }
+  .community-card__link:hover,
+  .community-card__link:focus-visible { background: var(--paper-2); }
+  .community-card__title { font-size: 1.18rem; font-weight: 500; }
+  .community-card__link:hover .community-card__title,
+  .community-card__link:focus-visible .community-card__title { color: var(--burgundy); }
+  .community-card__blurb { font-size: 0.92rem; line-height: 1.5; color: var(--ink-soft); }
+  .community-band__foot {
+    margin-top: 1.6rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink);
+  }
+</style>
