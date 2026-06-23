@@ -1,0 +1,48 @@
+---
+import MapEmbed from './MapEmbed.astro';
+import { site } from '../data/site';
+
+// Developer-owned layout for the Plan Your Visit page; the warm walkthrough stays
+// editable in visit.md. Directions open Google Maps routed to the church's coordinates.
+const directions = `https://www.google.com/maps/dir/?api=1&destination=${site.geo.lat},${site.geo.lng}`;
+---
+<section class="visit-details" aria-label="Visiting at a glance">
+  <div class="visit-glance">
+    <div class="visit-glance__item">
+      <p class="label visit-glance__label">Main service</p>
+      <p class="visit-glance__lead serif">Sung Mass</p>
+      <p class="visit-glance__sub">Sundays at 10.30am — about an hour and a quarter. Children are welcome.</p>
+    </div>
+    <div class="visit-glance__item">
+      <p class="label visit-glance__label">Where</p>
+      <p class="visit-glance__lead serif">St Barnabas Church</p>
+      <p class="visit-glance__sub">On the corner of Pitshanger Lane &amp; Denison Road, {site.address.postcode}</p>
+    </div>
+  </div>
+
+  <p class="visit-details__actions">
+    <a class="btn btn--solid" href={directions} target="_blank" rel="noopener">Get directions</a>
+    <a class="btn" href="/contact-us">Ask us a question</a>
+  </p>
+
+  <div class="visit-details__map">
+    <MapEmbed />
+  </div>
+</section>
+
+<style>
+  .visit-details { margin-top: clamp(2.4rem, 5vw, 3.4rem); }
+  .visit-glance {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .visit-glance__item { background: var(--paper-2); padding: 1.3rem 1.4rem; }
+  .visit-glance__label { display: block; color: var(--burgundy); margin-bottom: 0.5rem; }
+  .visit-glance__lead { font-size: 1.4rem; font-weight: 500; line-height: 1.1; }
+  .visit-glance__sub { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.5; }
+  .visit-details__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.6rem 0; }
+  .visit-details__map { margin-top: 1.4rem; }
+</style>

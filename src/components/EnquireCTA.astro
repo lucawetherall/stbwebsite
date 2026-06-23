@@ -1,0 +1,47 @@
+---
+import { site } from '../data/site';
+
+// Developer-owned call-to-action for the Life Events page; the pastoral prose stays
+// editable in life-events.md. Each button opens a pre-addressed email to the parish office.
+const rites = [
+  { label: 'Enquire about a baptism', subject: 'Baptism enquiry' },
+  { label: 'Enquire about a wedding', subject: 'Wedding enquiry' },
+  { label: 'Enquire about a funeral', subject: 'Funeral enquiry' },
+];
+---
+<aside class="enquire" aria-labelledby="enquire-heading">
+  <p class="label enquire__kicker">Make an enquiry</p>
+  <h2 id="enquire-heading" class="enquire__title serif">We would be glad to hear from you</h2>
+  <p class="enquire__body">
+    There is no need to be a regular churchgoer to ask. Choose what you are enquiring about below,
+    or <a class="txt-link" href="/contact-us">contact the parish office</a> directly.
+  </p>
+
+  <p class="enquire__actions">
+    {rites.map((rite) => (
+      <a class="btn" href={`mailto:${site.emails.office}?subject=${encodeURIComponent(rite.subject)}`}>{rite.label}</a>
+    ))}
+  </p>
+
+  <p class="enquire__note">You can also speak to a member of the clergy at any of our services.</p>
+</aside>
+
+<style>
+  .enquire {
+    margin-top: clamp(2.4rem, 5vw, 3.4rem);
+    background: var(--paper-2);
+    border-top: 2px solid var(--burgundy);
+    padding: clamp(1.8rem, 4vw, 2.6rem);
+  }
+  .enquire__kicker { color: var(--burgundy); display: block; }
+  .enquire__title {
+    margin-top: 0.8rem;
+    font-weight: 500;
+    font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+    line-height: 1.06;
+    max-width: 22ch;
+  }
+  .enquire__body { margin-top: 1rem; max-width: 56ch; }
+  .enquire__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.6rem; }
+  .enquire__note { margin-top: 1.3rem; color: var(--ink-soft); font-size: 0.95rem; }
+</style>
