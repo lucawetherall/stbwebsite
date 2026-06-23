@@ -30,6 +30,7 @@ export const nav: NavItem[] = [
     href: '/about-us',
     children: [
       { label: "Who's Who", href: '/about-us/whos-who' },
+      { label: 'Our History', href: '/about-us/history' },
       { label: 'Pastoral Care', href: '/about-us/pastoral-care' },
       {
         label: 'Social Action',
