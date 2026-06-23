@@ -64,8 +64,8 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
                     <li>
                       <a
                         href={child.href}
-                        class:list={['submenu__link', isActive(child.href) && 'is-active']}
-                        aria-current={isActive(child.href) ? 'page' : undefined}
+                        class:list={['submenu__link', isActive(child.href) && isTopActive(item) && 'is-active']}
+                        aria-current={isActive(child.href) && isTopActive(item) ? 'page' : undefined}
                       >{child.label}</a>
                       {child.children && (
                         <ul class="submenu__sublist">
@@ -73,8 +73,8 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
                             <li>
                               <a
                                 href={g.href}
-                                class:list={['submenu__link submenu__link--nested', isActive(g.href) && 'is-active']}
-                                aria-current={isActive(g.href) ? 'page' : undefined}
+                                class:list={['submenu__link submenu__link--nested', isActive(g.href) && isTopActive(item) && 'is-active']}
+                                aria-current={isActive(g.href) && isTopActive(item) ? 'page' : undefined}
                               >{g.label}</a>
                             </li>
                           ))}
@@ -117,11 +117,11 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
             <ul>
               {item.children.map((child) => (
                 <li>
-                  <a href={child.href} class:list={[isActive(child.href) && 'is-active']}>{child.label}</a>
+                  <a href={child.href} class:list={[isActive(child.href) && isTopActive(item) && 'is-active']}>{child.label}</a>
                   {child.children && (
                     <ul>
                       {child.children.map((g) => (
-                        <li><a href={g.href} class:list={[isActive(g.href) && 'is-active']}>{g.label}</a></li>
+                        <li><a href={g.href} class:list={[isActive(g.href) && isTopActive(item) && 'is-active']}>{g.label}</a></li>
                       ))}
                     </ul>
                   )}

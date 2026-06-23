@@ -14,7 +14,6 @@ export const nav: NavItem[] = [
       { label: 'Sundays', href: '/worship/sundays' },
       { label: 'Weekdays', href: '/worship/weekdays' },
       { label: 'Special Services', href: '/worship/special-services' },
-      { label: 'Life Events', href: '/life-events' },
       { label: 'Worship Online', href: '/worship/online' },
     ],
   },
@@ -26,19 +25,14 @@ export const nav: NavItem[] = [
       { label: 'St Barnabas Organ', href: '/music/st-barnabas-organ' },
     ],
   },
+  { label: 'Life Events', href: '/life-events' },
   {
     label: 'About',
     href: '/about-us',
     children: [
       { label: "Who's Who", href: '/about-us/whos-who' },
       { label: 'Pastoral Care', href: '/about-us/pastoral-care' },
-      {
-        label: 'Social Action',
-        href: '/about-us/social-action',
-        children: [
-          { label: 'Winter Night Shelter', href: '/about-us/social-action/winter-night-shelter' },
-        ],
-      },
+      { label: 'Social Action', href: '/about-us/social-action' },
       { label: 'Curious about Christianity?', href: '/curious-about-christianity' },
       { label: 'Accessibility', href: '/about-us/accessibility' },
     ],
@@ -58,6 +52,7 @@ export const nav: NavItem[] = [
     children: [
       { label: 'Food Pantry', href: '/community/food-pantry-at-st-barnabas' },
       { label: 'Memory Café', href: '/community/memory-cafe' },
+      { label: 'Winter Night Shelter', href: '/about-us/social-action/winter-night-shelter' },
       { label: 'Pitshanger Pictures', href: '/community/pitshanger-pictures' },
     ],
   },
