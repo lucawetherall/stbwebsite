@@ -1,0 +1,53 @@
+---
+import type { PreparedChapter } from '../../lib/history';
+interface Props {
+  chapters: PreparedChapter[];
+}
+const { chapters } = Astro.props;
+---
+<nav class="ataglance" aria-label="The story at a glance">
+  <div class="wrap ataglance__inner">
+    <span class="ataglance__label">The story at a glance</span>
+    <ol class="ataglance__years">
+      {chapters.map((c) => (
+        <li><a href={`#${c.anchor}`}>{c.data.year}</a></li>
+      ))}
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .ataglance {
+    background: var(--paper-2);
+    border-block: 1px solid var(--line);
+  }
+  .ataglance__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .5rem 1.2rem;
+    padding-block: .85rem;
+  }
+  .ataglance__label {
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .ataglance__years {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .2rem 1.1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+  }
+  .ataglance__years a {
+    color: var(--burgundy);
+    text-decoration: none;
+  }
+  .ataglance__years a:hover,
+  .ataglance__years a:focus-visible { text-decoration: underline; }
+</style>

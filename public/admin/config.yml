@@ -202,6 +202,69 @@ collections:
       - { name: category, label: Category, widget: string, required: false, hint: 'e.g. Worship, Forms, Governance & policies' }
       - { name: order, label: Order, widget: number, value_type: int, required: false }
 
+  # ── History (the About → Our History page) ───────────────────────────────────
+  - name: history_page
+    label: 🏛️ History page (intro & hero)
+    description: The heading, hero photograph and credits at the top of the History page.
+    files:
+      - name: intro
+        label: History page
+        file: src/content/settings/historyPage.json
+        media_folder: /public/images/history
+        public_folder: /images/history
+        fields:
+          - { name: kicker, label: Kicker (small label above the title), widget: string }
+          - { name: title, label: Title, widget: string }
+          - { name: intro, label: Intro line, widget: text }
+          - { name: description, label: Summary (shown to search engines), widget: text }
+          - name: hero
+            label: Hero photograph
+            widget: object
+            fields:
+              - { name: image, label: Image, widget: image, hint: 'A wide (landscape) photo around 1600px works well.' }
+              - { name: alt, label: Image description (for screen readers), widget: string }
+              - { name: caption, label: Caption, widget: string }
+          - { name: credits, label: Credits line, widget: string }
+          - name: onward
+            label: Onward links (buttons at the foot)
+            widget: list
+            summary: '{{fields.label}}'
+            fields:
+              - { name: label, label: Link text, widget: string }
+              - { name: href, label: Link, widget: string, hint: 'e.g. /worship/st-barnabas-organ' }
+
+  - name: history
+    label: 🏛️ History chapters
+    label_singular: Chapter
+    description: The chapters of the History page. They appear in order, oldest first.
+    folder: src/content/history
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{fields.order}}-{{slug}}'
+    sortable_fields: [order]
+    identifier_field: title
+    summary: '{{order}}. {{year}} — {{title}}'
+    media_folder: /public/images/history
+    public_folder: /images/history
+    fields:
+      - { name: order, label: Order (lower shows first), widget: number, value_type: int }
+      - { name: year, label: Year (shown on the timeline), widget: string, hint: 'The single year shown on the timeline and the "at a glance" strip, e.g. 1916 or Today. The prose can give the full span.' }
+      - { name: title, label: Chapter title, widget: string }
+      - { name: image, label: Photograph (optional), widget: image, required: false, hint: 'Around 1600px wide is plenty.' }
+      - { name: imageAlt, label: Photo description (for screen readers), widget: string, required: false }
+      - { name: imageCaption, label: Caption, widget: string, required: false }
+      - { name: pullquote, label: Pull-quote (optional), widget: text, required: false, hint: 'A short, memorable line lifted from the story.' }
+      - { name: pullquoteAttribution, label: Pull-quote — who said it, widget: string, required: false }
+      - { name: draft, label: Draft (hide from the page), widget: boolean, default: false }
+      - name: body
+        label: Chapter text
+        widget: markdown
+        modes: [rich_text]
+        buttons: [bold, italic, link, heading-three, bulleted-list, numbered-list, quote]
+        editor_components: [image]
+        hint: Edit the wording freely. There is no code to break here.
+
   - divider: true
 
   # ════════ SET UP ONCE (rarely touched) ════════

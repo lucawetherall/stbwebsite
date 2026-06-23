@@ -88,4 +88,19 @@ const documents = defineCollection({
   }),
 });
 
-export const collections = { pages, news, services, events, staff, documents };
+const history = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/history' }),
+  schema: z.object({
+    order: z.number(),
+    year: z.string(),
+    title: z.string(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+    imageCaption: z.string().optional(),
+    pullquote: z.string().optional(),
+    pullquoteAttribution: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { pages, news, services, events, staff, documents, history };

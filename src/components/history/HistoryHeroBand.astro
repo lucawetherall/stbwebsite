@@ -1,0 +1,30 @@
+---
+interface Props {
+  image: string;
+  alt: string;
+  caption?: string;
+}
+const { image, alt, caption } = Astro.props;
+---
+<figure class="hero-band">
+  <img src={image} alt={alt} width="1600" height="900" fetchpriority="high" decoding="async" />
+  {caption && <figcaption class="wrap">{caption}</figcaption>}
+</figure>
+
+<style>
+  .hero-band { margin: 0; }
+  .hero-band img {
+    display: block;
+    width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+    background: var(--paper-2);
+  }
+  .hero-band figcaption {
+    padding-top: .6rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-soft);
+  }
+</style>

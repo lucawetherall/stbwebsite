@@ -21,6 +21,7 @@ health. We are a member of [Inclusive Church](https://www.inclusive-church.org/)
 ## Find out more
 
 - [Who’s Who](/about-us/whos-who) — the clergy and people who lead our common life
+- [Our History](/about-us/history) — how our church came to be, and the people who built and adorned it
 - [Accessibility](/about-us/accessibility) — how we make our buildings open to all
 - [Pastoral Care](/about-us/pastoral-care) — a listening ear, prayer and practical support
 - [Social Action](/about-us/social-action) — serving our neighbours and those on the margins
