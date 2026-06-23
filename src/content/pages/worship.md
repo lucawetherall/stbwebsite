@@ -23,7 +23,7 @@ neighbour and our world.
 - **[During the week](/worship/weekdays)** — Mass, Morning Prayer and quiet worship
 - **[Special Services](/worship/special-services)** — the great feasts of the Church's year
 - **[Worship Online](/worship/online)** — join the Sunday Mass by livestream
-- **[Music](/worship/music)** — our choir and the Anglican choral tradition
-- **[The St Barnabas Organ](/worship/st-barnabas-organ)** — our historic Hill instrument
+- **[Music](/music)** — our choir and the Anglican choral tradition
+- **[The St Barnabas Organ](/music/st-barnabas-organ)** — our historic Hill instrument
 
 Thinking about a baptism, wedding or funeral? See [Life Events](/life-events).

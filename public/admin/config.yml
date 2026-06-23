@@ -244,8 +244,8 @@ collections:
       - { name: families-youth-group, label: 'Families · Youth Group', file: src/content/pages/families-children/youth-group.md, fields: *pf }
       - { name: life-events, label: Life Events, file: src/content/pages/life-events.md, fields: *pf }
       - { name: visit, label: Visit, file: src/content/pages/visit.md, fields: *pf }
-      - { name: worship-organ, label: 'Worship · St Barnabas Organ', file: src/content/pages/worship/st-barnabas-organ.md, fields: *pf }
-      - { name: worship-our-musicians, label: 'Worship · Our Musicians', file: src/content/pages/worship/our-musicians.md, fields: *pf }
+      - { name: music-organ, label: 'Music · St Barnabas Organ', file: src/content/pages/music/st-barnabas-organ.md, fields: *pf }
+      - { name: music-our-musicians, label: 'Music · Our Musicians', file: src/content/pages/music/our-musicians.md, fields: *pf }
       - name: worship
         label: Worship
         file: src/content/pages/worship.md

@@ -15,8 +15,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, description, kicker, intro, gallery, hero, heroAlt } = entry.data;
-const showOrganSpec = entry.id === 'worship/st-barnabas-organ';
-const showMusicians = entry.id === 'worship/our-musicians';
+const showOrganSpec = entry.id === 'music/st-barnabas-organ';
+const showMusicians = entry.id === 'music/our-musicians';
 ---
 <Base title={title} description={description}>
   <PageHeader kicker={kicker} title={title} intro={intro} />

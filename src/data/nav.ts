@@ -20,10 +20,10 @@ export const nav: NavItem[] = [
   },
   {
     label: 'Music',
-    href: '/worship/music',
+    href: '/music',
     children: [
-      { label: 'Our Musicians', href: '/worship/our-musicians' },
-      { label: 'St Barnabas Organ', href: '/worship/st-barnabas-organ' },
+      { label: 'Our Musicians', href: '/music/our-musicians' },
+      { label: 'St Barnabas Organ', href: '/music/st-barnabas-organ' },
     ],
   },
   {
