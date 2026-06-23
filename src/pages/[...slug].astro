@@ -6,6 +6,8 @@ import Prose from '../components/Prose.astro';
 import Gallery from '../components/Gallery.astro';
 import OrganSpec from '../components/OrganSpec.astro';
 import Musicians from '../components/Musicians.astro';
+import VisitDetails from '../components/VisitDetails.astro';
+import EnquireCTA from '../components/EnquireCTA.astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages', ({ data }) => !data.draft);
@@ -17,6 +19,8 @@ const { Content } = await render(entry);
 const { title, description, kicker, intro, gallery, hero, heroAlt } = entry.data;
 const showOrganSpec = entry.id === 'music/st-barnabas-organ';
 const showMusicians = entry.id === 'music/our-musicians';
+const showVisitDetails = entry.id === 'visit';
+const showEnquireCTA = entry.id === 'life-events';
 ---
 <Base title={title} description={description}>
   <PageHeader kicker={kicker} title={title} intro={intro} />
@@ -26,10 +30,12 @@ const showMusicians = entry.id === 'music/our-musicians';
     </div>
   )}
   <div class="wrap page-body">
+    {showVisitDetails && <VisitDetails />}
     <Prose><Content /></Prose>
     {gallery && gallery.length > 0 && <Gallery images={gallery} />}
     {showOrganSpec && <OrganSpec />}
     {showMusicians && <Musicians />}
+    {showEnquireCTA && <EnquireCTA />}
   </div>
 </Base>
 
