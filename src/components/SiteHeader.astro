@@ -1,6 +1,6 @@
 ---
 import Logo from './Logo.astro';
-import { nav, utilityNav } from '../data/nav';
+import { nav, utilityNav, type NavItem } from '../data/nav';
 
 interface Props {
   /** Overlay the header on a hero image (white text). Otherwise a solid paper bar. */
@@ -9,8 +9,32 @@ interface Props {
 const { overlay = false } = Astro.props;
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const matchLen = (href: string): number => {
+  if (href === '/') return path === '/' ? 0 : -1;
+  return path === href || path.startsWith(href + '/') ? href.length : -1;
+};
+// A top-level item's strength is the longest URL match anywhere in its nav subtree, so the
+// current page highlights its nav parent (e.g. Worship for /life-events), not merely its
+// URL-prefix ancestor.
+const subtreeMatch = (item: NavItem): number => {
+  let best = matchLen(item.href);
+  for (const child of item.children ?? []) {
+    best = Math.max(best, matchLen(child.href));
+    for (const g of child.children ?? []) best = Math.max(best, matchLen(g.href));
+  }
+  return best;
+};
+let activeTopHref: string | null = null;
+let bestTop = -1;
+for (const item of nav) {
+  const m = subtreeMatch(item);
+  if (m > bestTop) { bestTop = m; activeTopHref = item.href; }
+}
+
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHref;
 ---
 
 <header class:list={['site-header', overlay ? 'is-overlay' : 'is-solid']}>
@@ -29,8 +53,8 @@ const isActive = (href: string) =>
           <li class:list={['primary-nav__item', item.children && 'has-children']}>
             <a
               href={item.href}
-              class:list={['primary-nav__link', item.cta && 'primary-nav__link--cta', isActive(item.href) && 'is-active']}
-              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={['primary-nav__link', item.cta && 'primary-nav__link--cta', isTopActive(item) && 'is-active']}
+              aria-current={path === item.href ? 'page' : isTopActive(item) ? 'true' : undefined}
               aria-haspopup={item.children ? 'true' : undefined}
             >{item.label}</a>
             {item.children && (
@@ -40,8 +64,8 @@ const isActive = (href: string) =>
                     <li>
                       <a
                         href={child.href}
-                        class:list={['submenu__link', isActive(child.href) && 'is-active']}
-                        aria-current={isActive(child.href) ? 'page' : undefined}
+                        class:list={['submenu__link', isActive(child.href) && isTopActive(item) && 'is-active']}
+                        aria-current={path === child.href ? 'page' : isActive(child.href) && isTopActive(item) ? 'true' : undefined}
                       >{child.label}</a>
                       {child.children && (
                         <ul class="submenu__sublist">
@@ -49,8 +73,8 @@ const isActive = (href: string) =>
                             <li>
                               <a
                                 href={g.href}
-                                class:list={['submenu__link submenu__link--nested', isActive(g.href) && 'is-active']}
-                                aria-current={isActive(g.href) ? 'page' : undefined}
+                                class:list={['submenu__link submenu__link--nested', isActive(g.href) && isTopActive(item) && 'is-active']}
+                                aria-current={path === g.href ? 'page' : isActive(g.href) && isTopActive(item) ? 'true' : undefined}
                               >{g.label}</a>
                             </li>
                           ))}
@@ -88,16 +112,16 @@ const isActive = (href: string) =>
     <ul class="mobile-nav__list">
       {nav.map((item) => (
         <li>
-          <a href={item.href} class:list={[isActive(item.href) && 'is-active']}>{item.label}</a>
+          <a href={item.href} class:list={[isTopActive(item) && 'is-active']}>{item.label}</a>
           {item.children && (
             <ul>
               {item.children.map((child) => (
                 <li>
-                  <a href={child.href} class:list={[isActive(child.href) && 'is-active']}>{child.label}</a>
+                  <a href={child.href} class:list={[isActive(child.href) && isTopActive(item) && 'is-active']}>{child.label}</a>
                   {child.children && (
                     <ul>
                       {child.children.map((g) => (
-                        <li><a href={g.href} class:list={[isActive(g.href) && 'is-active']}>{g.label}</a></li>
+                        <li><a href={g.href} class:list={[isActive(g.href) && isTopActive(item) && 'is-active']}>{g.label}</a></li>
                       ))}
                     </ul>
                   )}

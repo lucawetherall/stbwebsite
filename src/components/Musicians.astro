@@ -1,0 +1,78 @@
+---
+import { getRoster, staffInitials, staffFirstName, type RosterMember } from '../lib/staff';
+import { firstSentence } from '../lib/text';
+
+const roster = await getRoster();
+const order = ['luca-wetherall', 'hugh-mather'];
+const people: RosterMember[] = order
+  .map((slug) => roster.find((p) => p.slug === slug))
+  .filter((p): p is RosterMember => Boolean(p));
+---
+<section class="musicians" aria-labelledby="musicians-heading">
+  <h2 id="musicians-heading" class="label musicians__label">Those who lead the music</h2>
+  <div class="musicians__grid">
+    {people.map((person) => {
+      const { name, role, photo, photoAlt, bio } = person.data;
+      const teaser = bio ? firstSentence(bio) : '';
+      return (
+        <article class="musician">
+          <div class="musician__media">
+            {photo ? (
+              <img
+                class="musician__photo"
+                src={photo}
+                alt={photoAlt || `Portrait of ${name}`}
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <span class="musician__monogram serif" aria-hidden="true">{staffInitials(name)}</span>
+            )}
+          </div>
+          <div class="musician__body">
+            <p class="label musician__role">{role}</p>
+            <h3 class="musician__name serif">{name}</h3>
+            {teaser && <p class="musician__teaser">{teaser}</p>}
+            {bio && (
+              <a class="txt-link musician__link" href={`/about-us/whos-who/${person.slug}`}>
+                Read {staffFirstName(name)}'s full profile
+              </a>
+            )}
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+  .musicians { margin-top: 3rem; }
+  .musicians__label { display: block; color: var(--burgundy); margin-bottom: 1.4rem; }
+  .musicians__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.6rem, 4vw, 2.4rem);
+  }
+  .musician { display: grid; grid-template-columns: 96px 1fr; gap: 1.2rem; align-items: start; }
+  .musician__photo,
+  .musician__monogram {
+    width: 96px;
+    aspect-ratio: 4 / 5;
+    border-radius: 5px;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+  }
+  .musician__photo { height: auto; object-fit: cover; object-position: center top; }
+  .musician__monogram {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; font-weight: 500; color: var(--burgundy);
+  }
+  .musician__role { display: block; margin-bottom: 0.4rem; }
+  .musician__name { font-weight: 500; font-size: 1.5rem; line-height: 1.1; }
+  .musician__teaser { margin-top: 0.5rem; color: var(--ink-soft); max-width: 52ch; }
+  .musician__link { display: inline-block; margin-top: 0.7rem; }
+
+  @media (min-width: 640px) {
+    .musicians__grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

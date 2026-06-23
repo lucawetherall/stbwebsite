@@ -9,6 +9,11 @@ https://barnabites.org/*  https://www.barnabites.org/:splat  301!
 /worship/p1663                                  /worship/online/  301
 /b/worship-with-us-in-person-or-online-52308    /worship/online/  301
 
+# Music section moved out of /worship to its own /music path
+/worship/music                /music                      301
+/worship/st-barnabas-organ    /music/st-barnabas-organ    301
+/worship/our-musicians        /music/our-musicians        301
+
 # Thin /venues page merged into /venue-hire
 /venues  /venue-hire/  301
 

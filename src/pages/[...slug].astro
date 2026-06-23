@@ -5,6 +5,7 @@ import PageHeader from '../components/PageHeader.astro';
 import Prose from '../components/Prose.astro';
 import Gallery from '../components/Gallery.astro';
 import OrganSpec from '../components/OrganSpec.astro';
+import Musicians from '../components/Musicians.astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages', ({ data }) => !data.draft);
@@ -13,18 +14,30 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, description, kicker, intro, gallery } = entry.data;
-const showOrganSpec = entry.id === 'worship/st-barnabas-organ';
+const { title, description, kicker, intro, gallery, hero, heroAlt } = entry.data;
+const showOrganSpec = entry.id === 'music/st-barnabas-organ';
+const showMusicians = entry.id === 'music/our-musicians';
 ---
 <Base title={title} description={description}>
   <PageHeader kicker={kicker} title={title} intro={intro} />
+  {hero && (
+    <div class="wrap page-hero">
+      <img class="page-hero__img" src={hero} alt={heroAlt || title} loading="eager" decoding="async" />
+    </div>
+  )}
   <div class="wrap page-body">
     <Prose><Content /></Prose>
     {gallery && gallery.length > 0 && <Gallery images={gallery} />}
     {showOrganSpec && <OrganSpec />}
+    {showMusicians && <Musicians />}
   </div>
 </Base>
 
 <style>
+  .page-hero { padding-top: 1rem; }
+  .page-hero__img {
+    width: 100%; height: auto; display: block;
+    border-radius: 5px; border: 1px solid var(--line);
+  }
   .page-body { padding-top: 1rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
 </style>

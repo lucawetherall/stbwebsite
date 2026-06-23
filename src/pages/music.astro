@@ -1,7 +1,7 @@
 ---
-import Base from '../../layouts/Base.astro';
-import PageHeader from '../../components/PageHeader.astro';
-import { site } from '../../data/site';
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../data/site';
 ---
 <Base
   title="Music"
@@ -9,7 +9,6 @@ import { site } from '../../data/site';
   image="/images/hero/altar.webp"
 >
   <PageHeader
-    kicker="Worship"
     title="Music"
     intro="Music is woven through everything we do — and it carries the prayer of this place."
   />
@@ -19,26 +18,15 @@ import { site } from '../../data/site';
         We are fortunate to have a well-established and thriving choir, rooted in the Anglican
         choral tradition, that leads our musical offering and helps us encounter God in our
         common worship. The choir sings the <strong>Sung Mass every Sunday at 10.30am</strong> —
-        a sung setting or the leading of congregational settings, hymns, a sung psalm and a
+        a sung setting, hymns, a sung psalm and a
         communion anthem — and also sings Choral Evensong and the great festivals of the year.
       </p>
     </div>
 
-    <section class="music-section">
-      <h2 class="label music-section__label">The choir</h2>
-      <div class="prose">
-        <p>
-          Our singers span a wide range of ages and experience: two paid choral scholars sing
-          alongside a committed body of voluntary singers. The main choir rehearses on
-          <strong>Sundays from 9.30 to 10.15am</strong>, before the Mass.
-        </p>
-        <p>
-          We actively welcome young people aged 10 and over who are interested in liturgical
-          singing — many find that the experience earns encouragement, and sometimes credit, at
-          school. Young singers join the same Sunday rehearsal.
-        </p>
-      </div>
-    </section>
+    <p class="page-aside">
+      Our choir is led by a Director of Music and Organist, with paid choral scholars and a body of
+      voluntary singers. <a href="/music/our-musicians">Meet our musicians →</a>
+    </p>
 
     <aside class="scholarship" aria-labelledby="scholarship-heading">
       <p class="label scholarship__kicker">Choral Scholarships 2026/27</p>
@@ -65,11 +53,6 @@ import { site } from '../../data/site';
       </div>
     </section>
 
-    <p class="page-aside">
-      The choir is directed by <strong>{site.people.directorOfMusic}</strong>, Director of
-      Music. For any enquiry — singing with us, scholarships, or music for a wedding or funeral —
-      please <a href={`mailto:${site.emails.music}`}>get in touch</a>.
-    </p>
   </div>
 </Base>
 
