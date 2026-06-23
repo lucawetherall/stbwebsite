@@ -50,7 +50,7 @@ existing pages**, carefully and with flags.
 ```
 src/content/history/NN-slug.md              ← one Markdown file per chapter (folder collection)
         │   frontmatter: order, year, title, image?, imageAlt?, imageCaption?,
-        │                pullquote?, pullquoteAttribution?, anchor?, draft
+        │                pullquote?, pullquoteAttribution?, draft
         │   body: the chapter prose (Markdown, rendered natively)
         │
 src/content/settings/historyPage.json       ← page matter: kicker, title, intro, description,
@@ -58,8 +58,8 @@ src/content/settings/historyPage.json       ← page matter: kicker, title, intr
         │
         ├── src/data/history.ts              ← typed loader + assertHistoryPage() build guard
         │                                       (mirrors src/data/site.ts / assertSiteSettings)
-        ├── src/lib/history.ts               ← getChapters(): sorted chapters + computed anchor
-        │                                       (single source of truth, mirrors src/lib/staff.ts)
+        ├── src/lib/history.ts               ← pure helpers: chapterAnchor(id), prepareChapters()
+        │                                       (no astro:content value import → unit-tested)
         │
         └── src/pages/about-us/history.astro ← the template: Base → PageHeader → hero band →
                                                 AtAGlance → Timeline (chapters) → credits → onward
@@ -94,16 +94,16 @@ adding `history.astro` beside them is conflict-free; the explicit route out-spec
    Derived from the chapters' `year` field — no separate editor input. Each chapter carries one
    clean display year (the prose can still state a full span, e.g. "built 1914–1916"). Respects
    `prefers-reduced-motion` for the scroll.
-4. **The timeline spine.** A single 2px burgundy vertical rule down the page (semantic `<ol>`).
-   Each chapter is a **station**: year marker (Cormorant burgundy) in the gutter, a burgundy dot on
-   the rule, a Cormorant heading, the rendered Markdown body in `.prose`, an **optional** image
-   frame (caption beneath), and an **optional** burgundy `PullQuote`. The first paragraph of a
-   chapter may use a drop cap (CSS `::first-letter` on the station's lead paragraph).
+4. **The timeline spine.** A single 2px burgundy vertical rule down the page (the left border of a
+   semantic `<ol>`). Each chapter is a **station**: a burgundy dot on the rule, the year marker
+   (Cormorant burgundy) above a Cormorant heading, the rendered Markdown body in `.prose`, an
+   **optional** image frame (caption beneath), and an **optional** burgundy `PullQuote`. The opening
+   chapter uses a drop cap (CSS `::first-letter` on its lead paragraph).
 5. **Credits + onward.** The Mather/Salmon credit line, and outlined onward links (e.g. "The organ
    today →" → `/worship/st-barnabas-organ`; "Plan your visit →" → `/visit`).
 
-Mobile: the year gutter collapses; the rule shifts to the left margin; image frames go full-width
-and stack. Standard responsive behaviour, single column.
+Mobile: single column; the rule stays at the left margin with the year above each heading; image
+frames go full-width and stack. Standard responsive behaviour.
 
 ---
 
@@ -123,7 +123,6 @@ const history = defineCollection({
     imageCaption: z.string().optional(),
     pullquote: z.string().optional(),
     pullquoteAttribution: z.string().optional(),
-    anchor: z.string().optional(),          // defaults to a slug of the title
     draft: z.boolean().default(false),
   }),
 });
@@ -168,7 +167,8 @@ A folder collection modelled on `news`, with its own media folder:
       hint: Edit the wording freely. There is no code to break here.
 ```
 
-(`anchor` is intentionally **not** an editor field — it is derived from the title in `src/lib/history.ts`.)
+(There is no `anchor` field — the in-page anchor is computed from the entry id, stripping the
+`NN-` order prefix, exactly like `staffSlug` in `src/lib/staff.ts`.)
 
 ### `historyPage` singleton — `src/content/settings/historyPage.json`
 
@@ -232,10 +232,11 @@ approach as `assertSiteSettings`). Shape:
 
 ## Components / units
 
-- **`src/lib/history.ts`** — `getChapters()`: `getCollection('history')` filtered on `!draft`,
-  sorted by `order`, each augmented with a computed `anchor` (slug of title, unless overridden).
-  Single source of truth shared by `AtAGlance` and `Timeline` so the strip and the stations cannot
-  drift. `chapterAnchor(entry)` helper exported for reuse.
+- **`src/lib/history.ts`** — pure helpers `chapterAnchor(id)` and `prepareChapters(entries)` (sort
+  by `order`, attach the id-derived anchor). No `astro:content` *value* import (only `import type`),
+  so they unit-test cleanly under Vitest. The page itself calls `getCollection('history')`, passes
+  the entries through `prepareChapters(...)`, and hands the prepared chapters to both `AtAGlance` and
+  `Timeline` — so the strip and the stations cannot drift.
 - **`src/data/history.ts`** — typed import of `historyPage.json` + `assertHistoryPage()` (throws at
   build if a required field is missing), mirroring `src/data/site.ts`.
 - **`src/pages/about-us/history.astro`** — composes `Base` (SEO from the singleton's
@@ -243,11 +244,12 @@ approach as `assertSiteSettings`). Shape:
   credits, onward links. Renders each chapter via `render(entry)` → `<Content />` inside `.prose`.
 - **`HistoryHeroBand.astro`** — full-bleed `<img>` (lazy below the fold? no — it's the hero, eager +
   `fetchpriority="high"`), flat, ink-soft italic caption beneath. No text overlay.
-- **`AtAGlance.astro`** — `<nav aria-label="The story at a glance">` of year anchor links built from
-  `getChapters()`.
-- **`Timeline.astro`** — the `<ol>` spine + stations (year marker, dot `aria-hidden`, heading,
-  `<slot>` body, optional image `<figure>`, optional `PullQuote`). The continuous rule is a single
-  positioned element so there are no gaps between stations.
+- **`AtAGlance.astro`** — `<nav aria-label="The story at a glance">` of year anchor links, built
+  from the prepared chapters passed in as a prop.
+- **`Timeline.astro`** — the `<ol>` spine + stations (a dot on the rule, the year marker above the
+  heading, the Markdown body rendered via `render(entry)`, optional image `<figure>`, optional
+  `PullQuote`). The continuous rule is the `<ol>`'s own left border, so there are no gaps between
+  stations.
 - **`PullQuote.astro`** — `<figure><blockquote>` in burgundy Cormorant italic + `<figcaption>`
   attribution in tracked small-caps. Reusable.
 
@@ -289,8 +291,9 @@ date is given as both 1935 and 1936 in the source — omit or hedge rather than 
   `-250x178`-style size suffixes) and falling back to the largest available; resize/cap with `sharp`
   to a sensible width (~1600px) and emit optimised `.webp` into `public/images/history/`; produce a
   responsive variant where the source is large enough.
-- A curated set of ~10–14 images (one hero + the chapter candidates above). Each needs real **alt
-  text** written from the archive captions.
+- A curated set of ~8 images (one hero + seven chapter photographs); the closing chapter reuses an
+  existing, already-licensed parish photo in `public/images/hero/`. Each needs real **alt text**
+  written from the archive captions.
 - The CMS `media_folder`/`public_folder` for both history collections point at
   `public/images/history` / `/images/history`, so editors replace images in place.
 
@@ -322,7 +325,7 @@ Flagged, **not** changed here (need a source or parish sign-off):
 
 - `npm run build` — page count **+1** (the new `/about-us/history`), **0 errors**; the chapter
   Markdown renders; `historyPage.json` passes its build guard.
-- `npx astro check` — **0 errors** (new collection typed; `getChapters()` typed).
+- `npx astro check` — **0 errors** (new collection typed; helpers, components and page typed).
 - `npm test` — green (the liturgical engine is untouched).
 - **CMS parity:** `public/admin/config.yml` (the `history` folder + `history_page` singleton) matches
   `src/content.config.ts` and `historyPage.json`; an editor can add/reorder a chapter, edit the
