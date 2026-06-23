@@ -203,8 +203,8 @@ import Musicians from '../components/Musicians.astro';
 
 ```astro
 const { title, description, kicker, intro, gallery, hero, heroAlt } = entry.data;
-const showOrganSpec = entry.id === 'worship/st-barnabas-organ';
-const showMusicians = entry.id === 'worship/our-musicians';
+const showOrganSpec = entry.id === 'music/st-barnabas-organ';
+const showMusicians = entry.id === 'music/our-musicians';
 ```
 
 - [ ] **Step 2: Render the banner (when set) and the component**
@@ -255,7 +255,7 @@ git commit -m "feat: inject Musicians and render the page hero banner when set"
 ### Task 4: The "Our Musicians" page content
 
 **Files:**
-- Create: `src/content/pages/worship/our-musicians.md`
+- Create: `src/content/pages/music/our-musicians.md`
 
 - [ ] **Step 1: Write the page (editable prose; `hero` intentionally omitted for a text-only launch)**
 
@@ -283,7 +283,7 @@ singing — many find the experience earns encouragement, and sometimes credit, 
 ## Sing with us
 
 We offer two paid choral scholarships each year. To enquire about singing with us — as a scholar or
-a voluntary singer — see [the Music page](/worship/music) or contact the Director of Music.
+a voluntary singer — see [the Music page](/music) or contact the Director of Music.
 
 ## Listen
 
@@ -294,12 +294,12 @@ choir and organ. You are always welcome to come and listen in person.
 - [ ] **Step 2: Build to confirm the new page is generated**
 
 Run: `npm run build`
-Expected: 0 errors, and the page count is **baseline + 1**. Confirm `dist/worship/our-musicians/index.html` exists.
+Expected: 0 errors, and the page count is **baseline + 1**. Confirm `dist/music/our-musicians/index.html` exists.
 
 - [ ] **Step 3: Commit**
 
 ```bash
-git add src/content/pages/worship/our-musicians.md
+git add src/content/pages/music/our-musicians.md
 git commit -m "feat: add the Our Musicians page content"
 ```
 
@@ -308,7 +308,7 @@ git commit -m "feat: add the Our Musicians page content"
 ### Task 5: Trim the Music landing and link across
 
 **Files:**
-- Modify: `src/pages/worship/music.astro`
+- Modify: `src/pages/music.astro`
 
 - [ ] **Step 1: Remove the relocated content**
 
@@ -321,7 +321,7 @@ Insert, immediately after the intro `<div class="prose">…</div>`:
 ```astro
 <p class="page-aside">
   Our choir is led by a Director of Music and Organist, with paid choral scholars and a body of
-  voluntary singers. <a href="/worship/our-musicians">Meet our musicians →</a>
+  voluntary singers. <a href="/music/our-musicians">Meet our musicians →</a>
 </p>
 ```
 
@@ -333,7 +333,7 @@ Expected: 0 errors; page count unchanged from Task 4 (still baseline + 1).
 - [ ] **Step 4: Commit**
 
 ```bash
-git add src/pages/worship/music.astro
+git add src/pages/music.astro
 git commit -m "refactor: slim the Music landing and link to Our Musicians"
 ```
 
@@ -351,9 +351,9 @@ Change the Music block's `children` from:
 ```ts
   {
     label: 'Music',
-    href: '/worship/music',
+    href: '/music',
     children: [
-      { label: 'St Barnabas Organ', href: '/worship/st-barnabas-organ' },
+      { label: 'St Barnabas Organ', href: '/music/st-barnabas-organ' },
     ],
   },
 ```
@@ -363,10 +363,10 @@ to:
 ```ts
   {
     label: 'Music',
-    href: '/worship/music',
+    href: '/music',
     children: [
-      { label: 'Our Musicians', href: '/worship/our-musicians' },
-      { label: 'St Barnabas Organ', href: '/worship/st-barnabas-organ' },
+      { label: 'Our Musicians', href: '/music/our-musicians' },
+      { label: 'St Barnabas Organ', href: '/music/st-barnabas-organ' },
     ],
   },
 ```
@@ -404,7 +404,7 @@ In the `pages` collection, the first file entry (`about-us`) defines `fields: &p
 Add this entry to the `pages` collection `files:` list, next to `worship-organ`:
 
 ```yaml
-      - { name: worship-our-musicians, label: 'Worship · Our Musicians', file: src/content/pages/worship/our-musicians.md, fields: *pf }
+      - { name: worship-our-musicians, label: 'Worship · Our Musicians', file: src/content/pages/music/our-musicians.md, fields: *pf }
 ```
 
 - [ ] **Step 3: Verify dual-write parity by eye**
@@ -436,7 +436,7 @@ Find the §3 open-items list (the one referenced by CLAUDE.md §10, which mentio
 
 ```markdown
 - **Hugh Mather in Who's Who (update 23 June 2026):** Hugh now appears as **Organist (name + role
-  only)** on the Our Musicians page (`/worship/our-musicians`), pulled from his `staff` record.
+  only)** on the Our Musicians page (`/music/our-musicians`), pulled from his `staff` record.
   A full Who's-Who profile (bio + photo) remains pending parish sign-off.
 ```
 
@@ -459,9 +459,9 @@ Expected: build 0 errors and page count = **baseline + 1**; astro check 0 errors
 - [ ] **Step 2: Manual checks (preview the production build)**
 
 Run: `npm run preview`, then confirm:
-- `/worship/our-musicians` renders: header, choir prose, and two cards — **Luca** with photo, teaser and a "Read Luca's full profile" link to `/about-us/whos-who/luca-wetherall`; **Hugh** with an "HM" monogram, "Organist", and **no** teaser or link.
+- `/music/our-musicians` renders: header, choir prose, and two cards — **Luca** with photo, teaser and a "Read Luca's full profile" link to `/about-us/whos-who/luca-wetherall`; **Hugh** with an "HM" monogram, "Organist", and **no** teaser or link.
 - **No** banner image appears (because `hero` is unset).
-- `/worship/music` no longer shows the long choir section and links "Meet our musicians →".
+- `/music` no longer shows the long choir section and links "Meet our musicians →".
 - The Music dropdown shows both children.
 
 - [ ] **Step 3: Record the verification line**
@@ -474,7 +474,7 @@ Capture for the PR body, e.g.: `Build: <N> pages, 0 errors; astro check 0 errors
 
 - **Spec coverage (§5, §13):** new page (Task 4) ✔; `Musicians` component reusing `staff` (Task 2) ✔; teaser from bio first sentence (Task 1) ✔; profile link only when bio exists (Task 2) ✔; `hero` banner wired + empty launch (Task 3) ✔; Music landing trimmed + link (Task 5) ✔; nav child added (Task 6) ✔; CMS register + expose `hero` (Task 7) ✔; DECISIONS note (Task 8) ✔; verification incl. +1 page (Task 9) ✔.
 - **Placeholder scan:** none — every step has concrete code/commands.
-- **Type consistency:** `firstSentence` (Task 1) used in Task 2; `RosterMember`/`staffInitials`/`staffFirstName` imported from `staff.ts`; `showMusicians` flag (Task 3) matches the page id `worship/our-musicians` (Task 4); nav href matches the page URL.
+- **Type consistency:** `firstSentence` (Task 1) used in Task 2; `RosterMember`/`staffInitials`/`staffFirstName` imported from `staff.ts`; `showMusicians` flag (Task 3) matches the page id `music/our-musicians` (Task 4); nav href matches the page URL.
 
 ## Next plans (separate PRs)
 - **PR 2 — Findability & front doors** (spec §6): nav promotion of Life Events, Winter Night Shelter re-parenting, homepage community band.

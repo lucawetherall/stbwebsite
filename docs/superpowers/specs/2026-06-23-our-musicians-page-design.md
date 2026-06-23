@@ -38,7 +38,7 @@ The full audit and its prioritisation are preserved in §12.
   (`05-luca-wetherall` → `luca-wetherall`). Luca's record is complete (photo, bio); **Hugh's is
   bare** (name + role only).
 - **Injection precedent.** The Organ page is a Markdown `pages` entry with a developer-owned
-  `OrganSpec` component injected by `[...slug].astro` when `entry.id === 'worship/st-barnabas-organ'`.
+  `OrganSpec` component injected by `[...slug].astro` when `entry.id === 'music/st-barnabas-organ'`.
   We reuse this slug→component pattern for the new dynamic bits.
 - **Reusable components already exist:** `MapEmbed` (used on Contact), `ServiceTimes`
   (`serviceTimes.ts`), `EventsList`, `Gallery`.
@@ -68,8 +68,8 @@ items in §12; any change to the liturgical engine, design tokens, or the news t
 
 ## 5. PR 1 — "Our Musicians" page
 
-### 5.1 New page — `/worship/our-musicians`
-- `src/content/pages/worship/our-musicians.md` (Markdown, `pages` collection). Frontmatter:
+### 5.1 New page — `/music/our-musicians`
+- `src/content/pages/music/our-musicians.md` (Markdown, `pages` collection). Frontmatter:
   `title: "Our Musicians"`, `kicker: "Music"`, an `intro`, a `description`; `hero` left unset.
 - Editable body, in order: **choir portrait** (relocated from `music.astro`); **"The choir"**
   (scholars + voluntary singers, Sunday 9.30–10.15am rehearsal, young singers 10+ welcome);
@@ -78,7 +78,7 @@ items in §12; any change to the liturgical engine, design tokens, or the news t
 
 ### 5.2 `Musicians` component (people reused from `staff`)
 - `src/components/Musicians.astro`; injected by `[...slug].astro` when
-  `entry.id === 'worship/our-musicians'` (mirrors `showOrganSpec`).
+  `entry.id === 'music/our-musicians'` (mirrors `showOrganSpec`).
 - `getRoster()`, select by stable slug in order: `['luca-wetherall', 'hugh-mather']`.
 - Per card: media (`photo`, else `staffInitials()` monogram in the 4:5 frame); role label; name;
   **teaser = first sentence of `bio`, shown only when a bio exists**; **"Read full profile →"**
@@ -91,13 +91,13 @@ items in §12; any change to the liturgical engine, design tokens, or the news t
   every existing page is unchanged. Our Musicians leaves it empty → text-only launch; the editor
   adds a choir photo later (optimise via `scripts/` sharp pipeline). This is the PR-4 mechanism.
 
-### 5.4 Music landing (`worship/music.astro`)
+### 5.4 Music landing (`music.astro`)
 - Remove the detailed "The choir" `<section>` and the closing Director-of-Music `page-aside`
   (content relocated to §5.1). Add a short teaser + **"Meet our musicians →"** to the new page.
   Keep the intro, Choral Scholarships aside, and "Listen".
 
 ### 5.5 Nav & CMS for PR 1
-- `nav.ts`: add `{ label: 'Our Musicians', href: '/worship/our-musicians' }` under **Music**,
+- `nav.ts`: add `{ label: 'Our Musicians', href: '/music/our-musicians' }` under **Music**,
   before "St Barnabas Organ".
 - `config.yml`: register the page in the `pages` `files:` list with `fields: *pf`; **expose
   `hero`/`heroAlt`** on the shared `&pf` anchor (optional image + string, friendly hints). This
@@ -194,10 +194,10 @@ Recorded so nothing is lost; **not** in this programme:
 
 ## 13. File-change checklist
 **PR 1 — Our Musicians**
-- `src/content/pages/worship/our-musicians.md` — new (editable prose).
+- `src/content/pages/music/our-musicians.md` — new (editable prose).
 - `src/components/Musicians.astro` — new (people from `staff`).
 - `src/pages/[...slug].astro` — inject `Musicians`; render `hero` banner when set.
-- `src/pages/worship/music.astro` — trim choir section; add "Meet our musicians →".
+- `src/pages/music.astro` — trim choir section; add "Meet our musicians →".
 - `src/data/nav.ts` — add "Our Musicians" under Music.
 - `public/admin/config.yml` — register page; expose `hero`/`heroAlt` on `&pf`.
 - `DECISIONS.md` — Hugh interim listing.
