@@ -19,6 +19,6 @@ export function chapterAnchor(id: string): string {
  */
 export function prepareChapters(entries: HistoryChapter[]): PreparedChapter[] {
   return [...entries]
-    .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+    .sort((a, b) => a.data.order - b.data.order)
     .map((entry) => ({ ...entry, anchor: chapterAnchor(entry.id) }));
 }
