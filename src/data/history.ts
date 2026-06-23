@@ -4,11 +4,13 @@ export interface OnwardLink {
   label: string;
   href: string;
 }
+
 export interface HistoryHero {
   image: string;
   alt: string;
   caption: string;
 }
+
 export interface HistoryPage {
   kicker: string;
   title: string;
@@ -37,6 +39,6 @@ export function assertHistoryPage(p: HistoryPage): void {
   }
 }
 
-assertHistoryPage(data as HistoryPage);
+assertHistoryPage(data);
 
-export const historyPage = data as HistoryPage;
+export const historyPage: HistoryPage = data;

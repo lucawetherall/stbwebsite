@@ -21,4 +21,7 @@ describe('assertHistoryPage', () => {
   it('throws when the hero image is missing', () => {
     expect(() => assertHistoryPage({ ...valid, hero: { ...valid.hero, image: '' } })).toThrow(/hero\.image/);
   });
+  it('throws when the hero alt text is missing', () => {
+    expect(() => assertHistoryPage({ ...valid, hero: { ...valid.hero, alt: '' } })).toThrow(/hero\.alt/);
+  });
 });
