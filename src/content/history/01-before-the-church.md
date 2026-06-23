@@ -3,8 +3,8 @@ order: 1
 year: "1905"
 title: Before the church
 image: /images/history/tin-church.webp
-imageAlt: A drawing of the corrugated-iron "Tin Church" on the corner of Pitshanger Lane.
-imageCaption: The "Tin Church", c.1907.
+imageAlt: A drawing of the corrugated-iron “Tin Church” on the corner of Pitshanger Lane.
+imageCaption: The “Tin Church”, c.1907.
 draft: false
 ---
 

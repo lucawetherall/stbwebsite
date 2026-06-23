@@ -3,7 +3,7 @@ order: 4
 year: "1920"
 title: The angels of the apse
 image: /images/history/clark-at-work.webp
-imageAlt: The artist James Clark at work on the great apse painting.
+imageAlt: The artist James Clark in his studio, painting one of the tall canvas strips that make up the apse painting.
 imageCaption: James Clark at work on the apse painting.
 pullquote: My most important work.
 pullquoteAttribution: James Clark, of the apse painting

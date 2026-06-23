@@ -4,7 +4,7 @@ year: "1944"
 title: War, fire and renewal
 image: /images/history/lady-chapel-triptych.webp
 imageAlt: The painted triptych in the Lady Chapel, its haloes in gold leaf.
-imageCaption: The Lady Chapel triptych, added for the church's 80th anniversary in 1996.
+imageCaption: The Lady Chapel triptych, added for the church's eightieth anniversary in 1996.
 pullquote: The beautiful Rose Window now lets in enough wind to blow the organ.
 pullquoteAttribution: Fr Barrett, after the bombing of 1944
 draft: false
