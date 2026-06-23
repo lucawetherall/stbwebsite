@@ -3,11 +3,6 @@ title: Worship
 kicker: At the heart of our life
 intro: Worship is one of the ways human beings open themselves to life-giving mystery.
 description: Worship at St Barnabas, Ealing — Sung Mass on Sundays, weekday services, choral music and the great feasts of the Church's year, in the modern Catholic tradition.
-gallery:
-  - { src: /images/hero/thurible-1280.webp, alt: Incense rising from the thurible at the Sung Mass }
-  - { src: /images/hero/procession-1280.webp, alt: The Sunday procession through the nave }
-  - { src: /images/hero/altar-1280.webp, alt: The high altar dressed for the liturgy }
-  - { src: /images/hero/worship-1280.webp, alt: The congregation gathered for worship }
 ---
 
 We hope that the experience of God in worship — through Scripture, prayer, silence, music,
