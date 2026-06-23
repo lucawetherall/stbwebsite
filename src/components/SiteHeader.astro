@@ -54,7 +54,7 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
             <a
               href={item.href}
               class:list={['primary-nav__link', item.cta && 'primary-nav__link--cta', isTopActive(item) && 'is-active']}
-              aria-current={isTopActive(item) ? 'page' : undefined}
+              aria-current={path === item.href ? 'page' : isTopActive(item) ? 'true' : undefined}
               aria-haspopup={item.children ? 'true' : undefined}
             >{item.label}</a>
             {item.children && (
@@ -65,7 +65,7 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
                       <a
                         href={child.href}
                         class:list={['submenu__link', isActive(child.href) && isTopActive(item) && 'is-active']}
-                        aria-current={isActive(child.href) && isTopActive(item) ? 'page' : undefined}
+                        aria-current={path === child.href ? 'page' : isActive(child.href) && isTopActive(item) ? 'true' : undefined}
                       >{child.label}</a>
                       {child.children && (
                         <ul class="submenu__sublist">
@@ -74,7 +74,7 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
                               <a
                                 href={g.href}
                                 class:list={['submenu__link submenu__link--nested', isActive(g.href) && isTopActive(item) && 'is-active']}
-                                aria-current={isActive(g.href) && isTopActive(item) ? 'page' : undefined}
+                                aria-current={path === g.href ? 'page' : isActive(g.href) && isTopActive(item) ? 'true' : undefined}
                               >{g.label}</a>
                             </li>
                           ))}
