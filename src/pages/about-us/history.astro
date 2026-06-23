@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import HistoryHeroBand from '../../components/history/HistoryHeroBand.astro';
+import AtAGlance from '../../components/history/AtAGlance.astro';
+import Timeline from '../../components/history/Timeline.astro';
+import { prepareChapters } from '../../lib/history';
+import { historyPage } from '../../data/history';
+
+const entries = await getCollection('history', ({ data }) => !data.draft);
+const chapters = prepareChapters(entries);
+const { kicker, title, intro, description, hero, credits, onward } = historyPage;
+---
+<Base title={title} description={description} image={hero.image}>
+  <PageHeader kicker={kicker} title={title} intro={intro} />
+  <HistoryHeroBand image={hero.image} alt={hero.alt} caption={hero.caption} />
+  <AtAGlance chapters={chapters} />
+  <div class="wrap page-body">
+    <Timeline chapters={chapters} />
+
+    <footer class="history-foot">
+      <p class="history-credits">{credits}</p>
+      {onward.length > 0 && (
+        <p class="history-onward">
+          {onward.map((l) => (<a href={l.href}>{l.label} &rarr;</a>))}
+        </p>
+      )}
+    </footer>
+  </div>
+</Base>
+
+<style>
+  .page-body { padding-top: 1.5rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+  .history-foot { margin-top: 2.5rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+  .history-credits { font-size: .85rem; letter-spacing: .03em; color: var(--ink-soft); }
+  .history-onward { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.2rem; }
+  /* Outlined button (house style: outline, fills on hover). Self-contained so the page
+     does not depend on a global button class. */
+  .history-onward a {
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    border: 1px solid var(--burgundy);
+    padding: .7rem 1.1rem;
+    text-decoration: none;
+  }
+  .history-onward a:hover { background: var(--burgundy); color: var(--white); }
+</style>
