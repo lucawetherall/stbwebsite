@@ -221,6 +221,8 @@ collections:
           - { name: intro, label: Intro line, widget: string, required: false }
           - { name: description, label: Summary (shown to search engines), widget: text, required: false }
           - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
+          - { name: hero, label: Banner photo (optional), widget: image, required: false, hint: 'A wide landscape photo. Leave empty for a text-only page.' }
+          - { name: heroAlt, label: Banner photo description (for screen readers), widget: string, required: false }
           - name: body
             label: Body
             widget: markdown
@@ -243,6 +245,7 @@ collections:
       - { name: life-events, label: Life Events, file: src/content/pages/life-events.md, fields: *pf }
       - { name: visit, label: Visit, file: src/content/pages/visit.md, fields: *pf }
       - { name: worship-organ, label: 'Worship · St Barnabas Organ', file: src/content/pages/worship/st-barnabas-organ.md, fields: *pf }
+      - { name: worship-our-musicians, label: 'Worship · Our Musicians', file: src/content/pages/worship/our-musicians.md, fields: *pf }
       - name: worship
         label: Worship
         file: src/content/pages/worship.md
