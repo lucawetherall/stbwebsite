@@ -22,7 +22,7 @@ const showMusicians = entry.id === 'worship/our-musicians';
   <PageHeader kicker={kicker} title={title} intro={intro} />
   {hero && (
     <div class="wrap page-hero">
-      <img class="page-hero__img" src={hero} alt={heroAlt ?? ''} decoding="async" />
+      <img class="page-hero__img" src={hero} alt={heroAlt || title} loading="eager" decoding="async" />
     </div>
   )}
   <div class="wrap page-body">

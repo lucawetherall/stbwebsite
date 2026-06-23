@@ -84,7 +84,10 @@ violations** on the page types tested (home, content, contact, news article).
 7. **Photography rights** (see §1.3).
 8. **Choral Scholarship details** on `/worship/music` (eligibility/stipend) were written to a
    sensible default + the "apply by 12 June" line; confirm specifics and the role-description PDF.
-- **Hugh Mather in Who's Who (update 23 June 2026):** Hugh now appears as **Organist (name + role only)** on the Our Musicians page (`/worship/our-musicians`), pulled from his `staff` record. A full Who's-Who profile (bio + photo) remains pending parish sign-off.
+9. **Hugh Mather in Who's Who — update 23 June 2026.** Resolving item 4 for launch: Hugh appears
+   as **Organist (name + role only)** on the new Our Musicians page (`/worship/our-musicians`),
+   pulled from his `staff` record. A full Who's-Who profile (bio + photo) remains pending parish
+   sign-off.
 
 ---
 
