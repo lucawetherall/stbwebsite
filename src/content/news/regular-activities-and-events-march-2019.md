@@ -37,7 +37,7 @@ The Gospel Choir is open to anyone who is enthusiastic about community singing.
 
 Pitshanger Pictures exists to inform, entertain and strengthen community in North Ealing by screening films that stimulate conversation and discussion on questions in life. 
 
-<img src="/images/news/31dceabb-screen.shot.2018-04-24.at.14.36.51.png" alt="Regular Activities and Events | March 2019" loading="lazy" decoding="async">
+<img src="/images/news/31dceabb-screen.shot.2018-04-24.at.14.36.51.webp" alt="Regular Activities and Events | March 2019" loading="lazy" decoding="async">
 
 No need to book tickets, just come along. Doors open half an hour before the screenings unless otherwise specified.
 

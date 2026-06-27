@@ -12,9 +12,11 @@ interface Props {
   alt?: string;
   focal?: string;
   credit?: string;
+  /** Preload the artwork as the LCP image (use on the homepage / first hero). */
+  eager?: boolean;
 }
 
-const { kicker, title, serviceLine, links = [], image, alt, focal, credit } = Astro.props;
+const { kicker, title, serviceLine, links = [], image, alt, focal, credit, eager = false } = Astro.props;
 
 const auto = heroFor(getLiturgicalDay().key);
 const img = image ?? auto.image;
@@ -23,6 +25,14 @@ const focalPos = focal ?? auto.focal ?? 'center center';
 const creditText = credit ?? auto.credit;
 const imgSm = img.endsWith('.webp') ? img.replace(/\.webp$/, '-1280.webp') : img;
 ---
+{/* The hero artwork is a CSS background (discovered late); preload it so it
+    paints as the LCP element. Mirrors the 800px breakpoint in the styles. */}
+{eager && (
+  <>
+    <link rel="preload" as="image" href={imgSm} media="(max-width: 799.98px)" fetchpriority="high" />
+    <link rel="preload" as="image" href={img} media="(min-width: 800px)" fetchpriority="high" />
+  </>
+)}
 <section
   class="hero"
   style={`--hero-lg:url('${img}'); --hero-sm:url('${imgSm}'); --hero-focal:${focalPos};`}
@@ -105,6 +115,8 @@ const imgSm = img.endsWith('.webp') ? img.replace(/\.webp$/, '-1280.webp') : img
     transition: opacity .2s;
   }
   .hero__link:hover { opacity: .72; }
+  /* The global focus ring is burgundy — too low-contrast over dark artwork. */
+  .hero__link:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
   .hero__credit {
     position: absolute;
     right: 1rem;

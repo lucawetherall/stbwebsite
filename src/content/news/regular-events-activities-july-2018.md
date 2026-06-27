@@ -9,7 +9,7 @@ legacySlug: "b/blog-31771-regular-events-activities-july-2018"
 
 **Ealing Gospel Choir | 8th July & 15th July****, 3 - 5pm**
 
-**<img src="/images/news/a80d4e99-o_2F1901_2Fscreen.shot.2018-05-03.at.11.31.33.png" alt="Regular Events & Activities | July 2018" loading="lazy" decoding="async">**
+**<img src="/images/news/a80d4e99-o_2F1901_2Fscreen.shot.2018-05-03.at.11.31.33.webp" alt="Regular Events & Activities | July 2018" loading="lazy" decoding="async">**
 
 Join the Gospel Choir every second and third Sunday of the month for a great time of energetic singing. No experience necessary! There is a small charge of £2 per person for rehearsal. All ages welcome from 8 years old upwards. 
 
@@ -52,7 +52,7 @@ Please refer to the website for further dates and information:
 
 Pitshanger Pictures exists to inform, entertain and strengthen community in North Ealing by screening films that stimulate conversation and discussion on questions in life.
 
-<img src="/images/news/31dceabb-screen.shot.2018-04-24.at.14.36.51.png" alt="Regular Events & Activities | July 2018" loading="lazy" decoding="async">
+<img src="/images/news/31dceabb-screen.shot.2018-04-24.at.14.36.51.webp" alt="Regular Events & Activities | July 2018" loading="lazy" decoding="async">
 
 No need to book tickets, just come along. Doors open half an hour before the screenings unless otherwise specified.
 

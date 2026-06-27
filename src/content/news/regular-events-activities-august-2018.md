@@ -26,7 +26,7 @@ Come along for a cup of tea and a chat in the large hall on Thursday afternoons.
 
 Pitshanger Pictures exists to inform, entertain and strengthen community in North Ealing by screening films that stimulate conversation and discussion on questions in life. This month we have our special _’Silver Screen’_ films screening, as well as our _Mozart Festival_ running from 16th to 19th August. 
 
-<img src="/images/news/31dceabb-screen.shot.2018-04-24.at.14.36.51.png" alt="Regular Events & Activities | August 2018" loading="lazy" decoding="async">
+<img src="/images/news/31dceabb-screen.shot.2018-04-24.at.14.36.51.webp" alt="Regular Events & Activities | August 2018" loading="lazy" decoding="async">
 
 No need to book tickets, just come along. Doors open half an hour before the screenings unless otherwise specified.
 

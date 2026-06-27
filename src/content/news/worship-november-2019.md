@@ -24,7 +24,7 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
-<img src="/images/news/a8bc0715-shh.free.service.colour.png" alt="Worship | November 2019" loading="lazy" decoding="async">
+<img src="/images/news/a8bc0715-shh.free.service.colour.webp" alt="Worship | November 2019" loading="lazy" decoding="async">
 
 * * *
 
@@ -49,4 +49,4 @@ During the High Mass we make solemn procession from the church to the war memor
 
 A 30-minute Mass for young children. It includes songs and a visual bible story with shared child-friendly breakfast afterwards.   
 
-<img src="/images/news/21fa546a-screen.shot.2018-08-30.at.15.37.15.png" alt="Worship | November 2019" loading="lazy" decoding="async">
+<img src="/images/news/21fa546a-screen.shot.2018-08-30.at.15.37.15.webp" alt="Worship | November 2019" loading="lazy" decoding="async">

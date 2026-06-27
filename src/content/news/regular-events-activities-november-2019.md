@@ -30,7 +30,7 @@ Come along for a cup of tea and a chat in the large hall on Thursday afternoons.
 
 The Gospel Choir is open to anyone who is enthusiastic about community singing. No experience is necessary. We sing everything from energetic Gospel praise to soul-warming standards. Besides performing on the first Sunday of the month at the ‘Shh-free’ Mass, the Gospel Choir also regularly sings at local community events. Rehearsals are usually 2nd and 3rd Sunday of the month, although this may vary depending on term holidays. For more information, feel free to email the conductor [Henry Tozer](mailto:henrytozer@gmail.com). 
 
-<img src="/images/news/75d5a8ec-screen.shot.2018-05-03.at.11.31.33.png" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async">
+<img src="/images/news/75d5a8ec-screen.shot.2018-05-03.at.11.31.33.webp" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async">
 
 * * *
 

@@ -6,7 +6,7 @@ author: "Justin Dodd"
 legacySlug: "b/blog-92895-introducing-jazz-on-the-lane-nights"
 ---
 
-<img src="/images/news/db97883e-winnie.169_1.png" alt="Winnie AMA sings jazz & soul" loading="lazy" decoding="async">
+<img src="/images/news/db97883e-winnie.169_1.webp" alt="Winnie AMA sings jazz & soul" loading="lazy" decoding="async">
 
 **Winnie AMA sings jazz & soul with Henry Tozer & his band |** **Friday 22 April | 7:30 pm**  
 

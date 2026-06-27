@@ -22,7 +22,7 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
-<img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.png" alt="Worship | November 2018" loading="lazy" decoding="async">
+<img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.webp" alt="Worship | November 2018" loading="lazy" decoding="async">
 
 **All Souls Requiem Mass** | 6pm, 4th October
 
