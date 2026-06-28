@@ -22,7 +22,7 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
-<img src="/images/news/a8bc0715-shh.free.service.colour.png" alt="Worship | July 2019" loading="lazy" decoding="async">
+<img src="/images/news/a8bc0715-shh.free.service.colour.webp" alt="Worship | July 2019" loading="lazy" decoding="async" width="370" height="247">
 
 **  
 Children’s Breakfast Mass** | 9.30am, 21st July  

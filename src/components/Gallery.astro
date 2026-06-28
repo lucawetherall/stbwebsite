@@ -41,7 +41,7 @@ const { images } = Astro.props;
     function show(i: number) {
       current = (i + images.length) % images.length;
       imgEl!.src = images[current].src;
-      imgEl!.alt = images[current].alt;
+      imgEl!.alt = images[current].alt || `Image ${current + 1} of ${images.length}`;
       capEl!.textContent = images[current].alt;
     }
     function open(i: number) { show(i); if (!dialog!.open) dialog!.showModal(); }
@@ -107,4 +107,6 @@ const { images } = Astro.props;
   .lightbox__prev { left: 1.2rem; top: 50%; transform: translateY(-50%); }
   .lightbox__next { right: 1.2rem; top: 50%; transform: translateY(-50%); }
   .lightbox__btn:hover { background: var(--burgundy); }
+  /* White ring reads against the dark backdrop where the global burgundy would not. */
+  .lightbox__btn:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
 </style>

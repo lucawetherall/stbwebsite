@@ -12,13 +12,13 @@ We have a variety of regular activities and events at St Barnabas. Here are some
 
 The Memory Cafe will be open in the church each Thursday from 11.30 am to 1pm, beginning on the first week of August. Come along for information, refreshments and memory games and fun!
 
-<img src="/images/news/8928c0b2-cup-drink-flatlay-900103.jpg" alt="Regular Events & Activities | August 2018" loading="lazy" decoding="async">
+<img src="/images/news/8928c0b2-cup-drink-flatlay-900103.jpg" alt="Regular Events & Activities | August 2018" loading="lazy" decoding="async" width="370" height="555">
 
   
 
 **Thursday Pop-in | Every Thursday, 2.30pm**
 
-<img src="/images/news/1814bfe2-coffee-cup-mug-drink.jpg" alt="Regular Events & Activities | August 2018" loading="lazy" decoding="async">
+<img src="/images/news/1814bfe2-coffee-cup-mug-drink.jpg" alt="Regular Events & Activities | August 2018" loading="lazy" decoding="async" width="370" height="277">
 
 Come along for a cup of tea and a chat in the large hall on Thursday afternoons. Everyone is welcome!
 
@@ -26,7 +26,7 @@ Come along for a cup of tea and a chat in the large hall on Thursday afternoons.
 
 Pitshanger Pictures exists to inform, entertain and strengthen community in North Ealing by screening films that stimulate conversation and discussion on questions in life. This month we have our special _’Silver Screen’_ films screening, as well as our _Mozart Festival_ running from 16th to 19th August. 
 
-<img src="/images/news/31dceabb-screen.shot.2018-04-24.at.14.36.51.png" alt="Regular Events & Activities | August 2018" loading="lazy" decoding="async">
+<img src="/images/news/31dceabb-screen.shot.2018-04-24.at.14.36.51.webp" alt="Regular Events & Activities | August 2018" loading="lazy" decoding="async" width="370" height="239">
 
 No need to book tickets, just come along. Doors open half an hour before the screenings unless otherwise specified.
 

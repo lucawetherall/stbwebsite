@@ -23,7 +23,7 @@ On Thursday 10 September 2020 we met for an online assembly to celebrate our or
 
 St Barnabas partnered with Christ the Saviour Ealing Broadway to catalyse an affordable housing campaign in Ealing. Working through West London Citizens, we held a Housing Assembly in February 2018 with the Leader of the Council and the Opposition before the local elections.  The momentum of the campaign has grown to such an extent that a site for the development of 115 truly affordable homes has been identified and a memorandum of understanding has been signed with Ealing Council. 
 
-<img src="/images/news/25a8c628-housing.campaign.town.hall.jpg" alt="Community Organising at St Barnabas" loading="lazy" decoding="async">
+<img src="/images/news/25a8c628-housing.campaign.town.hall.jpg" alt="Community Organising at St Barnabas" loading="lazy" decoding="async" width="370" height="278">
 
 The work of this campaign is featured in a report [’Coming Home’](https://www.archbishopofcanterbury.org/priorities/coming-home/about-coming-home) from the Archbishops’ Housing Commission.
 
@@ -31,7 +31,7 @@ The work of this campaign is featured in a report [’Coming Home’](https://ww
 
 Community organising is key to the development of lay and ordained leaders at St Barnabas. Leaders are encouraged to attend training of various types provided by CitizensUK. Training brings together representatives from institutions across West London, building new relationships, confidence and skill for public engagement. At the heart of the work, is the [one-to-one meeting](https://leadingdifferently.com/2017/03/01/one-to-one-relational-meetings/).
 
-<img src="/images/news/52c990de-wlc-67.jpg" alt="Community Organising at St Barnabas" loading="lazy" decoding="async">
+<img src="/images/news/52c990de-wlc-67.jpg" alt="Community Organising at St Barnabas" loading="lazy" decoding="async" width="370" height="246">
 
   
 

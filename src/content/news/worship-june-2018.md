@@ -23,13 +23,13 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
-<img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.png" alt="Worship | June 2018" loading="lazy" decoding="async">
+<img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.webp" alt="Worship | June 2018" loading="lazy" decoding="async" width="370" height="208">
 
 **Choral Evensong and Benediction** | 6 pm, 3rd June
 
 A [beautiful service](https://www.barnabites.org/blog/29244) of traditional evening prayer combining sung psalms, canticles and hymns as well as period of meditation with the Blessed Sacrament.
 
-<img src="/images/news/850cb254-st.barnabas.carols-2.2.jpg" alt="Worship | June 2018" loading="lazy" decoding="async">
+<img src="/images/news/850cb254-st.barnabas.carols-2.2.jpg" alt="Worship | June 2018" loading="lazy" decoding="async" width="370" height="247">
 
   
 
@@ -37,4 +37,4 @@ A [beautiful service](https://www.barnabites.org/blog/29244) of traditional ev
 
 Join us for a special Jazz Mass to celebrate the patronal festival of St Barnabas. The service brings together an expanded choir and jazz trio, leading Chilcott’s foot-tapping ’jazz mass’ setting. 
 
-<img src="/images/news/054ed68a-black-and-white-hand-jazz-164934.jpg" alt="Worship | June 2018" loading="lazy" decoding="async">
+<img src="/images/news/054ed68a-black-and-white-hand-jazz-164934.jpg" alt="Worship | June 2018" loading="lazy" decoding="async" width="370" height="278">

@@ -8,7 +8,7 @@ legacySlug: "b/blog-97927-ukraine-crisis-appeal"
 
 Christian Aid is working with the DEC (Disasters Emergency Committee) and partner organisations in their ACT Alliance (a global faith-based coalition), to offer assistance to Ukraine refugees fleeing deadly violence. So far, one of their ACT partners have distributed 28 tonnes of food supplies and other lifesaving essentials to people on the Ukrainian borders. [Click here](https://www.christianaid.org.uk/appeals/emergencies/ukraine-crisis-appeal) if you would like to donate, sign their petition or join in with the prayer. 
 
-<img src="/images/news/8e49aadd-come.and.sing.png" alt="Ukraine Crisis Appeal" loading="lazy" decoding="async">
+<img src="/images/news/8e49aadd-come.and.sing.webp" alt="Ukraine Crisis Appeal" loading="lazy" decoding="async" width="600" height="338">
 
 **Sunday 10 April | 3-5 pm | £5 per person** \- **All funds to Christian Aid’s Ukraine Crisis Appeal**
 

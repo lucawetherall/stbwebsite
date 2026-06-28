@@ -22,22 +22,22 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
-<img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.png" alt="Worship | November 2018" loading="lazy" decoding="async">
+<img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.webp" alt="Worship | November 2018" loading="lazy" decoding="async" width="370" height="208">
 
 **All Souls Requiem Mass** | 6pm, 4th October
 
 A [beautiful service](https://landing.churchdesk.com/b/29244/evensong) for which the choir will sing the Fauré Requiem with commemoration of the faithful departed.
 
-<img src="/images/news/351342e5-all-saints.jpg" alt="Worship | November 2018" loading="lazy" decoding="async">
+<img src="/images/news/351342e5-all-saints.jpg" alt="Worship | November 2018" loading="lazy" decoding="async" width="370" height="249">
 
 **Remembrance Sunday** High Mass | 10.30am, 11th November  
 
 This year we mark a poignant anniversary - the centenary of the Armistice on 11 November 1918 at 11 am.  During the High Mass we make solemn procession from the church to the war memorial on the corner of Pitshanger Lane and Denison Road for an ’Act of Remembrance’ including the traditional 2 minutes silence. 
 
-<img src="/images/news/d9aa1f15-armistice.jpg" alt="Worship | November 2018" loading="lazy" decoding="async">
+<img src="/images/news/d9aa1f15-armistice.jpg" alt="Worship | November 2018" loading="lazy" decoding="async" width="370" height="265">
 
 **Children’s Mass** | 9.30am, 18th November
 
 A 30-minute Mass for young children. It includes songs and a visual bible story with shared child-friendly breakfast afterwards. 
 
-<img src="/images/news/c44ed152-pancake-10.jpg" alt="Worship | November 2018" loading="lazy" decoding="async">
+<img src="/images/news/c44ed152-pancake-10.jpg" alt="Worship | November 2018" loading="lazy" decoding="async" width="370" height="246">

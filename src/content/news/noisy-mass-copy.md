@@ -6,7 +6,7 @@ author: "St Barnabas Church"
 legacySlug: "b/blog-59818-noisy-mass-copy"
 ---
 
-<img src="/images/news/419c042a-noisy.mass.with.stay.play.png" alt="Noisy Mass is Now Online!" loading="lazy" decoding="async">
+<img src="/images/news/419c042a-noisy.mass.with.stay.play.webp" alt="Noisy Mass is Now Online!" loading="lazy" decoding="async" width="370" height="327">
 
 Come join in a short, lively and interactive service at **10 am every Sunday** for families with little ones. Virtual Noisy Mass takes place by Zoom and runs for 10–15 minutes including action songs and a fun, interactive bible story. Have a little piece of bread ready to share together during the _agape meal_ (love meal).
 
