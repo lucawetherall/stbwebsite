@@ -165,3 +165,50 @@ hr, .rule { border: none; border-top: 1px solid var(--line); margin-block: 2rem;
   * { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ---- print ------------------------------------------------------------- */
+/* Parishioners print service times, notices and pages. Strip the on-screen
+   chrome, render ink-on-white, and keep the content legible on paper. */
+@media print {
+  @page { margin: 1.6cm; }
+  html { font-size: 11.5pt; }
+  body { background: #fff; color: #000; }
+  body::before { display: none; }            /* the burgundy ribbon */
+  a { color: #000; }
+  .wrap { max-width: none; padding-inline: 0; }
+  .section { padding-block: 1.2rem; }
+
+  /* Interactive / navigational chrome has no place on paper. */
+  .skip-link,
+  .site-header,
+  .site-footer,
+  .consent,
+  .newsletter,
+  .give-cta,
+  .enquire,
+  .map-embed,
+  .hero__links,
+  .hero__credit { display: none !important; }
+
+  /* The hero is a background image (browsers omit backgrounds when printing),
+     so its white text would vanish — flatten it to dark text on white. */
+  .hero { min-height: auto; color: #000; background: none !important; display: block; }
+  .hero::before { display: none; }
+  .hero__inner { padding-top: 0; padding-bottom: .5rem; }
+  .hero__kicker,
+  .hero__title,
+  .hero__service { color: #000; }
+
+  /* Spell out destinations for links inside body copy so a printout is usable. */
+  .prose a[href^="http"]::after,
+  .page-body a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: .85em;
+    word-break: break-all;
+  }
+
+  /* Avoid breaking headings off from their content, or splitting key blocks. */
+  h1, h2, h3, h4 { break-after: avoid; }
+  img, figure, blockquote,
+  .service-block, .news-row { break-inside: avoid; }
+}
