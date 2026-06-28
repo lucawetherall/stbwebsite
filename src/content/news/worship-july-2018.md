@@ -21,16 +21,16 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 
-<img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.webp" alt="Worship | July 2018" loading="lazy" decoding="async">
+<img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.webp" alt="Worship | July 2018" loading="lazy" decoding="async" width="370" height="208">
 
 **Choral Evensong and Benediction** | 6 pm, 1st July
 
 A [beautiful service](https://landing.churchdesk.com/b/29244/evensong) of traditional evening prayer combining sung psalms, canticles and hymns as well as period of meditation with the Blessed Sacrament.
 
-<img src="/images/news/850cb254-st.barnabas.carols-2.2.jpg" alt="Worship | July 2018" loading="lazy" decoding="async">
+<img src="/images/news/850cb254-st.barnabas.carols-2.2.jpg" alt="Worship | July 2018" loading="lazy" decoding="async" width="370" height="247">
 
 **Children’s Service** | 9.30am, 15th July
 
 Join our 30-minute children’s service for young children. It includes songs and a very visual bible story with shared child-friendly breakfast afterwards. 
 
-<img src="/images/news/c44ed152-pancake-10.jpg" alt="Worship | July 2018" loading="lazy" decoding="async">
+<img src="/images/news/c44ed152-pancake-10.jpg" alt="Worship | July 2018" loading="lazy" decoding="async" width="370" height="246">

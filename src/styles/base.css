@@ -40,7 +40,7 @@ h3 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); }
 p { max-width: 66ch; }
 
 a { color: inherit; }
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }
 a, button { cursor: pointer; }
 
 :focus-visible { outline: 2px solid var(--burgundy); outline-offset: 3px; }

@@ -12,7 +12,7 @@ We have a variety of regular activities and events at St Barnabas. Here are some
 
 The Memory Cafe will be open in the church each Thursday from 11.30 am to 1pm. Come along for information, refreshments and memory games and fun!
 
-<img src="/images/news/f05bf1f4-memory.cafe_1.jpg" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async">
+<img src="/images/news/f05bf1f4-memory.cafe_1.jpg" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async" width="370" height="555">
 
 * * *
 
@@ -22,7 +22,7 @@ The Memory Cafe will be open in the church each Thursday from 11.30 am to 1pm. C
 
 Come along for a cup of tea and a chat in the large hall on Thursday afternoons. Everyone is welcome!
 
-<img src="/images/news/74cdf630-coffee-cup-mug-drink.jpg" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async">
+<img src="/images/news/74cdf630-coffee-cup-mug-drink.jpg" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async" width="370" height="277">
 
 * * *
 
@@ -30,7 +30,7 @@ Come along for a cup of tea and a chat in the large hall on Thursday afternoons.
 
 The Gospel Choir is open to anyone who is enthusiastic about community singing. No experience is necessary. We sing everything from energetic Gospel praise to soul-warming standards. Besides performing on the first Sunday of the month at the ‘Shh-free’ Mass, the Gospel Choir also regularly sings at local community events. Rehearsals are usually 2nd and 3rd Sunday of the month, although this may vary depending on term holidays. For more information, feel free to email the conductor [Henry Tozer](mailto:henrytozer@gmail.com). 
 
-<img src="/images/news/75d5a8ec-screen.shot.2018-05-03.at.11.31.33.webp" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async">
+<img src="/images/news/75d5a8ec-screen.shot.2018-05-03.at.11.31.33.webp" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async" width="370" height="208">
 
 * * *
 
@@ -47,7 +47,7 @@ Please refer to the website for further dates and information:
   
 ](https://www.barnabites.org/page/12/friday-lunchtime-concerts)
 
-<img src="/images/news/3c78029e-Ashley_20Fripp.jpg" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async">
+<img src="/images/news/3c78029e-Ashley_20Fripp.jpg" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async" width="370" height="192">
 
 * * *
 
@@ -59,7 +59,7 @@ No need to book tickets, just come along. Doors open half an hour before the scr
 
 **Wednesdays – tickets £5 Saturdays & other screenings – child (under 16) £6, adult £8 (includes drink and snack) Pitshanger Pictures Opera – £10 (additional cost for food).**
 
-<img src="/images/news/20ced743-state.fair.1946.jpg" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async">
+<img src="/images/news/20ced743-state.fair.1946.jpg" alt="Regular Events & Activities | November 2019" loading="lazy" decoding="async" width="370" height="523">
 
 See our website to find out what films are showing this month:
 

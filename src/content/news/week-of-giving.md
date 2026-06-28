@@ -17,4 +17,4 @@ St Barnabas is a thriving community hub. Over 500 people come through our doors 
 
 **OR Click on the sticker below to donate!**
 
-[<img src="/images/news/ac864793-BT-MY-DONATE-BUTTON.gif" alt="Week of Giving" loading="lazy" decoding="async">](https://mydonate.bt.com/donation/v4/chooseAmount.html?charity=119847&sourcePage=charityPage)
+[<img src="/images/news/ac864793-BT-MY-DONATE-BUTTON.gif" alt="Week of Giving" loading="lazy" decoding="async" width="210" height="125">](https://mydonate.bt.com/donation/v4/chooseAmount.html?charity=119847&sourcePage=charityPage)

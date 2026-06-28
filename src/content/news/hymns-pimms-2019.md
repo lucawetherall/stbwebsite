@@ -6,4 +6,4 @@ author: "St Barnabas Church"
 legacySlug: "b/blog-44880-hymns-pimms-2019"
 ---
 
-<img src="/images/news/dcf4ec27-hymns.pimms.2019.revised.jpg" alt="Hymns & Pimms 2019" loading="lazy" decoding="async">
+<img src="/images/news/dcf4ec27-hymns.pimms.2019.revised.jpg" alt="Hymns & Pimms 2019" loading="lazy" decoding="async" width="370" height="524">

@@ -38,7 +38,7 @@ _**Can you explain a little more about the themes?**_ Although life has just sta
 
 * * *
 
-<img src="/images/news/52fde40c-whatsapp.image.2020-11-23.at.18.23.32.jpeg" alt="St Barnabas Artist in Residence Program" loading="lazy" decoding="async">
+<img src="/images/news/52fde40c-whatsapp.image.2020-11-23.at.18.23.32.jpeg" alt="St Barnabas Artist in Residence Program" loading="lazy" decoding="async" width="370" height="493">
 
 **Helen Charlemange - Biography**
 

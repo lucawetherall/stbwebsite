@@ -11,7 +11,7 @@ legacySlug: "b/blog-32313-worship-august-2018"
 
 **10.30am Sung High Mass** | Our main service of the day combines transcendent music, beautiful ceremonial and accessible preaching. It lasts approximately 1 hour 15 minutes and includes ministry for children, from toddlers to teens. 
 
-<img src="/images/news/a6b71ef9-Communion_20from_20Advent_202015_20no_2082.jpg" alt="Worship | August 2018" loading="lazy" decoding="async">
+<img src="/images/news/a6b71ef9-Communion_20from_20Advent_202015_20no_2082.jpg" alt="Worship | August 2018" loading="lazy" decoding="async" width="370" height="246">
 
 **  
 NO Wednesday Mid-week Mass |**

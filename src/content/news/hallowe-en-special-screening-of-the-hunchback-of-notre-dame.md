@@ -10,4 +10,4 @@ Join us Sunday 31 October, 7:30pm for a special screening of The Hunchback of N
 
 Tickets are £10 each and can be purchased [here](https://www.ticketsource.co.uk/pitshanger-pictures/t-zllzzz).
 
-<img src="/images/news/414baa67-thnd.leaflet.jpg" alt="Hallowe'en special screening of The Hunchback of Notre Dame" loading="lazy" decoding="async">
+<img src="/images/news/414baa67-thnd.leaflet.jpg" alt="Hallowe'en special screening of The Hunchback of Notre Dame" loading="lazy" decoding="async" width="370" height="479">

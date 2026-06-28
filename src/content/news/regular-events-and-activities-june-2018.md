@@ -12,7 +12,7 @@ legacySlug: "b/blog-31128-regular-events-and-activities-june-2018"
 
 **Ealing Gospel Choir | 10 June & 17 June, 3 - 5pm**
 
-**<img src="/images/news/a80d4e99-o_2F1901_2Fscreen.shot.2018-05-03.at.11.31.33.webp" alt="Regular Events & Activities | June 2018" loading="lazy" decoding="async">**
+**<img src="/images/news/a80d4e99-o_2F1901_2Fscreen.shot.2018-05-03.at.11.31.33.webp" alt="Regular Events & Activities | June 2018" loading="lazy" decoding="async" width="370" height="208">**
 
 Join the Gospel Choir every second and third Sunday of the month for a great time of energetic singing. No experience necessary! There is a small charge of £2 per person for rehearsal. All ages welcome from 8 years old upwards. 
 
@@ -20,7 +20,7 @@ Join the Gospel Choir every second and third Sunday of the month for a great ti
 
 **Thursday Pop-in | Every Thursday, 2.30pm**  
 
-<img src="/images/news/1814bfe2-coffee-cup-mug-drink.jpg" alt="Regular Events & Activities | June 2018" loading="lazy" decoding="async">
+<img src="/images/news/1814bfe2-coffee-cup-mug-drink.jpg" alt="Regular Events & Activities | June 2018" loading="lazy" decoding="async" width="370" height="277">
 
   
 
@@ -32,7 +32,7 @@ Come along for a cup of tea and a chat in the large hall on Thursday afternoons.
 
 All concerts are on Friday at 1pm and last for about 45 minutes.   The concerts are free with a voluntary retiring collection.
 
-<img src="/images/news/55bc0394-black-and-white-black-and-white-close-up-586415.jpg" alt="Regular Events & Activities | June 2018" loading="lazy" decoding="async">
+<img src="/images/news/55bc0394-black-and-white-black-and-white-close-up-586415.jpg" alt="Regular Events & Activities | June 2018" loading="lazy" decoding="async" width="370" height="278">
 
 In June, our concerts are:
 
@@ -70,7 +70,7 @@ Please refer to the website for further dates and information:
 
 Pitshanger Pictures exists to inform, entertain and strengthen community in North Ealing by screening films that stimulate conversation and discussion on questions in life.
 
-<img src="/images/news/31dceabb-screen.shot.2018-04-24.at.14.36.51.webp" alt="Regular Events & Activities | June 2018" loading="lazy" decoding="async">
+<img src="/images/news/31dceabb-screen.shot.2018-04-24.at.14.36.51.webp" alt="Regular Events & Activities | June 2018" loading="lazy" decoding="async" width="370" height="239">
 
 No need to book tickets, just come along. Doors open half an hour before the screenings unless otherwise specified.
 

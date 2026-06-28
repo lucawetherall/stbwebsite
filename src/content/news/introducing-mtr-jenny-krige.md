@@ -10,7 +10,7 @@ legacySlug: "b/blog-88927-introducing-mtr-jenny-krige"
 
 * * *
 
-<img src="/images/news/6fb66537-thumbnail_img_5456.jpg" alt="Introducing Mtr Jenny Krige" loading="lazy" decoding="async">
+<img src="/images/news/6fb66537-thumbnail_img_5456.jpg" alt="Introducing Mtr Jenny Krige" loading="lazy" decoding="async" width="241" height="278">
 
 Hi everyone, 
 

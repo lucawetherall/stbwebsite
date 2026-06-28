@@ -36,4 +36,4 @@ We will reflect on these spaces and their meaning for us in our daily lives duri
 
 Please think about how you will mark Lent this year – it would be so special if as many of us as possible can make the journey together, sharing our thoughts, prayers and questions with those who have lived the monastic rule throughout history.
 
-<img src="/images/news/9057d746-screen.shot.2020-02-26.at.16.36.36_1.webp" alt="Lent 2020 | 7 Sacred Spaces" loading="lazy" decoding="async">
+<img src="/images/news/9057d746-screen.shot.2020-02-26.at.16.36.36_1.webp" alt="Lent 2020 | 7 Sacred Spaces" loading="lazy" decoding="async" width="370" height="520">
