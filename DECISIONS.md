@@ -107,13 +107,22 @@ npm install
 npm run dev        # local dev server (http://localhost:4321)
 npm run build      # static build → dist/
 npm run preview    # preview the production build
-npm test           # vitest — liturgical-engine unit tests (35 tests)
-
-# one-off maintenance scripts:
-node scripts/fetch-fonts.mjs    # re-download self-hosted woff2 + regenerate fonts.css
-node scripts/fetch-images.mjs   # re-download + optimise hero photos, marks, OG image
-node scripts/scrape-blog.mjs    # re-migrate the ChurchDesk blog (regenerates public/_redirects.blog)
+npm test           # vitest — the unit tests (liturgy, data guards, text helpers)
 ```
+
+**Maintenance scripts** (`node scripts/<name>.mjs`; details in each script's header comment and
+the `optimise-images` skill in `.claude/skills/`):
+
+| Script | Kind | What it does |
+|---|---|---|
+| `scrape-blog.mjs` (`npm run scrape`) | one-time | Migrate the ChurchDesk `/b/blog-*` posts into `news`; regenerates `public/_redirects.blog` |
+| `fetch-fonts.mjs` | one-time | Re-download self-hosted woff2 + regenerate `src/styles/fonts.css` |
+| `fetch-images.mjs` | one-time | Download + optimise hero photos, affiliation marks, the OG image |
+| `fetch-staff-photos.mjs` | one-time | Download Who's Who portraits; cap to 600px WebP |
+| `fetch-history-images.mjs` | one-time | Download + optimise the history-page photographs |
+| `list-history-images.mjs` | one-off helper | Print candidate history images (src/alt/caption) for sourcing |
+| `optimise-news-images.mjs` | idempotent | Convert legacy news PNGs to WebP and rewrite references |
+| `dimension-news-images.mjs` | idempotent | Stamp `width`/`height` onto news `<img>` tags (no layout shift) |
 
 > After re-running `scrape-blog.mjs`, re-merge `public/_redirects.blog` into `public/_redirects`
 > (the blog 301 block sits between the "specific" redirects and the `/b/*` catch-all).
@@ -141,6 +150,9 @@ node scripts/scrape-blog.mjs    # re-migrate the ChurchDesk blog (regenerates pu
 ---
 
 ## 7. Possible future hardening (not blocking)
+
+> The prioritised improvement backlog now lives in **[docs/ROADMAP.md](docs/ROADMAP.md)**; the
+> items below remain here as the original record.
 
 - Add a Content-Security-Policy header once the third-party origins (ChurchDesk, Google Maps,
   YouTube, Plausible) are finalised — omitted now to avoid breaking inline/island scripts

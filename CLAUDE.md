@@ -128,8 +128,9 @@ test to make a change pass.** Adding a feast is roughly one row in the engine + 
 
 - Branch `claude/<short-slug>`; squash-merge to `main`.
 - Commit and PR bodies follow **What / Why / Changes / Verification**, with a house-format
-  verification line, e.g. `Build: 167 pages, 0 errors; astro check 0 errors`. See recent PRs
-  (#8–#12) for the exact shape, and use the PR template.
+  verification line, e.g. `Build: 169 pages, 0 errors; astro check 0 errors; vitest 59 passed`
+  (always report the *measured* numbers, not these). See recent PRs (#8–#12) for the exact
+  shape, and use the PR template.
 - End commits/PRs with the `Co-Authored-By: Claude …` trailer.
 - Commit or push **only when asked**; never commit straight to `main`.
 
@@ -151,7 +152,13 @@ The CMS `config.yml` also still holds **MOCKUP** preview URLs to revert at go-li
 
 - **[README.md](README.md)** — quick start & architecture.
 - **[DECISIONS.md](DECISIONS.md)** — defaults taken, open items, env vars, DNS/deploy runbook.
+- **[docs/ROADMAP.md](docs/ROADMAP.md)** — the prioritised improvement backlog (candidates, not
+  standing instructions).
 - **[CMS-SETUP.md](CMS-SETUP.md)** — Sveltia CMS setup & the editor's guide.
 - **[docs/AGENT-GUARDRAILS.md](docs/AGENT-GUARDRAILS.md)** — the editability contract in full, the
   design rules, the safe-to-edit map, and "how to add X" recipes.
-- **`docs/superpowers/`** — dated design specs and plans from past work.
+- **`.claude/skills/`** — the recurring workflows packaged as skills (add a page, dual-write a
+  schema change, add a feast, write a news post, optimise images); loaded automatically when a
+  task matches.
+- **[docs/superpowers/](docs/superpowers/README.md)** — dated design specs and plans from past
+  work (historical record; indexed in its README).

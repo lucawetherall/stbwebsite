@@ -13,7 +13,9 @@ the result of each (do not stop at the first failure — run all three so the fu
 
 Then print a single paste-ready line in the house format, e.g.:
 
-> `Build: 167 pages, 0 errors; astro check 0 errors; vitest 48 passed`
+> `Build: 169 pages, 0 errors; astro check 0 errors; vitest 59 passed`
+>
+> (an example — always report the numbers you actually measured)
 
 If anything failed, summarise what broke and where — don't paper over it.
 
