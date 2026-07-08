@@ -16,6 +16,8 @@ interface Props {
   description?: string;
   /** OG/social image, absolute path under /images or full URL */
   image?: string;
+  /** Open Graph type — 'article' for news posts */
+  type?: 'website' | 'article';
   /** Header overlays a full-bleed hero (white text) */
   overlay?: boolean;
   noindex?: boolean;
@@ -25,6 +27,7 @@ const {
   title,
   description = 'An inclusive Christian community in the modern Catholic tradition of the Church of England, in Pitshanger, Ealing. Sung Mass on Sundays at 10.30am.',
   image = '/images/og-default.jpg',
+  type = 'website',
   overlay = false,
   noindex = false,
 } = Astro.props;
@@ -69,7 +72,7 @@ const churchJsonLd = {
     <link rel="preload" href="/fonts/source-serif-4-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Open Graph / social -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />

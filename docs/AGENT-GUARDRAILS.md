@@ -143,6 +143,10 @@ calendar** through its hero art and footer season line.
 
 ## D. "How to add X" recipes & content shapes
 
+> The most common recipes are also packaged as step-by-step skills in **`.claude/skills/`**
+> (`add-page`, `cms-dual-write`, `add-feast`, `news-post`, `optimise-images`) — Claude Code
+> loads them automatically when the task matches.
+
 Each recipe ends the same way: **the content stays CMS-editable.** Shapes below are *examples* —
 the source of truth is always `src/content.config.ts`.
 

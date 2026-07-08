@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Prose from '../../components/Prose.astro';
+import { site } from '../../data/site';
 
 export async function getStaticPaths() {
   const posts = await getCollection('news', ({ data }) => !data.draft);
@@ -18,8 +19,21 @@ const fmtDate = date.toLocaleDateString('en-GB', {
   timeZone: 'UTC',
 });
 const metaDesc = description ?? `${category ?? 'News'} from St Barnabas Church, Ealing — ${title}.`;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: metaDesc,
+  datePublished: date.toISOString().slice(0, 10),
+  ...(author && { author: { '@type': 'Person', name: author } }),
+  ...(hero && { image: new URL(hero, site.url).href }),
+  publisher: { '@type': 'Organization', name: site.name, url: site.url },
+  mainEntityOfPage: new URL(Astro.url.pathname, site.url).href,
+};
 ---
-<Base title={title} description={metaDesc}>
+<Base title={title} description={metaDesc} image={hero} type="article">
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(articleJsonLd)} />
   <article class="news-article">
     <header class="wrap news-article__head">
       <p class="label news-article__kicker">{category ?? 'News'}</p>
