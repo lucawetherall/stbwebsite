@@ -1,0 +1,161 @@
+---
+import EventRow from './EventRow.astro';
+import ServiceTimes from './ServiceTimes.astro';
+import {
+  describeWhen,
+  formatCivilDate,
+  formatCivilRange,
+  groupByMonth,
+  type SiteEvent,
+} from '../lib/events';
+import { site } from '../data/site';
+
+interface Props {
+  events: SiteEvent[];
+}
+const { events } = Astro.props;
+
+// One highlighted event at most — the soonest the parish has asked us to lift up.
+const featured = events.find((e) => e.featured);
+const diary = featured ? events.filter((e) => e !== featured) : events;
+const months = groupByMonth(diary);
+
+const calendarUrl = new URL('/calendar.ics', site.url);
+const subscribeUrl = `webcal://${calendarUrl.host}${calendarUrl.pathname}`;
+
+// The panel shows the date on its own line, so the meta line must not repeat a multi-day range.
+const featuredDate = featured
+  ? featured.endDate
+    ? formatCivilRange(featured.date, featured.endDate)
+    : formatCivilDate(featured.date, { weekday: true })
+  : '';
+const featuredWhen = featured ? describeWhen(featured, { includeDate: false }) : '';
+---
+{featured && (
+  <section
+    class:list={['whats-on-featured', !featured.image && 'is-textonly']}
+    aria-labelledby="featured-heading"
+  >
+    {featured.image && (
+      <img
+        class="whats-on-featured__img"
+        src={featured.image}
+        alt={featured.imageAlt ?? ''}
+        loading="eager"
+        decoding="async"
+      />
+    )}
+    <div class="whats-on-featured__body">
+      <p class="label" id="featured-heading">Coming up</p>
+      <h2 class="whats-on-featured__title serif">{featured.title}</h2>
+      <p class="whats-on-featured__when">
+        {featuredDate}{featuredWhen && <span> · {featuredWhen}</span>}
+      </p>
+      {featured.recurrenceText && (
+        <p class="whats-on-featured__repeat">{featured.recurrenceText}</p>
+      )}
+      {featured.description && (
+        <p class="whats-on-featured__desc">{featured.description}</p>
+      )}
+      {featured.url && (
+        <p class="whats-on-featured__action">
+          <a class="btn" href={featured.url}>{featured.urlLabel ?? 'More details'}</a>
+        </p>
+      )}
+    </div>
+  </section>
+)}
+
+<section class="whats-on-diary" aria-labelledby="diary-heading">
+  <h2 class="sr-only" id="diary-heading">The diary</h2>
+
+  {months.length > 0 ? (
+    months.map((month) => (
+      <section class="whats-on-month">
+        <h3 class="label whats-on-month__title">{month.label}</h3>
+        <ul class="events-list">
+          {month.events.map((event) => <EventRow event={event} />)}
+        </ul>
+      </section>
+    ))
+  ) : (
+    <p class="whats-on-empty">
+      There is nothing in the diary just now. Our
+      <a href="/worship">regular pattern of worship</a> continues week by week, and special
+      services are announced in the <a href="/news">Weekly News</a>.
+    </p>
+  )}
+</section>
+
+<section class="whats-on-regular" aria-labelledby="regular-heading">
+  <h2 class="label whats-on-regular__title" id="regular-heading">Week by week</h2>
+  <ServiceTimes />
+</section>
+
+<p class="page-aside">
+  You can <a href={subscribeUrl}>subscribe to our calendar</a> in Apple Calendar, Google Calendar
+  or Outlook, or <a href="/calendar.ics">download the calendar file</a>. Everything here is also
+  announced in our <a href="/news">Weekly News</a>.
+</p>
+
+<style>
+  /* ---- featured ---- */
+  .whats-on-featured {
+    display: grid;
+    grid-template-columns: minmax(0, 42%) 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.8rem;
+    margin-bottom: 3rem;
+    background: var(--paper-2);
+    border-radius: 5px;
+  }
+  /* A text-only highlight still needs to read as a panel, not a stray paragraph. */
+  .whats-on-featured.is-textonly { grid-template-columns: 1fr; }
+  .whats-on-featured__img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  .whats-on-featured__body { min-width: 0; }
+  .whats-on-featured__title {
+    margin-top: .8rem;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    line-height: 1.1;
+  }
+  .whats-on-featured__when {
+    margin-top: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--burgundy);
+  }
+  .whats-on-featured__repeat { margin-top: .3rem; color: var(--ink-soft); }
+  .whats-on-featured__desc { margin-top: .8rem; color: var(--ink-soft); }
+  .whats-on-featured__action { margin-top: 1.4rem; }
+
+  /* ---- diary ---- */
+  .whats-on-month { margin-bottom: 2.6rem; }
+  .whats-on-month:last-child { margin-bottom: 0; }
+  .whats-on-month__title { display: block; margin-bottom: 1rem; }
+  .events-list { list-style: none; }
+
+  .whats-on-empty { color: var(--ink-soft); max-width: 62ch; }
+  .whats-on-empty a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--burgundy);
+    transition: color .2s, border-color .2s;
+  }
+  .whats-on-empty a:hover { color: var(--burgundy-deep); border-color: var(--burgundy-deep); }
+
+  /* ---- regular pattern ---- */
+  .whats-on-regular { margin-top: 3.4rem; padding-top: 2.4rem; border-top: 1px solid var(--line); }
+  .whats-on-regular__title { display: block; margin-bottom: 1.4rem; }
+
+  @media (max-width: 700px) {
+    .whats-on-featured { grid-template-columns: 1fr; gap: 1.2rem; padding: 1.4rem; }
+  }
+</style>

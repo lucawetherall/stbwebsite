@@ -25,15 +25,15 @@ in the body as raw `<img>` tags — so all 129 posts still share the default OG 
 each post's best body image to `hero`/`heroAlt` (natural to pair with item 3) would light this
 up. *Effort: S (done) / M (hero promotion). Parish input: no.*
 
-## 2. Content freshness: empty-events state and news recency — **Open / partly Blocked**
+## 2. Content freshness: empty-events state and news recency — **Shipped (code) / Blocked (content)**
 
-Both entries in `src/content/events/` are past (June 2026), and `getEvents()`
-(`src/lib/events.ts`) filters to future events — so Worship → Special Services currently renders
-an empty list. Code side: give `EventsList` a considered "no special services are planned just
-now — see the regular pattern of services" empty state rather than a bare gap. Content side: the
-newest news post is 19 March 2024; fresh notices and events are editorial work for the parish
-(or enabling the ChurchDesk iCal feed — `CHURCHDESK_ICAL_URL`, DECISIONS §1.1 and §6).
-*Effort: S (empty state). Parish input: yes, for actual content.*
+The code side is done: What's On (`/whats-on`) carries a considered empty state — "There is
+nothing in the diary just now" alongside the regular pattern of worship — so a quiet diary reads
+as a quiet diary rather than a bare gap. **Still open, and editorial:** both entries in
+`src/content/events/` are past (June 2026) and the newest news post is 19 March 2024, so the page
+ships showing that empty state. Fresh notices and events are parish work, either in **CMS ›
+Events** or by setting `EVENTS_ICAL_URLS` to a live parish calendar (DECISIONS §1.1, §6, §8).
+*Effort: done (code). Parish input: yes, for actual content.*
 
 ## 3. Alt-text remediation on migrated news images — **Open**
 
@@ -51,12 +51,16 @@ service to run. Style the UI with the existing tokens (`src/styles/tokens.css`) 
 colours, two serifs only. Add a `/search` page and a header entry point (`SiteHeader.astro` is
 developer-owned). *Effort: M. Parish input: no.*
 
-## 5. Publish an ICS calendar feed — **Open**
+## 5. Publish an ICS calendar feed — **Shipped** (July 2026)
 
-The site *consumes* an iCal feed (`node-ical` in `src/lib/events.ts`) but publishes none. A
-static `calendar.ics` endpoint (an `.ics.ts` route mirroring `src/pages/news/rss.xml.ts`) built
-from the `events` collection + standing service times would let congregants subscribe in their
-calendar apps. Include a link on Worship → Special Services. *Effort: M. Parish input: no.*
+`src/pages/calendar.ics.ts` publishes a subscribable `/calendar.ics`, built from the `events`
+collection and any configured feed, reaching 90 days back and 18 months forward. It expands every
+occurrence of a repeating series (unlike the diary, which shows one row per series), ships a
+`VTIMEZONE` for Europe/London so a subscriber abroad sees our times, and is linked from What's On
+as both a `webcal://` subscription and a download. **Follow-on, still open:** the standing service
+times in `src/content/settings/serviceTimes.json` are *not* in the feed — their `when` field is
+free text ("first Sunday of the month") and would need parsing into recurrence rules before
+Sunday Mass could appear in a subscriber's calendar. *Effort: M (done) / M (service times).*
 
 ## 6. Liturgical engine: feast coverage and curated artwork — **Open**
 
