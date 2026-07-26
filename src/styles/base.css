@@ -2,11 +2,22 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
+/* Responsive type scale. Almost every size on the site is expressed in rem, so the
+   root size is the single lever that scales headings, labels, buttons and body copy
+   together, in proportion. The congregation skews elderly and a screen held at arm's
+   length needs more than a phone held at 30cm, so the increase grows with the viewport.
+   Percentages (not px) on purpose: they scale relative to the reader's OWN browser
+   default, so anyone who has already raised it for legibility keeps that benefit.
+   Screen-scoped so the print size (11.5pt, below) is never overridden. */
+html { font-size: 103%; }                                        /* mobile  ~18.5px body */
+@media screen and (min-width: 768px)  { html { font-size: 108%; } } /* iPad    ~19.4px body */
+@media screen and (min-width: 1024px) { html { font-size: 111%; } } /* desktop ~20.0px body */
+
 body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.7;
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
@@ -32,7 +43,7 @@ h3 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); }
   font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: .18em;
-  font-size: .66rem;
+  font-size: .7rem;
   font-weight: 600;
   color: var(--burgundy);
 }
@@ -83,7 +94,7 @@ a, button { cursor: pointer; }
   font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: .14em;
-  font-size: .7rem;
+  font-size: .74rem;
   text-decoration: none;
   padding-bottom: .25rem;
   border-bottom: 1px solid var(--burgundy);
@@ -96,7 +107,7 @@ a, button { cursor: pointer; }
   font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: .16em;
-  font-size: .7rem;
+  font-size: .74rem;
   text-decoration: none;
   color: var(--ink);
   border: 1px solid var(--burgundy);

@@ -56,6 +56,18 @@ violations** on the page types tested (home, content, contact, news article).
   **not** migrated — obtain current copies from the parish office and drop them in
   `public/documents/`, then add entries in `src/content/documents/`.
 - **Hero images** capped at 1920px / quality 74 webp (+ a 1280 variant) for LCP.
+- **Responsive type scale (accessibility).** The congregation skews elderly, so the root font-size
+  steps up with the viewport — **103%** mobile, **108%** ≥768px, **111%** ≥1024px — and `body` is
+  `1.125rem` (≈18.5 / 19.4 / 20.0px). Because virtually every size on the site is in `rem`, the
+  root is the single lever and everything scales in proportion. **Percentages, not px, on
+  purpose:** a percentage is relative to the reader's own browser default, so anyone who has
+  already raised it for legibility keeps that benefit; a px value would silently override them.
+  The rules are `@media screen`-scoped so the print size (`11.5pt`) still wins. Don't collapse
+  these to a single value or convert them to px.
+- **Desktop nav breakpoint 1180px** (was 1024px). The primary nav bar was already close to
+  overflowing at 1024px, and the type scale above widens it further; 1180px matches `--maxw`, above
+  which the capped `.wrap` gives the nav a constant width budget. iPad landscape therefore gets the
+  full-screen mobile menu — larger tap targets, no cramped single-line bar.
 
 ---
 

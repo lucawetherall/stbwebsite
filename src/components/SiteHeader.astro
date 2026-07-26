@@ -162,7 +162,9 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
 
   /* desktop nav */
   .primary-nav { display: none; }
-  .primary-nav__list { display: flex; align-items: center; gap: 1.35rem; list-style: none; flex-wrap: nowrap; }
+  /* gap trimmed to 1.1rem: the links themselves are larger under the type scale, and
+     nav.ts labels are editor-editable, so the bar needs headroom for a longer label */
+  .primary-nav__list { display: flex; align-items: center; gap: 1.1rem; list-style: none; flex-wrap: nowrap; }
   .primary-nav__item { position: relative; }
   .primary-nav__link { white-space: nowrap; }
   .primary-nav__link {
@@ -243,7 +245,17 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
     font-size: .72rem; padding: .4rem 0; color: var(--ink-soft);
   }
 
-  @media (min-width: 1024px) {
+  /* The wordmark is a mark, not reading copy: hold it at its previous size on narrow
+     phones so "St Barnabas Church, Ealing" keeps to one line as it did before the
+     type scale. Everything else on the page still grows. */
+  @media (max-width: 480px) {
+    .brand__name { font-size: 1.26rem; }
+  }
+
+  /* 1180px = --maxw: above it the .wrap is capped, so the nav's available width is
+     constant at every larger viewport. Below it (incl. iPad landscape) the full-screen
+     menu is used instead — larger tap targets, and no cramped single-line nav bar. */
+  @media (min-width: 1180px) {
     .primary-nav { display: block; }
     .nav-toggle { display: none; }
   }
