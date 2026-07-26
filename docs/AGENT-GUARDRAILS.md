@@ -112,7 +112,10 @@ calendar** through its hero art and footer season line.
 - **One accent.** `--burgundy #6A1B2D`, `--burgundy-deep` for hover/pressed only. No second accent
   colour. Retune the whole site by changing the one token.
 - **Two serifs, no sans.** Cormorant Garamond (display) + Source Serif 4 (body), **self-hosted**
-  in `public/fonts/`. No Google Fonts, no web-font CDN. Body 18px / line-height 1.7 / 66ch measure.
+  in `public/fonts/`. No Google Fonts, no web-font CDN. Body `1.125rem` / line-height 1.7 / 66ch
+  measure. The **root** font-size is a responsive percentage (103% mobile → 108% ≥768px → 111%
+  ≥1024px), so every rem-based size scales with it — that is the one lever for type size. Keep it
+  in percentages, never px (DECISIONS §2).
 - **Flat, not glossy.** No gradients anywhere; the image overlay (`--scrim`) is a flat colour on
   purpose. The 2px burgundy ribbon at the top of every page is constant (never season-variable).
 - **Components, patterns.** Outlined buttons that fill burgundy on hover; tracked uppercase
