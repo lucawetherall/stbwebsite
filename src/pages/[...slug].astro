@@ -19,22 +19,26 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, description, kicker, intro, gallery, hero, heroAlt } = entry.data;
+const { title, seoTitle, description, kicker, intro, gallery, hero, heroAlt } = entry.data;
 const showOrganSpec = entry.id === 'music/st-barnabas-organ';
 const showMusicians = entry.id === 'music/our-musicians';
 const showVisitDetails = entry.id === 'visit';
 const showEnquireCTA = entry.id === 'life-events';
 const showWhatsOn = entry.id === 'whats-on';
 
-// Loaded here rather than inside the component: `slot="head"` only forwards one level, so the
-// JSON-LD has to be emitted from the page for Base to place it in <head>.
+// Loaded here rather than inside the component: the diary events become JSON-LD nodes in the
+// page's site graph, which Base assembles.
 const events = showWhatsOn ? await getDiaryEvents() : [];
-const eventLd = showWhatsOn && events.length > 0 ? eventsJsonLd(events) : null;
+const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
 ---
-<Base title={title} description={description}>
-  {eventLd && (
-    <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(eventLd)} />
-  )}
+{/* `seoTitle` drives the <title> only; the h1 and the breadcrumb stay as the editor titled the
+    page, so search wording never quietly rewrites what a visitor reads. */}
+<Base
+  title={seoTitle ?? title}
+  breadcrumbTitle={title}
+  description={description}
+  jsonLd={eventLd}
+>
   <PageHeader kicker={kicker} title={title} intro={intro} />
   {hero && (
     <div class="wrap page-hero">

@@ -90,6 +90,15 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
       </ul>
     </nav>
 
+    {/* Kept out of the primary nav list, which is already tight for space; an icon sits beside
+        the menu button on every width instead. */}
+    <a class="search-link" href="/search/" aria-label="Search this site" title="Search">
+      <svg class="search-link__icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+        <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <line x1="12.6" y1="12.6" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+    </a>
+
     <button
       class="nav-toggle"
       type="button"
@@ -133,6 +142,7 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
       ))}
     </ul>
     <ul class="mobile-nav__utility">
+      <li><a href="/search/">Search</a></li>
       {utilityNav.map((u) => <li><a href={u.href}>{u.label}</a></li>)}
     </ul>
   </nav>
@@ -209,6 +219,16 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
   .submenu__link.is-active { color: var(--burgundy); }
   .submenu__link--nested { padding-left: 2.4rem; font-size: .86rem; color: var(--ink-soft); }
 
+  /* search */
+  .search-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    color: inherit; padding: .35rem; margin-left: auto;
+    border-bottom: 1px solid transparent; transition: color .2s;
+  }
+  .search-link__icon { width: 19px; height: 19px; display: block; }
+  .search-link:hover { color: var(--burgundy); }
+  .site-header.is-overlay .search-link:hover { color: var(--white); opacity: .75; }
+
   /* mobile toggle */
   .nav-toggle {
     display: inline-flex; align-items: center; gap: .55rem; background: none; border: none;
@@ -258,6 +278,8 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
   @media (min-width: 1180px) {
     .primary-nav { display: block; }
     .nav-toggle { display: none; }
+    /* The nav has taken the free space, so the icon sits directly after it. */
+    .search-link { margin-left: 0; }
   }
 </style>
 

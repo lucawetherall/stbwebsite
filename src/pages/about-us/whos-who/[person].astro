@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { getRoster, staffInitials, staffFirstName } from '../../../lib/staff';
+import { CHURCH_ID, abs } from '../../../lib/seo';
 
 export async function getStaticPaths() {
   const people = await getRoster();
@@ -18,8 +19,22 @@ const paragraphs = (bio ?? '')
 const metaDesc = paragraphs.length
   ? `${role} at St Barnabas Church, Ealing. ${paragraphs[0]}`.slice(0, 200)
   : `${role} at St Barnabas Church, Ealing.`;
+
+// A named person attached to the parish — this is what lets a search for "vicar of St Barnabas
+// Ealing" resolve to the right page rather than to whichever news post mentions the name most.
+const personJsonLd = {
+  '@type': 'Person',
+  '@id': abs(Astro.url.pathname) + '#person',
+  name,
+  jobTitle: role,
+  worksFor: { '@id': CHURCH_ID },
+  url: abs(Astro.url.pathname),
+  ...(email && { email }),
+  ...(photo && { image: abs(photo) }),
+  ...(paragraphs.length && { description: paragraphs[0] }),
+};
 ---
-<Base title={name} description={metaDesc} image={photo}>
+<Base title={name} description={metaDesc} image={photo} jsonLd={[personJsonLd]}>
   <article class="person">
     <div class="wrap person__top">
       <a class="person__back txt-link" href="/about-us/whos-who">← Who’s Who</a>

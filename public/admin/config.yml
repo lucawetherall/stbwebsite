@@ -307,6 +307,7 @@ collections:
           - { name: kicker, label: Kicker (small label above the title), widget: string, required: false }
           - { name: intro, label: Intro line, widget: string, required: false }
           - { name: description, label: Summary (shown to search engines), widget: text, required: false }
+          - { name: seoTitle, label: Search-engine title (optional), widget: string, required: false, hint: 'The headline people see in Google, when it should differ from the page Title above — a page headed "Sundays" might use "Sunday Mass Times" here. Leave empty to use the Title. Around 50 characters; our church name is added for you.' }
           - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
           - { name: hero, label: Banner photo (optional), widget: image, required: false, hint: 'A wide landscape photo. Leave empty for a text-only page.' }
           - { name: heroAlt, label: Banner photo description (for screen readers), widget: string, required: false }
@@ -342,6 +343,7 @@ collections:
           - { name: kicker, label: Kicker (small label above the title), widget: string, required: false }
           - { name: intro, label: Intro line, widget: string, required: false }
           - { name: description, label: Summary (shown to search engines), widget: text, required: false }
+          - { name: seoTitle, label: Search-engine title (optional), widget: string, required: false, hint: 'The headline people see in Google, when it should differ from the page Title above. Leave empty to use the Title. Around 50 characters; our church name is added for you.' }
           - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
           - name: body
             label: Body

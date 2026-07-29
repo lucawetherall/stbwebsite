@@ -2,14 +2,21 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Prose from '../../components/Prose.astro';
-import { site } from '../../data/site';
+import PostFooterNav from '../../components/PostFooterNav.astro';
+import { CHURCH_ID, WEBSITE_ID, abs } from '../../lib/seo';
+import { neighboursOf } from '../../lib/news';
 
 export async function getStaticPaths() {
   const posts = await getCollection('news', ({ data }) => !data.draft);
-  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  // Neighbours are worked out once here rather than per page, so the whole archive is walked
+  // a single time no matter how many posts there are.
+  return posts.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry, ...neighboursOf(posts, entry.id) },
+  }));
 }
 
-const { entry } = Astro.props;
+const { entry, previous, next, related } = Astro.props;
 const { Content } = await render(entry);
 const { title, date, category, author, description, hero, heroAlt } = entry.data;
 const fmtDate = date.toLocaleDateString('en-GB', {
@@ -21,19 +28,26 @@ const fmtDate = date.toLocaleDateString('en-GB', {
 const metaDesc = description ?? `${category ?? 'News'} from St Barnabas Church, Ealing — ${title}.`;
 
 const articleJsonLd = {
-  '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: title,
   description: metaDesc,
   datePublished: date.toISOString().slice(0, 10),
   ...(author && { author: { '@type': 'Person', name: author } }),
-  ...(hero && { image: new URL(hero, site.url).href }),
-  publisher: { '@type': 'Organization', name: site.name, url: site.url },
-  mainEntityOfPage: new URL(Astro.url.pathname, site.url).href,
+  ...(hero && { image: abs(hero) }),
+  // The parish is described once in the site graph; reference it rather than restate it.
+  publisher: { '@id': CHURCH_ID },
+  isPartOf: { '@id': WEBSITE_ID },
+  mainEntityOfPage: abs(Astro.url.pathname),
 };
 ---
-<Base title={title} description={metaDesc} image={hero} type="article">
-  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(articleJsonLd)} />
+<Base
+  title={title}
+  description={metaDesc}
+  image={hero}
+  type="article"
+  jsonLd={[articleJsonLd]}
+  searchWeight={0.5}
+>
   <article class="news-article">
     <header class="wrap news-article__head">
       <p class="label news-article__kicker">{category ?? 'News'}</p>
@@ -54,9 +68,7 @@ const articleJsonLd = {
         />
       )}
       <Prose><Content /></Prose>
-      <p class="news-article__back">
-        <a class="txt-link" href="/news">All news &amp; notices</a>
-      </p>
+      <PostFooterNav previous={previous} next={next} related={related} />
     </div>
   </article>
 </Base>
@@ -79,7 +91,6 @@ const articleJsonLd = {
     font-weight: 600;
     color: var(--ink-soft);
   }
-  .news-article__back { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
   .news-article__hero {
     width: 100%;
     max-height: 460px;

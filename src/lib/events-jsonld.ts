@@ -1,13 +1,14 @@
 import { absoluteUrl, londonOffsetMinutes, type SiteEvent } from './events';
 import { site } from '../data/site';
+import { CHURCH_ID } from './seo';
 
 /**
- * schema.org `Event` markup for a list of events, emitted as a single JSON-LD array rather than a
- * script tag per event.
+ * schema.org `Event` nodes for a list of events. These are folded into the page's site graph
+ * (see `src/lib/seo.ts`), so they carry no `@context` of their own and reference the parish by
+ * `@id` wherever the event is held here.
  */
 export function eventsJsonLd(events: SiteEvent[]): unknown[] {
   return events.map((event) => ({
-    '@context': 'https://schema.org',
     '@type': 'Event',
     name: event.title,
     startDate: isoWithOffset(event, event.date, event.time),
@@ -19,19 +20,12 @@ export function eventsJsonLd(events: SiteEvent[]): unknown[] {
     ...(event.description ? { description: event.description } : {}),
     ...(event.image ? { image: absoluteUrl(event.image, site.url) } : {}),
     ...(event.url ? { url: absoluteUrl(event.url, site.url) } : {}),
-    location: {
-      '@type': 'Place',
-      name: event.location ?? site.name,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: site.address.street,
-        addressLocality: site.address.area,
-        addressRegion: site.address.city,
-        postalCode: site.address.postcode,
-        addressCountry: 'GB',
-      },
-    },
-    organizer: { '@type': 'Organization', name: site.name, url: site.url },
+    // Held here unless the editor named somewhere else — in which case we can only pass on the
+    // name they typed, so the event does not claim our address for a hall across the borough.
+    location: event.location
+      ? { '@type': 'Place', name: event.location }
+      : { '@id': CHURCH_ID },
+    organizer: { '@id': CHURCH_ID },
   }));
 }
 

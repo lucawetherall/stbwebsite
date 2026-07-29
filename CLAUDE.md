@@ -29,8 +29,8 @@ Astro 6.4 (static output), TypeScript strict (`@/*` → `src/*`), plain CSS with
 
 ```bash
 npm run dev        # local dev server → http://localhost:4321
-npm run build      # static build → dist/
-npm run preview    # preview the production build
+npm run build      # static build → dist/, then Pagefind builds the search index
+npm run preview    # preview the production build (the only way to exercise /search)
 npm test           # vitest — the liturgical-engine unit tests
 npx astro check    # type-check (@astrojs/check + typescript are devDependencies)
 npx vitest run src/lib/liturgy.test.ts   # a single test file

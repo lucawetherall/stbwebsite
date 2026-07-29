@@ -1,0 +1,121 @@
+---
+/**
+ * The foot of a news post: the previous and next posts in publication order, and a few from
+ * around the same time.
+ *
+ * Before this, every one of the ~129 posts had exactly one route in — the `/news` index — so a
+ * reader who arrived from a search had nowhere to go but back, and the archive read as a set of
+ * dead ends. The neighbours are computed in `src/lib/news.ts`.
+ */
+import type { CollectionEntry } from 'astro:content';
+
+type Post = CollectionEntry<'news'>;
+
+interface Props {
+  previous: Post | null;
+  next: Post | null;
+  related: Post[];
+}
+const { previous, next, related } = Astro.props;
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+<nav class="post-nav" aria-label="More news">
+  {(previous || next) && (
+    <ul class="post-nav__pair">
+      {previous && (
+        <li class="post-nav__side">
+          <a class="post-nav__link" href={`/news/${previous.id}/`} rel="prev">
+            <span class="post-nav__dir label">← Previous</span>
+            <span class="post-nav__title serif">{previous.data.title}</span>
+            <span class="post-nav__date">{fmtDate(previous.data.date)}</span>
+          </a>
+        </li>
+      )}
+      {next && (
+        <li class="post-nav__side post-nav__side--next">
+          <a class="post-nav__link" href={`/news/${next.id}/`} rel="next">
+            <span class="post-nav__dir label">Next →</span>
+            <span class="post-nav__title serif">{next.data.title}</span>
+            <span class="post-nav__date">{fmtDate(next.data.date)}</span>
+          </a>
+        </li>
+      )}
+    </ul>
+  )}
+
+  {related.length > 0 && (
+    <div class="post-nav__related">
+      <h2 class="label post-nav__related-heading">From around the same time</h2>
+      <ul class="post-nav__related-list">
+        {related.map((post) => (
+          <li>
+            <a class="post-nav__related-link" href={`/news/${post.id}/`}>
+              <span class="post-nav__related-title">{post.data.title}</span>
+              <span class="post-nav__date">{fmtDate(post.data.date)}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <p class="post-nav__all">
+    <a class="txt-link" href="/news/">All news &amp; notices</a>
+  </p>
+</nav>
+
+<style>
+  .post-nav { margin-top: 3.4rem; padding-top: 1.8rem; border-top: 1px solid var(--line); }
+
+  .post-nav__pair {
+    list-style: none;
+    display: grid;
+    gap: 1.6rem;
+    grid-template-columns: 1fr;
+  }
+  .post-nav__link { display: block; text-decoration: none; }
+  .post-nav__dir { display: block; margin-bottom: .55rem; }
+  .post-nav__title {
+    display: block;
+    font-size: 1.28rem;
+    font-weight: 500;
+    line-height: 1.2;
+    transition: color .2s;
+  }
+  .post-nav__link:hover .post-nav__title { color: var(--burgundy); }
+  .post-nav__date {
+    display: block;
+    margin-top: .35rem;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: .66rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+
+  .post-nav__related { margin-top: 2.8rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
+  .post-nav__related-heading { display: block; margin-bottom: 1.1rem; }
+  .post-nav__related-list { list-style: none; display: grid; gap: 1rem; }
+  .post-nav__related-link { text-decoration: none; display: block; }
+  .post-nav__related-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.25;
+    transition: color .2s;
+  }
+  .post-nav__related-link:hover .post-nav__related-title { color: var(--burgundy); }
+
+  .post-nav__all { margin-top: 2.4rem; }
+
+  @media (min-width: 640px) {
+    .post-nav__pair { grid-template-columns: 1fr 1fr; gap: 2.4rem; }
+    /* When there is no previous post, the next one still belongs on the right. */
+    .post-nav__side--next { grid-column: 2; text-align: right; }
+  }
+
+  @media print { .post-nav { display: none; } }
+</style>

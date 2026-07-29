@@ -1,20 +1,28 @@
 ---
 import { getCollection } from 'astro:content';
+import { groupByYear, sortNewest } from '../lib/news';
 
 interface Props {
   limit?: number;
   heading?: string;
   showHeading?: boolean;
+  /**
+   * Break the list into years with a jump nav. Used on /news, where ~129 posts back to 2018
+   * are otherwise an undifferentiated wall; the homepage's short list stays flat.
+   */
+  byYear?: boolean;
 }
-const { limit, heading = 'From the parish', showHeading = true } = Astro.props;
+const { limit, heading = 'From the parish', showHeading = true, byYear = false } = Astro.props;
 
-const posts = (await getCollection('news', ({ data }) => !data.draft)).sort(
-  (a, b) => +b.data.date - +a.data.date
-);
+const posts = sortNewest(await getCollection('news', ({ data }) => !data.draft));
 const shown = limit ? posts.slice(0, limit) : posts;
+const years = byYear ? groupByYear(shown) : [];
 
 const fmtDate = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+// Within a year the year itself is in the heading above, so the rows need only day and month.
+const fmtDayMonth = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'UTC' });
 ---
 {shown.length > 0 && (
   <section class="news-index section" aria-labelledby="news-heading">
@@ -25,32 +33,82 @@ const fmtDate = (d: Date) =>
           {limit && <a class="txt-link" href="/news">All news</a>}
         </div>
       )}
-      <ul class="news-list">
-        {shown.map((post) => (
-          <li class="news-row">
-            <a class="news-row__link" href={`/news/${post.id}/`}>
-              <time class="news-row__date" datetime={post.data.date.toISOString().slice(0, 10)}>
-                {fmtDate(post.data.date)}
-              </time>
-              <span class="news-row__body">
-                <span class="news-row__title serif">{post.data.title}</span>
-                {post.data.category && <span class="news-row__cat">{post.data.category}</span>}
-              </span>
-              {post.data.hero && (
-                <img
-                  class="news-row__thumb"
-                  src={post.data.hero}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  width="128"
-                  height="80"
-                />
-              )}
-            </a>
-          </li>
-        ))}
-      </ul>
+      {byYear ? (
+        <>
+          <nav class="year-nav" aria-label="Jump to a year">
+            <ul class="year-nav__list">
+              {years.map((group) => (
+                <li><a class="year-nav__link" href={`#news-${group.year}`}>{group.year}</a></li>
+              ))}
+            </ul>
+          </nav>
+          {years.map((group) => (
+            <section class="news-year" aria-labelledby={`news-${group.year}`}>
+              <h2 class="news-year__heading serif" id={`news-${group.year}`}>
+                {group.year}
+                {/* One expression, not two: Astro drops the whitespace between adjacent
+                    expressions, which would render "21posts". */}
+                <span class="news-year__count">
+                  {`${group.posts.length} ${group.posts.length === 1 ? 'post' : 'posts'}`}
+                </span>
+              </h2>
+              <ul class="news-list">
+                {group.posts.map((post) => (
+                  <li class="news-row">
+                    <a class="news-row__link" href={`/news/${post.id}/`}>
+                      <time class="news-row__date" datetime={post.data.date.toISOString().slice(0, 10)}>
+                        {fmtDayMonth(post.data.date)}
+                      </time>
+                      <span class="news-row__body">
+                        <span class="news-row__title serif">{post.data.title}</span>
+                        {post.data.category && <span class="news-row__cat">{post.data.category}</span>}
+                      </span>
+                      {post.data.hero && (
+                        <img
+                          class="news-row__thumb"
+                          src={post.data.hero}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          width="128"
+                          height="80"
+                        />
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </>
+      ) : (
+        <ul class="news-list">
+          {shown.map((post) => (
+            <li class="news-row">
+              <a class="news-row__link" href={`/news/${post.id}/`}>
+                <time class="news-row__date" datetime={post.data.date.toISOString().slice(0, 10)}>
+                  {fmtDate(post.data.date)}
+                </time>
+                <span class="news-row__body">
+                  <span class="news-row__title serif">{post.data.title}</span>
+                  {post.data.category && <span class="news-row__cat">{post.data.category}</span>}
+                </span>
+                {post.data.hero && (
+                  <img
+                    class="news-row__thumb"
+                    src={post.data.hero}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    width="128"
+                    height="80"
+                  />
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   </section>
 )}
@@ -64,6 +122,57 @@ const fmtDate = (d: Date) =>
     gap: 1rem;
     margin-bottom: 1.4rem;
   }
+  /* year jump nav + year headings (the /news archive only) */
+  .year-nav {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--paper);
+    padding-block: .9rem;
+    margin-bottom: .6rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .year-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem 1.05rem;
+    list-style: none;
+  }
+  .year-nav__link {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-block: .15rem;
+    transition: color .2s, border-color .2s;
+  }
+  .year-nav__link:hover { color: var(--burgundy); border-color: var(--burgundy); }
+
+  .news-year { padding-top: 2.4rem; }
+  .news-year__heading {
+    display: flex;
+    align-items: baseline;
+    gap: .9rem;
+    font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+    font-weight: 500;
+    color: var(--burgundy);
+    /* Clears the sticky year nav when an anchor is followed. */
+    scroll-margin-top: 4.5rem;
+    margin-bottom: .8rem;
+  }
+  .news-year__count {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .66rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+
   .news-list { list-style: none; }
   .news-row { border-top: 1px solid var(--line); }
   .news-row:last-child { border-bottom: 1px solid var(--line); }

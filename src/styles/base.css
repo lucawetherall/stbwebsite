@@ -129,6 +129,13 @@ hr, .rule { border: none; border-top: 1px solid var(--line); margin-block: 2rem;
 
 /* interior page body + asides */
 .page-body { padding-top: 1rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+
+/* When a breadcrumb trail precedes a page header, the header no longer needs to open the page,
+   so it gives back most of its top padding. Lives here rather than in either component because
+   the two are siblings rendered from different files (Base.astro's <main>). */
+.breadcrumbs + .page-header,
+.breadcrumbs + * > .page-header,
+.breadcrumbs + .news-article > .news-article__head { padding-top: 1.3rem; }
 .page-aside { margin-top: 2.6rem; color: var(--ink-soft); max-width: 62ch; }
 .content-link, .page-aside a {
   text-decoration: none;

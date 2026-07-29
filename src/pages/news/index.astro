@@ -17,7 +17,7 @@ const count = (await getCollection('news', ({ data }) => !data.draft)).length;
     intro="Reflections, announcements and the life of the parish, week by week."
   />
   {count > 0 ? (
-    <NewsIndex showHeading={false} />
+    <NewsIndex showHeading={false} byYear={true} />
   ) : (
     <div class="wrap page-body">
       <p>There are no posts here yet — please check back soon.</p>
