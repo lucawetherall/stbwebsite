@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
+import { DEFAULT_EVENT_CATEGORY, EVENT_CATEGORIES } from './data/eventCategories';
 
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/pages' }),
@@ -50,15 +51,30 @@ const services = defineCollection({
   }),
 });
 
+// Special services, concerts and community events shown on What's On (/whats-on).
+// Every field beyond title/start is optional or defaulted, so an editor can never publish
+// something that fails the build they cannot debug — `main` deploys to production in ~60s.
+// Times are free text ("10.30am") to match serviceTimes.json and to avoid the CMS datetime
+// widget's UTC picker, which would store an editor's 10.30 in summer as 11.30.
 const events = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/events' }),
   schema: z.object({
     title: z.string(),
     start: z.coerce.date(),
     end: z.coerce.date().optional(),
+    time: z.string().optional(), // "10.30am" — omit for an all-day event
+    endTime: z.string().optional(),
+    category: z.enum(EVENT_CATEGORIES).default(DEFAULT_EVENT_CATEGORY),
     location: z.string().optional(),
     description: z.string().optional(),
     url: z.string().optional(),
+    urlLabel: z.string().optional(), // "Book a place"
+    image: z.string().optional(),
+    imageAlt: z.string().optional(), // required on the CMS widget, not here
+    repeat: z.enum(['none', 'weekly', 'fortnightly', 'monthly']).default('none'),
+    repeatUntil: z.coerce.date().optional(), // omit for an open-ended series
+    featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
   }),
 });
 

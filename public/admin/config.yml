@@ -103,21 +103,45 @@ collections:
   - name: events
     label: 📅 Events
     label_singular: Event
-    description: Special services and events shown on Worship → Special Services.
+    description: Special services, concerts and community events shown on What's On.
     folder: src/content/events
     create: true
     extension: json
     format: json
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    sortable_fields: [start]
+    sortable_fields: [start, title]
     summary: '{{start}} · {{title}}'
     fields:
       - { name: title, label: Title, widget: string }
       - { name: start, label: Date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, picker_utc: true }
-      - { name: end, label: End date (optional), widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false, picker_utc: true }
+      - { name: time, label: Start time, widget: string, required: false, hint: 'Written as you would say it — 10.30am, 6pm, 12.30pm. Leave empty for an all-day event.' }
+      - { name: endTime, label: Finish time (optional), widget: string, required: false, hint: 'Only if it is useful to say — 12noon, 4pm.' }
+      - { name: end, label: Last day (only if it runs over several days), widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false, picker_utc: true }
+      - name: category
+        label: Kind of event
+        widget: select
+        default: Worship
+        options: [Worship, Music, Community, Families, Talks & Learning]
+        hint: Shown as a small label beside the event.
       - { name: location, label: Location, widget: string, required: false, default: St Barnabas Church }
-      - { name: description, label: Description, widget: text, required: false, hint: 'Service times can go here, e.g. "Sung Mass at 10.30am".' }
-      - { name: url, label: Link (optional), widget: string, type: url, required: false }
+      - { name: description, label: Description, widget: text, required: false, hint: 'A sentence or two. Service details can go here, e.g. "Sung Mass, with Choral Evensong at 6pm".' }
+      - { name: url, label: Link (optional), widget: string, type: url, required: false, hint: 'A booking page, a poster, or a page elsewhere on this site.' }
+      - { name: urlLabel, label: Link wording, widget: string, required: false, hint: 'What the link should say — "Book a place", "Read more". Defaults to "More details".' }
+      - { name: image, label: Picture (optional), widget: image, required: false, hint: 'A landscape photo around 1200px wide works well — huge phone photos just slow the page down.' }
+      - { name: imageAlt, label: Picture description (for screen readers), widget: string, required: false, hint: 'Describe the picture for people who cannot see it. Please fill this in whenever you add a picture.' }
+      - name: repeat
+        label: Repeats
+        widget: select
+        default: none
+        options:
+          - { label: 'Just the once', value: none }
+          - { label: 'Every week', value: weekly }
+          - { label: 'Every other week', value: fortnightly }
+          - { label: 'Every month', value: monthly }
+        hint: 'For something regular like the Memory Café. "Every month" means the same weekday each month — the second Tuesday, say, taken from the date above.'
+      - { name: repeatUntil, label: Repeats until (optional), widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false, picker_utc: true, hint: 'Leave empty if it carries on indefinitely. What''s On shows the next date; the calendar file lists them all.' }
+      - { name: featured, label: Highlight this at the top of What's On, widget: boolean, required: false, default: false }
+      - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
 
   - divider: true
 
@@ -307,6 +331,7 @@ collections:
       - { name: families-youth-group, label: 'Families · Youth Group', file: src/content/pages/families-children/youth-group.md, fields: *pf }
       - { name: life-events, label: Life Events, file: src/content/pages/life-events.md, fields: *pf }
       - { name: visit, label: Visit, file: src/content/pages/visit.md, fields: *pf }
+      - { name: whats-on, label: What's On, file: src/content/pages/whats-on.md, fields: *pf }
       - { name: music-organ, label: 'Music · St Barnabas Organ', file: src/content/pages/music/st-barnabas-organ.md, fields: *pf }
       - { name: music-our-musicians, label: 'Music · Our Musicians', file: src/content/pages/music/our-musicians.md, fields: *pf }
       - name: worship

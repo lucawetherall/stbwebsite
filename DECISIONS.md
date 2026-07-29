@@ -14,7 +14,7 @@ violations** on the page types tested (home, content, contact, news article).
 
 | # | Item | Default implemented | Notes |
 |---|------|---------------------|-------|
-| 1 | **ChurchDesk events feed** (iCal/API for org 1901) | Manual `events` collection + env-driven iCal hook | The old `barnabites.org` has **no events/calendar page and no calendar widget** — events were communicated only via the weekly ChurchDesk newsletter and periodic "Regular Events & Activities [month]" blog posts (migrated to `/news/`). So the new site's `events` collection + `/worship/special-services` listing is a **new feature**, not a migration of an existing page. The public ChurchDesk API/iCal endpoints are also **not exposed** server-side (all probes 404). `src/lib/events.ts` reads the manual `events` collection and, **if `CHURCHDESK_ICAL_URL` is set**, merges a live iCal feed. To enable live events: in ChurchDesk go Calendar → share/subscribe, copy the iCal URL, set it as the `CHURCHDESK_ICAL_URL` env var in Cloudflare Pages, and add a daily deploy hook (see §6). Optional — strip `events.ts` + `node-ical` if a manual/CMS-only events list is preferred. |
+| 1 | **ChurchDesk events feed** (iCal/API for org 1901) | Manual `events` collection + env-driven iCal hook, surfaced on **What's On** (`/whats-on`) | The old `barnabites.org` has **no events/calendar page and no calendar widget** — events were communicated only via the weekly ChurchDesk newsletter and periodic "Regular Events & Activities [month]" blog posts (migrated to `/news/`). So the `events` collection and the `/whats-on` diary are a **new feature**, not a migration. The public ChurchDesk API/iCal endpoints are also **not exposed** server-side (all probes 404), which is why the feed is provider-agnostic: set **`EVENTS_ICAL_URLS`** (comma- or newline-separated; `CHURCHDESK_ICAL_URL` still honoured) to any iCal/webcal address — ChurchDesk, Google Calendar's "secret address in iCal format", Outlook — and add a daily deploy hook (see §6). Feed events are merged with the collection, with a CMS entry winning over a feed entry of the same title on the same day so an editor can enrich it. A missing, slow or broken feed only logs a warning; it can never fail a deploy. See §8 for the full events architecture. |
 | 2 | **Music-list source** for `services` | Manual JSON in `src/content/services/` | Seeded with the two real sheets from the brief (Corpus Christi 7 Jun, St Mary Magdalene 19 Jul). Add one JSON file per Sunday; `ThisSunday` auto-selects the coming Sunday and falls back to the standing pattern. |
 | 3 | **Blog/photography reuse rights** | Migrated all 129 posts; self-hosted the parish's own liturgy photos with on-page credit support | **Confirm** the parish holds rights to the liturgy photographs and blog images before go-live. |
 | 4 | **Children's Church age range** (nav 5–9 vs home 5–11) | **5–9** | The live `/families-children/childrens-church-ages-5-9` page itself states 5–9 in both heading and body, so 5–9 is used throughout. (Slug kept as `…-5-9`.) |
@@ -107,7 +107,8 @@ violations** on the page types tested (home, content, contact, news article).
 
 See `.env.example`. None are required to build.
 
-- `CHURCHDESK_ICAL_URL` — live events feed (item §1.1).
+- `EVENTS_ICAL_URLS` — live events feed(s), any iCal/webcal provider (item §1.1, §8).
+- `CHURCHDESK_ICAL_URL` — the legacy name for the same thing, still honoured.
 - `PLAUSIBLE_DOMAIN` — enables the Plausible analytics tag (item §1.6).
 
 ---
@@ -148,9 +149,10 @@ the `optimise-images` skill in `.claude/skills/`):
 
 1. Create the Pages project from this repo; build & verify on the `*.pages.dev` preview URL —
    walk the §2 parity checklist and spot-check 5–10 old `/b/blog-…` URLs 301 to `/news/<slug>/`.
-2. (Optional) set `CHURCHDESK_ICAL_URL` and `PLAUSIBLE_DOMAIN` env vars; add a **Deploy Hook**
+2. (Optional) set `EVENTS_ICAL_URLS` and `PLAUSIBLE_DOMAIN` env vars; add a **Deploy Hook**
    and a daily cron (e.g. via Cloudflare Worker Cron or an external scheduler) so build-time
-   events stay fresh.
+   events stay fresh. Without the cron the diary is only as current as the last deploy — a CMS
+   publish also triggers one, so a parish that edits events in Sveltia needs no cron at all.
 3. Add `barnabites.org` as a custom domain on the Pages project. Move the domain's nameservers
    to Cloudflare (or add the zone). **Keep ChurchDesk hosting live during propagation.**
 4. Point `www` (CNAME) at the Pages project; apex via CNAME-flattening; the apex→www redirect is
@@ -173,3 +175,31 @@ the `optimise-images` skill in `.claude/skills/`):
   per the brief's art direction (`src/data/artwork.ts` already maps season/feast keys → images).
 - Transcribe the organ stop-specification (currently an image on the old site) onto
   `/worship/st-barnabas-organ`.
+
+---
+
+## 8. The events architecture (added July 2026)
+
+What's On (`/whats-on`) is a CMS-editable prose page (`src/content/pages/whats-on.md`) with the
+diary injected by `src/pages/[...slug].astro`, following the same opt-in hook as `/visit` and
+`/music/our-musicians`. The machinery:
+
+| File | Role |
+|---|---|
+| `src/data/eventCategories.ts` | The category vocabulary. A leaf module with no imports, so `content.config.ts` and `lib/events.ts` can share it. |
+| `src/lib/events.ts` | **Pure and unit-tested.** Civil dates, clock-time parsing, recurrence description/expansion, merging, month grouping, ICS generation. |
+| `src/lib/events-feed.ts` | The iCal fetch, with RRULE/EXDATE expansion. Never throws. |
+| `src/lib/events-source.ts` | The single, memoised loader both consumers share. |
+| `src/lib/events-jsonld.ts` | schema.org `Event` markup. |
+| `src/pages/calendar.ics.ts` | The published, subscribable calendar. |
+
+Three decisions worth not undoing:
+
+- **Times are free text** (`"10.30am"`), matching `serviceTimes.json`. A CMS `datetime` widget with
+  `picker_utc: true` would store an editor's 10.30 in summer as 11.30. `parseClockTime` reads what
+  they type; anything unparseable becomes an all-day event rather than a guess.
+- **Every event is normalised to a Europe/London civil date** at ingest. Formatting a real instant
+  in UTC — as the original `getEvents()` did — files a late-evening summer event on the wrong day
+  and under the wrong month heading.
+- **The diary shows one row per repeating series**, with its pattern in words; `/calendar.ics`
+  carries every occurrence. Expanding a weekly event into the diary would bury the feasts.

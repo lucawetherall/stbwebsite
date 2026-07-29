@@ -8,6 +8,9 @@ import OrganSpec from '../components/OrganSpec.astro';
 import Musicians from '../components/Musicians.astro';
 import VisitDetails from '../components/VisitDetails.astro';
 import EnquireCTA from '../components/EnquireCTA.astro';
+import WhatsOn from '../components/WhatsOn.astro';
+import { getDiaryEvents } from '../lib/events-source';
+import { eventsJsonLd } from '../lib/events-jsonld';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages', ({ data }) => !data.draft);
@@ -21,8 +24,17 @@ const showOrganSpec = entry.id === 'music/st-barnabas-organ';
 const showMusicians = entry.id === 'music/our-musicians';
 const showVisitDetails = entry.id === 'visit';
 const showEnquireCTA = entry.id === 'life-events';
+const showWhatsOn = entry.id === 'whats-on';
+
+// Loaded here rather than inside the component: `slot="head"` only forwards one level, so the
+// JSON-LD has to be emitted from the page for Base to place it in <head>.
+const events = showWhatsOn ? await getDiaryEvents() : [];
+const eventLd = showWhatsOn && events.length > 0 ? eventsJsonLd(events) : null;
 ---
 <Base title={title} description={description}>
+  {eventLd && (
+    <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(eventLd)} />
+  )}
   <PageHeader kicker={kicker} title={title} intro={intro} />
   {hero && (
     <div class="wrap page-hero">
@@ -36,6 +48,7 @@ const showEnquireCTA = entry.id === 'life-events';
     {showOrganSpec && <OrganSpec />}
     {showMusicians && <Musicians />}
     {showEnquireCTA && <EnquireCTA />}
+    {showWhatsOn && <WhatsOn events={events} />}
   </div>
 </Base>
 

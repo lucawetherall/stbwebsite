@@ -145,9 +145,23 @@ That’s it. The editor is now live at `https://www.barnabites.org/admin`.
   is now an editable frontmatter field in the Main Pages collection. All other standalone and
   section pages — including the deeper sub-pages such as Accessibility, the children’s pages,
   and the organ history — are editable via the **Main Pages** file collection.
-- **Events** can alternatively be managed in **ChurchDesk** once the iCal feed is wired
-  (`CHURCHDESK_ICAL_URL`, see `DECISIONS.md`) — then the `Events` collection becomes a manual
-  fallback only.
+- **Events** appear on **What’s On** (`/whats-on`), and Worship events also on Worship → Special
+  Services. A few things worth knowing when you add one:
+  - **Times are typed as you’d say them** — `10.30am`, `6pm`, `12.30pm`. Leave the time empty for
+    an all-day event. (There is no time picker on purpose: it would work in UTC and quietly shift
+    your 10.30 to 11.30 in the summer.)
+  - **Repeating events** — set *Repeats* and, if it stops, *Repeats until*. “Every month” means
+    the same weekday each month, taken from the date you gave: put the second Tuesday in and you
+    get the second Tuesday of every month. What’s On lists the **next** date with a line like
+    “Every Thursday, until 17 December”; the calendar file lists them all.
+  - **Highlight** puts one event in a panel at the top of the page, with its picture if it has one.
+  - Anyone can **subscribe to the parish calendar** at `/calendar.ics`, linked at the foot of
+    What’s On.
+  Events can alternatively be managed in **ChurchDesk**, Google Calendar or any other calendar
+  once a feed is wired (`EVENTS_ICAL_URLS`, see `DECISIONS.md` §1.1 and §8) — the `Events`
+  collection then becomes a way to add or enrich what the feed doesn’t cover. An event you write
+  here wins over a feed event of the same name on the same day, so you can add a better
+  description or a picture without getting it twice.
 - **Updating Sveltia CMS:** the version is pinned in `public/admin/index.html`. Bump it and
   check the [releases](https://github.com/sveltia/sveltia-cms/releases) when you want updates.
 - **Editing locally without GitHub:** with the dev server running, open

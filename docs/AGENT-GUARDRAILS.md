@@ -166,9 +166,16 @@ the source of truth is always `src/content.config.ts`.
   automatically when there's a photo and/or bio; the URL slug strips the `NN-` prefix
   (`src/lib/staff.ts`). Optimise the portrait (~600–800px webp) — see `scripts/fetch-staff-photos.mjs`.
   Also **CMS › Who's Who**.
-- **An event:** `src/content/events/*.json` — `title`, `start` (+ optional `end`), `location`,
-  `description`, `url`. Shows on Worship → Special Services. Best done in **CMS › Events** (or, if
-  the iCal feed is wired, via ChurchDesk — DECISIONS §1).
+- **An event:** `src/content/events/*.json` — `title` and `start` are all that is required; then
+  `time`/`endTime` (free text, "10.30am"), `end` (a last day, for something running over several
+  days), `category`, `location`, `description`, `url`/`urlLabel`, `image`/`imageAlt`,
+  `repeat`/`repeatUntil`, `featured`, `draft`. Shows on **What's On** (`/whats-on`) and, when the
+  category is Worship, on Worship → Special Services; every occurrence also lands in
+  `/calendar.ics`. Best done in **CMS › Events** — or leave it to the calendar feed if
+  `EVENTS_ICAL_URLS` is wired (DECISIONS §1.1, §8).
+  Two things not to "fix": times are **free text**, not a datetime widget (the CMS picker is UTC
+  and would shift an editor's summer 10.30 to 11.30), and the diary shows **one row per repeating
+  series**, not every occurrence.
 - **A document:** put the PDF in `public/documents/`, add an entry in `src/content/documents/`
   (`title`, `file`, `external`, `description`, `category`, `order`). Best done in **CMS › Documents**.
 - **A whole new page:** see §A "How to add a new editable page" — and remember step 3 (register it

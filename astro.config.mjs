@@ -9,6 +9,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.barnabites.org',
   output: 'static',
-  integrations: [mdx(), sitemap()],
+  // The sitemap lists pages, not feeds — keep calendar.ics and rss.xml out of it.
+  integrations: [mdx(), sitemap({ filter: (page) => !/\.(ics|xml)$/.test(new URL(page).pathname) })],
   build: { format: 'directory' }, // /about-us/ style URLs to match current
 });
