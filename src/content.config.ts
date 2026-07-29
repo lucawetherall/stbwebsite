@@ -7,6 +7,12 @@ const pages = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/pages' }),
   schema: z.object({
     title: z.string(),
+    /**
+     * Optional <title> for search results, when the on-page heading is not the phrase people
+     * search for — a page headed "Sundays" wants to be found as "Sunday Mass Times". Falls back
+     * to `title`, and never changes the h1. Mirrored in public/admin/config.yml.
+     */
+    seoTitle: z.string().optional(),
     description: z.string().optional(),
     kicker: z.string().optional(),
     intro: z.string().optional(),

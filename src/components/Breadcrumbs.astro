@@ -1,0 +1,72 @@
+---
+/**
+ * The trail from Home to the current page. Rendered from `src/data/nav.ts` (see
+ * `src/lib/breadcrumbs.ts`), so it can never disagree with the menu.
+ *
+ * Deliberately quiet: tracked small-caps in the muted ink, hairline separators, no chevron
+ * glyphs. It reads as the running head of a service booklet, not as a UI component.
+ */
+import type { Crumb } from '../lib/breadcrumbs';
+
+interface Props {
+  crumbs: Crumb[];
+}
+const { crumbs } = Astro.props;
+const show = crumbs.length > 1;
+---
+{show && (
+  <nav class="breadcrumbs wrap" aria-label="Breadcrumb">
+    <ol class="breadcrumbs__list">
+      {crumbs.map((crumb, i) => {
+        const isLast = i === crumbs.length - 1;
+        return (
+          <li class="breadcrumbs__item">
+            {isLast ? (
+              <span class="breadcrumbs__current" aria-current="page">{crumb.label}</span>
+            ) : (
+              <a class="breadcrumbs__link" href={`${crumb.href === '/' ? '/' : crumb.href + '/'}`}>
+                {crumb.label}
+              </a>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  </nav>
+)}
+
+<style>
+  .breadcrumbs {
+    padding-top: 1.5rem;
+    /* The page header below carries its own generous top padding; see base.css, where the
+       adjacent-sibling rule trims it so the trail does not push the h1 down the page. */
+  }
+  .breadcrumbs__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 .55rem;
+    list-style: none;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .breadcrumbs__item + .breadcrumbs__item::before {
+    content: "/";
+    margin-right: .55rem;
+    color: var(--line);
+    /* The separator is decoration; the list semantics carry the structure. */
+  }
+  .breadcrumbs__link {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .breadcrumbs__link:hover { color: var(--burgundy); border-color: var(--burgundy); }
+  .breadcrumbs__current { color: var(--ink); }
+
+  @media print { .breadcrumbs { display: none; } }
+</style>

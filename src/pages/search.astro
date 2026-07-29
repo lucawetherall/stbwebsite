@@ -1,0 +1,263 @@
+---
+/**
+ * Site search, over every page and all ~129 news posts.
+ *
+ * Built on Pagefind, which indexes `dist/` after the Astro build (`npm run build`) and serves a
+ * static index — no server, no third-party search service, nothing for the parish to maintain.
+ *
+ * We drive Pagefind's JavaScript API directly rather than mount its packaged UI: the packaged UI
+ * brings its own stylesheet and its own idea of what a search result looks like, and this site
+ * has one accent colour and two serifs. The markup below is ours; only the index is Pagefind's.
+ *
+ * Note for developers: the index lives in `dist/pagefind/`, so search returns nothing under
+ * `astro dev`. Run `npm run build && npm run preview` to exercise it.
+ */
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<Base
+  title="Search"
+  description="Search the St Barnabas Church, Ealing website — services, music, news, notices and parish information."
+  noindex={true}
+>
+  <PageHeader
+    kicker="Find something"
+    title="Search"
+    intro="Look through every page and notice on this site."
+  />
+
+  <div class="wrap page-body">
+    <form class="search-form" role="search" action="/search/" method="get">
+      <label class="sr-only" for="search-input">Search this site</label>
+      <input
+        class="search-form__input"
+        type="search"
+        id="search-input"
+        name="q"
+        placeholder="Try “evensong”, “baptism”, “memory café”…"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+      <button class="btn search-form__submit" type="submit">Search</button>
+    </form>
+
+    <p class="search-status" id="search-status" role="status" aria-live="polite"></p>
+
+    <div class="search-results" id="search-results"></div>
+
+    <noscript>
+      <p class="page-aside">
+        Search needs JavaScript. You can still browse <a href="/news/">news &amp; notices</a>,
+        <a href="/worship/">worship</a> and <a href="/whats-on/">what’s on</a>, or
+        <a href="/contact-us/">contact the parish office</a>.
+      </p>
+    </noscript>
+
+    <p class="page-aside search-help">
+      Looking for a service time? See <a href="/worship/sundays/">Sundays</a> and
+      <a href="/worship/weekdays/">during the week</a>. Looking for a person? Try
+      <a href="/about-us/whos-who/">Who’s Who</a>.
+    </p>
+  </div>
+</Base>
+
+<script>
+  // Narrowed once here so the closures below see non-nullable elements.
+  function must<T extends Element>(el: T | null, what: string): T {
+    if (!el) throw new Error(`search: missing ${what}`);
+    return el;
+  }
+  const input = must(document.querySelector<HTMLInputElement>('#search-input'), 'input');
+  const status = must(document.querySelector<HTMLElement>('#search-status'), 'status');
+  const results = must(document.querySelector<HTMLElement>('#search-results'), 'results');
+  const form = must(document.querySelector<HTMLFormElement>('.search-form'), 'form');
+
+  // Pagefind's bundle only exists in a built site, and Vite would try to resolve a static
+  // import at build time, so it is loaded at run time behind a variable path.
+  type PagefindResultData = {
+    url: string;
+    excerpt: string;
+    meta: Record<string, string | undefined>;
+  };
+  type Pagefind = {
+    search: (q: string) => Promise<{ results: { data: () => Promise<PagefindResultData> }[] }>;
+    options?: (o: Record<string, unknown>) => Promise<void>;
+  };
+
+  let pagefind: Pagefind | null = null;
+  let loadFailed = false;
+
+  async function loadPagefind(): Promise<Pagefind | null> {
+    if (pagefind || loadFailed) return pagefind;
+    try {
+      const path = '/pagefind/pagefind.js';
+      pagefind = (await import(/* @vite-ignore */ path)) as Pagefind;
+      await pagefind.options?.({ excerptLength: 24 });
+    } catch {
+      loadFailed = true;
+      status.textContent =
+        'Search is unavailable just now. Please use the menu, or contact the parish office.';
+    }
+    return pagefind;
+  }
+
+  const escapeHtml = (s: string) =>
+    s.replace(/[&<>"']/g, (c) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string
+    );
+
+  function render(items: PagefindResultData[], query: string): void {
+    if (items.length === 0) {
+      results.innerHTML = '';
+      status.textContent = `Nothing found for “${query}”. Try a shorter or more general word.`;
+      return;
+    }
+    status.textContent = `${items.length} result${items.length === 1 ? '' : 's'} for “${query}”.`;
+    results.innerHTML = `<ul class="search-list">${items
+      .map((item) => {
+        const title = escapeHtml(item.meta?.title ?? 'Untitled page');
+        const section = item.meta?.section ? escapeHtml(item.meta.section) : '';
+        // Pagefind's excerpt contains its own <mark> tags around the matched words, so it is
+        // inserted as markup — it is generated from our own indexed pages, not user input.
+        return `<li class="search-row">
+            <a class="search-row__link" href="${escapeHtml(item.url)}">
+              ${section ? `<span class="search-row__section label">${section}</span>` : ''}
+              <span class="search-row__title serif">${title}</span>
+              <span class="search-row__excerpt">${item.excerpt}</span>
+            </a>
+          </li>`;
+      })
+      .join('')}</ul>`;
+  }
+
+  let latest = 0;
+  async function run(query: string): Promise<void> {
+    const trimmed = query.trim();
+    if (trimmed.length < 2) {
+      results.innerHTML = '';
+      status.textContent = trimmed.length === 1 ? 'Keep typing…' : '';
+      return;
+    }
+    const token = ++latest;
+    status.textContent = 'Searching…';
+    const pf = await loadPagefind();
+    if (!pf || token !== latest) return;
+
+    const search = await pf.search(trimmed);
+    if (token !== latest) return;
+
+    // 30 is generous for a site this size and keeps the page from becoming a second archive.
+    const items = await Promise.all(search.results.slice(0, 30).map((r) => r.data()));
+    if (token !== latest) return;
+    render(items, trimmed);
+  }
+
+  // Debounced as-you-type, so a slow connection is not asked for a query per keystroke.
+  let timer: ReturnType<typeof setTimeout>;
+  input.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      const q = input.value;
+      const url = new URL(window.location.href);
+      if (q.trim()) url.searchParams.set('q', q.trim());
+      else url.searchParams.delete('q');
+      window.history.replaceState({}, '', url);
+      void run(q);
+    }, 180);
+  });
+
+  // The form still submits without JavaScript having intercepted it; here we just stop the
+  // reload, since the results are already on the page.
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearTimeout(timer);
+    void run(input.value);
+  });
+
+  // Arriving from the header search box, or from a shared link: /search/?q=evensong
+  const initial = new URLSearchParams(window.location.search).get('q') ?? '';
+  if (initial) {
+    input.value = initial;
+    void run(initial);
+  }
+  input.focus({ preventScroll: true });
+</script>
+
+<style>
+  .search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    align-items: stretch;
+    max-width: 42rem;
+  }
+  .search-form__input {
+    flex: 1 1 16rem;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: .75rem .9rem;
+  }
+  .search-form__input::placeholder { color: var(--ink-soft); font-style: italic; }
+  .search-form__input:focus-visible {
+    outline: 2px solid var(--burgundy);
+    outline-offset: 1px;
+    border-color: var(--burgundy);
+  }
+  .search-form__submit { flex: 0 0 auto; }
+
+  .search-status {
+    margin-top: 1.6rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    min-height: 1.4em;
+  }
+
+  .search-help { margin-top: 3rem; }
+</style>
+
+<!--
+  Result rows are written into #search-results with innerHTML at run time, so they never receive
+  Astro's scoping attribute and scoped rules would not reach them. These rules are global, but
+  every one is anchored to #search-results, which exists only on this page.
+-->
+<style is:global>
+  #search-results .search-list {
+    list-style: none;
+    margin-top: 1.2rem;
+    border-top: 1px solid var(--line);
+  }
+  #search-results .search-row { border-bottom: 1px solid var(--line); }
+  #search-results .search-row__link {
+    display: block;
+    padding: 1.3rem 0;
+    text-decoration: none;
+    color: inherit;
+  }
+  #search-results .search-row__section { display: block; margin-bottom: .5rem; }
+  #search-results .search-row__title {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.2;
+    max-width: 46ch;
+    transition: color .2s;
+  }
+  #search-results .search-row__link:hover .search-row__title { color: var(--burgundy); }
+  #search-results .search-row__excerpt {
+    display: block;
+    margin-top: .5rem;
+    color: var(--ink-soft);
+    max-width: 70ch;
+  }
+  /* Pagefind wraps matched words in <mark>; the browser default is a yellow highlighter. */
+  #search-results mark {
+    background: var(--burgundy-faint);
+    color: var(--ink);
+    font-weight: 600;
+  }
+</style>

@@ -135,6 +135,16 @@ That’s it. The editor is now live at `https://www.barnabites.org/admin`.
 - **Drafts:** tick **Draft** to save something without putting it live yet.
 - **Main Pages:** edit the wording freely — the formatting buttons are all you need, and the
   pages are plain text, so there is nothing you can type that will break the site.
+- **Being found on Google:** two fields on every Main Page shape how the page appears in search
+  results. **Summary** is the paragraph shown under the link — write a plain sentence or two
+  saying what the page is for, ideally mentioning Ealing. **Search-engine title** is optional and
+  usually best left empty: fill it in only when the heading on the page is not the phrase people
+  would type. The Worship page is headed *Worship* but is found as *Services & Mass Times*, so
+  that is what its Search-engine title says. Our church name is added on the end automatically,
+  so there is no need to repeat it.
+- **Searching the site:** there is a search box at `/search` (the magnifying glass in the menu
+  bar). It covers every page and every news post, and rebuilds itself each time you publish —
+  there is nothing to keep up to date.
 
 ---
 

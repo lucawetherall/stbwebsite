@@ -8,7 +8,7 @@ import { eventsJsonLd } from '../../lib/events-jsonld';
 // This page keeps the liturgical year; What's On carries everything else.
 const upcoming = (await getDiaryEvents()).filter((e) => e.category === 'Worship');
 
-const eventLd = upcoming.length > 0 ? eventsJsonLd(upcoming) : null;
+const eventLd = eventsJsonLd(upcoming);
 const groups = [
   {
     title: 'Lent, Holy Week & Easter',
@@ -35,11 +35,8 @@ const groups = [
 <Base
   title="Special Services"
   description="The great feasts and special services of the Church's year at St Barnabas, Ealing — from Ash Wednesday and Holy Week to Nine Lessons & Carols and Midnight Mass."
+  jsonLd={eventLd}
 >
-  {eventLd && (
-    <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(eventLd)} />
-  )}
-
   <PageHeader
     kicker="Worship"
     title="Special Services"

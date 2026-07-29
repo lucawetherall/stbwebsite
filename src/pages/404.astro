@@ -1,0 +1,99 @@
+---
+/**
+ * The page a visitor sees when a link has gone stale. Cloudflare Pages serves `dist/404.html`
+ * automatically for any unmatched path, so this simply needs to exist.
+ *
+ * ~129 news posts were migrated from the old site with 301s in `public/_redirects`, and old
+ * newsletters and pew sheets will go on pointing at addresses that no longer resolve. So this
+ * page is written for the likeliest visitor: someone who followed a link looking for a service
+ * time, and should not have to work out the navigation to find one.
+ */
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ServiceTimes from '../components/ServiceTimes.astro';
+
+const routes = [
+  { href: '/visit', label: 'Plan your visit', note: 'What to expect, and how to find us' },
+  { href: '/worship/sundays', label: 'Sunday services', note: 'The Sung Mass at 10.30am' },
+  { href: '/whats-on', label: "What's on", note: 'Concerts, talks and special services' },
+  { href: '/news', label: 'News & notices', note: 'Everything from the parish' },
+  { href: '/about-us/whos-who', label: "Who's who", note: 'The clergy and people here' },
+  { href: '/contact-us', label: 'Contact us', note: 'The parish office and how to reach us' },
+];
+---
+<Base
+  title="Page not found"
+  description="This page could not be found. Service times, news and contact details for St Barnabas Church, Ealing."
+  noindex={true}
+  hideBreadcrumbs={true}
+>
+  <PageHeader
+    kicker="404"
+    title="We couldn’t find that page"
+    intro="The link may be out of date, or the page may have moved. Everything below is a good place to pick up the thread."
+  />
+
+  <div class="wrap page-body">
+    <nav class="lost" aria-label="Popular pages">
+      <ul class="lost__list">
+        {routes.map((r) => (
+          <li class="lost__item">
+            <a class="lost__link" href={`${r.href}/`}>
+              <span class="lost__label serif">{r.label}</span>
+              <span class="lost__note">{r.note}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <section class="lost__services" aria-labelledby="lost-services-heading">
+      <h2 class="label" id="lost-services-heading">Our regular pattern of worship</h2>
+      <ServiceTimes />
+    </section>
+
+    <p class="page-aside">
+      Still stuck? <a href="/search/">Search the site</a>, or
+      <a href="/contact-us/">contact the parish office</a> and we will happily point you to
+      what you were looking for.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .lost__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .lost__item { border-bottom: 1px solid var(--line); }
+  .lost__link {
+    display: block;
+    padding: 1.1rem 0;
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .lost__item + .lost__item { border-left: 0; }
+  .lost__label {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .lost__note {
+    display: block;
+    margin-top: .3rem;
+    color: var(--ink-soft);
+    font-size: .92rem;
+  }
+  .lost__link:hover .lost__label { color: var(--burgundy); }
+
+  .lost__services { margin-top: clamp(2.6rem, 6vw, 4rem); }
+  .lost__services .label { display: block; margin-bottom: 1.6rem; }
+
+  @media (min-width: 640px) {
+    .lost__list { column-gap: 2.4rem; }
+  }
+</style>

@@ -4,8 +4,11 @@ import '../styles/fonts.css';
 import '../styles/base.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Consent from '../components/Consent.astro';
 import { site } from '../data/site';
+import { siteJsonLd } from '../lib/seo';
+import { crumbsFor } from '../lib/breadcrumbs';
 
 // Privacy-friendly analytics is emitted only when a domain is configured, so we
 // never ship a broken/unowned analytics tag. (See DECISIONS.md.)
@@ -21,6 +24,20 @@ interface Props {
   /** Header overlays a full-bleed hero (white text) */
   overlay?: boolean;
   noindex?: boolean;
+  /** Label for the final breadcrumb when the page is not itself a nav entry (a post, a person) */
+  breadcrumbTitle?: string;
+  /** Hide the breadcrumb trail (the homepage, and pages that open on a full-bleed hero) */
+  hideBreadcrumbs?: boolean;
+  /** Emit schema.org markup for the standing service times — worship pages and the homepage */
+  serviceSchema?: boolean;
+  /** Page-specific JSON-LD nodes, folded into the site graph rather than added as a second tag */
+  jsonLd?: unknown[];
+  /**
+   * Relative weight in site search. Standing pages keep the default 1; the news archive is set
+   * below it, so someone searching "evensong" is offered the Worship page before a 2018 notice
+   * that happens to use the word more often.
+   */
+  searchWeight?: number;
 }
 
 const {
@@ -30,29 +47,25 @@ const {
   type = 'website',
   overlay = false,
   noindex = false,
+  breadcrumbTitle,
+  hideBreadcrumbs = false,
+  serviceSchema = false,
+  jsonLd = [],
+  searchWeight,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const pageTitle = title === site.name ? title : `${title} · ${site.shortName}`;
 const ogImage = image.startsWith('http') ? image : new URL(image, site.url).href;
 
-const churchJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Church',
-  name: site.name,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: site.address.street,
-    addressLocality: site.address.area,
-    addressRegion: site.address.city,
-    postalCode: site.address.postcode,
-    addressCountry: 'GB',
-  },
-  telephone: site.phoneIntl,
-  url: site.url,
-  geo: { '@type': 'GeoCoordinates', latitude: 51.52709, longitude: -0.3115 },
-  sameAs: [site.social.facebook, site.social.instagram, site.social.youtube],
-};
+// One `@graph` per page rather than a stack of standalone tags: the parish, the site, this
+// page's breadcrumb trail and any page-specific nodes all reference each other by `@id`.
+const crumbs = crumbsFor(Astro.url.pathname, { title: breadcrumbTitle ?? title });
+const graph = siteJsonLd({ services: serviceSchema, crumbs, extra: jsonLd });
+
+// The section a page belongs to, used to group and filter search results. Taken from the same
+// trail as the breadcrumbs, so "Curious about Christianity?" files under About as the menu says.
+const section = crumbs.length > 1 ? crumbs[1].label : 'Home';
 ---
 <!doctype html>
 <html lang="en">
@@ -83,7 +96,7 @@ const churchJsonLd = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(churchJsonLd)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(graph)} />
 
     {/* Read stored consent early so embeds can decide whether to load on first paint */}
     <script is:inline>
@@ -100,7 +113,11 @@ const churchJsonLd = {
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <SiteHeader overlay={overlay} />
-    <main id="main">
+    {/* `data-pagefind-body` marks the region the search index is built from; a noindex page
+        (the 404, /search itself) carries no such marker and so stays out of the index. */}
+    <main id="main" data-pagefind-body={noindex ? undefined : true} data-pagefind-weight={searchWeight}>
+      <span class="sr-only" data-pagefind-meta={`section:${section}`} data-pagefind-filter={`Section:${section}`}></span>
+      {!hideBreadcrumbs && !overlay && <Breadcrumbs crumbs={crumbs} />}
       <slot />
     </main>
     <SiteFooter />

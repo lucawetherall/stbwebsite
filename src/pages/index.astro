@@ -10,7 +10,9 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
 import GiveCTA from '../components/GiveCTA.astro';
 import { site } from '../data/site';
 ---
-<Base title={site.name} overlay={true}>
+{/* serviceSchema: the homepage is where "mass times in Ealing" tends to land, so it carries the
+    standing-service markup as well as the worship pages. */}
+<Base title={site.name} overlay={true} serviceSchema={true}>
   <Hero
     eager={true}
     kicker="The Church of England parish church of Pitshanger"

@@ -9,9 +9,12 @@ giving); this is a bespoke front end in the parish's service-sheet house style.
 ```bash
 npm install
 npm run dev      # http://localhost:4321
-npm run build    # → dist/
-npm test         # liturgical-engine unit tests
+npm run build    # → dist/ (astro build, then pagefind builds the search index)
+npm test         # unit tests — liturgical engine, SEO graph, breadcrumbs, news archive
 ```
+
+Site search is indexed from `dist/`, so it returns nothing under `npm run dev`. To try it, run
+`npm run build && npm run preview` and open `/search`.
 
 ## How it's put together
 
