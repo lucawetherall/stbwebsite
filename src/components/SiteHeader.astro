@@ -2,12 +2,6 @@
 import Logo from './Logo.astro';
 import { nav, utilityNav, type NavItem } from '../data/nav';
 
-interface Props {
-  /** Overlay the header on a hero image (white text). Otherwise a solid paper bar. */
-  overlay?: boolean;
-}
-const { overlay = false } = Astro.props;
-
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const matchLen = (href: string): number => {
@@ -37,8 +31,9 @@ const isActive = (href: string) =>
 const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHref;
 ---
 
-<header class:list={['site-header', overlay ? 'is-overlay' : 'is-solid']}>
-  <div class="wrap site-header__inner">
+<header class="site-header">
+  {/* Row 1 — the masthead: wordmark left, search right. */}
+  <div class="wrap site-header__masthead">
     <a href="/" class="brand" aria-label="St Barnabas Church, Ealing — home">
       <Logo size={30} class="brand__mark" />
       <span class="brand__text">
@@ -47,7 +42,30 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
       </span>
     </a>
 
-    <nav class="primary-nav" aria-label="Primary">
+    {/* Kept out of the primary nav list: an icon sits beside the menu button on every width. */}
+    <a class="search-link" href="/search/" aria-label="Search this site" title="Search">
+      <svg class="search-link__icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+        <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <line x1="12.6" y1="12.6" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open menu"
+    >
+      <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+
+  {/* Row 2 — the nav band. Its own ruled ground so the menu reads as a bar rather than as
+      a line of small print beside the wordmark; it also gives the larger type the width it
+      needs, with slack left over for a longer editor-added label in nav.ts. */}
+  <div class="nav-band">
+    <nav class="wrap primary-nav" aria-label="Primary">
       <ul class="primary-nav__list">
         {nav.map((item) => (
           <li class:list={['primary-nav__item', item.children && 'has-children']}>
@@ -89,25 +107,6 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
         ))}
       </ul>
     </nav>
-
-    {/* Kept out of the primary nav list, which is already tight for space; an icon sits beside
-        the menu button on every width instead. */}
-    <a class="search-link" href="/search/" aria-label="Search this site" title="Search">
-      <svg class="search-link__icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-        <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6" />
-        <line x1="12.6" y1="12.6" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-      </svg>
-    </a>
-
-    <button
-      class="nav-toggle"
-      type="button"
-      aria-expanded="false"
-      aria-controls="mobile-nav"
-      aria-label="Open menu"
-    >
-      <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
-    </button>
   </div>
 </header>
 
@@ -149,17 +148,21 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
 </div>
 
 <style>
-  .site-header { position: relative; z-index: 50; }
-  .site-header.is-overlay {
-    position: absolute; top: 2px; left: 0; right: 0; color: var(--white);
+  /* The header is a solid paper bar on every page, including the homepage. It used to
+     float transparently over the hero artwork there, which left white nav type sitting on
+     whatever the season's photograph happened to be — unreadable against a light frame. */
+  .site-header {
+    position: relative; z-index: 50;
+    background: var(--paper); color: var(--ink);
+    border-bottom: 1px solid var(--line);
   }
-  .site-header.is-solid {
-    background: var(--paper); border-bottom: 1px solid var(--line); color: var(--ink);
-  }
-  .site-header__inner {
+  .site-header__masthead {
     display: flex; align-items: center; justify-content: space-between;
     gap: 1.5rem; padding-block: 1.1rem;
   }
+
+  /* The nav band is desktop-only; below the breakpoint the hamburger takes over. */
+  .nav-band { display: none; }
 
   /* brand */
   .brand { display: inline-flex; align-items: center; gap: .7rem; text-decoration: none; color: inherit; }
@@ -170,24 +173,29 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
     font-family: var(--font-display); font-style: italic; font-size: .92rem; opacity: .85;
   }
 
-  /* desktop nav */
-  .primary-nav { display: none; }
-  /* gap trimmed to 1.1rem: the links themselves are larger under the type scale, and
-     nav.ts labels are editor-editable, so the bar needs headroom for a longer label */
-  .primary-nav__list { display: flex; align-items: center; gap: 1.1rem; list-style: none; flex-wrap: nowrap; }
+  /* desktop nav — laid out edge to edge so the band reads as a filled bar. The items
+     need ~810px of the ~1109px available, and space-between distributes the remaining
+     ~300px evenly; that slack is also the headroom for a longer label, since nav.ts is
+     editor-editable. */
+  .primary-nav__list {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; list-style: none; flex-wrap: nowrap;
+  }
   .primary-nav__item { position: relative; }
-  .primary-nav__link { white-space: nowrap; }
   .primary-nav__link {
-    display: inline-block; text-decoration: none; color: inherit;
-    font-family: var(--font-body); text-transform: uppercase; letter-spacing: .15em;
-    font-size: .68rem; padding-block: .4rem; border-bottom: 1px solid transparent;
+    display: inline-block; white-space: nowrap; text-decoration: none; color: inherit;
+    font-family: var(--font-ui); text-transform: uppercase;
+    /* .1em, down from .15em: Montserrat needs less tracking than the serif it replaced,
+       and the saving pays for the larger size. */
+    letter-spacing: .1em; font-size: .82rem; font-weight: 600;
+    padding-block: .5rem; border-bottom: 1px solid transparent;
     transition: border-color .2s, color .2s;
   }
   .primary-nav__link:hover { border-bottom-color: currentColor; }
   .primary-nav__link.is-active { border-bottom-color: var(--burgundy); }
-  .is-solid .primary-nav__link.is-active:not(.primary-nav__link--cta) { color: var(--burgundy); }
+  .primary-nav__link.is-active:not(.primary-nav__link--cta) { color: var(--burgundy); }
 
-  /* Give: outlined CTA button — burgundy frame, fills on hover (readable on both headers) */
+  /* Give: outlined CTA button — burgundy frame, fills on hover */
   .primary-nav__link--cta {
     background: transparent;
     padding: .5rem 1.1rem; border: 1px solid var(--burgundy); border-radius: 2px;
@@ -212,12 +220,12 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
   .submenu__list, .submenu__sublist { list-style: none; }
   .submenu__link {
     display: block; text-decoration: none; color: var(--ink);
-    font-family: var(--font-body); font-size: .92rem; padding: .42rem 1.3rem;
+    font-family: var(--font-ui); font-size: .85rem; padding: .46rem 1.3rem;
     transition: color .2s, background .2s;
   }
   .submenu__link:hover { color: var(--burgundy); background: var(--paper-2); }
   .submenu__link.is-active { color: var(--burgundy); }
-  .submenu__link--nested { padding-left: 2.4rem; font-size: .86rem; color: var(--ink-soft); }
+  .submenu__link--nested { padding-left: 2.4rem; font-size: .8rem; color: var(--ink-soft); }
 
   /* search */
   .search-link {
@@ -227,7 +235,6 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
   }
   .search-link__icon { width: 19px; height: 19px; display: block; }
   .search-link:hover { color: var(--burgundy); }
-  .site-header.is-overlay .search-link:hover { color: var(--white); opacity: .75; }
 
   /* mobile toggle */
   .nav-toggle {
@@ -249,20 +256,24 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
   .mobile-nav__close { background: none; border: none; font-size: 2rem; line-height: 1; color: var(--ink); padding: .2rem .5rem; }
   .mobile-nav__list, .mobile-nav__utility { list-style: none; }
   .mobile-nav__list { margin-top: 1.4rem; }
+  /* The panel is navigation, so it takes the nav face too. 1.35rem, down from the 1.7rem
+     it was in Cormorant — Montserrat carries far more weight at the same nominal size. */
   .mobile-nav__list > li > a {
-    display: block; text-decoration: none; font-family: var(--font-display);
-    font-size: 1.7rem; font-weight: 600; padding: .5rem 0; color: var(--ink);
+    display: block; text-decoration: none; font-family: var(--font-ui);
+    font-size: 1.35rem; font-weight: 600; padding: .5rem 0; color: var(--ink);
+    letter-spacing: -.01em;
   }
   .mobile-nav__list ul { list-style: none; padding-left: 1rem; margin-bottom: .6rem; }
   .mobile-nav__list ul a {
-    display: block; text-decoration: none; font-family: var(--font-body);
-    font-size: 1rem; padding: .32rem 0; color: var(--ink-soft);
+    display: block; text-decoration: none; font-family: var(--font-ui);
+    font-size: .95rem; padding: .34rem 0; color: var(--ink-soft);
   }
   .mobile-nav a.is-active { color: var(--burgundy); }
   .mobile-nav__utility { margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
   .mobile-nav__utility a {
-    display: block; text-decoration: none; text-transform: uppercase; letter-spacing: .14em;
-    font-size: .72rem; padding: .4rem 0; color: var(--ink-soft);
+    display: block; text-decoration: none; font-family: var(--font-ui);
+    text-transform: uppercase; letter-spacing: .12em;
+    font-size: .72rem; font-weight: 600; padding: .4rem 0; color: var(--ink-soft);
   }
 
   /* The wordmark is a mark, not reading copy: hold it at its previous size on narrow
@@ -276,10 +287,16 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
      constant at every larger viewport. Below it (incl. iPad landscape) the full-screen
      menu is used instead — larger tap targets, and no cramped single-line nav bar. */
   @media (min-width: 1180px) {
-    .primary-nav { display: block; }
+    .nav-band {
+      display: block;
+      background: var(--paper-2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .primary-nav__list { padding-block: .3rem; }
     .nav-toggle { display: none; }
-    /* The nav has taken the free space, so the icon sits directly after it. */
-    .search-link { margin-left: 0; }
+    /* The masthead is now just wordmark + search, so the icon is pushed right on its own. */
+    .site-header { border-bottom: none; }
   }
 </style>
 

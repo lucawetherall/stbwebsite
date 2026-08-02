@@ -203,3 +203,44 @@ Three decisions worth not undoing:
   and under the wrong month heading.
 - **The diary shows one row per repeating series**, with its pattern in words; `/calendar.ics`
   carries every occurrence. Expanding a weekly event into the diary would bury the feasts.
+
+---
+
+## 9. Typography: a sans arrives (August 2026)
+
+The site launched under a "two serifs, no sans" rule (CLAUDE.md §5). That rule has been
+**deliberately overturned**: **Montserrat** now sets headings, titles, the menu bar and every
+tracked uppercase label. It is self-hosted like the others — `scripts/fetch-fonts.mjs` fetches
+weights 500, 600 and 700 (no italic) into `public/fonts/`. The "no Google Fonts, no web-font CDN
+at runtime" half of the rule is untouched.
+
+Why, and what not to undo:
+
+- **The menu bar had run out of room.** Measured on the old single-row header at 1280px: brand
+  174px + nav 850px + search 31px + 53px of flex gaps = 1108px inside 1109px of available width.
+  The bar was at 100% capacity, so nothing could be enlarged without a structural change. The nav
+  now sits on **its own ruled band** below the masthead, which is what bought the space: links
+  went from `.68rem` Source Serif 4 to `.82rem` Montserrat 600, and ~218px of slack remains even
+  with a 19-character label — headroom that matters because `nav.ts` labels are editor-editable.
+- **The homepage header is solid on every page now.** It used to float transparently over the
+  hero artwork, leaving white nav type over whatever the season's photograph happened to be. The
+  `overlay` prop is gone from `Base.astro`, `SiteHeader.astro` and `index.astro`; the homepage
+  passes `hideBreadcrumbs` instead, which is what suppressed its breadcrumb trail before. The
+  trade accepted: the hero starts below the header rather than at the very top of the page.
+- **Cormorant Garamond was not retired** — it is now *decorative only* (wordmark, monograms,
+  pull quotes, the big date numeral, organ pitch numerals, italic display lines). Keeping it is
+  deliberate: it is what still carries the prayer-book character.
+- **`.serif` is a Cormorant class, not a heading class.** It out-specifies the `h1–h4` rule, so
+  leaving it on a heading silently reverts that heading to Cormorant. Non-heading title text uses
+  the `.title` class instead. See AGENT-GUARDRAILS §B.
+- **Every display size was scaled ~0.8** when it moved to Montserrat, whose x-height is far larger
+  than Cormorant's. Size new headings against their neighbours, not against the old scale.
+- **Headings are Montserrat 700.** Under Cormorant many headings were deliberately set to
+  `font-weight: 500` for a softer look; all of those overrides were removed rather than retuned, so
+  every heading now simply inherits 700 from the `h1–h4` rule and there is one place to change it.
+  600 is the nav and label layer; 500 is the fallback weight for Montserrat text that declares
+  none. Three weights is the cost of that split — ~106KB of latin woff2, all `font-display: swap`.
+- **Preloads changed.** `Base.astro` preloads Montserrat **700** and Source Serif 4 400 — the
+  heading is the largest text on the page and the usual LCP element on interior pages. The nav's
+  600 and Cormorant's wordmark are not preloaded: both are small text in fixed-height rows, so
+  swapping them costs nothing visible, and the critical path stays at two files.

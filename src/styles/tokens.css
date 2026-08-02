@@ -13,6 +13,11 @@
   --scrim:    rgba(12, 9, 5, .42); /* flat image scrim (NOT a gradient) */
   --maxw: 1180px;
   --pad: 2rem;
-  --font-display: "Cormorant Garamond", Garamond, "Times New Roman", serif;
+  /* Three typefaces, each with one job. --font-heading and --font-ui are the same
+     face today; they are named apart because headings and the tracked-label layer are
+     different jobs, and either could be retuned without a site-wide sweep. */
+  --font-heading: "Montserrat", "Helvetica Neue", Arial, sans-serif; /* headings + titles */
+  --font-ui: var(--font-heading);   /* nav, buttons, tracked uppercase labels */
+  --font-display: "Cormorant Garamond", Garamond, "Times New Roman", serif; /* decorative */
   --font-body: "Source Serif 4", Georgia, serif;
 }

@@ -39,7 +39,7 @@ const routes = [
         {routes.map((r) => (
           <li class="lost__item">
             <a class="lost__link" href={`${r.href}/`}>
-              <span class="lost__label serif">{r.label}</span>
+              <span class="lost__label title">{r.label}</span>
               <span class="lost__note">{r.note}</span>
             </a>
           </li>
@@ -78,8 +78,7 @@ const routes = [
   .lost__item + .lost__item { border-left: 0; }
   .lost__label {
     display: block;
-    font-size: 1.35rem;
-    font-weight: 500;
+    font-size: 1.1rem;
     line-height: 1.2;
   }
   .lost__note {

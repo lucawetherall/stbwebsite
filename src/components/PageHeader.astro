@@ -8,7 +8,7 @@ const { kicker, title, intro } = Astro.props;
 ---
 <header class="page-header wrap">
   {kicker && <p class="label page-header__kicker">{kicker}</p>}
-  <h1 class="page-header__title serif">{title}</h1>
+  <h1 class="page-header__title">{title}</h1>
   {intro && <p class="page-header__intro">{intro}</p>}
 </header>
 
@@ -19,8 +19,7 @@ const { kicker, title, intro } = Astro.props;
   }
   .page-header__kicker { margin-bottom: 1.1rem; }
   .page-header__title {
-    font-weight: 500;
-    font-size: clamp(2.4rem, 5.2vw, 3.8rem);
+    font-size: clamp(1.9rem, 4.15vw, 3.05rem);
     line-height: 1.04;
     max-width: 20ch;
     text-wrap: balance;

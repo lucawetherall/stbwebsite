@@ -12,7 +12,7 @@ import { site } from '../data/site';
 ---
 {/* serviceSchema: the homepage is where "mass times in Ealing" tends to land, so it carries the
     standing-service markup as well as the worship pages. */}
-<Base title={site.name} overlay={true} serviceSchema={true}>
+<Base title={site.name} hideBreadcrumbs={true} serviceSchema={true}>
   <Hero
     eager={true}
     kicker="The Church of England parish church of Pitshanger"

@@ -28,7 +28,7 @@ const fmtDate = (d: Date) =>
         <li class="post-nav__side">
           <a class="post-nav__link" href={`/news/${previous.id}/`} rel="prev">
             <span class="post-nav__dir label">← Previous</span>
-            <span class="post-nav__title serif">{previous.data.title}</span>
+            <span class="post-nav__title title">{previous.data.title}</span>
             <span class="post-nav__date">{fmtDate(previous.data.date)}</span>
           </a>
         </li>
@@ -37,7 +37,7 @@ const fmtDate = (d: Date) =>
         <li class="post-nav__side post-nav__side--next">
           <a class="post-nav__link" href={`/news/${next.id}/`} rel="next">
             <span class="post-nav__dir label">Next →</span>
-            <span class="post-nav__title serif">{next.data.title}</span>
+            <span class="post-nav__title title">{next.data.title}</span>
             <span class="post-nav__date">{fmtDate(next.data.date)}</span>
           </a>
         </li>
@@ -79,8 +79,7 @@ const fmtDate = (d: Date) =>
   .post-nav__dir { display: block; margin-bottom: .55rem; }
   .post-nav__title {
     display: block;
-    font-size: 1.28rem;
-    font-weight: 500;
+    font-size: 1.05rem;
     line-height: 1.2;
     transition: color .2s;
   }
@@ -88,7 +87,7 @@ const fmtDate = (d: Date) =>
   .post-nav__date {
     display: block;
     margin-top: .35rem;
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     text-transform: uppercase;
     letter-spacing: .1em;
     font-size: .66rem;
@@ -101,9 +100,8 @@ const fmtDate = (d: Date) =>
   .post-nav__related-list { list-style: none; display: grid; gap: 1rem; }
   .post-nav__related-link { text-decoration: none; display: block; }
   .post-nav__related-title {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 500;
+    font-family: var(--font-heading);
+    font-size: .95rem;
     line-height: 1.25;
     transition: color .2s;
   }

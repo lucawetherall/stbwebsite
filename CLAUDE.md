@@ -83,8 +83,14 @@ Three watchwords: **restraint, reverence, readability.** The tenets:
 - **One accent, used sparingly.** A single liturgical red — `--burgundy #6A1B2D` ("deep Sarum
   wine"), with `--burgundy-deep` for hover only. No other accent colours. Everything comes from
   the tokens in `src/styles/tokens.css`; **use tokens, never hard-code a hex or a stray px.**
-- **Two serifs, no sans.** Cormorant Garamond (display) + Source Serif 4 (body), **self-hosted**
-  in `public/fonts/`. Do not add Google Fonts or any web-font CDN.
+- **Three typefaces, one job each.** **Montserrat** (`--font-heading` / `--font-ui`) sets headings,
+  titles, the menu bar and every tracked uppercase label — **700 for headings and `.title`, 600 for
+  the nav and labels, 500 for unweighted UI text**; **Cormorant Garamond** (`--font-display`)
+  is now *decorative only* — the wordmark, monograms, pull quotes, big numerals and italic display
+  lines; **Source Serif 4** (`--font-body`) sets body copy. All **self-hosted** in `public/fonts/`
+  — do not add Google Fonts or any web-font CDN. Note `.serif` means *Cormorant*, not "a heading":
+  it is a class and out-specifies the `h1–h4` rule, so putting it on a heading silently reverts
+  that heading. Non-heading title text takes `.title`.
 - **Warm, flat, quiet.** Paper ground, near-black ink. **No gradients** — the image scrim is a
   flat overlay on purpose. A constant 2px burgundy ribbon sits at the top of every page; buttons
   are outlined and fill on hover; labels are tracked uppercase small-caps.

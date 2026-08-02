@@ -23,7 +23,7 @@ const people = await getRoster();
           )}
         </span>
         <span class="staff-card__role label">{person.data.role}</span>
-        <span class="staff-card__name serif">{person.data.name}</span>
+        <span class="staff-card__name title">{person.data.name}</span>
       </a>
     </li>
   ))}
@@ -77,8 +77,7 @@ const people = await getRoster();
   .staff-card__name {
     display: inline-block;
     margin-top: 0.45rem;
-    font-weight: 500;
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
     line-height: 1.12;
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s ease;

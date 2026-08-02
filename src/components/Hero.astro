@@ -40,7 +40,7 @@ const imgSm = img.endsWith('.webp') ? img.replace(/\.webp$/, '-1280.webp') : img
   <p class="sr-only">{altText}</p>
   <div class="wrap hero__inner fade-in">
     {kicker && <p class="hero__kicker">{kicker}</p>}
-    <h1 class="hero__title serif">{title}</h1>
+    <h1 class="hero__title">{title}</h1>
     {serviceLine && <p class="hero__service">{serviceLine}</p>}
     {links.length > 0 && (
       <p class="hero__links">
@@ -74,22 +74,25 @@ const imgSm = img.endsWith('.webp') ? img.replace(/\.webp$/, '-1280.webp') : img
   }
   .hero__inner {
     width: 100%;
-    padding-top: 8rem;
+    /* The header used to be absolutely positioned over this hero and needed 8rem of
+       clearance. It now sits in normal flow above it, so the padding is symmetric. */
+    padding-top: clamp(3rem, 8vh, 5.5rem);
     padding-bottom: clamp(3rem, 8vh, 5.5rem);
   }
   .hero__kicker {
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     text-transform: uppercase;
-    letter-spacing: .2em;
+    letter-spacing: .14em;
     font-size: .72rem;
     font-weight: 600;
     color: var(--white);
     margin-bottom: 1.2rem;
   }
   .hero__title {
-    font-weight: 500;
-    font-size: clamp(2.8rem, 7vw, 5rem);
-    line-height: 1.02;
+    /* ~0.8 of the Cormorant sizes it replaced — Montserrat's x-height is far larger,
+       so it holds the same optical scale at a smaller nominal size. */
+    font-size: clamp(2.2rem, 5.4vw, 3.7rem);
+    line-height: 1.08;
     max-width: 16ch;
     text-wrap: balance;
   }
@@ -107,6 +110,7 @@ const imgSm = img.endsWith('.webp') ? img.replace(/\.webp$/, '-1280.webp') : img
     display: inline-block;
     text-decoration: none;
     color: var(--white);
+    font-family: var(--font-ui);
     text-transform: uppercase;
     letter-spacing: .14em;
     font-size: .72rem;

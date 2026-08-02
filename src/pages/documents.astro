@@ -42,7 +42,7 @@ const typeOf = (file: string) => {
                 {...(d.data.external ? { target: '_blank', rel: 'noopener' } : {})}
               >
                 <span class="doc-row__main">
-                  <span class="doc-row__title serif">{d.data.title}</span>
+                  <span class="doc-row__title title">{d.data.title}</span>
                   {d.data.description && <span class="doc-row__desc">{d.data.description}</span>}
                 </span>
                 <span class="doc-row__type">{typeOf(d.data.file)}{d.data.external ? ' ↗' : ''}</span>
@@ -73,10 +73,11 @@ const typeOf = (file: string) => {
   }
   .doc-row__link:hover { background: var(--paper-2); }
   .doc-row__link:hover .doc-row__title { color: var(--burgundy); }
-  .doc-row__title { display: block; font-size: 1.3rem; font-weight: 500; transition: color .2s; }
+  .doc-row__title { display: block; font-size: 1.05rem; transition: color .2s; }
   .doc-row__desc { display: block; margin-top: .3rem; color: var(--ink-soft); font-size: .98rem; }
   .doc-row__type {
     flex: none;
+    font-family: var(--font-ui);
     text-transform: uppercase;
     letter-spacing: .1em;
     font-size: .66rem;

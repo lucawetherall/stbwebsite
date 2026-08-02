@@ -115,11 +115,30 @@ calendar** through its hero art and footer season line.
   or an arbitrary px. Need a new value? Add a token and justify it.
 - **One accent.** `--burgundy #6A1B2D`, `--burgundy-deep` for hover/pressed only. No second accent
   colour. Retune the whole site by changing the one token.
-- **Two serifs, no sans.** Cormorant Garamond (display) + Source Serif 4 (body), **self-hosted**
-  in `public/fonts/`. No Google Fonts, no web-font CDN. Body `1.125rem` / line-height 1.7 / 66ch
-  measure. The **root** font-size is a responsive percentage (103% mobile → 108% ≥768px → 111%
-  ≥1024px), so every rem-based size scales with it — that is the one lever for type size. Keep it
-  in percentages, never px (DECISIONS §2).
+- **Three typefaces, one job each** — **Montserrat** (`--font-heading`, aliased `--font-ui`) for
+  headings, titles, the menu bar and tracked uppercase labels; **Cormorant Garamond**
+  (`--font-display`) for decorative display text only; **Source Serif 4** (`--font-body`) for body
+  copy. All **self-hosted** in `public/fonts/` via `scripts/fetch-fonts.mjs`. No Google Fonts, no
+  web-font CDN. Body `1.125rem` / line-height 1.7 / 66ch measure. The **root** font-size is a
+  responsive percentage (103% mobile → 108% ≥768px → 111% ≥1024px), so every rem-based size
+  scales with it — that is the one lever for type size. Keep it in percentages, never px
+  (DECISIONS §2).
+- **`.serif` vs `.title` — do not conflate them.** `.serif` means *Cormorant*, i.e. decorative:
+  the wordmark, monograms, pull quotes, the big date numeral, organ pitch numerals, italic
+  display lines. It is **not** a heading class. Because it is a class it out-specifies the
+  `h1–h4` type selector, so `<h2 class="… serif">` silently keeps that heading in Cormorant and
+  defeats the heading font entirely. Headings need no font class at all; non-heading text that
+  *acts* as a title (a `<span>` news title, a staff name) takes **`.title`**.
+- **Montserrat sizing.** Montserrat has a much larger x-height than the Cormorant it replaced, so
+  it reads about a fifth larger at the same rem value. Every display size was scaled ~0.8 when it
+  moved. If you add a heading size, size it against the neighbouring headings, not against the
+  old Cormorant scale.
+- **Montserrat weights — three, each with a job.** **700** headings (`h1–h4`) and `.title`; **600**
+  the nav and every tracked uppercase label; **500** the Montserrat text that declares no weight
+  (buttons, `.txt-link`, dropdown links, the skip link) — it exists so those resolve to a medium
+  rather than jumping to 600. Headings carry no per-component `font-weight`: they inherit 700, so
+  don't reintroduce one. Only the *Cormorant* decorative rules (monograms, the big date numeral,
+  `.welcome__statement`, `.visit-glance__lead`, `.feast-list__item`) still set `font-weight: 500`.
 - **Flat, not glossy.** No gradients anywhere; the image overlay (`--scrim`) is a flat colour on
   purpose. The 2px burgundy ribbon at the top of every page is constant (never season-variable).
 - **Components, patterns.** Outlined buttons that fill burgundy on hover; tracked uppercase

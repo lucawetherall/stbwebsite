@@ -31,7 +31,7 @@ const people: RosterMember[] = order
           </div>
           <div class="musician__body">
             <p class="label musician__role">{role}</p>
-            <h3 class="musician__name serif">{name}</h3>
+            <h3 class="musician__name">{name}</h3>
             {teaser && <p class="musician__teaser">{teaser}</p>}
             {bio && (
               <a class="txt-link musician__link" href={`/about-us/whos-who/${person.slug}`}>
@@ -68,7 +68,7 @@ const people: RosterMember[] = order
     font-size: 1.8rem; font-weight: 500; color: var(--burgundy);
   }
   .musician__role { display: block; margin-bottom: 0.4rem; }
-  .musician__name { font-weight: 500; font-size: 1.5rem; line-height: 1.1; }
+  .musician__name { font-size: 1.2rem; line-height: 1.1; }
   .musician__teaser { margin-top: 0.5rem; color: var(--ink-soft); max-width: 52ch; }
   .musician__link { display: inline-block; margin-top: 0.7rem; }
 
