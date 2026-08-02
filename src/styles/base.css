@@ -31,18 +31,39 @@ body {
 body::before { content: ""; display: block; height: 2px; background: var(--burgundy); }
 
 /* ---- type -------------------------------------------------------------- */
+/* .serif is Cormorant, and means *decorative* display text — the wordmark, monograms,
+   pull quotes, big numerals. It is NOT for headings: as a class it out-specifies the
+   h1–h4 type selector below, so putting it on a heading silently keeps that heading in
+   Cormorant. Title-like text that is not an <hN> takes .title instead. */
 .serif { font-family: var(--font-display); }
 
-h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.1; }
-h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
-h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
-h3 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); }
+/* .title — for <span>/<p> that act as a title but aren't a heading element. Takes the
+   same bold as a real heading, so a news title in a list matches the heading above it. */
+.title { font-family: var(--font-heading); font-weight: 700; letter-spacing: -.01em; }
 
-/* tracked small-caps label (do not depend on smcp) */
+/* Montserrat has a far larger x-height and wider letterforms than the Cormorant it
+   replaced, so it reads about a fifth larger at the same rem value; every display size
+   below is scaled ~0.8 to hold the previous optical size. Line-height opens to 1.15
+   (ascenders and descenders collide at 1.1 with this x-height) and the slight negative
+   tracking counters Montserrat's generous default spacing at display sizes. */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+}
+h1 { font-size: clamp(2rem, 4.1vw, 2.9rem); }
+h2 { font-size: clamp(1.55rem, 2.8vw, 2.05rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+
+/* Tracked small-caps label (do not depend on smcp). Tracking across this whole label
+   layer came down when it moved to Montserrat: geometric sans caps carry more built-in
+   sidebearing than the serif caps did, so the old values read loose and pushed button
+   labels onto a second line at narrow widths. */
 .label {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   text-transform: uppercase;
-  letter-spacing: .18em;
+  letter-spacing: .12em;
   font-size: .7rem;
   font-weight: 600;
   color: var(--burgundy);
@@ -81,9 +102,9 @@ a, button { cursor: pointer; }
   background: var(--ink);
   color: var(--white);
   padding: .75rem 1.25rem;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   text-transform: uppercase;
-  letter-spacing: .14em;
+  letter-spacing: .1em;
   font-size: .72rem;
 }
 .skip-link:focus { left: 1rem; top: 1rem; }
@@ -91,9 +112,9 @@ a, button { cursor: pointer; }
 /* ---- link + button patterns ------------------------------------------- */
 .txt-link {
   display: inline-block;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   text-transform: uppercase;
-  letter-spacing: .14em;
+  letter-spacing: .1em;
   font-size: .74rem;
   text-decoration: none;
   padding-bottom: .25rem;
@@ -104,9 +125,9 @@ a, button { cursor: pointer; }
 
 .btn {
   display: inline-block;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   text-transform: uppercase;
-  letter-spacing: .16em;
+  letter-spacing: .11em;
   font-size: .74rem;
   text-decoration: none;
   color: var(--ink);

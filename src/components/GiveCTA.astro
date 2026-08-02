@@ -15,7 +15,7 @@ const {
 <section class:list={['give-cta section', `is-${ground}`]} aria-labelledby="give-heading">
   <div class="wrap give-cta__inner">
     <p class="label">Giving</p>
-    <h2 id="give-heading" class="give-cta__title serif">{title}</h2>
+    <h2 id="give-heading" class="give-cta__title">{title}</h2>
     <p class="give-cta__body">{body}</p>
     <p class="give-cta__actions">
       <a class="btn" href={site.giving} target="_blank" rel="noopener">Give via Parish Giving</a>
@@ -30,8 +30,7 @@ const {
   .give-cta__inner { max-width: 720px; }
   .give-cta__title {
     margin-top: 1rem;
-    font-weight: 500;
-    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-size: clamp(1.5rem, 3.2vw, 2.25rem);
     line-height: 1.08;
     max-width: 18ch;
   }

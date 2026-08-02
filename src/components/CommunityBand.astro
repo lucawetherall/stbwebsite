@@ -33,7 +33,7 @@ const items: Item[] = [
 <section class="community-band" aria-labelledby="community-band-heading">
   <div class="wrap">
     <p class="label community-band__kicker">In our community</p>
-    <h2 id="community-band-heading" class="community-band__title serif">Open through the week</h2>
+    <h2 id="community-band-heading" class="community-band__title">Open through the week</h2>
     <p class="community-band__intro">
       St Barnabas is more than a Sunday congregation — our doors are open to our neighbours across
       the week.
@@ -43,7 +43,7 @@ const items: Item[] = [
       {items.map((item) => (
         <li class="community-card">
           <a class="community-card__link" href={item.href}>
-            <span class="community-card__title serif">{item.title}</span>
+            <span class="community-card__title title">{item.title}</span>
             <span class="community-card__blurb">{item.blurb}</span>
           </a>
         </li>
@@ -66,8 +66,7 @@ const items: Item[] = [
   .community-band__kicker { color: var(--burgundy); display: block; }
   .community-band__title {
     margin-top: 0.9rem;
-    font-weight: 500;
-    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+    font-size: clamp(1.45rem, 2.9vw, 2.05rem);
     line-height: 1.04;
     max-width: 18ch;
   }
@@ -102,7 +101,7 @@ const items: Item[] = [
   }
   .community-card__link:hover,
   .community-card__link:focus-visible { background: var(--paper-2); }
-  .community-card__title { font-size: 1.18rem; font-weight: 500; }
+  .community-card__title { font-size: .98rem; }
   .community-card__link:hover .community-card__title,
   .community-card__link:focus-visible .community-card__title { color: var(--burgundy); }
   .community-card__blurb { font-size: 0.92rem; line-height: 1.5; color: var(--ink-soft); }

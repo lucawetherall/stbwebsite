@@ -17,7 +17,7 @@ const stations = await Promise.all(
   {stations.map(({ chapter, Content }, i) => (
     <li class:list={['station', { 'station--lead': i === 0 }]} id={chapter.anchor}>
       <p class="station__year">{chapter.data.year}</p>
-      <h2 class="station__title serif">{chapter.data.title}</h2>
+      <h2 class="station__title">{chapter.data.title}</h2>
       <div class="prose station__body"><Content /></div>
       {chapter.data.image && (
         <figure class="station__figure">
@@ -65,8 +65,7 @@ const stations = await Promise.all(
   }
   .station__title {
     margin: 0 0 .6rem;
-    font-weight: 500;
-    font-size: clamp(1.5rem, 3.4vw, 2rem);
+    font-size: clamp(1.2rem, 2.7vw, 1.6rem);
     line-height: 1.1;
   }
   .station__body { max-width: 60ch; }

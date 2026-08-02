@@ -47,7 +47,7 @@ const featuredWhen = featured ? describeWhen(featured, { includeDate: false }) :
     )}
     <div class="whats-on-featured__body">
       <p class="label" id="featured-heading">Coming up</p>
-      <h2 class="whats-on-featured__title serif">{featured.title}</h2>
+      <h2 class="whats-on-featured__title">{featured.title}</h2>
       <p class="whats-on-featured__when">
         {featuredDate}{featuredWhen && <span> · {featuredWhen}</span>}
       </p>
@@ -121,12 +121,12 @@ const featuredWhen = featured ? describeWhen(featured, { includeDate: false }) :
   .whats-on-featured__body { min-width: 0; }
   .whats-on-featured__title {
     margin-top: .8rem;
-    font-weight: 500;
-    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    font-size: clamp(1.35rem, 2.55vw, 1.85rem);
     line-height: 1.1;
   }
   .whats-on-featured__when {
     margin-top: .7rem;
+    font-family: var(--font-ui);
     text-transform: uppercase;
     letter-spacing: .1em;
     font-size: .68rem;

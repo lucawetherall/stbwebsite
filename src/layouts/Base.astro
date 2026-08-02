@@ -21,12 +21,10 @@ interface Props {
   image?: string;
   /** Open Graph type — 'article' for news posts */
   type?: 'website' | 'article';
-  /** Header overlays a full-bleed hero (white text) */
-  overlay?: boolean;
   noindex?: boolean;
   /** Label for the final breadcrumb when the page is not itself a nav entry (a post, a person) */
   breadcrumbTitle?: string;
-  /** Hide the breadcrumb trail (the homepage, and pages that open on a full-bleed hero) */
+  /** Hide the breadcrumb trail (the homepage, and pages that open on a hero) */
   hideBreadcrumbs?: boolean;
   /** Emit schema.org markup for the standing service times — worship pages and the homepage */
   serviceSchema?: boolean;
@@ -45,7 +43,6 @@ const {
   description = 'An inclusive Christian community in the modern Catholic tradition of the Church of England, in Pitshanger, Ealing. Sung Mass on Sundays at 10.30am.',
   image = '/images/og-default.jpg',
   type = 'website',
-  overlay = false,
   noindex = false,
   breadcrumbTitle,
   hideBreadcrumbs = false,
@@ -80,8 +77,12 @@ const section = crumbs.length > 1 ? crumbs[1].label : 'Home';
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#6A1B2D" />
 
-    <!-- Preload primary font weights for first paint -->
-    <link rel="preload" href="/fonts/cormorant-garamond-600-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Preload primary font weights for first paint. Montserrat 700 sets every heading — the
+         largest text on the page and the usual LCP element on interior pages; Source Serif 4 400
+         sets the body. The nav's 600 and Cormorant's wordmark are deliberately not preloaded:
+         both are small text in fixed-height rows, where font-display: swap costs nothing visible,
+         and holding this list at two files keeps the critical path short. -->
+    <link rel="preload" href="/fonts/montserrat-700-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/source-serif-4-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Open Graph / social -->
@@ -112,12 +113,12 @@ const section = crumbs.length > 1 ? crumbs[1].label : 'Home';
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <SiteHeader overlay={overlay} />
+    <SiteHeader />
     {/* `data-pagefind-body` marks the region the search index is built from; a noindex page
         (the 404, /search itself) carries no such marker and so stays out of the index. */}
     <main id="main" data-pagefind-body={noindex ? undefined : true} data-pagefind-weight={searchWeight}>
       <span class="sr-only" data-pagefind-meta={`section:${section}`} data-pagefind-filter={`Section:${section}`}></span>
-      {!hideBreadcrumbs && !overlay && <Breadcrumbs crumbs={crumbs} />}
+      {!hideBreadcrumbs && <Breadcrumbs crumbs={crumbs} />}
       <slot />
     </main>
     <SiteFooter />

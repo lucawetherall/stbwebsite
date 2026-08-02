@@ -29,7 +29,7 @@ const fullDate = event.endDate
   </time>
 
   <div class="event-row__body">
-    <h3 class="event-row__title serif">{event.title}</h3>
+    <h3 class="event-row__title">{event.title}</h3>
     {when && <p class="event-row__meta">{when}</p>}
     {event.recurrenceText && <p class="event-row__repeat">{event.recurrenceText}</p>}
     {event.description && <p class="event-row__desc">{event.description}</p>}
@@ -67,6 +67,7 @@ const fullDate = event.endDate
   .event-row__date { display: block; padding-top: .2rem; }
   .event-row__weekday {
     display: block;
+    font-family: var(--font-ui);
     text-transform: uppercase;
     letter-spacing: .14em;
     font-size: .66rem;
@@ -82,10 +83,11 @@ const fullDate = event.endDate
     color: var(--burgundy);
   }
 
-  .event-row__title { font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 500; }
+  .event-row__title { font-size: clamp(1.05rem, 1.9vw, 1.3rem); }
   .event-row__meta,
   .event-row__repeat {
     margin-top: .35rem;
+    font-family: var(--font-ui);
     text-transform: uppercase;
     letter-spacing: .1em;
     font-size: .66rem;
@@ -102,6 +104,7 @@ const fullDate = event.endDate
     margin-top: .7rem;
   }
   .event-row__cat {
+    font-family: var(--font-ui);
     text-transform: uppercase;
     letter-spacing: .12em;
     font-size: .64rem;

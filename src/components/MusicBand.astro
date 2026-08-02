@@ -22,7 +22,7 @@ const imgSm = image.endsWith('.webp') ? image.replace(/\.webp$/, '-1280.webp') :
   <p class="sr-only">The high altar and sanctuary of St Barnabas during the liturgy.</p>
   <div class="wrap music-band__inner">
     <p class="music-band__kicker">{kicker}</p>
-    <h2 class="music-band__title serif">{title}</h2>
+    <h2 class="music-band__title">{title}</h2>
     <p class="music-band__body">{body}</p>
     {link && <a class="music-band__link" href={link.href}>{link.label}</a>}
   </div>
@@ -49,7 +49,7 @@ const imgSm = image.endsWith('.webp') ? image.replace(/\.webp$/, '-1280.webp') :
     max-width: 760px;
   }
   .music-band__kicker {
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     text-transform: uppercase;
     letter-spacing: .2em;
     font-size: .72rem;
@@ -57,8 +57,7 @@ const imgSm = image.endsWith('.webp') ? image.replace(/\.webp$/, '-1280.webp') :
     margin-bottom: 1.1rem;
   }
   .music-band__title {
-    font-weight: 500;
-    font-size: clamp(2rem, 4.6vw, 3.2rem);
+    font-size: clamp(1.6rem, 3.7vw, 2.55rem);
     line-height: 1.05;
     max-width: 16ch;
   }
@@ -75,6 +74,7 @@ const imgSm = image.endsWith('.webp') ? image.replace(/\.webp$/, '-1280.webp') :
     margin-top: 1.8rem;
     text-decoration: none;
     color: var(--white);
+    font-family: var(--font-ui);
     text-transform: uppercase;
     letter-spacing: .14em;
     font-size: .72rem;
