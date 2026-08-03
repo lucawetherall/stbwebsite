@@ -25,6 +25,6 @@ export function assertServiceTimes(d: { sundays?: ServiceTime[]; weekdays?: Serv
 assertServiceTimes(data as { sundays: ServiceTime[]; weekdays: ServiceTime[] });
 
 // Standing service pattern — editor-owned via Sveltia (src/content/settings/serviceTimes.json).
-// Used by /worship/sundays, /worship/weekdays and as the ThisSunday fallback.
+// Used by /worship/sundays, /worship/weekdays and the homepage ServiceTimesBand.
 export const serviceTimes: { sundays: ServiceTime[]; weekdays: ServiceTime[] } =
   data as { sundays: ServiceTime[]; weekdays: ServiceTime[] };

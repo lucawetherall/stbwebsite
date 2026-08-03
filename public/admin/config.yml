@@ -161,6 +161,7 @@ collections:
             label_singular: Sunday service
             widget: list
             summary: '{{fields.time}} · {{fields.name}}'
+            hint: 'Please keep the Sung Mass first — the homepage leads with whichever service is at the top of this list.'
             fields:
               - { name: time, label: Time, widget: string, hint: 'e.g. 10.30am' }
               - { name: name, label: Service name, widget: string }
@@ -322,6 +323,7 @@ collections:
       - { name: about-pastoral-care, label: 'About · Pastoral Care', file: src/content/pages/about-us/pastoral-care.md, fields: *pf }
       - { name: about-social-action, label: 'About · Social Action', file: src/content/pages/about-us/social-action.md, fields: *pf }
       - { name: about-winter-night-shelter, label: 'About · Winter Night Shelter', file: src/content/pages/about-us/social-action/winter-night-shelter.md, fields: *pf }
+      - { name: about-visiting, label: 'About · Visiting Us', file: src/content/pages/about-us/visiting.md, fields: *pf }
       - { name: community, label: Community, file: src/content/pages/community.md, fields: *pf }
       - { name: community-food-pantry, label: 'Community · Food Pantry', file: src/content/pages/community/food-pantry-at-st-barnabas.md, fields: *pf }
       - { name: community-memory-cafe, label: 'Community · Memory Café', file: src/content/pages/community/memory-cafe.md, fields: *pf }
@@ -331,7 +333,6 @@ collections:
       - { name: families-noisy, label: 'Families · Noisy Mass', file: src/content/pages/families-children/noisy.md, fields: *pf }
       - { name: families-youth-group, label: 'Families · Youth Group', file: src/content/pages/families-children/youth-group.md, fields: *pf }
       - { name: life-events, label: Life Events, file: src/content/pages/life-events.md, fields: *pf }
-      - { name: visit, label: Visit, file: src/content/pages/visit.md, fields: *pf }
       - { name: whats-on, label: What's On, file: src/content/pages/whats-on.md, fields: *pf }
       - { name: music-organ, label: 'Music · St Barnabas Organ', file: src/content/pages/music/st-barnabas-organ.md, fields: *pf }
       - { name: music-our-musicians, label: 'Music · Our Musicians', file: src/content/pages/music/our-musicians.md, fields: *pf }

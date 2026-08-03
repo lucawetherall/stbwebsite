@@ -28,8 +28,15 @@ violations** on the page types tested (home, content, contact, news article).
 
 - **Content sourcing.** All editorial copy was ported faithfully from the *current* live
   `barnabites.org` pages (fetched and re-set into the design). New copy was written only for
-  `/visit` (Plan Your Visit — did not exist before) and the Choral Scholarship section of
+  the Visiting page (did not exist before) and the Choral Scholarship section of
   `/worship/music` (the live site has no scholarship detail).
+- **Service times lead the homepage; Plan Your Visit moved under About (2 August 2026).** The
+  standing Sunday pattern used to appear on `/` only as a *fallback* inside `ThisSunday`, so it
+  vanished in any week the choir's music sheet was published. It now has its own permanent band
+  (`src/components/ServiceTimesBand.astro`) directly under the hero, with the music sheet below
+  it and rendered only when a sheet exists. With the homepage doing that front-door job,
+  `/visit` no longer earned a top-level nav slot: it moved to `/about-us/visiting` ("Visiting
+  Us", `seoTitle` still "Plan Your Visit"), with a 301 from `/visit`.
 - **`/worship/online` is a new clean URL.** The live "Worship online" page lives at the opaque
   `/worship/p1663` (a ChurchDesk landing redirect). We built a clean `/worship/online` page and
   301 the old URL to it.
@@ -100,6 +107,12 @@ violations** on the page types tested (home, content, contact, news article).
    as **Organist (name + role only)** on the new Our Musicians page (`/music/our-musicians`),
    pulled from his `staff` record. A full Who's-Who profile (bio + photo) remains pending parish
    sign-off.
+10. **How long the Sung Mass lasts.** Three of *our own* sources disagreed:
+    `serviceTimes.json` ("around an hour and a quarter"), `VisitDetails.astro` ("about an hour
+    and a quarter") and the Visiting page ("a little over an hour"). All three were written for
+    this site, not ported from the live one, so no parish statement was overridden. Standardised
+    on **about an hour and a quarter** — the CMS-editable value, which two of the three already
+    agreed with. Confirm with the parish.
 
 ---
 
@@ -181,8 +194,8 @@ the `optimise-images` skill in `.claude/skills/`):
 ## 8. The events architecture (added July 2026)
 
 What's On (`/whats-on`) is a CMS-editable prose page (`src/content/pages/whats-on.md`) with the
-diary injected by `src/pages/[...slug].astro`, following the same opt-in hook as `/visit` and
-`/music/our-musicians`. The machinery:
+diary injected by `src/pages/[...slug].astro`, following the same opt-in hook as
+`/about-us/visiting` and `/music/our-musicians`. The machinery:
 
 | File | Role |
 |---|---|
@@ -203,6 +216,20 @@ Three decisions worth not undoing:
   and under the wrong month heading.
 - **The diary shows one row per repeating series**, with its pattern in words; `/calendar.ics`
   carries every occurrence. Expanding a weekly event into the diary would bury the feasts.
+
+**Two midnights — the all-day trap (fixed 3 August 2026).** A date-only value reaches us under two
+conventions. Everything we build ourselves (`addDays`, `shiftBack`, the collection's
+`z.coerce.date()`) puts it at **UTC** midnight, which is what `civilFromDateOnly` reads. **node-ical
+does not:** it parses `DTSTART;VALUE=DATE:20260904` at **local** midnight. In any zone ahead of UTC
+that instant is the previous day in UTC — Europe/London in BST gives `2026-09-03T23:00Z` — so
+reading UTC parts off it silently loses a day on every all-day feed event. Feed dates now pass
+through `utcMidnightOfDateOnly` before any civil date is read.
+
+The reason it survived review is worth remembering: **it is invisible in UTC and in every zone
+behind UTC**, so CI on `ubuntu-latest` stayed green while the suite failed on a maintainer's machine
+in British Summer Time. `vitest.config.ts` therefore pins the test timezone to **Europe/London** —
+the zone this site actually computes in. Don't remove that pin to make a test pass; it is the only
+thing standing between this class of bug and production.
 
 ---
 

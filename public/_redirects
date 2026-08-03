@@ -23,6 +23,10 @@ https://barnabites.org/*  https://www.barnabites.org/:splat  301!
 # Memory Café page moved under its Community section
 /memory-cafe  /community/memory-cafe/  301
 
+# Plan Your Visit moved under About (it is a section page, not a top-level destination —
+# the homepage now carries the service times it used to be the front door for)
+/visit  /about-us/visiting/  301
+
 # ── Blog posts: 129 ChurchDesk /b/blog-* URLs → /news/<slug>/  (generated) ──
 /b/blog-112361-two-ministry-team-announcements  /news/two-ministry-team-announcements/  301
 /b/blog-109150-giving-campaign-2022  /news/giving-campaign-2022/  301

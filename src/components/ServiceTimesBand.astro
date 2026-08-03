@@ -1,0 +1,142 @@
+---
+/**
+ * The homepage's service-times band — the answer to "when are your services?", given the
+ * weight it deserves on the page a stranger lands on. Sundays read large; the weekday
+ * pattern sits beneath, quiet and compact.
+ *
+ * NOT the reference table. ServiceTimes.astro renders the full listing (with descriptions)
+ * on /worship/sundays, /worship/weekdays, /whats-on and /404. The two share their data
+ * (serviceTimes.json, editor-owned) but not their layout: the homepage is developer-owned
+ * "cornerstone" (docs/AGENT-GUARDRAILS.md §A) and needs its own hierarchy.
+ *
+ * The lead line is hard-coded rather than read from `sundays[0]`: the Sunday list is a
+ * drag-reorderable CMS widget, and an editor tidying it into chronological order would
+ * otherwise make the homepage announce "The Said Mass (BCP) — every Sunday at 8.00am".
+ * The "main service first" convention is asserted in src/data/serviceTimes.test.ts.
+ */
+import { serviceTimes } from '../data/serviceTimes';
+---
+<div class="service-band section">
+  <div class="wrap">
+    <section aria-labelledby="svc-sundays">
+      <h2 class="label service-band__eyebrow" id="svc-sundays">Sunday services</h2>
+      <p class="service-band__lead title">The Sung Mass</p>
+      <p class="service-band__when"><em>Every Sunday at 10.30am</em></p>
+
+      <dl class="service-band__list">
+        {serviceTimes.sundays.map((s) => (
+          <div class="service-band__row">
+            <dt class="service-band__time">{s.time}</dt>
+            <dd class="service-band__detail">
+              <span class="service-band__name">{s.name}</span>
+              {s.when && <span class="service-band__qual">{s.when}</span>}
+              {s.note && <span class="service-band__note">{s.note}</span>}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section class="service-band__week" aria-labelledby="svc-week">
+      <h2 class="label service-band__eyebrow" id="svc-week">During the week</h2>
+
+      <dl class="service-band__list service-band__list--compact">
+        {serviceTimes.weekdays.map((s) => (
+          <div class="service-band__row service-band__row--compact">
+            <dt class="service-band__time service-band__time--compact">{s.time}</dt>
+            <dd class="service-band__detail service-band__detail--compact">
+              <span class="service-band__name">{s.name}</span>
+              {s.when && <span class="service-band__day">{s.when}</span>}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <p class="service-band__more">
+      <a class="txt-link" href="/worship/sundays">Sunday services in full</a>
+      <a class="txt-link" href="/worship/weekdays">Weekday services in full</a>
+      <a class="txt-link" href="/about-us/visiting">Planning a first visit</a>
+    </p>
+  </div>
+</div>
+
+<style>
+  /* The same ground as the bands either side; the hairline that separates this from
+     ThisSunday lives on ThisSunday, so it disappears when ThisSunday does. */
+  .service-band { background: var(--paper); }
+
+  .service-band__eyebrow { display: block; margin-bottom: 1.1rem; }
+  /* A <p> acting as a title, so it takes .title (Montserrat 700) rather than .serif —
+     see docs/AGENT-GUARDRAILS.md §B. Sized to match .this-sunday__feast, the lead of the
+     band directly below it; the two must read as siblings. No font-weight: .title sets 700. */
+  .service-band__lead { font-size: clamp(1.65rem, 3.2vw, 2.4rem); line-height: 1.15; letter-spacing: -.01em; }
+  .service-band__when {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    margin-top: .4rem;
+  }
+
+  .service-band__list { display: grid; gap: 1.1rem; margin-top: 2.4rem; }
+  .service-band__row {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 1.4rem;
+    align-items: baseline;
+    border-top: 1px solid var(--line);
+    padding-top: 1.1rem;
+  }
+  /* The time is what a stranger came for, so it is set large in Cormorant — a "big numeral",
+     one of the decorative jobs --font-display keeps (docs/AGENT-GUARDRAILS.md §B), and the
+     same face ServiceTimes.astro uses for its times. Sized up from that component's flat
+     1.5rem to give the homepage more weight; being Cormorant, it is deliberately not on the
+     Montserrat heading scale. The rem column keeps pace with the responsive root size. */
+  .service-band__time {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+    line-height: 1.1;
+  }
+  .service-band__detail { display: flex; flex-direction: column; gap: .25rem; }
+  .service-band__name { font-size: 1.2rem; }
+  .service-band__qual {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--burgundy);
+  }
+  .service-band__note { color: var(--ink-soft); font-size: .98rem; }
+
+  /* Weekdays: the same column rhythm, everything a step quieter and on one line where it
+     fits. Body face, not display — Cormorant's small x-height is too quiet at this size for
+     a congregation that skews elderly (see the root type-scale note in base.css). */
+  .service-band__week { margin-top: 3rem; }
+  .service-band__list--compact { gap: .55rem; margin-top: 0; }
+  .service-band__row--compact { padding-top: .55rem; }
+  .service-band__time--compact {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .service-band__detail--compact {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .1rem .6rem;
+  }
+  .service-band__detail--compact .service-band__name { font-size: 1.05rem; }
+  .service-band__day { color: var(--ink-soft); font-size: .95rem; }
+
+  .service-band__more { display: flex; flex-wrap: wrap; gap: 1.2rem 2rem; margin-top: 2.6rem; }
+
+  /* Collapses at the same width as ThisSunday directly below, so the two stack together. */
+  @media (max-width: 560px) {
+    .service-band__row { grid-template-columns: 1fr; gap: .2rem; }
+    .service-band__row--compact { gap: 0; }
+  }
+</style>
