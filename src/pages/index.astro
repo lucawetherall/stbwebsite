@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import ServiceTimesBand from '../components/ServiceTimesBand.astro';
 import ThisSunday from '../components/ThisSunday.astro';
 import WelcomeBand from '../components/WelcomeBand.astro';
 import MusicBand from '../components/MusicBand.astro';
@@ -19,10 +20,12 @@ import { site } from '../data/site';
     title="A warm welcome awaits you"
     serviceLine="Sung Mass · Sundays · 10.30am"
     links={[
-      { label: 'Plan your visit', href: '/visit' },
+      { label: 'Plan your visit', href: '/about-us/visiting' },
       { label: 'Our worship', href: '/worship' },
     ]}
   />
+
+  <ServiceTimesBand />
 
   <ThisSunday />
 

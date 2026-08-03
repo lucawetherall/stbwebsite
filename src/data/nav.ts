@@ -6,7 +6,6 @@ export interface NavItem {
 }
 
 export const nav: NavItem[] = [
-  { label: 'Visit', href: '/visit' },
   { label: "What's On", href: '/whats-on' },
   {
     label: 'Worship',
@@ -31,6 +30,7 @@ export const nav: NavItem[] = [
     label: 'About',
     href: '/about-us',
     children: [
+      { label: 'Visiting Us', href: '/about-us/visiting' },
       { label: "Who's Who", href: '/about-us/whos-who' },
       { label: 'Our History', href: '/about-us/history' },
       { label: 'Pastoral Care', href: '/about-us/pastoral-care' },

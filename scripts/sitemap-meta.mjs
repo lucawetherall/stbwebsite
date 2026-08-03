@@ -93,7 +93,8 @@ function priorityFor(path) {
   if (path === '/') return 1.0;
   if (path.startsWith('/news/') && path !== '/news/') return 0.4;
   if (WEEKLY.has(path)) return 0.9;
-  if (/^\/(visit|worship|life-events|give|contact-us|music)\/?/.test(path)) return 0.8;
+  if (/^\/(worship|life-events|give|contact-us|music)\/?/.test(path)) return 0.8;
+  if (path === '/about-us/visiting/') return 0.8; // the front door for a first-time visitor
   if (path.startsWith('/about-us/whos-who/') && path !== '/about-us/whos-who/') return 0.5;
   return 0.6;
 }

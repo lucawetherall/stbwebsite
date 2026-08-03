@@ -1,5 +1,6 @@
 ---
 import MapEmbed from './MapEmbed.astro';
+import ServiceTimes from './ServiceTimes.astro';
 import { site } from '../data/site';
 
 // Developer-owned layout for the Plan Your Visit page; the warm walkthrough stays
@@ -19,6 +20,11 @@ const directions = `https://www.google.com/maps/dir/?api=1&destination=${site.ge
       <p class="visit-glance__sub">On the corner of Pitshanger Lane &amp; Denison Road, {site.address.postcode}</p>
     </div>
   </div>
+
+  <section class="visit-details__times" aria-labelledby="visit-times-heading">
+    <h2 class="label visit-details__times-heading" id="visit-times-heading">Service times</h2>
+    <ServiceTimes only="sundays" />
+  </section>
 
   <p class="visit-details__actions">
     <a class="btn btn--solid" href={directions} target="_blank" rel="noopener">Get directions</a>
@@ -43,6 +49,8 @@ const directions = `https://www.google.com/maps/dir/?api=1&destination=${site.ge
   .visit-glance__label { display: block; color: var(--burgundy); margin-bottom: 0.5rem; }
   .visit-glance__lead { font-size: 1.4rem; font-weight: 500; line-height: 1.1; }
   .visit-glance__sub { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.5; }
+  .visit-details__times { margin-top: 2rem; }
+  .visit-details__times-heading { display: block; margin-bottom: 1.2rem; }
   .visit-details__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.6rem 0; }
   .visit-details__map { margin-top: 1.4rem; }
 </style>

@@ -34,6 +34,12 @@ describe('crumbsFor', () => {
     ]);
   });
 
+  it('files the visiting page under About, where the menu puts it', () => {
+    // Guards a silent failure: if this page ever falls out of nav.ts, chainToAncestor +
+    // labelFromPath still produce a plausible-looking "Home › About › Visiting" with no error.
+    expect(labels('/about-us/visiting')).toEqual(['Home', 'About', 'Visiting Us']);
+  });
+
   it('hangs a news post off the News section, using its title', () => {
     expect(labels('/news/plant-sale', 'Plant Sale')).toEqual(['Home', 'News', 'Plant Sale']);
   });

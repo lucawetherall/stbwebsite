@@ -20,6 +20,7 @@ health. We are a member of [Inclusive Church](https://www.inclusive-church.org/)
 
 ## Find out more
 
+- [Visiting Us](/about-us/visiting) — what to expect on a Sunday, and how to find us
 - [Who’s Who](/about-us/whos-who) — the clergy and people who lead our common life
 - [Our History](/about-us/history) — how our church came to be, and the people who built and adorned it
 - [Accessibility](/about-us/accessibility) — how we make our buildings open to all

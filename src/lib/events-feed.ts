@@ -2,6 +2,7 @@ import ical from 'node-ical';
 import { toEventCategory } from '../data/eventCategories';
 import {
   civilFromDateOnly,
+  utcMidnightOfDateOnly,
   toLondonCivil,
   daysBetween,
   formatCivilDate,
@@ -205,7 +206,7 @@ function findOverride(
 }
 
 function civilKey(d: Date, allDay: boolean): string {
-  return allDay ? civilFromDateOnly(d) : toLondonCivil(d).date;
+  return allDay ? civilFromDateOnly(utcMidnightOfDateOnly(d)) : toLondonCivil(d).date;
 }
 
 function withinWindow(event: SiteEvent, window: FeedWindow): boolean {
@@ -222,7 +223,7 @@ function toSiteEvent(
 
   const allDay = vevent.datetype === 'date';
   const startCivil = allDay
-    ? { date: civilFromDateOnly(start), time: undefined }
+    ? { date: civilFromDateOnly(utcMidnightOfDateOnly(start)), time: undefined }
     : toLondonCivil(start);
 
   let endDate: string | undefined;
@@ -230,7 +231,7 @@ function toSiteEvent(
   if (end instanceof Date && !Number.isNaN(end.getTime())) {
     if (allDay) {
       // DTEND is exclusive for all-day events — step back to the last day actually covered.
-      const exclusive = civilFromDateOnly(end);
+      const exclusive = civilFromDateOnly(utcMidnightOfDateOnly(end));
       endDate = daysBetween(startCivil.date, exclusive) > 1 ? shiftBack(exclusive) : undefined;
     } else {
       const endCivil = toLondonCivil(end);

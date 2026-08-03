@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import ical from 'node-ical';
 import {
   civilFromDateOnly,
+  utcMidnightOfDateOnly,
   collapseSeries,
   describeRepeat,
   describeWhen,
@@ -52,6 +53,17 @@ const event = (over: Partial<SiteEvent> = {}): SiteEvent => ({
 describe('civil dates', () => {
   it('reads a date-only field from its UTC parts', () => {
     expect(civilFromDateOnly(new Date('2026-06-07T00:00:00Z'))).toBe('2026-06-07');
+  });
+
+  it('re-stamps a local-midnight date-only value without losing a day', () => {
+    // What node-ical hands back for DTSTART;VALUE=DATE:20260904 under Europe/London in BST:
+    // local midnight, which is 23:00Z on the 3rd. Reading UTC parts directly would say the 3rd.
+    const localMidnight = new Date(2026, 8, 4, 0, 0, 0);
+    expect(civilFromDateOnly(utcMidnightOfDateOnly(localMidnight))).toBe('2026-09-04');
+    // Already at UTC midnight in a UTC-or-behind zone: must pass through unchanged.
+    expect(utcMidnightOfDateOnly(new Date(2026, 8, 4)).toISOString()).toBe(
+      '2026-09-04T00:00:00.000Z'
+    );
   });
 
   it('files a late-evening summer instant on the London day, not the UTC one', () => {
@@ -415,6 +427,8 @@ describe('toIcs', () => {
 
     const corpus = events.find((e) => e.uid.startsWith('corpus'))!;
     expect(corpus.datetype).toBe('date');
-    expect(civilFromDateOnly(corpus.start)).toBe('2026-06-07');
+    // node-ical hands back VALUE=DATE at *local* midnight, so it must be re-stamped before
+    // civilFromDateOnly reads UTC parts off it — see utcMidnightOfDateOnly.
+    expect(civilFromDateOnly(utcMidnightOfDateOnly(corpus.start))).toBe('2026-06-07');
   });
 });

@@ -1,12 +1,13 @@
 ---
-title: Plan Your Visit
-kicker: Welcome
+title: Visiting Us
+seoTitle: Plan Your Visit
+kicker: About Us
 intro: New to St Barnabas? Here is everything you need to feel at home on a Sunday morning.
 description: Planning your first visit to St Barnabas, Ealing. The Sung Mass is at 10.30am — here is what to expect, how to find us, and the welcome that awaits you.
 ---
 
-The main service is the **Sung Mass at 10.30am** every Sunday, and it lasts a little over an
-hour. You don’t need to have been before, to know anyone, or to be sure what you believe.
+The main service is the **Sung Mass at 10.30am** every Sunday, and it lasts about an hour and
+a quarter. You don’t need to have been before, to know anyone, or to be sure what you believe.
 Come as you are.
 
 ## Finding us

@@ -12,4 +12,4 @@ A hundred years and more since its consecration, St Barnabas is still what it wa
 
 The story is not finished. Sunday by Sunday, the church that Shearman raised, Clark adorned and generations have cherished gathers a new congregation into the same unbroken offering of worship.
 
-You are always welcome to [come and visit](/visit).
+You are always welcome to [come and visit](/about-us/visiting/).

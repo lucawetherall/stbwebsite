@@ -110,7 +110,7 @@ sitemap `lastmod`/`changefreq`/`priority` read from content frontmatter.
 
 **Follow-ons, still open:**
 
-- **`FAQPage` on `/visit`.** That page is already a set of question-shaped `h2`s ("What happens
+- **`FAQPage` on `/about-us/visiting`.** That page is already a set of question-shaped `h2`s ("What happens
   in the service", "Coming to communion", "What to wear") — exactly the shape `FAQPage` wants,
   and a strong rich-result candidate. Not done here because extracting Q&A pairs from rendered
   Markdown headings is fragile; it wants an explicit, CMS-editable FAQ field rather than a

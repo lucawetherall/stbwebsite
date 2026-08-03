@@ -98,6 +98,24 @@ export function civilFromDateOnly(d: Date): string {
 }
 
 /**
+ * Re-stamp a date-only value that sits at *local* midnight as the same civil date at UTC
+ * midnight, so `civilFromDateOnly` can read it.
+ *
+ * Two conventions meet in this codebase. Everything we build ourselves — `addDays`,
+ * `shiftBack`, the `events` collection's `z.coerce.date()` — puts a date-only value at UTC
+ * midnight. **node-ical does not:** it parses `DTSTART;VALUE=DATE:20260904` at *local*
+ * midnight. In any zone ahead of UTC that instant is the previous day in UTC (Europe/London
+ * in BST: `2026-09-03T23:00Z`), so reading UTC parts off it silently loses a day. Pass every
+ * node-ical date-only value through here first.
+ *
+ * The trap is that it is invisible in UTC and in zones behind UTC, so CI on `ubuntu-latest`
+ * cannot catch it — which is why the test suite pins TZ to Europe/London (vitest.config.ts).
+ */
+export function utcMidnightOfDateOnly(d: Date): Date {
+  return new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+}
+
+/**
  * The Europe/London civil date and time of a genuine instant (a feed event). This is the single
  * chokepoint for time-zone handling: get it right here and nothing downstream can be off by a day.
  */
