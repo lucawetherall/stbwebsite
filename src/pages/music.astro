@@ -24,23 +24,9 @@ import { site } from '../data/site';
     </div>
 
     <p class="page-aside">
-      Our choir is led by a Director of Music and Organist, with paid choral scholars and a body of
-      voluntary singers. <a href="/music/our-musicians">Meet our musicians →</a>
+      Our choir is led by our Director of Music (Luca) and our Organist (Hugh), with paid
+      choral scholars and a body of voluntary singers. <a href="/music/our-musicians">Meet our musicians →</a>
     </p>
-
-    <aside class="scholarship" aria-labelledby="scholarship-heading">
-      <p class="label scholarship__kicker">Choral Scholarships 2026/27</p>
-      <h2 id="scholarship-heading" class="scholarship__title">Sing with us as a Choral Scholar</h2>
-      <p class="scholarship__body">
-        We offer two paid choral scholarships each year — a wonderful opportunity to develop as
-        a singer within a warm, supportive choir and a fine acoustic. Scholarships for the
-        2026/27 season are <strong>open now</strong>; applications close on <strong>12 June</strong>.
-      </p>
-      <p class="scholarship__actions">
-        <a class="btn btn--solid" href={`mailto:${site.emails.music}?subject=Choral%20Scholarship%20enquiry`}>Email the Director of Music</a>
-        <a class="txt-link" href="/documents/choral-scholar-role-description.pdf">Read the role description</a>
-      </p>
-    </aside>
 
     <section class="music-section">
       <h2 class="label music-section__label">Listen</h2>
@@ -59,19 +45,4 @@ import { site } from '../data/site';
 <style>
   .music-section { margin-top: 2.8rem; }
   .music-section__label { color: var(--burgundy); display: block; margin-bottom: 1rem; }
-
-  .scholarship {
-    margin-top: 3rem;
-    background: var(--paper-2);
-    border-top: 2px solid var(--burgundy);
-    padding: 2.2rem clamp(1.4rem, 4vw, 2.6rem);
-  }
-  .scholarship__kicker { color: var(--burgundy); }
-  .scholarship__title {
-    margin-top: .8rem;
-    font-size: clamp(1.35rem, 2.7vw, 1.9rem);
-    max-width: 20ch;
-  }
-  .scholarship__body { margin-top: 1rem; max-width: 58ch; }
-  .scholarship__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 1.8rem; margin-top: 1.8rem; }
 </style>
