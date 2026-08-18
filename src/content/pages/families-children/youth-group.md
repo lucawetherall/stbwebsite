@@ -3,8 +3,6 @@ title: Youth Group
 kicker: Families & Children
 intro: If you are between 10 and 16, come and spend time with us. We meet at 10.30am every Sunday, except in the school holidays.
 description: The St Barnabas Youth Group (ages 10–16) meets every Sunday at 10.30am — community action, big questions of faith, fundraising and fun.
-hero: /images/families/christmas-crafts.webp
-heroAlt: Young people making Christmas crafts
 ---
 
 Our Youth Group combines community service, conversation about the big questions of life and
