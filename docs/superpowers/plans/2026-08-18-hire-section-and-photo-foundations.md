@@ -903,7 +903,7 @@ import Figure from '../../components/Figure.astro';
 import Gallery from '../../components/Gallery.astro';
 import YouTubeFacade from '../../components/YouTubeFacade.astro';
 import { hire } from '../../data/hire';
-import { youtubeId } from '../../lib/youtube';
+import { youtubeEmbedUrl } from '../../lib/youtube';
 import { site } from '../../data/site';
 
 const r = hire.recordings;
@@ -914,7 +914,7 @@ const videoLd = r.films.map((f) => ({
   description: `${f.title} — recorded at St Barnabas, Ealing by ${f.ensemble}.`,
   thumbnailUrl: `${site.url}${f.poster}`,
   contentUrl: f.youtubeUrl,
-  embedUrl: `https://www.youtube-nocookie.com/embed/${youtubeId(f.youtubeUrl)}`,
+  embedUrl: youtubeEmbedUrl(f.youtubeUrl),
 }));
 ---
 <Base title="Hire the church for recordings — Ealing" breadcrumbTitle="Recordings" description={r.description} image={r.hero.image}>
@@ -955,7 +955,7 @@ const videoLd = r.films.map((f) => ({
       <p>To arrange a recording, contact the parish office on <a class="content-link" href={`tel:${site.phoneIntl.replace(/\s+/g, '')}`}>{site.phone}</a> or <a class="content-link" href={`mailto:${site.emails.office}`}>{site.emails.office}</a>.</p>
     </section>
   </div>
-  <script type="application/ld+json" set:html={JSON.stringify(videoLd)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(videoLd)} />
 </Base>
 
 <style>
@@ -1097,7 +1097,7 @@ const h = hire.halls;
           </tbody>
         </table>
       </div>
-      <p class="venue-note" set:html={h.ratesNote} />
+      <p class="venue-note">{h.ratesNote}</p>
     </section>
 
     <section class="hire-section">
