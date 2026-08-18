@@ -58,7 +58,7 @@ _Lady Peel Trust - advised as specifically for Children and Families ministry_
 _Offer made by Peter and Susan Haisman during the stewardship focus in 2022 to make an additional contribution commensurate with the value of new stewardship donations in 2022. Hence the term ’stewardship matching’._  
 
 6\. Note 4. Activities for generating funds: Other/uncategorised/cash on hand £23,046.  This is a massive increase from 2021. Could I have a breakdown please? If it includes legacies, the vicar’s report mentions two, I think it would be better to show them separately, as it otherwise could give a misleading idea of how healthy the finances are. (We cannot assume we will receive legacies every year.)  
-_The various activities of the church rely on manual records and a number of channels for receiving income in order to provide the management accounting analysis to the financial accounting. Starting with the bank statement and uncategorised transactions (prinicipally remittances of cash, cheques, SumUp and Churchdesk). I will extract the transactions and adjustments from the source and revert._  
+_The various activities of the church rely on manual records and a number of channels for receiving income in order to provide the management accounting analysis to the financial accounting. Starting with the bank statement and uncategorised transactions (principally remittances of cash, cheques, SumUp and Churchdesk). I will extract the transactions and adjustments from the source and revert._  
 _As requested, please find attached the reconciliation of uncategorised transactions of £23k in the accounts, as it stood consistent with the examined accounts._ _Points 3,2 and 1 - benefit of comparative figures noted for production of 2023 accounts - will pass on. 2021 accounts can be re-sent if helpful. No change to accounting policies._  
 
 7\. This is a comment and therefore has been deleted.  
@@ -89,7 +89,7 @@ _As Pitshanger Pictures activity is based on manual records by the individual ru
 
 _You are incorrect. The PCC is fully covered by a CCLI streaming license which (and I quote from their website) ‘As an agent for PRS for Music, CCLI tailors coverage for churches to host live music performances, concerts and recitals on their premises.’_  
 
-15\. Churchwarden’s Report. ‘Pitshanger Pictures continues \[present tense\] to run on a regular schedule.’  So far as I am aware the final Pitshanger Pictures film tool place in December 2022. (With the exception of the screening of the Lent Course film.) And there are no future films shown on the St Barnabas website. The Report needs to be corrected.
+15\. Churchwarden’s Report. ‘Pitshanger Pictures continues \[present tense\] to run on a regular schedule.’  So far as I am aware the final Pitshanger Pictures film took place in December 2022. (With the exception of the screening of the Lent Course film.) And there are no future films shown on the St Barnabas website. The Report needs to be corrected.
 
 _You are incorrect. Pitshanger Pictures has had a number of screenings in 2023 including West Side Story in April for which your wife kindly provided the catering! All these screenings have been publicised well in advance of the dates in the weekly enews and the printed bulletin._ 
 

@@ -12,4 +12,4 @@ Music has always mattered here, though a worthy organ was long in coming. The ch
 
 Built in 1851 and first heard at St Jude's, Southsea, it was rebuilt in the west gallery by **Nicholson & Co.** of Malvern, funded by the generous legacy of **Hazel Baker**, the parish's long-serving Organist and Director of Music. It is heard now at the Sung Mass and in regular recitals.
 
-Read more about [the St Barnabas organ](/worship/st-barnabas-organ).
+Read more about [the St Barnabas organ](/music/st-barnabas-organ).

@@ -62,9 +62,9 @@ Pitshanger Pictures exists to inform, entertain and strengthen community in Nort
 
 No need to book tickets, just come along. Doors open half an hour before the screenings unless otherwise specified.  
 
-****Wednesdays – tickets £5  
+**Wednesdays – tickets £5  
 Saturdays & other screenings – child (under 16) £6, adult £8 (includes drink and snack)  
-Pitshanger Pictures Opera – £10 (additional cost for food).****
+Pitshanger Pictures Opera – £10 (additional cost for food).**
 
 See our website to find out what films are showing during May on
 

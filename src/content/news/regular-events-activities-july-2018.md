@@ -7,7 +7,7 @@ legacySlug: "b/blog-31771-regular-events-activities-july-2018"
 
 **We have a variety of regular activities and events at St Barnabas. Here are some of our main events running during the month of June:**
 
-**Ealing Gospel Choir | 8th July & 15th July****, 3 - 5pm**
+**Ealing Gospel Choir | 8th July & 15th July, 3 - 5pm**
 
 **<img src="/images/news/a80d4e99-o_2F1901_2Fscreen.shot.2018-05-03.at.11.31.33.webp" alt="Regular Events & Activities | July 2018" loading="lazy" decoding="async" width="370" height="208">**
 

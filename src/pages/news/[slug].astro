@@ -62,9 +62,10 @@ const articleJsonLd = {
         <img
           class="news-article__hero"
           src={hero}
-          alt={heroAlt ?? title}
+          alt={heroAlt || title}
           loading="eager"
           decoding="async"
+          fetchpriority="high"
         />
       )}
       <Prose><Content /></Prose>
@@ -93,6 +94,8 @@ const articleJsonLd = {
   }
   .news-article__hero {
     width: 100%;
+    /* Reserve the box before the image arrives (no CLS); the height cap still rules. */
+    aspect-ratio: 2 / 1;
     max-height: 460px;
     object-fit: cover;
     border-radius: 4px;

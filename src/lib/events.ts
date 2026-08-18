@@ -602,8 +602,12 @@ export function toIcs(events: SiteEvent[], opts: IcsOptions): string {
       lines.push(`DTEND;VALUE=DATE:${icsDate(addDays(event.endDate ?? event.date, 1))}`);
     } else {
       lines.push(`DTSTART;TZID=Europe/London:${icsLocal(event.date, event.time!)}`);
-      const endDate = event.endDate ?? event.date;
+      let endDate = event.endDate ?? event.date;
       const endTime = event.endTime ?? addMinutes(event.time!, 60);
+      // An end clock at or before the start on the same day means the event runs
+      // past midnight (a Vigil ending 12.30am) — roll DTEND to the next day so it
+      // never precedes DTSTART (RFC 5545).
+      if (endDate === event.date && endTime <= event.time!) endDate = addDays(endDate, 1);
       lines.push(`DTEND;TZID=Europe/London:${icsLocal(endDate, endTime)}`);
     }
 

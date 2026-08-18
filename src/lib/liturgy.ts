@@ -60,7 +60,10 @@ export function getLiturgicalDay(today = new Date()): LiturgicalDay {
     trinity = add(e, 56);
   const adventStart = (() => {
     const x = D(new Date(y, 11, 25));
-    let s = add(x, -1),
+    // Walk back from Christmas counting four Sundays. Start at the 25th so the
+    // first day examined is the 24th — when Christmas falls on a Monday, the
+    // 24th is itself Advent 4 and must be counted.
+    let s = x,
       n = 0;
     while (n < 4) {
       s = add(s, -1);

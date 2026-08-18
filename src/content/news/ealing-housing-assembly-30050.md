@@ -44,4 +44,4 @@ A number of families in our congregation experience significant difficulties wit
 
 -   facing the threat of eviction due to mishaps in the payment of housing benefit
 
-You can read about the event [here](<http://www.ealingtimes.co.uk/news/16171103.Poll_rivals_commit_to_Ealing_Land_Trust/ Poll rivals commit to Ealing Land Trust www.ealingtimes.co.uk EALING Council leader Julian Bell and opposition leader Gregory Stafford this week committed to creating the borough’s first Community Land…>).
+You can read about the event [here](http://www.ealingtimes.co.uk/news/16171103.Poll_rivals_commit_to_Ealing_Land_Trust/).

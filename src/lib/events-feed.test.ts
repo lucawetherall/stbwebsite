@@ -170,6 +170,19 @@ END:VEVENT`
     );
     expect(fortnightly[0].recurrenceText).toBe('Every other Thursday');
 
+    const multiDay = eventsFromCalendar(
+      calendar(
+        `BEGIN:VEVENT
+UID:m@example.org
+DTSTART;TZID=Europe/London:20260803T140000
+RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR
+SUMMARY:Multi-day
+END:VEVENT`
+      ),
+      WINDOW
+    );
+    expect(multiDay[0].recurrenceText).toBe('Every Monday, Wednesday and Friday');
+
     const monthly = eventsFromCalendar(
       calendar(
         `BEGIN:VEVENT
