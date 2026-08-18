@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-11",
+  "feast": "The Nineteenth Sunday after Trinity — Noisy Mass",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "[23] (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Forbes L’Estrange, St Helen’s Service"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Forbes L’Estrange, The Chorister’s Prayer"
+          ]
+        }
+      ]
+    }
+  ]
+}

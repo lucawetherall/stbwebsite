@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-01",
+  "feast": "All Saints’ Day",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "34. 1–10"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Rawsthorne, Festival Gloria",
+            "Ireland in C"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Deep River (arr. Luboff)"
+          ]
+        }
+      ]
+    },
+    {
+      "time": "6.00pm",
+      "name": "Solemn Requiem for the Faithful Departed",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "27"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Fauré, Requiem"
+          ]
+        }
+      ]
+    }
+  ]
+}

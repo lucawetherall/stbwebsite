@@ -1,0 +1,36 @@
+{
+  "date": "2027-01-10",
+  "feast": "The Baptism of Christ",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Walford Davies, Blest are the pure in heart"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "29"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Ives, Salisbury Service"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Stanford, Beati quorum via"
+          ]
+        }
+      ]
+    }
+  ]
+}

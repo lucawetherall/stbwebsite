@@ -1,0 +1,42 @@
+{
+  "date": "2027-04-04",
+  "feast": "The Second Sunday of Easter",
+  "offices": [
+    {
+      "time": "6.00pm",
+      "name": "Choral Evensong",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Bairstow, I sat down under his shadow"
+          ]
+        },
+        {
+          "label": "Responses",
+          "values": [
+            "Sumsion"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "143. 1–11"
+          ]
+        },
+        {
+          "label": "Canticles",
+          "values": [
+            "Sumsion in G"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Stanford, Ye choirs of new Jerusalem"
+          ]
+        }
+      ]
+    }
+  ]
+}

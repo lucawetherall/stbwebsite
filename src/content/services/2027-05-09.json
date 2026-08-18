@@ -1,0 +1,31 @@
+{
+  "date": "2027-05-09",
+  "feast": "The Sunday after Ascension Day",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "1 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Gloria de Lourdes (Lécot)",
+            "Missa de Angelis"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Vaughan Williams, Let all the world in every corner sing"
+          ]
+        }
+      ]
+    }
+  ]
+}

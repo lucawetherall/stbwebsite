@@ -1,0 +1,38 @@
+{
+  "date": "2027-01-31",
+  "feast": "Candlemas (The Presentation of Christ, transferred)",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "We have received thy mercy, O God (plainsong)"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "24. [1–6]7–10 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Gloria de Lourdes (Lécot)",
+            "Missa de Angelis"
+          ]
+        },
+        {
+          "label": "Anthems",
+          "values": [
+            "Wetherall, The Holy Child",
+            "A. L’Estrange, Nunc dimittis (New College Service) — after communion"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "date": "2027-06-06",
+  "feast": "The Second Sunday after Trinity",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "130 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Darke in A minor"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Elgar, Ave verum corpus"
+          ]
+        }
+      ]
+    },
+    {
+      "time": "6.00pm",
+      "name": "Choral Evensong for St Barnabas the Apostle",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Harris, Holy is the true light"
+          ]
+        },
+        {
+          "label": "Responses",
+          "values": [
+            "Sumsion"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "147"
+          ]
+        },
+        {
+          "label": "Canticles",
+          "values": [
+            "Stanford in G"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Rossini, O salutaris hostia"
+          ]
+        }
+      ]
+    }
+  ]
+}

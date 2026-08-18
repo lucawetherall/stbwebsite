@@ -1,0 +1,32 @@
+{
+  "date": "2027-03-25",
+  "feast": "Maundy Thursday (The Institution of the Lord’s Supper)",
+  "offices": [
+    {
+      "time": "7.00pm",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "116. 1, 10–17 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Gloria de Lourdes (Lécot)",
+            "MacMillan, St Anne’s Mass"
+          ]
+        },
+        {
+          "label": "Anthems",
+          "values": [
+            "Attwood, Turn thy face from my sins",
+            "Gjeilo, Ubi caritas"
+          ]
+        }
+      ]
+    }
+  ]
+}

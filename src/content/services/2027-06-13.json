@@ -1,0 +1,36 @@
+{
+  "date": "2027-06-13",
+  "feast": "St Barnabas the Apostle (Patronal Festival, transferred)",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Harrison Cole, St Barnabas Collect"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "112"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Rawsthorne, Festival Eucharist"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Wood, O thou the central orb"
+          ]
+        }
+      ]
+    }
+  ]
+}

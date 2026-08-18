@@ -1,0 +1,36 @@
+{
+  "date": "2027-02-21",
+  "feast": "The Second Sunday of Lent",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Menegali, Jesu, salvator mundi"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "22. 23–31 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Rheinberger, Missa (Crux fidelis) (Gloria omitted)"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Rachmaninoff, To thee, O Lord"
+          ]
+        }
+      ]
+    }
+  ]
+}

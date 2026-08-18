@@ -1,0 +1,66 @@
+{
+  "date": "2027-07-04",
+  "feast": "The Sixth Sunday after Trinity",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "123 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Rheinberger, Missa (Crux fidelis)"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Stanford, O for a closer walk with God"
+          ]
+        }
+      ]
+    },
+    {
+      "time": "6.00pm",
+      "name": "Choral Evensong for the End of the Choir Year",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "L’Estrange, God be in my head"
+          ]
+        },
+        {
+          "label": "Responses",
+          "values": [
+            "Ayleward"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "[63] 64"
+          ]
+        },
+        {
+          "label": "Canticles",
+          "values": [
+            "Howells, Collegium Regale"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Bairstow, Blessed city, heavenly Salem"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "date": "2027-02-14",
+  "feast": "The First Sunday of Lent",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Walford Davies, My blood so red"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "25. 1–9 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Byrd, Mass for Four Voices (Gloria omitted)"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Hogan, Hear my prayer"
+          ]
+        }
+      ]
+    }
+  ]
+}

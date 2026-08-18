@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-08",
+  "feast": "The Third Sunday before Advent (Remembrance Sunday)",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Guest, They shall not grow old"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "70 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Oldroyd, Mass of the Quiet Hour"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Ireland, Greater love hath no man"
+          ]
+        }
+      ]
+    }
+  ]
+}

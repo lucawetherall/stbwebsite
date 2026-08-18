@@ -1,0 +1,37 @@
+{
+  "date": "2027-03-28",
+  "feast": "Easter Day",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Wood, This joyful Eastertide"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "118. 1–2, 14–24"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Rawsthorne, Festival Gloria",
+            "Shephard, Wiltshire Service"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "S. S. Wesley, Blessed be the God and Father"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "date": "2027-06-27",
+  "feast": "The Fifth Sunday after Trinity",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "30"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Ives, Salisbury Service"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Purcell, Rejoice in the Lord alway"
+          ]
+        }
+      ]
+    }
+  ]
+}

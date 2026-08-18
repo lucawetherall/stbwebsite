@@ -1,0 +1,30 @@
+{
+  "date": "2027-07-18",
+  "feast": "The Eighth Sunday after Trinity",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "23 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Byrd, Mass for Four Voices"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Goodall, The Lord is my shepherd"
+          ]
+        }
+      ]
+    }
+  ]
+}
