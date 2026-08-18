@@ -36,7 +36,7 @@ const NAMES = {
   '2026-11-01|6.00pm': 'Solemn Requiem for the Faithful Departed',
   '2027-05-02|6.00pm': 'Choral Evensong for Ascensiontide',
   '2027-06-06|6.00pm': 'Choral Evensong for St Barnabas the Apostle',
-  '2027-07-04|6.00pm': 'Choral Evensong for the End of the Choir Year',
+  '2027-07-04|6.00pm': 'Choral Evensong with the Choir of Merton College, Oxford — End of the Choir Year',
 };
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
