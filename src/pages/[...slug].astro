@@ -58,9 +58,11 @@ const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
 
 <style>
   .page-hero { padding-top: 1rem; }
+  /* House photo style: contained, square corners, no border (matches the Figure
+     component used across the Hire section). */
   .page-hero__img {
     width: 100%; height: auto; display: block;
-    border-radius: 5px; border: 1px solid var(--line);
+    background: var(--paper-2);
   }
   .page-body { padding-top: 1rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
 </style>
