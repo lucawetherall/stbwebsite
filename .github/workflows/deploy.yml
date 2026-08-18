@@ -14,6 +14,13 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches: [main]
+  # A nightly rebuild, because the site is static and several things are computed at build
+  # time from "today": the music list's next service, the "This Sunday" band, the liturgical
+  # season in the footer and the What's On diary. Without this they would freeze at whatever
+  # day the last publish happened, and the page would go on naming a service that has already
+  # been sung. 03:12 UTC — off the hour, to avoid the crowded top-of-hour runner queue.
+  schedule:
+    - cron: '12 3 * * *'
   workflow_dispatch: {}
 
 permissions:

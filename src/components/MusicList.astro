@@ -42,7 +42,10 @@ const groups = groupByMonth(upcoming);
 // unlike the homepage's within-the-week picker. The page opens on the month that holds it.
 const next = upcoming[0] ?? null;
 const nextKey = next ? +next.date : null;
-const activeKey = groups.find((g) => g.sheets.some((s) => +s.date === nextKey))?.key ?? groups[0]?.key;
+const nextMonthKey = groups.find((g) => g.sheets.some((s) => +s.date === nextKey))?.key;
+// The month shown on arrival. It moves as the reader steps through the year, which is why the
+// bar marks `nextMonthKey` separately — otherwise there is no way back to "now" once you browse.
+const activeKey = nextMonthKey ?? groups[0]?.key;
 
 const fmtDate = (d: Date) =>
   d.toLocaleDateString('en-GB', {
@@ -73,10 +76,16 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
             <li>
               <a
                 class="ml-bar__link"
+                class:list={{ 'is-next-month': group.key === nextMonthKey }}
                 href={`#${group.key}`}
                 aria-current={group.key === activeKey ? 'true' : undefined}
               >
-                <span class="sr-only">{`${group.label} ${group.year}`}</span>
+                <span class="sr-only">
+                  {group.key === nextMonthKey
+                    ? `${group.label} ${group.year}, next service`
+                    : `${group.label} ${group.year}`}
+                </span>
+                {group.key === nextMonthKey && <span class="ml-bar__mark" aria-hidden="true"></span>}
                 <span aria-hidden="true">{group.label.slice(0, 3)}</span>
               </a>
             </li>
@@ -188,6 +197,16 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     white-space: nowrap;
     border-radius: 3px;
     transition: color .2s, background-color .2s;
+  }
+  .ml-bar__link.is-next-month { color: var(--burgundy); }
+  .ml-bar__mark {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin-right: .4rem;
+    vertical-align: .1em;
+    background: var(--burgundy);
+    transform: rotate(45deg);
   }
   .ml-bar__link:hover { color: var(--burgundy); background: var(--burgundy-faint); }
   .ml-bar__link[aria-current='true'] { color: var(--burgundy); background: var(--burgundy-faint); }
@@ -356,6 +375,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
   if (root) {
     const months = Array.from(root.querySelectorAll<HTMLElement>('.ml-month'));
     const chips = Array.from(root.querySelectorAll<HTMLAnchorElement>('.ml-bar__link'));
+    const bar = root.querySelector<HTMLElement>('.ml-bar__list');
     const announce = root.querySelector<HTMLElement>('[data-announce]');
     const keys = months.map((m) => m.dataset.month ?? '');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -380,6 +400,18 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
         if (prev) prev.disabled = current === 0;
         if (next) next.disabled = current === months.length - 1;
       });
+
+      // Centre the active chip in the bar. On a phone only about five months fit, so jumping to
+      // July would otherwise leave the highlighted chip off-screen behind the scroll.
+      // Instant, not smooth: the page scroll below is itself a smooth scroll, and starting a
+      // second one cancels the first — the bar simply never moved. A nudge inside a control
+      // strip gains nothing from being animated anyway.
+      if (bar && chips[current]) {
+        const chipBox = chips[current].getBoundingClientRect();
+        const barBox = bar.getBoundingClientRect();
+        const delta = chipBox.left - barBox.left - (bar.clientWidth - chipBox.width) / 2;
+        bar.scrollTo({ left: bar.scrollLeft + delta, behavior: 'auto' });
+      }
 
       const name = months[current].querySelector('.month__name')?.textContent ?? '';
       if (announce) announce.textContent = `Showing ${name}`;
