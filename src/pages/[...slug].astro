@@ -9,6 +9,7 @@ import Musicians from '../components/Musicians.astro';
 import VisitDetails from '../components/VisitDetails.astro';
 import EnquireCTA from '../components/EnquireCTA.astro';
 import WhatsOn from '../components/WhatsOn.astro';
+import MusicList from '../components/MusicList.astro';
 import { getDiaryEvents } from '../lib/events-source';
 import { eventsJsonLd } from '../lib/events-jsonld';
 
@@ -25,10 +26,14 @@ const showMusicians = entry.id === 'music/our-musicians';
 const showVisitDetails = entry.id === 'about-us/visiting';
 const showEnquireCTA = entry.id === 'life-events';
 const showWhatsOn = entry.id === 'whats-on';
+const showMusicList = entry.id === 'music';
 
 // Loaded here rather than inside the component: the diary events become JSON-LD nodes in the
 // page's site graph, which Base assembles.
 const events = showWhatsOn ? await getDiaryEvents() : [];
+// The music list is deliberately code-driven: the wording around it is the editor's, the
+// list itself is generated from the services collection.
+const sheets = showMusicList ? (await getCollection('services')).map((e) => e.data) : [];
 const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
 ---
 {/* `seoTitle` drives the <title> only; the h1 and the breadcrumb stay as the editor titled the
@@ -53,6 +58,7 @@ const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
     {showMusicians && <Musicians />}
     {showEnquireCTA && <EnquireCTA />}
     {showWhatsOn && <WhatsOn events={events} />}
+    {showMusicList && <MusicList sheets={sheets} />}
   </div>
 </Base>
 

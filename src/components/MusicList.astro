@@ -24,16 +24,10 @@ import { groupByMonth, upcomingSheets, type SheetLike } from '../lib/services';
 
 interface Props {
   sheets: SheetLike[];
-  /** Heading level for the month rule; feast and service sit below it. */
-  level?: 2 | 3;
   /** Injectable for tests and previews; the page passes nothing and gets "now". */
   now?: Date;
 }
-const { sheets, level = 2, now = new Date() } = Astro.props;
-
-// The month rule carries the heading; the steppers sit outside it, so a screen reader
-// announces "September 2026" rather than "‹ September 2026 ›".
-const MonthHeading = `h${level}` as 'h2' | 'h3';
+const { sheets, now = new Date() } = Astro.props;
 
 const upcoming = upcomingSheets(sheets, now);
 const groups = groupByMonth(upcoming);
@@ -56,6 +50,9 @@ const fmtDate = (d: Date) =>
   });
 const iso = (d: Date) => d.toISOString().slice(0, 10);
 ---
+<section class="music-list__section" aria-labelledby="music-list-heading">
+<h2 class="label music-list__heading" id="music-list-heading">Music List</h2>
+
 {groups.length === 0 ? (
   <p class="music-list__empty">
     The music list for the coming term has not been published yet. It usually appears a few
@@ -106,7 +103,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
           <button class="month__nav" type="button" data-prev aria-label="Previous month">‹</button>
           <span class="month__rule" aria-hidden="true"></span>
           <span class="month__diamond" aria-hidden="true"></span>
-          <MonthHeading class="month__name" id={`${group.key}-heading`}>{`${group.label} ${group.year}`}</MonthHeading>
+          <h3 class="month__name" id={`${group.key}-heading`}>{`${group.label} ${group.year}`}</h3>
           <span class="month__diamond" aria-hidden="true"></span>
           <span class="month__rule" aria-hidden="true"></span>
           <button class="month__nav" type="button" data-next aria-label="Next month">›</button>
@@ -122,7 +119,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
               {+sheet.date === nextKey && <span class="ml-when__next">Next service</span>}
             </p>
             <div class="ml-body">
-              <ServiceSheet sheet={sheet} level={(level + 1) as 2 | 3 | 4} />
+              <ServiceSheet sheet={sheet} level={4} />
             </div>
           </article>
         ))}
@@ -130,6 +127,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     ))}
   </div>
 )}
+</section>
 
 <noscript>
   <style>
@@ -141,6 +139,8 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
 </noscript>
 
 <style>
+  .music-list__section { margin-top: 2.8rem; }
+  .music-list__heading { color: var(--burgundy); display: block; margin-bottom: 1rem; }
   .music-list__empty { max-width: 60ch; color: var(--ink-soft); }
   .music-list { margin-top: 2rem; }
 
