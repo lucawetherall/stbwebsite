@@ -221,6 +221,13 @@ The picker rule, the `fmt` typography rules, the data conventions (silent dates,
 the service name, dropped lectionary references) and the decision to group by month rather than by
 liturgical season all shipped as designed.
 
-**Still open.** `/music`'s prose is hard-coded in `music.astro` rather than CMS-editable. That
-predates this work and was not made worse by it, but it is a gap against the editability contract
-in CLAUDE.md §4 and worth closing separately.
+**Editability, closed.** `/music`'s prose was hard-coded in `music.astro`, a gap against the
+contract in CLAUDE.md §4 that predated this work. It is now `src/content/pages/music.md`, served
+by `[...slug].astro` and registered in `config.yml` — the same shape as `/whats-on`. The list on
+it stays developer-owned: it is generated from the `services` collection, `MusicList.astro` owns
+its own section heading, and nothing in `config.yml` gives an editor a handle on it.
+
+**The Merton College visit.** The 6pm Choral Evensong on 4 July 2027 is a joint service with the
+Choir of Merton College, Oxford. It is named so in the music list and carries a featured event, so
+it reaches What's On, Worship → Special Services and the parish calendar. The printed lists name
+an off-site venue when there is one, and name none here, so it is taken to be at St Barnabas.
