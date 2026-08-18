@@ -21,7 +21,7 @@ const c = hire.concerts;
           <tbody>{hire.churchHireRates.map((row) => (<tr><th scope="row">{row.item}</th><td>{row.rate}</td></tr>))}</tbody>
         </table>
       </div>
-      <p class="venue-note">{hire.churchHireNote}</p>
+      <p class="venue-note">{hire.churchHireNote} For the organ, see the <a class="content-link" href="/music/st-barnabas-organ">St Barnabas organ</a>.</p>
       {c.capacity && <p class="venue-note">Capacity: {c.capacity}.</p>}
     </section>
 
