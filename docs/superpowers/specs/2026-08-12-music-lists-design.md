@@ -190,3 +190,37 @@ coherent thing to do rather than a bug.
 
 `npm run build`, `npx astro check`, `npm test`, all clean; page count up by one; the CMS still
 matches `content.config.ts` (unchanged on both sides, bar the new page registration).
+
+---
+
+## What changed during implementation
+
+The design above is the record of what was *planned*. Three things changed as it was built and
+reviewed, and the shipped feature differs from it in these respects.
+
+**One page, not two.** The spec put the forward list on a new `/music/music-list` and left `/music`
+with a "This Sunday" panel and a link through to it. That page was built, then folded into `/music`
+itself: a page that mostly linked to another page was not earning its place, and the list already
+opens on the next service, so the panel was saying the same thing twice. `/music/music-list`,
+its content page, its CMS registration and its nav entry were all removed; `src/content/pages/music/music-list.md`
+never shipped.
+
+**A month at a time, not the whole year.** The spec showed every remaining service in one scroll.
+That buried the thing most readers want, so the list now shows a single month, opening on the
+month that holds the next service and stepping with chevrons on the month rule or the month bar.
+Every month is in the page and hidden, so navigation needs no round-trip; `<noscript>` and the
+print stylesheet reveal them all, which is why a printed copy is still the whole booklet.
+
+**A nightly rebuild.** Not anticipated in the spec. The site is static, so `new Date()` is frozen
+at build time — for the music list's next service, the "This Sunday" band, the footer season line
+and the What's On diary alike. Deploys fired only on a push to `main`, so a fortnight without a
+CMS publish would leave the page naming a service already sung. `deploy.yml` now also runs on a
+daily schedule.
+
+The picker rule, the `fmt` typography rules, the data conventions (silent dates, off-site venue in
+the service name, dropped lectionary references) and the decision to group by month rather than by
+liturgical season all shipped as designed.
+
+**Still open.** `/music`'s prose is hard-coded in `music.astro` rather than CMS-editable. That
+predates this work and was not made worse by it, but it is a gap against the editability contract
+in CLAUDE.md §4 and worth closing separately.
