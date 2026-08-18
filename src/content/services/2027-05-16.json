@@ -1,0 +1,37 @@
+{
+  "date": "2027-05-16",
+  "feast": "The Day of Pentecost (Whit Sunday)",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Revert, Veni Sancte Spiritus"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "104. 26–36, 37b"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Ireland in C"
+          ]
+        },
+        {
+          "label": "Anthems",
+          "values": [
+            "Hildegard of Bingen, Caritas abundat in omnia",
+            "Ives, Listen, sweet dove"
+          ]
+        }
+      ]
+    }
+  ]
+}

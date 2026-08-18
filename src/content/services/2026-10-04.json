@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-04",
+  "feast": "Harvest Thanksgiving",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "65 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Darke in F"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Greene, Thou visitest the earth"
+          ]
+        }
+      ]
+    },
+    {
+      "time": "6.00pm",
+      "name": "Choral Evensong",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Brewer, Prevent us, O Lord"
+          ]
+        },
+        {
+          "label": "Responses",
+          "values": [
+            "Forbes L’Estrange"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "126"
+          ]
+        },
+        {
+          "label": "Canticles",
+          "values": [
+            "Brewer in D"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Rutter, For the beauty of the earth"
+          ]
+        }
+      ]
+    }
+  ]
+}

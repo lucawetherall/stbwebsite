@@ -1,0 +1,66 @@
+{
+  "date": "2027-05-02",
+  "feast": "The Sixth Sunday of Easter",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "98"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Rheinberger, Missa (Crux fidelis)"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Nardone, A new commandment"
+          ]
+        }
+      ]
+    },
+    {
+      "time": "6.00pm",
+      "name": "Choral Evensong for Ascensiontide",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Willan, Ye men of Galilee"
+          ]
+        },
+        {
+          "label": "Responses",
+          "values": [
+            "Forbes L’Estrange"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "45"
+          ]
+        },
+        {
+          "label": "Canticles",
+          "values": [
+            "L’Estrange, New College Service"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Barber, Chorale for Ascension Day"
+          ]
+        }
+      ]
+    }
+  ]
+}

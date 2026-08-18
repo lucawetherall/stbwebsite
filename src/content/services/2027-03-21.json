@@ -1,0 +1,36 @@
+{
+  "date": "2027-03-21",
+  "feast": "Palm Sunday",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Gibbons, Drop, drop, slow tears"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "31. 9–16 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Missa de Angelis (Gloria omitted)"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "King John IV of Portugal, Crux fidelis"
+          ]
+        }
+      ]
+    }
+  ]
+}

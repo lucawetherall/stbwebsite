@@ -1,0 +1,36 @@
+{
+  "date": "2027-04-25",
+  "feast": "The Fifth Sunday of Easter",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Willan, Introit for the Fifth Sunday of Easter"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "22. 25–31 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Gounod, Missa brevis No. 7"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Saint-Saëns, Justorum animae"
+          ]
+        }
+      ]
+    }
+  ]
+}

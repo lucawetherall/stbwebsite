@@ -1,0 +1,31 @@
+{
+  "date": "2027-04-11",
+  "feast": "The Third Sunday of Easter",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "4 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Gloria de Lourdes (Lécot)",
+            "MacMillan, St Anne’s Mass"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Bainton, And I saw a new heaven"
+          ]
+        }
+      ]
+    }
+  ]
+}

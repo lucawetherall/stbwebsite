@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-22",
+  "feast": "Christ the King",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Christus vincit (arr. Martin Baker)"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "95. 1–7"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Ives, Salisbury Service"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Bairstow, The King of love my shepherd is"
+          ]
+        }
+      ]
+    }
+  ]
+}

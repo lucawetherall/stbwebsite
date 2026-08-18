@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-15",
+  "feast": "The Second Sunday before Advent",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "90. 1–8[9–11]12"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Shephard, Wiltshire Service (Gloria)",
+            "Rheinberger, Missa (Crux fidelis)"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Stanford, Justorum animae"
+          ]
+        }
+      ]
+    }
+  ]
+}

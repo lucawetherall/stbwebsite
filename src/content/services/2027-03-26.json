@@ -1,0 +1,37 @@
+{
+  "date": "2027-03-26",
+  "feast": "Good Friday",
+  "offices": [
+    {
+      "time": "2.00pm",
+      "name": "The Liturgy of Good Friday",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Stainer, God so loved the world"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "22 (plainsong)"
+          ]
+        },
+        {
+          "label": "Passion",
+          "values": [
+            "Victoria, Passio secundum Joannem"
+          ]
+        },
+        {
+          "label": "Anthems",
+          "values": [
+            "Victoria, O vos omnes",
+            "Bach, Erbarme dich, mein Gott"
+          ]
+        }
+      ]
+    }
+  ]
+}

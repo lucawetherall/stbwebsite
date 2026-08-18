@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-27",
+  "feast": "Michael & All Angels (Michaelmas)",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "103. 19–22"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Shephard, Wiltshire Service"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Dering, Factum est silentium"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "date": "2027-02-07",
+  "feast": "The Sunday next before Lent",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "50. 1–6"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Gounod, Missa brevis No. 7"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Tallis, O nata lux de lumine"
+          ]
+        }
+      ]
+    },
+    {
+      "time": "6.00pm",
+      "name": "Choral Evensong",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Tallis, If ye love me"
+          ]
+        },
+        {
+          "label": "Responses",
+          "values": [
+            "Ayleward"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "2 [99]"
+          ]
+        },
+        {
+          "label": "Canticles",
+          "values": [
+            "Stanford in C"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Ešenvalds, O salutaris hostia"
+          ]
+        }
+      ]
+    }
+  ]
+}

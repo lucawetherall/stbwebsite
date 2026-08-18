@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-13",
+  "feast": "The Fifteenth Sunday after Trinity",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "103. [1–7]8–13"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Ives, Salisbury Service"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Farrant, Call to remembrance, O Lord"
+          ]
+        }
+      ]
+    }
+  ]
+}

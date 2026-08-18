@@ -1,0 +1,36 @@
+{
+  "date": "2027-03-07",
+  "feast": "Mothering Sunday (The Fourth Sunday of Lent)",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Palestrina, Alma Redemptoris Mater"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "127. 1–4"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Oldroyd, Mass of the Quiet Hour (Gloria omitted)"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Tavener, Mother of God, here I stand"
+          ]
+        }
+      ]
+    }
+  ]
+}

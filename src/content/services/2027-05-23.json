@@ -1,0 +1,30 @@
+{
+  "date": "2027-05-23",
+  "feast": "Trinity Sunday",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "29 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Shephard, Wiltshire Service"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Howells, Te Deum"
+          ]
+        }
+      ]
+    }
+  ]
+}

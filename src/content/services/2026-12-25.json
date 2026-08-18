@@ -1,0 +1,38 @@
+{
+  "date": "2026-12-25",
+  "feast": "Christmas Day",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Riu, riu, chiu"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "98"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Rawsthorne, Festival Gloria",
+            "Shephard, Wiltshire Service"
+          ]
+        },
+        {
+          "label": "Anthems",
+          "values": [
+            "Tranchell, If ye would hear the angels sing",
+            "Ding dong! merrily on high"
+          ]
+        }
+      ]
+    }
+  ]
+}
