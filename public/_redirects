@@ -14,8 +14,9 @@ https://barnabites.org/*  https://www.barnabites.org/:splat  301!
 /worship/st-barnabas-organ    /music/st-barnabas-organ    301
 /worship/our-musicians        /music/our-musicians        301
 
-# Thin /venues page merged into /venue-hire
-/venues  /venue-hire/  301
+# Venue hire became the Hire section; halls live at /hire/halls
+/venues       /hire/halls/  301
+/venue-hire   /hire/halls/  301
 
 # The events diary lives at /whats-on; /events is the obvious guess
 /events  /whats-on/  301

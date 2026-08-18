@@ -259,6 +259,125 @@ collections:
               - { name: label, label: Link text, widget: string }
               - { name: href, label: Link, widget: string, hint: 'e.g. /worship/st-barnabas-organ' }
 
+  - name: hire
+    label: 🎟️ Hire section (rates, films, photos)
+    description: Everything on the Hire pages — the church for recordings/concerts and the halls.
+    files:
+      - name: hire
+        label: Hire pages
+        file: src/content/settings/hire.json
+        media_folder: /public/images/hire
+        public_folder: /images/hire
+        fields:
+          - name: hub
+            label: Hire — landing page
+            widget: object
+            fields:
+              - { name: kicker, label: Kicker, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: intro, label: Intro line, widget: text }
+              - { name: description, label: Summary (for search engines), widget: text }
+              - name: hero
+                label: Hero photograph
+                widget: object
+                fields:
+                  - { name: image, label: Image, widget: image, hint: 'Wide landscape photo, ~1600px.' }
+                  - { name: alt, label: Image description (for screen readers), widget: string }
+              - { name: body, label: Paragraphs, widget: list, field: { name: p, label: Paragraph, widget: text } }
+          - name: recordings
+            label: The church for recordings
+            widget: object
+            fields:
+              - { name: kicker, label: Kicker, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: intro, label: Intro line, widget: text }
+              - { name: description, label: Summary (for search engines), widget: text }
+              - name: hero
+                label: Hero photograph
+                widget: object
+                fields:
+                  - { name: image, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+              - { name: body, label: Paragraphs, widget: list, field: { name: p, label: Paragraph, widget: text } }
+              - name: films
+                label: Featured films
+                widget: list
+                summary: '{{fields.title}} — {{fields.ensemble}}'
+                fields:
+                  - { name: youtubeUrl, label: YouTube link, widget: string, hint: 'Paste the normal watch?v= link.' }
+                  - { name: title, label: Title, widget: string }
+                  - { name: ensemble, label: Ensemble / credit, widget: string }
+                  - { name: poster, label: Poster image, widget: image }
+                  - { name: posterAlt, label: Poster description, widget: string }
+              - name: gallery
+                label: Photo gallery
+                widget: list
+                fields:
+                  - { name: src, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+          - name: concerts
+            label: The church for concerts
+            widget: object
+            fields:
+              - { name: kicker, label: Kicker, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: intro, label: Intro line, widget: text }
+              - { name: description, label: Summary (for search engines), widget: text }
+              - name: hero
+                label: Hero photograph
+                widget: object
+                fields:
+                  - { name: image, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+              - { name: body, label: Paragraphs, widget: list, field: { name: p, label: Paragraph, widget: text } }
+              - { name: capacity, label: Concert capacity (leave blank until confirmed), widget: string, required: false }
+              - name: gallery
+                label: Photo gallery
+                widget: list
+                fields:
+                  - { name: src, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+          - name: halls
+            label: Church halls
+            widget: object
+            fields:
+              - { name: kicker, label: Kicker, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: intro, label: Intro line, widget: text }
+              - { name: description, label: Summary (for search engines), widget: text }
+              - name: hero
+                label: Hero photograph
+                widget: object
+                fields:
+                  - { name: image, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+              - { name: body, label: Paragraphs, widget: list, field: { name: p, label: Paragraph, widget: text } }
+              - name: rates
+                label: Hall rates
+                widget: list
+                summary: '{{fields.space}}'
+                fields:
+                  - { name: space, label: Space, widget: string }
+                  - { name: size, label: Size, widget: string }
+                  - { name: capacity, label: Capacity, widget: string }
+                  - { name: day, label: Daytime rate, widget: string }
+                  - { name: eve, label: Evening rate, widget: string }
+              - { name: ratesNote, label: Note under the table, widget: text }
+              - name: gallery
+                label: Photo gallery
+                widget: list
+                fields:
+                  - { name: src, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+          - name: churchHireRates
+            label: Church-hire rate card (recordings & concerts)
+            widget: list
+            summary: '{{fields.item}} — {{fields.rate}}'
+            fields:
+              - { name: item, label: Item, widget: string }
+              - { name: rate, label: Rate, widget: string }
+          - { name: churchHireNote, label: Note under the rate card, widget: text }
+
   - name: history
     label: 🏛️ History chapters
     label_singular: Chapter

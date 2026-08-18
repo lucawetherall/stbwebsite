@@ -1,0 +1,82 @@
+{
+  "hub": {
+    "kicker": "Hire our space",
+    "title": "Hire",
+    "intro": "An exceptional space for recordings, concerts and events — with fine acoustics, a concert organ and a grand piano.",
+    "description": "Hire St Barnabas, Ealing — the church for recordings and concerts, and two flexible halls for events and parties. Fine acoustics, a concert organ, a grand piano and convenient transport links.",
+    "hero": { "image": "/images/hire/church-candlelit.webp", "alt": "The nave of St Barnabas lit by candlelight" },
+    "body": [
+      "The church itself is a valued place for recordings, rehearsals, filming and concerts, with fine acoustics, a concert-standard organ and a grand piano. Our two halls are flexible spaces for events and parties.",
+      "Whatever you are planning, you are welcome to arrange a visit to see the space."
+    ]
+  },
+  "recordings": {
+    "kicker": "Hire our space",
+    "title": "The church for recordings",
+    "intro": "A warm, generous acoustic that ensembles and record labels return to.",
+    "description": "Hire St Barnabas, Ealing for recording — a fine acoustic, a concert organ and a grand piano, used by professional choirs, orchestras and record labels.",
+    "hero": { "image": "/images/hire/recording-setup.webp", "alt": "A recording session set up in the church" },
+    "body": [
+      "St Barnabas offers a warm, generous acoustic well suited to choral and instrumental recording, alongside a concert-standard organ and an excellent Bösendorfer nine-foot concert grand of 92 keys, previously used at the BBC's Maida Vale Studios. Its surroundings are exceptionally quiet for a London church, and professional ensembles and record labels record here regularly.",
+      "Local ensembles are welcome at reduced rates, and either the Lady Chapel or the Choir Vestry can serve as a control room. Organ and piano tuning can be arranged for an additional cost."
+    ],
+    "films": [
+      { "youtubeUrl": "https://www.youtube.com/watch?v=x6XVNkIXqlU", "title": "Abide With Me (arr. Moses Hogan)", "ensemble": "Alma Consort", "poster": "/images/hire/film-alma-consort.webp", "posterAlt": "Alma Consort singing in the church" },
+      { "youtubeUrl": "https://www.youtube.com/watch?v=tvX1nPE_fKc", "title": "Bring us, O Lord God — William Harris", "ensemble": "Continuum", "poster": "/images/hire/film-continuum.webp", "posterAlt": "The Continuum choir recording in the church" },
+      { "youtubeUrl": "https://www.youtube.com/watch?v=UIaTngP-l-4", "title": "John Ireland: Greater Love", "ensemble": "Choir of Merton College & Britten Sinfonia (Delphian Records)", "poster": "/images/hire/film-merton.webp", "posterAlt": "Choir and orchestra recording in the church" }
+    ],
+    "gallery": [
+      { "src": "/images/hire/radio3-broadcast.webp", "alt": "A live broadcast being recorded in the church" },
+      { "src": "/images/hire/organ-recital.webp", "alt": "An organ recital being recorded" },
+      { "src": "/images/hire/recording-setup.webp", "alt": "Microphones and cabling set up across the nave" }
+    ]
+  },
+  "concerts": {
+    "kicker": "Hire our space",
+    "title": "The church for concerts",
+    "intro": "A beautiful, resonant setting for choral and instrumental concerts.",
+    "description": "Hire St Barnabas, Ealing for concerts — a resonant acoustic, a concert organ, a grand piano and a candlelit setting, with good sightlines and convenient transport.",
+    "hero": { "image": "/images/hire/concert-choir-organ.webp", "alt": "Choir and organ in the church" },
+    "body": [
+      "St Barnabas is a beautiful and resonant setting for concerts, with a concert-standard organ, an excellent Bösendorfer nine-foot concert grand of 92 keys (previously used at the BBC's Maida Vale Studios) and a candlelit atmosphere that audiences remember.",
+      "To discuss dates, capacity and staging, please get in touch."
+    ],
+    "capacity": "",
+    "gallery": [
+      { "src": "/images/hire/church-candlelit.webp", "alt": "The church lit by candlelight" },
+      { "src": "/images/hire/church-interior.webp", "alt": "The interior of St Barnabas looking towards the sanctuary" }
+    ]
+  },
+  "halls": {
+    "kicker": "Hire our space",
+    "title": "Church halls",
+    "intro": "Two flexible halls for events, parties and community gatherings.",
+    "description": "Hire the church halls at St Barnabas, Ealing — flexible spaces for events and parties with a kitchen, disabled access, staging, a PA system and a projector.",
+    "hero": { "image": "/images/hire/hall-large.webp", "alt": "The Large Hall at St Barnabas" },
+    "body": [
+      "Our two halls are flexible spaces for events and parties, equipped with a kitchen, disabled access, baby-changing, chairs, tables, a piano, staging, a PA system and a projector."
+    ],
+    "rates": [
+      { "space": "Large Hall", "size": "56′ × 30′", "capacity": "180 standing · 150 theatre · 130 seated", "day": "£57 / hr", "eve": "£68 / hr" },
+      { "space": "Small Hall", "size": "19′ × 30′", "capacity": "50 standing · 40 theatre · 24 seated", "day": "£40 / hr", "eve": "£47.50 / hr" },
+      { "space": "Both Halls", "size": "—", "capacity": "Combined", "day": "£93 / hr", "eve": "£108 / hr" }
+    ],
+    "ratesNote": "Wedding receptions: £1,619 (9am–11pm). Availability: Monday–Saturday 8am–11pm, Sundays 1–6pm.",
+    "gallery": [
+      { "src": "/images/hire/hall-large.webp", "alt": "The Large Hall" },
+      { "src": "/images/hire/hall-small.webp", "alt": "The Small Hall" },
+      { "src": "/images/hire/hall-kitchen.webp", "alt": "The hall kitchen" },
+      { "src": "/images/hire/halls-lobby.webp", "alt": "The halls lobby" }
+    ]
+  },
+  "churchHireRates": [
+    { "item": "Core hire of church", "rate": "£85 / hour" },
+    { "item": "Use of the organ", "rate": "£102 / session" },
+    { "item": "Use of concert grand piano", "rate": "£59 / session" },
+    { "item": "Use of organ and concert grand piano", "rate": "£117.50 / session" },
+    { "item": "Use of staging", "rate": "£54 / session" },
+    { "item": "Choir Vestry or Gallery", "rate": "£27 / session" },
+    { "item": "Both Choir Vestry and Gallery", "rate": "£43 / session" }
+  ],
+  "churchHireNote": "Organ and piano tuning can be arranged for an additional cost. Local ensembles are welcome at reduced rates."
+}

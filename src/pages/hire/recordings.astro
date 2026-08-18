@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Figure from '../../components/Figure.astro';
+import Gallery from '../../components/Gallery.astro';
+import YouTubeFacade from '../../components/YouTubeFacade.astro';
+import { hire } from '../../data/hire';
+import { youtubeEmbedUrl } from '../../lib/youtube';
+import { site } from '../../data/site';
+
+const r = hire.recordings;
+const videoLd = r.films.map((f) => ({
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: f.title,
+  description: `${f.title} — recorded at St Barnabas, Ealing by ${f.ensemble}.`,
+  thumbnailUrl: `${site.url}${f.poster}`,
+  contentUrl: f.youtubeUrl,
+  embedUrl: youtubeEmbedUrl(f.youtubeUrl),
+}));
+---
+<Base title="Hire the church for recordings — Ealing" breadcrumbTitle="Recordings" description={r.description} image={r.hero.image}>
+  <PageHeader kicker={r.kicker} title={r.title} intro={r.intro} />
+  <div class="wrap page-body">
+    <Figure src={r.hero.image} alt={r.hero.alt} eager aspect="16 / 9" />
+    <div class="prose">{r.body.map((p) => <p>{p}</p>)}</div>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">Recorded here</h2>
+      <div class="films">
+        {r.films.map((f) => (
+          <YouTubeFacade url={f.youtubeUrl} title={f.title} poster={f.poster} posterAlt={f.posterAlt} credit={f.ensemble} />
+        ))}
+      </div>
+    </section>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">Recording &amp; concert hire rates</h2>
+      <div class="rate-table-wrap">
+        <table class="rate-table">
+          <thead><tr><th scope="col">Item</th><th scope="col">Rate</th></tr></thead>
+          <tbody>
+            {hire.churchHireRates.map((row) => (<tr><th scope="row">{row.item}</th><td>{row.rate}</td></tr>))}
+          </tbody>
+        </table>
+      </div>
+      <p class="venue-note">{hire.churchHireNote} See also the <a class="content-link" href="/music/st-barnabas-organ">St Barnabas organ</a>.</p>
+    </section>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">The space</h2>
+      <Gallery images={r.gallery} />
+    </section>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">How to book</h2>
+      <p>To arrange a recording, contact the parish office on <a class="content-link" href={`tel:${site.phoneIntl.replace(/\s+/g, '')}`}>{site.phone}</a> or <a class="content-link" href={`mailto:${site.emails.office}`}>{site.emails.office}</a>.</p>
+    </section>
+  </div>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(videoLd)} />
+</Base>
+
+<style>
+  .page-body { padding-top: 1.5rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+  .prose { margin-top: 1.6rem; }
+  .hire-section { margin-top: 2.8rem; }
+  .hire-section__label { color: var(--burgundy); display: block; margin-bottom: 1.2rem; }
+  .films { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .rate-table-wrap { overflow-x: auto; }
+  .rate-table { width: 100%; border-collapse: collapse; }
+  .rate-table th, .rate-table td { text-align: left; padding: .8rem 1rem; border-bottom: 1px solid var(--line); }
+  .rate-table thead th { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: .1em; font-size: .66rem; font-weight: 600; color: var(--burgundy); border-bottom-color: var(--ink); }
+  .rate-table tbody th { font-weight: 600; }
+  .venue-note { margin-top: 1.2rem; color: var(--ink-soft); }
+</style>

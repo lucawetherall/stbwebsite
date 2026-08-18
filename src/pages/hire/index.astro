@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Figure from '../../components/Figure.astro';
+import { hire } from '../../data/hire';
+const { hub } = hire;
+const cards = [
+  { href: '/hire/recordings', title: hire.recordings.title, blurb: hire.recordings.intro },
+  { href: '/hire/concerts', title: hire.concerts.title, blurb: hire.concerts.intro },
+  { href: '/hire/halls', title: hire.halls.title, blurb: hire.halls.intro },
+];
+---
+<Base title="Hire our space in Ealing" breadcrumbTitle="Hire" description={hub.description} image={hub.hero.image}>
+  <PageHeader kicker={hub.kicker} title={hub.title} intro={hub.intro} />
+  <div class="wrap page-body">
+    <Figure src={hub.hero.image} alt={hub.hero.alt} eager aspect="16 / 9" />
+    <div class="prose">{hub.body.map((p) => <p>{p}</p>)}</div>
+    <nav class="hire-cards" aria-label="What you can hire">
+      {cards.map((c) => (
+        <a class="hire-card" href={c.href}>
+          <h2 class="hire-card__title">{c.title}</h2>
+          <p class="hire-card__blurb">{c.blurb}</p>
+          <span class="hire-card__go label">Find out more &rarr;</span>
+        </a>
+      ))}
+    </nav>
+  </div>
+</Base>
+
+<style>
+  .page-body { padding-top: 1.5rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+  .prose { margin-top: 1.6rem; }
+  .hire-cards { margin-top: 2.6rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .hire-card { display: block; padding: 1.4rem 1.5rem; border: 1px solid var(--line); text-decoration: none; color: inherit; }
+  .hire-card:hover { border-color: var(--burgundy); }
+  .hire-card__title { font-size: 1.5rem; margin-bottom: .4rem; }
+  .hire-card__blurb { color: var(--ink-soft); }
+  .hire-card__go { display: inline-block; margin-top: 1rem; color: var(--burgundy); }
+</style>

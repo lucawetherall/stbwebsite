@@ -12,6 +12,7 @@ npm-debug.log*
 
 # tooling artifacts
 .playwright-mcp/
+.superpowers/
 
 # env
 .env

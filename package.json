@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "node scripts/check-image-paths.mjs && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest run",
+    "check:images": "node scripts/check-image-paths.mjs",
     "scrape": "node scripts/scrape-blog.mjs"
   },
   "dependencies": {
