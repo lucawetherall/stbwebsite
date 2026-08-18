@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHeader from '../components/PageHeader.astro';
 import MapEmbed from '../components/MapEmbed.astro';
+import Figure from '../components/Figure.astro';
 import { site } from '../data/site';
 ---
 <Base
@@ -13,6 +14,14 @@ import { site } from '../data/site';
     title="Contact Us"
     intro="We would love to hear from you — whether you are planning a visit, an enquiry or a booking."
   />
+  <div class="wrap">
+    <Figure
+      src="/images/about/exterior-spring.webp"
+      alt="St Barnabas Church on Pitshanger Lane"
+      caption="St Barnabas — on the corner of Pitshanger Lane and Denison Road"
+      aspect="16 / 9"
+    />
+  </div>
   <div class="wrap page-body contact">
     <div class="contact__details">
       <div class="contact__block">
