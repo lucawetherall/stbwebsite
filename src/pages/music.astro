@@ -2,26 +2,10 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import PageHeader from '../components/PageHeader.astro';
-import ServiceSheet from '../components/ServiceSheet.astro';
-import { currentSheet, upcomingSheets } from '../lib/services';
+import MusicList from '../components/MusicList.astro';
 import { site } from '../data/site';
 
 const sheets = (await getCollection('services')).map((e) => e.data);
-const now = new Date();
-const upcoming = upcomingSheets(sheets, now);
-
-// `sheet` is null out of term, and between a silent Sunday and the next service. The section
-// still appears whenever there is a list to browse — the way to the music list must not vanish
-// with the panel, or the page loses its only route to it over the summer.
-const sheet = currentSheet(sheets, now);
-
-// The services after the one shown in full. They are what makes the link to the full list worth
-// following — "more →" on its own says nothing about whether there is anything behind it.
-const then = upcoming.filter((s) => !sheet || +s.date > +sheet.date).slice(0, 3);
-
-const eyebrow = sheet?.date.getUTCDay() === 0 ? 'This Sunday' : 'Next service';
-const fmtShort = (d: Date) =>
-  d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'UTC' });
 ---
 <Base
   title="Music"
@@ -48,36 +32,10 @@ const fmtShort = (d: Date) =>
       choral scholars and a body of voluntary singers. <a href="/music/our-musicians">Meet our musicians →</a>
     </p>
 
-    {upcoming.length > 0 && (
-      <section class="music-next" aria-labelledby="music-next-heading">
-        {sheet ? (
-          <>
-            <h2 class="label music-section__label">{eyebrow}</h2>
-            <ServiceSheet sheet={sheet} level={3} showDate headingId="music-next-heading" />
-          </>
-        ) : (
-          <h2 class="label music-section__label" id="music-next-heading">Coming up</h2>
-        )}
-
-        {then.length > 0 && (
-          <>
-            {sheet && <p class="music-next__then-label">Then</p>}
-            <ul class="music-next__then">
-              {then.map((s) => (
-                <li>
-                  <span class="music-next__date">{fmtShort(s.date)}</span>
-                  <span class="music-next__feast">{s.feast}</span>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-
-        <p class="music-next__more">
-          <a class="btn" href="/music/music-list">The full music list</a>
-        </p>
-      </section>
-    )}
+    <section class="music-section" aria-labelledby="music-list-heading">
+      <h2 class="label music-section__label" id="music-list-heading">Music List</h2>
+      <MusicList sheets={sheets} />
+    </section>
 
     <section class="music-section">
       <h2 class="label music-section__label">Listen</h2>
@@ -96,42 +54,4 @@ const fmtShort = (d: Date) =>
 <style>
   .music-section { margin-top: 2.8rem; }
   .music-section__label { color: var(--burgundy); display: block; margin-bottom: 1rem; }
-
-  .music-next {
-    margin-top: 2.8rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--line);
-  }
-
-  .music-next__then-label {
-    margin-top: 2.2rem;
-    font-family: var(--font-ui);
-    text-transform: uppercase;
-    letter-spacing: .14em;
-    font-size: .66rem;
-    font-weight: 600;
-    color: var(--ink-soft);
-  }
-  .music-next__then {
-    list-style: none;
-    margin: .7rem 0 0;
-    padding: 0;
-    display: grid;
-    gap: .35rem;
-  }
-  .music-next__then li {
-    display: grid;
-    grid-template-columns: 8.5rem 1fr;
-    gap: 1rem;
-    align-items: baseline;
-  }
-  .music-next__date { font-family: var(--font-display); font-size: 1.1rem; color: var(--ink-soft); }
-  .music-next__feast { color: var(--ink); }
-
-  .music-next__more { margin-top: 2rem; }
-
-  @media (max-width: 560px) {
-    .music-next__then li { grid-template-columns: 1fr; gap: 0; }
-    .music-next__date { display: block; }
-  }
 </style>

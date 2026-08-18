@@ -336,7 +336,6 @@ collections:
       - { name: whats-on, label: What's On, file: src/content/pages/whats-on.md, fields: *pf }
       - { name: music-organ, label: 'Music · St Barnabas Organ', file: src/content/pages/music/st-barnabas-organ.md, fields: *pf }
       - { name: music-our-musicians, label: 'Music · Our Musicians', file: src/content/pages/music/our-musicians.md, fields: *pf }
-      - { name: music-list, label: 'Music · Music List', file: src/content/pages/music/music-list.md, fields: *pf }
       - name: worship
         label: Worship
         file: src/content/pages/worship.md

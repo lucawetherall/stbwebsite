@@ -21,7 +21,6 @@ export const nav: NavItem[] = [
     label: 'Music',
     href: '/music',
     children: [
-      { label: 'Music List', href: '/music/music-list' },
       { label: 'Our Musicians', href: '/music/our-musicians' },
       { label: 'St Barnabas Organ', href: '/music/st-barnabas-organ' },
     ],

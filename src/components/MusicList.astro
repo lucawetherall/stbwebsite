@@ -339,7 +339,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
 <script>
   // Single-month controller. The markup ships with every month present but only one carrying
   // `.is-active`; this swaps that class in response to the steppers, the month bar, and the URL
-  // hash, so a link like /music/music-list#2027-03 opens on March.
+  // hash, so a link like /music#2027-03 opens on March.
   const root = document.querySelector<HTMLElement>('[data-music-list]');
   if (root) {
     const months = Array.from(root.querySelectorAll<HTMLElement>('.ml-month'));
