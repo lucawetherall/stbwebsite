@@ -116,6 +116,23 @@ export function utcMidnightOfDateOnly(d: Date): Date {
 }
 
 /**
+ * Whether an event may be shown yet.
+ *
+ * `draft` hides an event indefinitely; `announceFrom` merely defers it, keeping it out of the
+ * diary, the special-services page and the calendar feed until the date it names, after which it
+ * appears on its own. That is for something booked a long way ahead — a visiting choir a year out
+ * should not headline What's On for the whole year first. The nightly rebuild is what makes the
+ * changeover land without anyone touching the CMS.
+ */
+export function isAnnounced(
+  data: { draft?: boolean; announceFrom?: Date },
+  today: string
+): boolean {
+  if (data.draft) return false;
+  return !data.announceFrom || civilFromDateOnly(data.announceFrom) <= today;
+}
+
+/**
  * The Europe/London civil date and time of a genuine instant (a feed event). This is the single
  * chokepoint for time-zone handling: get it right here and nothing downstream can be off by a day.
  */

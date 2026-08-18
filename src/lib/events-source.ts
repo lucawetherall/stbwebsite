@@ -5,6 +5,7 @@ import {
   collapseSeries,
   expandOccurrences,
   mergeEvents,
+  isAnnounced,
   nextOccurrence,
   todayInLondon,
   upcomingEvents,
@@ -44,7 +45,7 @@ function load(now: Date): Promise<LoadedEvents> {
   cache ??= (async () => {
     const today = todayInLondon(now);
     const window = { from: addDays(today, -PAST_DAYS), to: addDays(today, FUTURE_DAYS) };
-    const cms = await getCollection('events', ({ data }) => !data.draft);
+    const cms = await getCollection('events', ({ data }) => isAnnounced(data, today));
     const feed = await fetchFeedEvents(window);
     return { today, cms, feed, window };
   })();
