@@ -237,6 +237,9 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     color: var(--burgundy);
     white-space: nowrap;
   }
+  /* Bare chevrons, not buttons. They sit on a hairline rule in a page whose only other
+     controls are outlined links, and a pair of filled circles drew far more attention than a
+     month stepper deserves. The tap target keeps its full size; only the ink is quiet. */
   .month__nav {
     flex-shrink: 0;
     width: 1.9rem;
@@ -244,24 +247,22 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     display: grid;
     place-items: center;
     padding: 0;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    background: var(--paper);
-    color: var(--burgundy);
+    border: 0;
+    background: none;
+    color: var(--ink-soft);
     font-family: var(--font-display);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     line-height: 1;
     cursor: pointer;
-    transition: color .2s, border-color .2s, background-color .2s, opacity .2s;
+    transition: color .2s, opacity .2s;
   }
-  .month__nav:hover { border-color: var(--burgundy); background: var(--burgundy-faint); }
-  .month__nav:focus-visible { outline: 2px solid var(--burgundy); outline-offset: 2px; }
-  .month__nav:disabled {
-    opacity: .3;
-    cursor: default;
-    pointer-events: none;
-    color: var(--ink-soft);
+  .month__nav:hover { color: var(--burgundy); }
+  .month__nav:focus-visible {
+    outline: 2px solid var(--burgundy);
+    outline-offset: 2px;
+    border-radius: 3px;
   }
+  .month__nav:disabled { opacity: .25; cursor: default; pointer-events: none; }
 
   /* ── one service ────────────────────────────────────────────────────────── */
   .ml-service {
@@ -335,7 +336,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     .ml-when__mark { left: auto; right: calc(100% + .5rem); top: .6rem; }
     .ml-when__next { display: inline; margin-left: .7rem; }
     .month { gap: .5rem; }
-    .month__nav { width: 2.2rem; height: 2.2rem; font-size: 1.3rem; }
+    .month__nav { width: 2.2rem; height: 2.2rem; font-size: 1.45rem; }
     /* Two steppers leave the hairlines about 10px each at this width — a stub that reads as
        broken rather than as the printed list's rule. Drop them and centre the name between the
        diamonds, which carry the motif on their own. */
