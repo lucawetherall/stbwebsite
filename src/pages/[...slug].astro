@@ -9,8 +9,10 @@ import Musicians from '../components/Musicians.astro';
 import VisitDetails from '../components/VisitDetails.astro';
 import EnquireCTA from '../components/EnquireCTA.astro';
 import WhatsOn from '../components/WhatsOn.astro';
+import MusicList from '../components/MusicList.astro';
 import { getDiaryEvents } from '../lib/events-source';
 import { eventsJsonLd } from '../lib/events-jsonld';
+import { upcomingSheets } from '../lib/services';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages', ({ data }) => !data.draft);
@@ -25,10 +27,14 @@ const showMusicians = entry.id === 'music/our-musicians';
 const showVisitDetails = entry.id === 'about-us/visiting';
 const showEnquireCTA = entry.id === 'life-events';
 const showWhatsOn = entry.id === 'whats-on';
+const showMusicList = entry.id === 'music/music-list';
 
 // Loaded here rather than inside the component: the diary events become JSON-LD nodes in the
 // page's site graph, which Base assembles.
 const events = showWhatsOn ? await getDiaryEvents() : [];
+const sheets = showMusicList
+  ? upcomingSheets((await getCollection('services')).map((e) => e.data), new Date())
+  : [];
 const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
 ---
 {/* `seoTitle` drives the <title> only; the h1 and the breadcrumb stay as the editor titled the
@@ -53,6 +59,7 @@ const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
     {showMusicians && <Musicians />}
     {showEnquireCTA && <EnquireCTA />}
     {showWhatsOn && <WhatsOn events={events} />}
+    {showMusicList && <MusicList sheets={sheets} />}
   </div>
 </Base>
 

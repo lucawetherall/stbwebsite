@@ -1,82 +1,28 @@
 ---
 import { getCollection } from 'astro:content';
+import ServiceSheet from './ServiceSheet.astro';
+import { currentSheet } from '../lib/services';
 
-// All published music sheets, ascending by date.
-const services = (await getCollection('services'))
-  .map((e) => e.data)
-  .sort((a, b) => +a.date - +b.date);
+const sheets = (await getCollection('services')).map((e) => e.data);
+const sheet = currentSheet(sheets, new Date());
 
-// Normalise "today" (local calendar date) onto a UTC-midnight instant so it
-// compares cleanly with the UTC-midnight service dates (no off-by-one by tz).
-const now = new Date();
-const t = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-const dow = t.getUTCDay();
-const upcoming = new Date(t);
-upcoming.setUTCDate(t.getUTCDate() + ((7 - dow) % 7));
-
-const DAY = 86_400_000;
-const exact = services.find((s) => +s.date === +upcoming);
-const nextFuture = services.find((s) => +s.date >= +t);
-const sheet =
-  exact ?? (nextFuture && +nextFuture.date - +t <= 14 * DAY ? nextFuture : null);
-
-// Eyebrow label adapts to what we're actually showing:
+// The eyebrow adapts to what we are actually showing:
 //  - a sheet dated on a Sunday → "This Sunday"
-//  - a sheet on any other day  → "Next service" (e.g. a weekday feast)
+//  - a sheet on any other day  → "Next service" (e.g. a weekday feast in Holy Week)
 // With no sheet the component renders nothing at all: the standing pattern is the
 // ServiceTimesBand immediately above, and repeating it here would only say the same
-// thing twice, less well.
+// thing twice, less well. See src/lib/services.ts for when that happens.
 const eyebrow = sheet?.date.getUTCDay() === 0 ? 'This Sunday' : 'Next service';
-
-const fmtDate = (d: Date) =>
-  d.toLocaleDateString('en-GB', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  });
-
-// Split "Composer, Work title" so the work can be italicised, matching the sheets.
-function fmt(v: string) {
-  const i = v.indexOf(',');
-  if (i === -1) return { lead: v, work: '' };
-  return { lead: v.slice(0, i), work: v.slice(i + 1).trim() };
-}
 ---
 {sheet && (
   <section class="this-sunday section" aria-labelledby="this-sunday-heading">
     <div class="wrap">
       <p class="label">{eyebrow}</p>
 
-      <h2 id="this-sunday-heading" class="this-sunday__feast">{sheet.feast}</h2>
-      <p class="this-sunday__date"><em>{fmtDate(sheet.date)}</em></p>
-
-      {sheet.offices.map((office) => (
-        <div class="office">
-          <h3 class="office__heading">{office.time} · {office.name}</h3>
-          <dl class="office__items">
-            {office.items.map((it) => (
-              <div class="office__row">
-                <dt class="office__label">{it.label}</dt>
-                <dd class="office__values">
-                  {it.values.map((v) => {
-                    const { lead, work } = fmt(v);
-                    return (
-                      <span class="office__value">
-                        {lead}{work && <>, <em>{work}</em></>}
-                      </span>
-                    );
-                  })}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      ))}
+      <ServiceSheet sheet={sheet} level={2} showDate headingId="this-sunday-heading" />
 
       <p class="this-sunday__more">
-        <a class="txt-link" href="/music">Music &amp; readings</a>
+        <a class="txt-link" href="/music/music-list">The full music list</a>
       </p>
     </div>
   </section>
@@ -88,50 +34,5 @@ function fmt(v: string) {
      weeks when there is no sheet — no conditional needed. */
   .this-sunday { background: var(--paper); border-top: 1px solid var(--line); }
   .this-sunday .label { margin-bottom: 1.1rem; }
-  .this-sunday__feast { font-size: clamp(1.65rem, 3.2vw, 2.4rem); }
-  .this-sunday__date {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    color: var(--ink-soft);
-    margin-top: .4rem;
-  }
-
-  .office { margin-top: 2.4rem; }
-  .office__heading {
-    font-family: var(--font-ui);
-    text-transform: uppercase;
-    letter-spacing: .16em;
-    font-size: .74rem;
-    font-weight: 600;
-    color: var(--burgundy);
-    border-top: 1px solid var(--line);
-    padding-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  .office__items { display: grid; gap: .55rem; }
-  .office__row {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 1rem;
-    align-items: baseline;
-  }
-  .office__label {
-    font-family: var(--font-ui);
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    font-size: .68rem;
-    font-weight: 600;
-    color: var(--burgundy);
-    padding-top: .15rem;
-  }
-  .office__values { display: flex; flex-direction: column; gap: .2rem; }
-  .office__value { font-size: 1.06rem; }
-  .office__value em { font-family: var(--font-display); font-style: italic; font-size: 1.16rem; }
-
   .this-sunday__more { display: flex; flex-wrap: wrap; gap: 1.2rem 2rem; margin-top: 2.6rem; }
-
-  @media (max-width: 560px) {
-    .office__row { grid-template-columns: 1fr; gap: .15rem; }
-    .office__label { padding-top: .4rem; }
-  }
 </style>
