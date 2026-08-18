@@ -24,10 +24,16 @@ import { groupByMonth, upcomingSheets, type SheetLike } from '../lib/services';
 
 interface Props {
   sheets: SheetLike[];
+  /** Heading level for the month rule; feast and service sit below it. */
+  level?: 2 | 3;
   /** Injectable for tests and previews; the page passes nothing and gets "now". */
   now?: Date;
 }
-const { sheets, now = new Date() } = Astro.props;
+const { sheets, level = 2, now = new Date() } = Astro.props;
+
+// The month rule carries the heading; the steppers sit outside it, so a screen reader
+// announces "September 2026" rather than "‹ September 2026 ›".
+const MonthHeading = `h${level}` as 'h2' | 'h3';
 
 const upcoming = upcomingSheets(sheets, now);
 const groups = groupByMonth(upcoming);
@@ -87,15 +93,15 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
         data-month={group.key}
         aria-labelledby={`${group.key}-heading`}
       >
-        <h2 class="month">
-          <button class="month__nav month__nav--prev" type="button" data-prev aria-label="Previous month">‹</button>
+        <div class="month">
+          <button class="month__nav" type="button" data-prev aria-label="Previous month">‹</button>
           <span class="month__rule" aria-hidden="true"></span>
           <span class="month__diamond" aria-hidden="true"></span>
-          <span class="month__name" id={`${group.key}-heading`}>{`${group.label} ${group.year}`}</span>
+          <MonthHeading class="month__name" id={`${group.key}-heading`}>{`${group.label} ${group.year}`}</MonthHeading>
           <span class="month__diamond" aria-hidden="true"></span>
           <span class="month__rule" aria-hidden="true"></span>
-          <button class="month__nav month__nav--next" type="button" data-next aria-label="Next month">›</button>
-        </h2>
+          <button class="month__nav" type="button" data-next aria-label="Next month">›</button>
+        </div>
 
         {group.sheets.map((sheet) => (
           <article class="ml-service" class:list={{ 'is-next': +sheet.date === nextKey }}>
@@ -107,7 +113,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
               {+sheet.date === nextKey && <span class="ml-when__next">Next service</span>}
             </p>
             <div class="ml-body">
-              <ServiceSheet sheet={sheet} level={3} />
+              <ServiceSheet sheet={sheet} level={(level + 1) as 2 | 3 | 4} />
             </div>
           </article>
         ))}
@@ -168,7 +174,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     display: flex;
     align-items: center;
   }
-  .ml-bar__list > li:first-child .ml-bar__year { padding-left: 0; }
+  .ml-bar__year:first-child { padding-left: 0; }
   .ml-bar__link {
     display: block;
     padding: .3rem .6rem;
@@ -203,6 +209,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     flex-shrink: 0;
   }
   .month__name {
+    margin: 0;
     font-family: var(--font-ui);
     text-transform: uppercase;
     letter-spacing: .28em;
@@ -310,6 +317,11 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     .ml-when__next { display: inline; margin-left: .7rem; }
     .month { gap: .5rem; }
     .month__nav { width: 2.2rem; height: 2.2rem; font-size: 1.3rem; }
+    /* Two steppers leave the hairlines about 10px each at this width — a stub that reads as
+       broken rather than as the printed list's rule. Drop them and centre the name between the
+       diamonds, which carry the motif on their own. */
+    .month__rule { display: none; }
+    .month__name { flex: 1; text-align: center; letter-spacing: .2em; }
   }
 
   /* ── on paper ───────────────────────────────────────────────────────────
@@ -350,7 +362,10 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
 
     let current = Math.max(0, months.findIndex((m) => m.classList.contains('is-active')));
 
-    const show = (i: number, moveView: boolean) => {
+    // `focusSel` moves focus into the newly shown month. Without it the stepper the reader just
+    // pressed is display:none'd with focus still on it, and the next Tab restarts from the top of
+    // the document — the reader loses their place entirely.
+    const show = (i: number, moveView: boolean, focusSel?: string) => {
       current = Math.max(0, Math.min(months.length - 1, i));
       const key = keys[current];
 
@@ -368,7 +383,17 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
 
       const name = months[current].querySelector('.month__name')?.textContent ?? '';
       if (announce) announce.textContent = `Showing ${name}`;
-      if (`#${key}` !== location.hash) history.replaceState(null, '', `#${key}`);
+
+      if (focusSel) {
+        const wanted = months[current].querySelector<HTMLButtonElement>(focusSel);
+        const fallback = focusSel === '[data-next]' ? '[data-prev]' : '[data-next]';
+        if (wanted && !wanted.disabled) wanted.focus();
+        else months[current].querySelector<HTMLButtonElement>(fallback)?.focus();
+      }
+
+      // Only once the reader has chosen a month: landing on /music should not silently
+      // rewrite the address bar to /music#2026-09.
+      if (moveView && `#${key}` !== location.hash) history.replaceState(null, '', `#${key}`);
       if (moveView) root.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
     };
 
@@ -380,8 +405,8 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
         show(keys.indexOf(chip.getAttribute('href')!.slice(1)), true);
         return;
       }
-      if (target.closest('[data-prev]')) show(current - 1, true);
-      else if (target.closest('[data-next]')) show(current + 1, true);
+      if (target.closest('[data-prev]')) show(current - 1, true, '[data-prev]');
+      else if (target.closest('[data-next]')) show(current + 1, true, '[data-next]');
     });
 
     window.addEventListener('hashchange', () => {

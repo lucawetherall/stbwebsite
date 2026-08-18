@@ -11,7 +11,7 @@ import { fmt, type SheetLike } from '../lib/services';
 interface Props {
   sheet: SheetLike;
   /** Heading level for the feast; services sit one level below it. */
-  level?: 2 | 3;
+  level?: 2 | 3 | 4;
   /** Print the date under the feast — the homepage does, the list has its own date column. */
   showDate?: boolean;
   /** Optional id for the feast heading, so a section can be labelled by it. */
@@ -19,8 +19,8 @@ interface Props {
 }
 const { sheet, level = 2, showDate = false, headingId } = Astro.props;
 
-const Feast = `h${level}` as 'h2' | 'h3';
-const Service = `h${level + 1}` as 'h3' | 'h4';
+const Feast = `h${level}` as 'h2' | 'h3' | 'h4';
+const Service = `h${level + 1}` as 'h3' | 'h4' | 'h5';
 
 const fmtDate = (d: Date) =>
   d.toLocaleDateString('en-GB', {

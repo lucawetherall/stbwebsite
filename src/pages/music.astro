@@ -34,7 +34,7 @@ const sheets = (await getCollection('services')).map((e) => e.data);
 
     <section class="music-section" aria-labelledby="music-list-heading">
       <h2 class="label music-section__label" id="music-list-heading">Music List</h2>
-      <MusicList sheets={sheets} />
+      <MusicList sheets={sheets} level={3} />
     </section>
 
     <section class="music-section">
