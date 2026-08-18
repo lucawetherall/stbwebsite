@@ -57,7 +57,7 @@ const videoLd = r.films.map((f) => ({
       <p>To arrange a recording, contact the parish office on <a class="content-link" href={`tel:${site.phoneIntl.replace(/\s+/g, '')}`}>{site.phone}</a> or <a class="content-link" href={`mailto:${site.emails.office}`}>{site.emails.office}</a>.</p>
     </section>
   </div>
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(videoLd)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(videoLd).replace(/</g, '\\u003c')} />
 </Base>
 
 <style>

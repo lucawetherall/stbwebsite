@@ -21,6 +21,11 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, seoTitle, description, kicker, intro, gallery, hero, heroAlt } = entry.data;
+// Responsive sibling produced by the prep script (same convention as Figure.astro):
+// foo.webp → foo-800.webp. Only offered when the hero follows the house .webp convention.
+const heroSrcset = hero?.endsWith('.webp')
+  ? `${hero.replace(/\.webp$/, '-800.webp')} 800w, ${hero} 1600w`
+  : undefined;
 const showOrganSpec = entry.id === 'music/st-barnabas-organ';
 const showMusicians = entry.id === 'music/our-musicians';
 const showVisitDetails = entry.id === 'about-us/visiting';
@@ -48,7 +53,16 @@ const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
   <PageHeader kicker={kicker} title={title} intro={intro} />
   {hero && (
     <div class="wrap page-hero">
-      <img class="page-hero__img" src={hero} alt={heroAlt || title} loading="eager" decoding="async" />
+      <img
+        class="page-hero__img"
+        src={hero}
+        srcset={heroSrcset}
+        sizes="(max-width: 1140px) 100vw, 1100px"
+        alt={heroAlt || title}
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
     </div>
   )}
   <div class="wrap page-body">
@@ -69,6 +83,9 @@ const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
      component used across the Hire section). */
   .page-hero__img {
     width: 100%; height: auto; display: block;
+    /* Reserve the box before the image arrives (no CLS): a wide-landscape ratio,
+       still capped by max-height exactly as before — object-fit crops either way. */
+    aspect-ratio: 2 / 1;
     max-height: clamp(300px, 52vh, 500px);
     object-fit: cover;
     background: var(--paper-2);

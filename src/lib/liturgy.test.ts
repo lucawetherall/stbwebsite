@@ -44,6 +44,15 @@ describe('getLiturgicalDay() — season classification (2026)', () => {
     ['Christmas Eve is Advent', new Date(2026, 11, 24), 'Advent'],
     ['Christmas Day is Christmastide', new Date(2026, 11, 25), 'Christmastide'],
     ['New Year Eve is Christmastide', new Date(2026, 11, 31), 'Christmastide'],
+    // Christmas on a Monday: Advent 4 is Sunday 24 December, so Advent Sunday
+    // is 3 December — a week later than a naive four-Sundays walk that skips
+    // the 24th would give (regression test for the off-by-one fixed Aug 2026).
+    ['26 Nov 2028 is not yet Advent', new Date(2028, 10, 26), 'Ordinary Time'],
+    ['Advent Sunday (3 Dec 2028, Christmas on a Monday)', new Date(2028, 11, 3), 'Advent'],
+    ['Advent 4 on Christmas Eve 2028 is Advent', new Date(2028, 11, 24), 'Advent'],
+    // Christmas on a Sunday: Advent Sunday is 27 November.
+    ['Advent Sunday (27 Nov 2033, Christmas on a Sunday)', new Date(2033, 10, 27), 'Advent'],
+    ['26 Nov 2033 is not yet Advent', new Date(2033, 10, 26), 'Ordinary Time'],
   ];
   for (const [label, date, season] of cases) {
     it(label, () => {

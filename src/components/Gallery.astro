@@ -2,13 +2,25 @@
 interface Img { src: string; alt: string; }
 interface Props { images: Img[] }
 const { images } = Astro.props;
+
+// Thumbnails draw the -800 sibling (the prep-script convention, as in Figure.astro);
+// the lightbox keeps the full-size file, which only downloads when opened.
+const thumbSrcset = (src: string) =>
+  src.endsWith('.webp') ? `${src.replace(/\.webp$/, '-800.webp')} 800w, ${src} 1600w` : undefined;
 ---
 <div class="gallery" data-gallery>
   <ul class="gallery__grid">
     {images.map((img, i) => (
       <li class="gallery__item">
         <button class="gallery__thumb" type="button" data-index={i} aria-label={`View image: ${img.alt}`}>
-          <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
+          <img
+            src={img.src}
+            srcset={thumbSrcset(img.src)}
+            sizes="(max-width: 760px) 50vw, 340px"
+            alt={img.alt}
+            loading="lazy"
+            decoding="async"
+          />
         </button>
       </li>
     ))}

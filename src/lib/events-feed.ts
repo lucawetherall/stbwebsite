@@ -11,6 +11,8 @@ import {
 } from './events';
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+// The rrule library numbers weekdays from Monday = 0, unlike JS Date.
+const RRULE_WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const ORDINALS = ['first', 'second', 'third', 'fourth', 'fifth'];
 
 /**
@@ -172,14 +174,32 @@ function describeRule(rrule: AnyEvent, firstDate: string): string | undefined {
     case 'DAILY':
       phrase = every === 1 ? 'Every day' : `Every ${every} days`;
       break;
-    case 'WEEKLY':
+    case 'WEEKLY': {
+      // A multi-day BYDAY rule (MO,WE,FR) is not "every <start weekday>" — name every
+      // day, or give up (undefined) on shapes we cannot phrase cleanly, like nth-weekday.
+      const byday: unknown[] = Array.isArray(options.byweekday) ? options.byweekday : [];
+      // node-ical hands BYDAY through as "MO".."SU" strings; the rrule library uses
+      // Monday-based numbers. Anything else (nth-weekday like "2FR") we cannot phrase.
+      const days = byday.map((d) =>
+        typeof d === 'number'
+          ? RRULE_WEEKDAYS[d]
+          : typeof d === 'string'
+            ? RRULE_WEEKDAYS[['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'].indexOf(d)]
+            : undefined
+      );
+      if (days.some((d) => !d)) return undefined;
+      const dayText =
+        days.length > 1
+          ? `${days.slice(0, -1).join(', ')} and ${days[days.length - 1]}`
+          : weekday;
       phrase =
         every === 1
-          ? `Every ${weekday}`
+          ? `Every ${dayText}`
           : every === 2
-            ? `Every other ${weekday}`
-            : `Every ${every} weeks, on a ${weekday}`;
+            ? `Every other ${dayText}`
+            : `Every ${every} weeks, on a ${dayText}`;
       break;
+    }
     case 'MONTHLY': {
       const ordinal = ORDINALS[Math.floor((Number(firstDate.split('-')[2]) - 1) / 7)];
       phrase = ordinal ? `The ${ordinal} ${weekday} of the month` : 'Every month';

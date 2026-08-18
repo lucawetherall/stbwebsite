@@ -10,10 +10,18 @@ const { event, showWeekday = true } = Astro.props;
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-const day = Number(event.date.split('-')[2]);
-const lastDay = event.endDate ? Number(event.endDate.split('-')[2]) : undefined;
-// The month heading above already names the month, so the row need only carry the numeral.
-const numeral = lastDay && lastDay !== day ? `${day}–${lastDay}` : String(day);
+const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const [, startMonth, startDay] = event.date.split('-').map(Number);
+const [, endMonth, endDay] = (event.endDate ?? event.date).split('-').map(Number);
+// The month heading above already names the month, so a same-month span needs only the
+// numerals; a span into the next month names it ("30–2 Oct") so "30–2" never appears.
+const numeral =
+  event.endDate && event.endDate !== event.date
+    ? startMonth === endMonth
+      ? `${startDay}–${endDay}`
+      : `${startDay}–${endDay} ${MONTHS_SHORT[endMonth - 1]}`
+    : String(startDay);
 const weekday = WEEKDAYS[weekdayOf(event.date)];
 const when = describeWhen(event);
 // Screen readers get the full date spelled out; the visible cell is just the numeral.

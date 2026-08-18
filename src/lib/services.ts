@@ -25,6 +25,8 @@
  * two UTC-midnight instants can never be off by one, whatever the reader's timezone.
  */
 
+import { todayInLondon } from './events';
+
 /** The shape we need from a `services` entry — structural, so tests need no fixtures. */
 export interface SheetLike {
   date: Date;
@@ -43,9 +45,14 @@ export function sortByDate<T extends SheetLike>(sheets: T[]): T[] {
   return [...sheets].sort((a, b) => +a.date - +b.date);
 }
 
-/** The local calendar date of `now`, lifted onto a UTC-midnight instant. */
+/**
+ * The Europe/London calendar date of `now`, lifted onto a UTC-midnight instant.
+ * London rather than server-local, so a CI build late on a summer evening (UTC) still
+ * counts the choir's "today" the way the parish does — matching the events machinery.
+ */
 export function startOfDay(now: Date): Date {
-  return new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+  const [y, m, d] = todayInLondon(now).split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d));
 }
 
 /** The coming Sunday — today, when today is itself a Sunday. */
