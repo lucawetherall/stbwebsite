@@ -80,6 +80,9 @@ const events = defineCollection({
     repeat: z.enum(['none', 'weekly', 'fortnightly', 'monthly']).default('none'),
     repeatUntil: z.coerce.date().optional(), // omit for an open-ended series
     featured: z.boolean().default(false),
+    // Keeps an event off the site until the date given — for something booked a long way ahead
+    // that should not headline What's On for a year first. Mirrored in public/admin/config.yml.
+    announceFrom: z.coerce.date().optional(),
     draft: z.boolean().default(false),
   }),
 });
