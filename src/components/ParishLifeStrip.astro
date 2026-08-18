@@ -1,0 +1,55 @@
+---
+// A single, restrained "life of the parish" strip for the homepage — one quiet
+// photographic moment low on the page, each tile linking into its section.
+// Developer-owned (part of the homepage "cornerstone" layer, like the other bands),
+// so the images are curated here rather than in the CMS.
+interface Item { href: string; image: string; label: string; alt: string; }
+const items: Item[] = [
+  { href: '/worship', image: '/images/worship/liturgy-procession.webp', label: 'Worship', alt: 'The procession at a Sung Mass' },
+  { href: '/music', image: '/images/music/choir-organ.webp', label: 'Music', alt: 'The choir before the gilded organ pipes' },
+  { href: '/community', image: '/images/community/summer-fayre-garden.webp', label: 'Community', alt: 'The Summer Fayre in the church garden' },
+  { href: '/families-children', image: '/images/families/christmas-crafts.webp', label: 'Families & Children', alt: 'Children making Christmas crafts' },
+];
+---
+<section class="parish-life">
+  <div class="wrap">
+    <h2 class="label parish-life__heading">The life of the parish</h2>
+    <ul class="parish-life__grid">
+      {items.map((it) => (
+        <li>
+          <a class="parish-life__item" href={it.href}>
+            <img src={it.image} alt={it.alt} width="800" height="1000" loading="lazy" decoding="async" />
+            <span class="parish-life__label">{it.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .parish-life { padding: clamp(2.5rem, 6vw, 4rem) 0; }
+  .parish-life__heading { color: var(--burgundy); display: block; margin-bottom: 1.4rem; }
+  .parish-life__grid {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem;
+  }
+  .parish-life__item { position: relative; display: block; overflow: hidden; }
+  .parish-life__item img {
+    width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block;
+    background: var(--paper-2); transition: transform .5s ease;
+  }
+  /* Flat scrim (not a gradient) so the label reads over any photo. */
+  .parish-life__item::after { content: ''; position: absolute; inset: 0; background: var(--scrim); }
+  .parish-life__label {
+    position: absolute; left: .9rem; bottom: .8rem; z-index: 1;
+    color: var(--white); font-family: var(--font-ui);
+    text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; font-weight: 600;
+  }
+  .parish-life__item:hover img { transform: scale(1.04); }
+  .parish-life__item:focus-visible { outline: 2px solid var(--burgundy); outline-offset: 3px; }
+  @media (max-width: 720px) {
+    .parish-life__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .parish-life__item img { transition: none; } }
+</style>
