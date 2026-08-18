@@ -1,1136 +1,2204 @@
 {
   "astro.config.mjs": {
     "mtime": 1786549389.842397,
-    "seen": 1787087554.031337,
+    "seen": 1787090313.141792,
     "ast_hash": "987aa1b3634ae56aace88cfefa79145b",
     "semantic_hash": "987aa1b3634ae56aace88cfefa79145b"
   },
   "package.json": {
     "mtime": 1787075073.1355784,
-    "seen": 1787087554.0313401,
+    "seen": 1787090313.1417952,
     "ast_hash": "3bc0f45630bec15060dd883daeb331b4",
     "semantic_hash": "3bc0f45630bec15060dd883daeb331b4"
   },
   "scripts/check-image-paths.mjs": {
     "mtime": 1787075073.2335339,
-    "seen": 1787087554.031341,
+    "seen": 1787090313.141796,
     "ast_hash": "7fde93f13e2c759b573daa35837431d7",
     "semantic_hash": "7fde93f13e2c759b573daa35837431d7"
   },
   "scripts/check-image-paths.test.mjs": {
     "mtime": 1787075073.2337568,
-    "seen": 1787087554.031342,
+    "seen": 1787090313.141796,
     "ast_hash": "762083434deb4c011109febd7125d05e",
     "semantic_hash": "762083434deb4c011109febd7125d05e"
   },
   "scripts/dimension-news-images.mjs": {
     "mtime": 1786549389.9621258,
-    "seen": 1787087554.031342,
+    "seen": 1787090313.141797,
     "ast_hash": "4154fc0637685b0c1b399ee3dcba1664",
     "semantic_hash": "4154fc0637685b0c1b399ee3dcba1664"
   },
   "scripts/fetch-fonts.mjs": {
     "mtime": 1786549389.962369,
-    "seen": 1787087554.0313432,
+    "seen": 1787090313.141797,
     "ast_hash": "299fd6cd8001776ddad68ca5400fedc7",
     "semantic_hash": "299fd6cd8001776ddad68ca5400fedc7"
   },
   "scripts/fetch-history-images.mjs": {
     "mtime": 1786549389.9627311,
-    "seen": 1787087554.0313432,
+    "seen": 1787090313.1417978,
     "ast_hash": "6a1bad8e731b0dfe4368bf05ded375b0",
     "semantic_hash": "6a1bad8e731b0dfe4368bf05ded375b0"
   },
   "scripts/fetch-images.mjs": {
     "mtime": 1786549389.9630911,
-    "seen": 1787087554.0313442,
+    "seen": 1787090313.1417978,
     "ast_hash": "cd25e85b0f3f7be23a933643640a3844",
     "semantic_hash": "cd25e85b0f3f7be23a933643640a3844"
   },
   "scripts/fetch-staff-photos.mjs": {
     "mtime": 1786549389.9644465,
-    "seen": 1787087554.0313442,
+    "seen": 1787090313.141799,
     "ast_hash": "81f6d8549825307222324caa8e97ac3e",
     "semantic_hash": "81f6d8549825307222324caa8e97ac3e"
   },
   "scripts/import-music-list.mjs": {
     "mtime": 1787057437.8429363,
-    "seen": 1787087554.031345,
+    "seen": 1787090313.141799,
     "ast_hash": "7206d019cd7e2339aec710051eb271da",
     "semantic_hash": "7206d019cd7e2339aec710051eb271da"
   },
   "scripts/list-history-images.mjs": {
     "mtime": 1786549389.9649913,
-    "seen": 1787087554.031345,
+    "seen": 1787090313.1418,
     "ast_hash": "def41d88447777d2549ba9d8cf918827",
     "semantic_hash": "def41d88447777d2549ba9d8cf918827"
   },
   "scripts/optimise-hire-images.mjs": {
     "mtime": 1787075073.2339547,
-    "seen": 1787087554.0313458,
+    "seen": 1787090313.1418009,
     "ast_hash": "69b59c098f4995bc0652c702866e2085",
     "semantic_hash": "69b59c098f4995bc0652c702866e2085"
   },
   "scripts/optimise-news-images.mjs": {
     "mtime": 1786549389.9651687,
-    "seen": 1787087554.0313458,
+    "seen": 1787090313.1418009,
     "ast_hash": "eb0da3bac2c25c8c4a4d9274ee6daf03",
     "semantic_hash": "eb0da3bac2c25c8c4a4d9274ee6daf03"
   },
   "scripts/optimise-section-images.mjs": {
     "mtime": 1787075073.2341495,
-    "seen": 1787087554.031347,
+    "seen": 1787090313.141802,
     "ast_hash": "d18d90463465401b67c7024b063349fe",
     "semantic_hash": "d18d90463465401b67c7024b063349fe"
   },
   "scripts/scrape-blog.mjs": {
     "mtime": 1786549389.9653306,
-    "seen": 1787087554.031347,
+    "seen": 1787090313.141802,
     "ast_hash": "246534c38def4b280dadd17c6a0bf416",
     "semantic_hash": "246534c38def4b280dadd17c6a0bf416"
   },
   "scripts/sitemap-meta.mjs": {
     "mtime": 1786549389.9654849,
-    "seen": 1787087554.031348,
+    "seen": 1787090313.141803,
     "ast_hash": "4fd31f4c3ba03dff599da944c1037916",
     "semantic_hash": "4fd31f4c3ba03dff599da944c1037916"
   },
   "src/components/Breadcrumbs.astro": {
     "mtime": 1786549389.9658294,
-    "seen": 1787087554.031348,
+    "seen": 1787090313.141803,
     "ast_hash": "87a8994e019f7c12243fabf661ac6e3c",
     "semantic_hash": "87a8994e019f7c12243fabf661ac6e3c"
   },
   "src/components/CommunityBand.astro": {
     "mtime": 1786549389.9660537,
-    "seen": 1787087554.031349,
+    "seen": 1787090313.141804,
     "ast_hash": "7ee333e534a2e4a4b51277ecb0d073c9",
     "semantic_hash": "7ee333e534a2e4a4b51277ecb0d073c9"
   },
   "src/components/Consent.astro": {
     "mtime": 1786549389.966337,
-    "seen": 1787087554.031349,
+    "seen": 1787090313.141804,
     "ast_hash": "5a3b08ebc35bf9325f5f090eccda723d",
     "semantic_hash": "5a3b08ebc35bf9325f5f090eccda723d"
   },
   "src/components/EnquireCTA.astro": {
     "mtime": 1786549389.9665024,
-    "seen": 1787087554.03135,
+    "seen": 1787090313.1418052,
     "ast_hash": "59a702bd3bb58106f21946a5f3afa8b3",
     "semantic_hash": "59a702bd3bb58106f21946a5f3afa8b3"
   },
   "src/components/EventRow.astro": {
     "mtime": 1786549389.9667554,
-    "seen": 1787087554.03135,
+    "seen": 1787090313.1418052,
     "ast_hash": "112ef82a4c78b24297a58c40a4efabac",
     "semantic_hash": "112ef82a4c78b24297a58c40a4efabac"
   },
   "src/components/EventsList.astro": {
     "mtime": 1786549389.9668818,
-    "seen": 1787087554.031351,
+    "seen": 1787090313.1418052,
     "ast_hash": "0029264a88b81321ac6e0cac3ac34f5b",
     "semantic_hash": "0029264a88b81321ac6e0cac3ac34f5b"
   },
   "src/components/Figure.astro": {
     "mtime": 1787075073.234485,
-    "seen": 1787087554.031351,
+    "seen": 1787090313.1418061,
     "ast_hash": "16dc89e9d4a0ad6bf25a8f3af9e8024b",
     "semantic_hash": "16dc89e9d4a0ad6bf25a8f3af9e8024b"
   },
   "src/components/Gallery.astro": {
     "mtime": 1786549389.9673874,
-    "seen": 1787087554.031352,
+    "seen": 1787090313.1418061,
     "ast_hash": "d421048fc9b917d74023713b3cc1c4d5",
     "semantic_hash": "d421048fc9b917d74023713b3cc1c4d5"
   },
   "src/components/GiveCTA.astro": {
     "mtime": 1786549389.9674966,
-    "seen": 1787087554.031352,
+    "seen": 1787090313.141807,
     "ast_hash": "90f09293ca9dab39dc959027b51f9206",
     "semantic_hash": "90f09293ca9dab39dc959027b51f9206"
   },
   "src/components/Hero.astro": {
     "mtime": 1786549389.9678721,
-    "seen": 1787087554.031353,
+    "seen": 1787090313.141807,
     "ast_hash": "6955f522b2449557a819aeb790112341",
     "semantic_hash": "6955f522b2449557a819aeb790112341"
   },
   "src/components/Logo.astro": {
     "mtime": 1786549389.968324,
-    "seen": 1787087554.031353,
+    "seen": 1787090313.141808,
     "ast_hash": "bd96296fde872e6554fbb62a4ae8b30e",
     "semantic_hash": "bd96296fde872e6554fbb62a4ae8b30e"
   },
   "src/components/MapEmbed.astro": {
     "mtime": 1786549389.9684467,
-    "seen": 1787087554.0313542,
+    "seen": 1787090313.141808,
     "ast_hash": "9f05ebd1b2a5edfb5a90cf19e1f38c08",
     "semantic_hash": "9f05ebd1b2a5edfb5a90cf19e1f38c08"
   },
   "src/components/MusicBand.astro": {
     "mtime": 1786549389.9685495,
-    "seen": 1787087554.0313542,
+    "seen": 1787090313.141809,
     "ast_hash": "d84386491a6d9b4bab23f7b986c945f3",
     "semantic_hash": "d84386491a6d9b4bab23f7b986c945f3"
   },
   "src/components/MusicList.astro": {
     "mtime": 1787057452.8469157,
-    "seen": 1787087554.0313542,
+    "seen": 1787090313.141809,
     "ast_hash": "b32c1e108ff95b3841608f3c57901d3a",
     "semantic_hash": "b32c1e108ff95b3841608f3c57901d3a"
   },
   "src/components/Musicians.astro": {
     "mtime": 1786549389.9688556,
-    "seen": 1787087554.031355,
+    "seen": 1787090313.14181,
     "ast_hash": "626986a94d20b2b0995d48588db12517",
     "semantic_hash": "626986a94d20b2b0995d48588db12517"
   },
   "src/components/NewsIndex.astro": {
     "mtime": 1786549389.9693527,
-    "seen": 1787087554.031355,
+    "seen": 1787090313.14181,
     "ast_hash": "b9b3a4a7a3f6b97eb2862843caa8f35e",
     "semantic_hash": "b9b3a4a7a3f6b97eb2862843caa8f35e"
   },
   "src/components/NewsletterSignup.astro": {
     "mtime": 1786549389.9695053,
-    "seen": 1787087554.0313559,
+    "seen": 1787090313.141811,
     "ast_hash": "196177e6059b0e8382205ebdd768638d",
     "semantic_hash": "196177e6059b0e8382205ebdd768638d"
   },
   "src/components/OrganSpec.astro": {
     "mtime": 1786549389.970979,
-    "seen": 1787087554.0313559,
+    "seen": 1787090313.141811,
     "ast_hash": "b756756d862510e54fa6b6c71998ff0b",
     "semantic_hash": "b756756d862510e54fa6b6c71998ff0b"
   },
   "src/components/PageHeader.astro": {
     "mtime": 1786549389.971151,
-    "seen": 1787087554.0313568,
+    "seen": 1787090313.141811,
     "ast_hash": "b2cddc4f6625b617475f54e30aadb090",
     "semantic_hash": "b2cddc4f6625b617475f54e30aadb090"
   },
   "src/components/ParishLifeStrip.astro": {
     "mtime": 1787075073.2346814,
-    "seen": 1787087554.0313568,
+    "seen": 1787090313.141812,
     "ast_hash": "3c18fe1ef6669b7268c9ac0813d2161c",
     "semantic_hash": "3c18fe1ef6669b7268c9ac0813d2161c"
   },
   "src/components/PostFooterNav.astro": {
     "mtime": 1786549389.971268,
-    "seen": 1787087554.0313568,
+    "seen": 1787090313.141812,
     "ast_hash": "6dfc0e64671ec032c159df4646ee6952",
     "semantic_hash": "6dfc0e64671ec032c159df4646ee6952"
   },
   "src/components/Prose.astro": {
     "mtime": 1786549389.9713733,
-    "seen": 1787087554.031358,
+    "seen": 1787090313.141813,
     "ast_hash": "043ffc31ae1837e15eab6c835550333b",
     "semantic_hash": "043ffc31ae1837e15eab6c835550333b"
   },
   "src/components/ServiceSheet.astro": {
     "mtime": 1787056015.1454365,
-    "seen": 1787087554.031358,
+    "seen": 1787090313.141813,
     "ast_hash": "175780357478642c531fd80f4871db11",
     "semantic_hash": "175780357478642c531fd80f4871db11"
   },
   "src/components/ServiceTimes.astro": {
     "mtime": 1786549389.9714806,
-    "seen": 1787087554.031359,
+    "seen": 1787090313.141814,
     "ast_hash": "3b37434c0f226852ab35e4d6f2213493",
     "semantic_hash": "3b37434c0f226852ab35e4d6f2213493"
   },
   "src/components/ServiceTimesBand.astro": {
     "mtime": 1786549389.9716413,
-    "seen": 1787087554.031359,
+    "seen": 1787090313.141814,
     "ast_hash": "3327ede9c98d37c8034259d07260e177",
     "semantic_hash": "3327ede9c98d37c8034259d07260e177"
   },
   "src/components/SiteFooter.astro": {
     "mtime": 1787075073.2353392,
-    "seen": 1787087554.03136,
+    "seen": 1787090313.141815,
     "ast_hash": "0c3ee184f3d62cac757200c2e8b2ceca",
     "semantic_hash": "0c3ee184f3d62cac757200c2e8b2ceca"
   },
   "src/components/SiteHeader.astro": {
     "mtime": 1786549389.9719558,
-    "seen": 1787087554.03136,
+    "seen": 1787090313.141815,
     "ast_hash": "f455b5dcef341856edadf2661b19dde3",
     "semantic_hash": "f455b5dcef341856edadf2661b19dde3"
   },
   "src/components/StaffGrid.astro": {
     "mtime": 1786549389.972059,
-    "seen": 1787087554.031361,
+    "seen": 1787090313.1418161,
     "ast_hash": "73c49e31928996c633c77874792b0d91",
     "semantic_hash": "73c49e31928996c633c77874792b0d91"
   },
   "src/components/ThisSunday.astro": {
     "mtime": 1787055201.1527753,
-    "seen": 1787087554.031362,
+    "seen": 1787090313.1418161,
     "ast_hash": "0e66b45b9a7f0320033ae851593267ac",
     "semantic_hash": "0e66b45b9a7f0320033ae851593267ac"
   },
   "src/components/VisitDetails.astro": {
     "mtime": 1786549389.9723048,
-    "seen": 1787087554.031362,
+    "seen": 1787090313.141817,
     "ast_hash": "1525d9a428e173152aea11c6f18428e8",
     "semantic_hash": "1525d9a428e173152aea11c6f18428e8"
   },
   "src/components/WelcomeBand.astro": {
     "mtime": 1786549389.9723942,
-    "seen": 1787087554.031363,
+    "seen": 1787090313.141817,
     "ast_hash": "40080e17200c2076fdc5aa72e261f322",
     "semantic_hash": "40080e17200c2076fdc5aa72e261f322"
   },
   "src/components/WhatsOn.astro": {
     "mtime": 1786549389.972533,
-    "seen": 1787087554.031363,
+    "seen": 1787090313.141817,
     "ast_hash": "13ee3bd31d82a5758c13ba4f629269d9",
     "semantic_hash": "13ee3bd31d82a5758c13ba4f629269d9"
   },
   "src/components/YouTubeFacade.astro": {
     "mtime": 1787075073.235639,
-    "seen": 1787087554.0313642,
+    "seen": 1787090313.141818,
     "ast_hash": "3c028a9053712fd318632e34348cb69c",
     "semantic_hash": "3c028a9053712fd318632e34348cb69c"
   },
   "src/components/history/AtAGlance.astro": {
     "mtime": 1786549389.972704,
-    "seen": 1787087554.0313642,
+    "seen": 1787090313.141818,
     "ast_hash": "f47ae1824918987673252fa0aaac6f27",
     "semantic_hash": "f47ae1824918987673252fa0aaac6f27"
   },
   "src/components/history/HistoryHeroBand.astro": {
     "mtime": 1786549389.97355,
-    "seen": 1787087554.0313642,
+    "seen": 1787090313.1418188,
     "ast_hash": "9f2da38ac73ec0bda0893328b3a0a8d1",
     "semantic_hash": "9f2da38ac73ec0bda0893328b3a0a8d1"
   },
   "src/components/history/PullQuote.astro": {
     "mtime": 1786549389.974057,
-    "seen": 1787087554.0313652,
+    "seen": 1787090313.1418188,
     "ast_hash": "923e6363297ef244eab4bb1ef7cec856",
     "semantic_hash": "923e6363297ef244eab4bb1ef7cec856"
   },
   "src/components/history/Timeline.astro": {
     "mtime": 1786549389.9741702,
-    "seen": 1787087554.0313652,
+    "seen": 1787090313.14182,
     "ast_hash": "3b9b5b55b196d9288990d7c5ed534557",
     "semantic_hash": "3b9b5b55b196d9288990d7c5ed534557"
   },
   "src/content.config.ts": {
     "mtime": 1787059713.5570948,
-    "seen": 1787087554.0313659,
+    "seen": 1787090313.14182,
     "ast_hash": "340d7b9aee1b19947e4c1ae2e46998af",
     "semantic_hash": "340d7b9aee1b19947e4c1ae2e46998af"
   },
   "src/content/documents/01-order-of-service.json": {
     "mtime": 1786549389.9746816,
-    "seen": 1787087554.0313659,
+    "seen": 1787090313.141821,
     "ast_hash": "0801df10e5d942f071be7e3c9d3a5eca",
     "semantic_hash": "0801df10e5d942f071be7e3c9d3a5eca"
   },
   "src/content/documents/03-data-protection.json": {
     "mtime": 1786549389.9748738,
-    "seen": 1787087554.0313668,
+    "seen": 1787090313.141821,
     "ast_hash": "1602f2d75bd4aaf6b372813cefd7fadd",
     "semantic_hash": "1602f2d75bd4aaf6b372813cefd7fadd"
   },
   "src/content/documents/04-expense-form.json": {
     "mtime": 1786549389.9750118,
-    "seen": 1787087554.0313668,
+    "seen": 1787090313.1418219,
     "ast_hash": "45470b40f11eaf62ea903c780ddb7626",
     "semantic_hash": "45470b40f11eaf62ea903c780ddb7626"
   },
   "src/content/documents/05-safeguarding-policy.json": {
     "mtime": 1786549389.9751706,
-    "seen": 1787087554.031368,
+    "seen": 1787090313.1418219,
     "ast_hash": "ce05e5dca6d3aad9bb6f30d722abee51",
     "semantic_hash": "ce05e5dca6d3aad9bb6f30d722abee51"
   },
   "src/content/events/2026-06-07-corpus-christi.json": {
     "mtime": 1786549389.9753342,
-    "seen": 1787087554.031368,
+    "seen": 1787090313.1418219,
     "ast_hash": "eaf5ea540e02fa6ff4d0cef05d84fb60",
     "semantic_hash": "eaf5ea540e02fa6ff4d0cef05d84fb60"
   },
   "src/content/events/2026-06-11-st-barnabas.json": {
     "mtime": 1786549389.9757016,
-    "seen": 1787087554.031369,
+    "seen": 1787090313.141823,
     "ast_hash": "d5f102247cd754ca14e4279453e26c0b",
     "semantic_hash": "d5f102247cd754ca14e4279453e26c0b"
   },
   "src/content/events/2027-07-04-merton-college-choir.json": {
     "mtime": 1787059713.5573955,
-    "seen": 1787087554.031369,
+    "seen": 1787090313.141823,
     "ast_hash": "3158287165b2e40498f87b43c93c5e11",
     "semantic_hash": "3158287165b2e40498f87b43c93c5e11"
   },
   "src/content/services/2026-06-07.json": {
     "mtime": 1786549390.0069444,
-    "seen": 1787087554.031369,
+    "seen": 1787090313.141824,
     "ast_hash": "ee4c85561a2db275d531340a53eb4dc8",
     "semantic_hash": "ee4c85561a2db275d531340a53eb4dc8"
   },
   "src/content/services/2026-07-19.json": {
     "mtime": 1786549390.0070572,
-    "seen": 1787087554.03137,
+    "seen": 1787090313.141824,
     "ast_hash": "cfb7c67d60b61e6e259b81366b35e4bf",
     "semantic_hash": "cfb7c67d60b61e6e259b81366b35e4bf"
   },
   "src/content/services/2026-09-06.json": {
     "mtime": 1787051972.10642,
-    "seen": 1787087554.03137,
+    "seen": 1787090313.141825,
     "ast_hash": "339ee640b5dce6e26ffd57219f3dbb71",
     "semantic_hash": "339ee640b5dce6e26ffd57219f3dbb71"
   },
   "src/content/services/2026-09-13.json": {
     "mtime": 1787051972.1074164,
-    "seen": 1787087554.031371,
+    "seen": 1787090313.141825,
     "ast_hash": "32b4833926641a3acd06f084a1cacee4",
     "semantic_hash": "32b4833926641a3acd06f084a1cacee4"
   },
   "src/content/services/2026-09-20.json": {
     "mtime": 1787051972.1075373,
-    "seen": 1787087554.031371,
+    "seen": 1787090313.141825,
     "ast_hash": "813f19f0108c66fb3789e4ef9a47c030",
     "semantic_hash": "813f19f0108c66fb3789e4ef9a47c030"
   },
   "src/content/services/2026-09-27.json": {
     "mtime": 1787051972.107645,
-    "seen": 1787087554.031372,
+    "seen": 1787090313.1418262,
     "ast_hash": "a4aae57de0010382ed5167c2752e76ae",
     "semantic_hash": "a4aae57de0010382ed5167c2752e76ae"
   },
   "src/content/services/2026-10-04.json": {
     "mtime": 1787051972.1077342,
-    "seen": 1787087554.031372,
+    "seen": 1787090313.1418262,
     "ast_hash": "9c9c4a7ed7d5b6b304595ef5f93d4d57",
     "semantic_hash": "9c9c4a7ed7d5b6b304595ef5f93d4d57"
   },
   "src/content/services/2026-10-11.json": {
     "mtime": 1787051972.107827,
-    "seen": 1787087554.031373,
+    "seen": 1787090313.141827,
     "ast_hash": "c599cac1dafe1aa759294ec57e8a5c3f",
     "semantic_hash": "c599cac1dafe1aa759294ec57e8a5c3f"
   },
   "src/content/services/2026-10-18.json": {
     "mtime": 1787051972.1079068,
-    "seen": 1787087554.031373,
+    "seen": 1787090313.141827,
     "ast_hash": "9b56f1d48d00ef0985ea1ee52c8e10c7",
     "semantic_hash": "9b56f1d48d00ef0985ea1ee52c8e10c7"
   },
   "src/content/services/2026-10-25.json": {
     "mtime": 1787051972.1079926,
-    "seen": 1787087554.031373,
+    "seen": 1787090313.141828,
     "ast_hash": "362d989926000cfa2ac820007c66731f",
     "semantic_hash": "362d989926000cfa2ac820007c66731f"
   },
   "src/content/services/2026-11-01.json": {
     "mtime": 1787051972.108083,
-    "seen": 1787087554.031374,
+    "seen": 1787090313.141828,
     "ast_hash": "92db36be3d5c142a19da155eabca6ae7",
     "semantic_hash": "92db36be3d5c142a19da155eabca6ae7"
   },
   "src/content/services/2026-11-08.json": {
     "mtime": 1787051972.1081784,
-    "seen": 1787087554.031374,
+    "seen": 1787090313.141828,
     "ast_hash": "d79094159a88680ea6d8d92b0a91d3ea",
     "semantic_hash": "d79094159a88680ea6d8d92b0a91d3ea"
   },
   "src/content/services/2026-11-15.json": {
     "mtime": 1787051972.1082828,
-    "seen": 1787087554.0313752,
+    "seen": 1787090313.141829,
     "ast_hash": "f961c6b69b9030271465cb0f124c10bf",
     "semantic_hash": "f961c6b69b9030271465cb0f124c10bf"
   },
   "src/content/services/2026-11-22.json": {
     "mtime": 1787051972.1083643,
-    "seen": 1787087554.0313752,
+    "seen": 1787090313.141829,
     "ast_hash": "c47fef71a1593e757afef9daf38dd578",
     "semantic_hash": "c47fef71a1593e757afef9daf38dd578"
   },
   "src/content/services/2026-11-29.json": {
     "mtime": 1787051972.108448,
-    "seen": 1787087554.031376,
+    "seen": 1787090313.14183,
     "ast_hash": "e19a28b327cc6a60a6a8ba5b5312eb50",
     "semantic_hash": "e19a28b327cc6a60a6a8ba5b5312eb50"
   },
   "src/content/services/2026-12-06.json": {
     "mtime": 1787051972.1085217,
-    "seen": 1787087554.031376,
+    "seen": 1787090313.14183,
     "ast_hash": "4fc0b9632f725af722732eb3650a990d",
     "semantic_hash": "4fc0b9632f725af722732eb3650a990d"
   },
   "src/content/services/2026-12-13.json": {
     "mtime": 1787051972.1086004,
-    "seen": 1787087554.031376,
+    "seen": 1787090313.141831,
     "ast_hash": "fb04111a889923dc92a56b83cdc6665b",
     "semantic_hash": "fb04111a889923dc92a56b83cdc6665b"
   },
   "src/content/services/2026-12-20.json": {
     "mtime": 1787051972.108672,
-    "seen": 1787087554.0313768,
+    "seen": 1787090313.141831,
     "ast_hash": "d5c970d32ced5658dd55857389f01dc9",
     "semantic_hash": "d5c970d32ced5658dd55857389f01dc9"
   },
   "src/content/services/2026-12-24.json": {
     "mtime": 1787051972.108747,
-    "seen": 1787087554.0313768,
+    "seen": 1787090313.1418319,
     "ast_hash": "0ff2cc854192ce36c2eb444d5e2e6401",
     "semantic_hash": "0ff2cc854192ce36c2eb444d5e2e6401"
   },
   "src/content/services/2026-12-25.json": {
     "mtime": 1787051972.1088283,
-    "seen": 1787087554.031378,
+    "seen": 1787090313.1418319,
     "ast_hash": "0f9ded997d779e716c4071fc4a73bd20",
     "semantic_hash": "0f9ded997d779e716c4071fc4a73bd20"
   },
   "src/content/services/2027-01-03.json": {
     "mtime": 1787051972.1090581,
-    "seen": 1787087554.031378,
+    "seen": 1787090313.1418319,
     "ast_hash": "eb71ac616efbb4326f13d60d262f1251",
     "semantic_hash": "eb71ac616efbb4326f13d60d262f1251"
   },
   "src/content/services/2027-01-10.json": {
     "mtime": 1787051972.1091943,
-    "seen": 1787087554.031379,
+    "seen": 1787090313.141833,
     "ast_hash": "0688b3c099b9ed9ded20b411ff17b789",
     "semantic_hash": "0688b3c099b9ed9ded20b411ff17b789"
   },
   "src/content/services/2027-01-17.json": {
     "mtime": 1787051972.109288,
-    "seen": 1787087554.031379,
+    "seen": 1787090313.141833,
     "ast_hash": "5f094a25d8989e7f713ca51286341f98",
     "semantic_hash": "5f094a25d8989e7f713ca51286341f98"
   },
   "src/content/services/2027-01-24.json": {
     "mtime": 1787051972.1093652,
-    "seen": 1787087554.03138,
+    "seen": 1787090313.141834,
     "ast_hash": "bb4a77fde469c30c58ded6cdfde1340b",
     "semantic_hash": "bb4a77fde469c30c58ded6cdfde1340b"
   },
   "src/content/services/2027-01-31.json": {
     "mtime": 1787051972.109442,
-    "seen": 1787087554.03138,
+    "seen": 1787090313.141834,
     "ast_hash": "331993ccae3cd09a3f5e0b1ecb51accc",
     "semantic_hash": "331993ccae3cd09a3f5e0b1ecb51accc"
   },
   "src/content/services/2027-02-07.json": {
     "mtime": 1787051972.1095374,
-    "seen": 1787087554.031381,
+    "seen": 1787090313.141835,
     "ast_hash": "daec80bf5228c10da04dc5a6abea8c2a",
     "semantic_hash": "daec80bf5228c10da04dc5a6abea8c2a"
   },
   "src/content/services/2027-02-10.json": {
     "mtime": 1787051972.1096368,
-    "seen": 1787087554.031382,
+    "seen": 1787090313.141835,
     "ast_hash": "04714125af8fd1d96c42a1d2bbdc5d9d",
     "semantic_hash": "04714125af8fd1d96c42a1d2bbdc5d9d"
   },
   "src/content/services/2027-02-14.json": {
     "mtime": 1787051972.1097157,
-    "seen": 1787087554.031382,
+    "seen": 1787090313.141836,
     "ast_hash": "1aa9a5f57a5bac9a85e079b8a1ab746a",
     "semantic_hash": "1aa9a5f57a5bac9a85e079b8a1ab746a"
   },
   "src/content/services/2027-02-21.json": {
     "mtime": 1787051972.1097882,
-    "seen": 1787087554.031382,
+    "seen": 1787090313.141836,
     "ast_hash": "ddaa675a553bf55b5472a273a2b87238",
     "semantic_hash": "ddaa675a553bf55b5472a273a2b87238"
   },
   "src/content/services/2027-02-28.json": {
     "mtime": 1787051972.1098619,
-    "seen": 1787087554.031383,
+    "seen": 1787090313.141836,
     "ast_hash": "335f454c89b90bd1a61ad74885d634de",
     "semantic_hash": "335f454c89b90bd1a61ad74885d634de"
   },
   "src/content/services/2027-03-07.json": {
     "mtime": 1787051972.1099343,
-    "seen": 1787087554.031383,
+    "seen": 1787090313.1418371,
     "ast_hash": "bbb9f34c4cec331cccd024a528fd62d4",
     "semantic_hash": "bbb9f34c4cec331cccd024a528fd62d4"
   },
   "src/content/services/2027-03-14.json": {
     "mtime": 1787051972.1100016,
-    "seen": 1787087554.031384,
+    "seen": 1787090313.1418371,
     "ast_hash": "7a12ee5b54ad2d79f7b07d020386fe48",
     "semantic_hash": "7a12ee5b54ad2d79f7b07d020386fe48"
   },
   "src/content/services/2027-03-21.json": {
     "mtime": 1787051972.1100717,
-    "seen": 1787087554.031384,
+    "seen": 1787090313.141838,
     "ast_hash": "04162b495db50cf0d467717208f7d020",
     "semantic_hash": "04162b495db50cf0d467717208f7d020"
   },
   "src/content/services/2027-03-25.json": {
     "mtime": 1787051972.11014,
-    "seen": 1787087554.0313852,
+    "seen": 1787090313.141838,
     "ast_hash": "b5045e53ea0e93ece6c7f60f32bc9312",
     "semantic_hash": "b5045e53ea0e93ece6c7f60f32bc9312"
   },
   "src/content/services/2027-03-26.json": {
     "mtime": 1787051972.1102057,
-    "seen": 1787087554.0313852,
+    "seen": 1787090313.141838,
     "ast_hash": "160b1b204a21e7b2f60ecd7a5c247fc7",
     "semantic_hash": "160b1b204a21e7b2f60ecd7a5c247fc7"
   },
   "src/content/services/2027-03-27.json": {
     "mtime": 1787051972.1102736,
-    "seen": 1787087554.0313861,
+    "seen": 1787090313.141839,
     "ast_hash": "405059f6ac5a9435faccc016ad083ec9",
     "semantic_hash": "405059f6ac5a9435faccc016ad083ec9"
   },
   "src/content/services/2027-03-28.json": {
     "mtime": 1787051972.11035,
-    "seen": 1787087554.0313861,
+    "seen": 1787090313.141839,
     "ast_hash": "cedae92b0c854f1306e4e13ce4aaabff",
     "semantic_hash": "cedae92b0c854f1306e4e13ce4aaabff"
   },
   "src/content/services/2027-04-04.json": {
     "mtime": 1787051972.1104228,
-    "seen": 1787087554.0313861,
+    "seen": 1787090313.14184,
     "ast_hash": "6ca8c07111b7283dd2d35cdbaef97d45",
     "semantic_hash": "6ca8c07111b7283dd2d35cdbaef97d45"
   },
   "src/content/services/2027-04-11.json": {
     "mtime": 1787051972.110492,
-    "seen": 1787087554.0313869,
+    "seen": 1787090313.14184,
     "ast_hash": "32dace98a3766d78b02523c47fda7501",
     "semantic_hash": "32dace98a3766d78b02523c47fda7501"
   },
   "src/content/services/2027-04-18.json": {
     "mtime": 1787051972.11056,
-    "seen": 1787087554.0313869,
+    "seen": 1787090313.141841,
     "ast_hash": "ee435271a101b3688b4cb312beacb6af",
     "semantic_hash": "ee435271a101b3688b4cb312beacb6af"
   },
   "src/content/services/2027-04-25.json": {
     "mtime": 1787051972.1106324,
-    "seen": 1787087554.0313878,
+    "seen": 1787090313.141841,
     "ast_hash": "46689640273b06b532540bbaa00ca0d4",
     "semantic_hash": "46689640273b06b532540bbaa00ca0d4"
   },
   "src/content/services/2027-05-02.json": {
     "mtime": 1787051972.1107073,
-    "seen": 1787087554.0313878,
+    "seen": 1787090313.141841,
     "ast_hash": "ffb53d21c9c509b612d4f91fe39c6571",
     "semantic_hash": "ffb53d21c9c509b612d4f91fe39c6571"
   },
   "src/content/services/2027-05-09.json": {
     "mtime": 1787051972.1107776,
-    "seen": 1787087554.031389,
+    "seen": 1787090313.141842,
     "ast_hash": "e09114e3bd953ba3af763ca7e610f52d",
     "semantic_hash": "e09114e3bd953ba3af763ca7e610f52d"
   },
   "src/content/services/2027-05-16.json": {
     "mtime": 1787051972.1108463,
-    "seen": 1787087554.031389,
+    "seen": 1787090313.141842,
     "ast_hash": "84025789a1e9c9c9feb618484253683b",
     "semantic_hash": "84025789a1e9c9c9feb618484253683b"
   },
   "src/content/services/2027-05-23.json": {
     "mtime": 1787051972.1109116,
-    "seen": 1787087554.03139,
+    "seen": 1787090313.1418428,
     "ast_hash": "b8ad12390c05fa4f0df0ede67b4c50be",
     "semantic_hash": "b8ad12390c05fa4f0df0ede67b4c50be"
   },
   "src/content/services/2027-05-30.json": {
     "mtime": 1787051972.1109796,
-    "seen": 1787087554.03139,
+    "seen": 1787090313.1418428,
     "ast_hash": "e584217b57432e530abc98086800a138",
     "semantic_hash": "e584217b57432e530abc98086800a138"
   },
   "src/content/services/2027-06-06.json": {
     "mtime": 1787051972.1110487,
-    "seen": 1787087554.03139,
+    "seen": 1787090313.141844,
     "ast_hash": "59785225ecab2b375e1d0300b43f7925",
     "semantic_hash": "59785225ecab2b375e1d0300b43f7925"
   },
   "src/content/services/2027-06-13.json": {
     "mtime": 1787051972.111115,
-    "seen": 1787087554.031391,
+    "seen": 1787090313.141844,
     "ast_hash": "200f0215b8d372dca214a8e6f1e464f4",
     "semantic_hash": "200f0215b8d372dca214a8e6f1e464f4"
   },
   "src/content/services/2027-06-20.json": {
     "mtime": 1787051972.1111822,
-    "seen": 1787087554.031391,
+    "seen": 1787090313.141844,
     "ast_hash": "8b920c35ed73e98ae8175a7933537566",
     "semantic_hash": "8b920c35ed73e98ae8175a7933537566"
   },
   "src/content/services/2027-06-27.json": {
     "mtime": 1787051972.111253,
-    "seen": 1787087554.031392,
+    "seen": 1787090313.141845,
     "ast_hash": "c925b92680d7eaed6303f1ee516e8937",
     "semantic_hash": "c925b92680d7eaed6303f1ee516e8937"
   },
   "src/content/services/2027-07-04.json": {
     "mtime": 1787057437.8423307,
-    "seen": 1787087554.031392,
+    "seen": 1787090313.141845,
     "ast_hash": "5458543958318edc6648516480611dfd",
     "semantic_hash": "5458543958318edc6648516480611dfd"
   },
   "src/content/services/2027-07-11.json": {
     "mtime": 1787051972.1113908,
-    "seen": 1787087554.031393,
+    "seen": 1787090313.141846,
     "ast_hash": "70d6509fd2ffddd3741eef985a9444e0",
     "semantic_hash": "70d6509fd2ffddd3741eef985a9444e0"
   },
   "src/content/services/2027-07-18.json": {
     "mtime": 1787051972.111455,
-    "seen": 1787087554.031393,
+    "seen": 1787090313.141846,
     "ast_hash": "afb3328aa9303f1e101d1567316e4d7c",
     "semantic_hash": "afb3328aa9303f1e101d1567316e4d7c"
   },
   "src/content/services/2027-07-25.json": {
     "mtime": 1787051972.1115222,
-    "seen": 1787087554.031393,
+    "seen": 1787090313.141846,
     "ast_hash": "789a8767fc01483f04e101e52fafb4ab",
     "semantic_hash": "789a8767fc01483f04e101e52fafb4ab"
   },
   "src/content/settings/hire.json": {
     "mtime": 1787075073.2403464,
-    "seen": 1787087554.031394,
+    "seen": 1787090313.1418471,
     "ast_hash": "fdee7492d7fd75345298d6e4c33e0a22",
     "semantic_hash": "fdee7492d7fd75345298d6e4c33e0a22"
   },
   "src/content/settings/historyPage.json": {
     "mtime": 1786549390.0075111,
-    "seen": 1787087554.031394,
+    "seen": 1787090313.1418471,
     "ast_hash": "e9e1d7211f51073f9af5ca6923f74254",
     "semantic_hash": "e9e1d7211f51073f9af5ca6923f74254"
   },
   "src/content/settings/serviceTimes.json": {
     "mtime": 1786549390.007777,
-    "seen": 1787087554.031395,
+    "seen": 1787090313.141848,
     "ast_hash": "ab6dea20501fa98fc618eb5fd3c8ae1f",
     "semantic_hash": "ab6dea20501fa98fc618eb5fd3c8ae1f"
   },
   "src/content/settings/site.json": {
     "mtime": 1786549390.0080466,
-    "seen": 1787087554.031395,
+    "seen": 1787090313.141848,
     "ast_hash": "7fe10dd855386d1d2daaf89c02fa89e2",
     "semantic_hash": "7fe10dd855386d1d2daaf89c02fa89e2"
   },
   "src/content/staff/01-sarah-howard-jones.json": {
     "mtime": 1786549390.0082376,
-    "seen": 1787087554.0313962,
+    "seen": 1787090313.141849,
     "ast_hash": "927f40aea6a88d32fcb896595499f7e6",
     "semantic_hash": "927f40aea6a88d32fcb896595499f7e6"
   },
   "src/content/staff/02-valerie-aitken.json": {
     "mtime": 1786549390.0087445,
-    "seen": 1787087554.0313962,
+    "seen": 1787090313.141849,
     "ast_hash": "32be995427c7e10fa0a9c9915b049979",
     "semantic_hash": "32be995427c7e10fa0a9c9915b049979"
   },
   "src/content/staff/03-jenny-krige.json": {
     "mtime": 1786549390.0088377,
-    "seen": 1787087554.031397,
+    "seen": 1787090313.141849,
     "ast_hash": "2467021ec5fbc04f9ea54eb9575740ff",
     "semantic_hash": "2467021ec5fbc04f9ea54eb9575740ff"
   },
   "src/content/staff/04-felicity-mather.json": {
     "mtime": 1786549390.0090551,
-    "seen": 1787087554.031397,
+    "seen": 1787090313.14185,
     "ast_hash": "f963db9845a4f59e668dfcb8e338bccc",
     "semantic_hash": "f963db9845a4f59e668dfcb8e338bccc"
   },
   "src/content/staff/05-luca-wetherall.json": {
     "mtime": 1786549390.0093033,
-    "seen": 1787087554.031397,
+    "seen": 1787090313.14185,
     "ast_hash": "68a12863b69870e975036bdd0ffd7f66",
     "semantic_hash": "68a12863b69870e975036bdd0ffd7f66"
   },
   "src/content/staff/06-hugh-mather.json": {
     "mtime": 1786549390.0097423,
-    "seen": 1787087554.0313978,
+    "seen": 1787090313.141851,
     "ast_hash": "a5371d8460f4d563bb21922c1df6270b",
     "semantic_hash": "a5371d8460f4d563bb21922c1df6270b"
   },
   "src/content/staff/07-nick-barnes.json": {
     "mtime": 1786549390.009947,
-    "seen": 1787087554.0313978,
+    "seen": 1787090313.141851,
     "ast_hash": "92c7228b18c7282cf4cfaf36d888d8e0",
     "semantic_hash": "92c7228b18c7282cf4cfaf36d888d8e0"
   },
   "src/data/artwork.ts": {
     "mtime": 1786549390.0102668,
-    "seen": 1787087554.031399,
+    "seen": 1787090313.141852,
     "ast_hash": "410a8b78859faf4b497fa03b7e5567b0",
     "semantic_hash": "410a8b78859faf4b497fa03b7e5567b0"
   },
   "src/data/eventCategories.ts": {
     "mtime": 1786549390.0103564,
-    "seen": 1787087554.031399,
+    "seen": 1787090313.141852,
     "ast_hash": "b069bb93163210cba840b2c6bd1684ae",
     "semantic_hash": "b069bb93163210cba840b2c6bd1684ae"
   },
   "src/data/hire.test.ts": {
     "mtime": 1787075073.240712,
-    "seen": 1787087554.0314,
+    "seen": 1787090313.141852,
     "ast_hash": "17d9bd5c484934ed33ec786b9c7a47b1",
     "semantic_hash": "17d9bd5c484934ed33ec786b9c7a47b1"
   },
   "src/data/hire.ts": {
     "mtime": 1787075073.2409518,
-    "seen": 1787087554.0314,
+    "seen": 1787090313.1418529,
     "ast_hash": "14d5237fa052a80b21b42f3897958150",
     "semantic_hash": "14d5237fa052a80b21b42f3897958150"
   },
   "src/data/history.test.ts": {
     "mtime": 1786549390.0110161,
-    "seen": 1787087554.031401,
+    "seen": 1787090313.1418529,
     "ast_hash": "a58f0ca6232626803c16c3d2cb901ad7",
     "semantic_hash": "a58f0ca6232626803c16c3d2cb901ad7"
   },
   "src/data/history.ts": {
     "mtime": 1786549390.0113068,
-    "seen": 1787087554.031401,
+    "seen": 1787090313.141854,
     "ast_hash": "288a7ed0402b92fa981afa04512b029d",
     "semantic_hash": "288a7ed0402b92fa981afa04512b029d"
   },
   "src/data/nav.ts": {
     "mtime": 1787075073.2414412,
-    "seen": 1787087554.031401,
+    "seen": 1787090313.141854,
     "ast_hash": "9ac40bd5f0834b718962845cdf4302e0",
     "semantic_hash": "9ac40bd5f0834b718962845cdf4302e0"
   },
   "src/data/organSpec.ts": {
     "mtime": 1786549390.012227,
-    "seen": 1787087554.0314019,
+    "seen": 1787090313.141855,
     "ast_hash": "c959cb5d3efae5c819e11281d705f716",
     "semantic_hash": "c959cb5d3efae5c819e11281d705f716"
   },
   "src/data/serviceTimes.test.ts": {
     "mtime": 1786549390.0125275,
-    "seen": 1787087554.0314019,
+    "seen": 1787090313.141855,
     "ast_hash": "ff63dd3765496fff35fdadf0ae17eb0c",
     "semantic_hash": "ff63dd3765496fff35fdadf0ae17eb0c"
   },
   "src/data/serviceTimes.ts": {
     "mtime": 1786549390.0126605,
-    "seen": 1787087554.031403,
+    "seen": 1787090313.141856,
     "ast_hash": "8d4b2fd84a13d39516bf692935a2b210",
     "semantic_hash": "8d4b2fd84a13d39516bf692935a2b210"
   },
   "src/data/site.test.ts": {
     "mtime": 1786549390.0129137,
-    "seen": 1787087554.031403,
+    "seen": 1787090313.141856,
     "ast_hash": "52ae18bcab773a2e714077f3780a8a5c",
     "semantic_hash": "52ae18bcab773a2e714077f3780a8a5c"
   },
   "src/data/site.ts": {
     "mtime": 1786549390.0132303,
-    "seen": 1787087554.031404,
+    "seen": 1787090313.141856,
     "ast_hash": "3ced8a69b4aaa713456bf234df346169",
     "semantic_hash": "3ced8a69b4aaa713456bf234df346169"
   },
   "src/env.d.ts": {
     "mtime": 1786549390.0133564,
-    "seen": 1787087554.031404,
+    "seen": 1787090313.141857,
     "ast_hash": "c1314721c46e47786ec2d96a4d97da89",
     "semantic_hash": "c1314721c46e47786ec2d96a4d97da89"
   },
   "src/layouts/Base.astro": {
     "mtime": 1786549390.013576,
-    "seen": 1787087554.031405,
+    "seen": 1787090313.141857,
     "ast_hash": "736176d74525c7179d87e51b95db8da9",
     "semantic_hash": "736176d74525c7179d87e51b95db8da9"
   },
   "src/lib/breadcrumbs.test.ts": {
     "mtime": 1786549390.0137327,
-    "seen": 1787087554.031405,
+    "seen": 1787090313.141858,
     "ast_hash": "085ac82b0cef5c0f61c45ff90e029e7c",
     "semantic_hash": "085ac82b0cef5c0f61c45ff90e029e7c"
   },
   "src/lib/breadcrumbs.ts": {
     "mtime": 1786549390.0138307,
-    "seen": 1787087554.031405,
+    "seen": 1787090313.141858,
     "ast_hash": "5cd554fe19baaddd27b3f31b06265d26",
     "semantic_hash": "5cd554fe19baaddd27b3f31b06265d26"
   },
   "src/lib/events-feed.test.ts": {
     "mtime": 1786549390.0139554,
-    "seen": 1787087554.0314062,
+    "seen": 1787090313.141859,
     "ast_hash": "504e86b32bb79e8003b6245db8de1102",
     "semantic_hash": "504e86b32bb79e8003b6245db8de1102"
   },
   "src/lib/events-feed.ts": {
     "mtime": 1786549390.0141454,
-    "seen": 1787087554.0314062,
+    "seen": 1787090313.141859,
     "ast_hash": "8db13e5048e6b98253eed09305cae597",
     "semantic_hash": "8db13e5048e6b98253eed09305cae597"
   },
   "src/lib/events-jsonld.ts": {
     "mtime": 1786549390.0142496,
-    "seen": 1787087554.031407,
+    "seen": 1787090313.141859,
     "ast_hash": "16aecfe80b52bff37cf87ef0fdc56074",
     "semantic_hash": "16aecfe80b52bff37cf87ef0fdc56074"
   },
   "src/lib/events-source.ts": {
     "mtime": 1787059713.557611,
-    "seen": 1787087554.031407,
+    "seen": 1787090313.14186,
     "ast_hash": "62622650444bf147e9b322194a77b38e",
     "semantic_hash": "62622650444bf147e9b322194a77b38e"
   },
   "src/lib/events.test.ts": {
     "mtime": 1787059713.5578513,
-    "seen": 1787087554.031408,
+    "seen": 1787090313.14186,
     "ast_hash": "66d4ac450cf48aa024d9fd59c04ddb50",
     "semantic_hash": "66d4ac450cf48aa024d9fd59c04ddb50"
   },
   "src/lib/events.ts": {
     "mtime": 1787059713.558176,
-    "seen": 1787087554.031408,
+    "seen": 1787090313.1418612,
     "ast_hash": "d01a0583d3c94cd8846ceadb36ba48e6",
     "semantic_hash": "d01a0583d3c94cd8846ceadb36ba48e6"
   },
   "src/lib/history.test.ts": {
     "mtime": 1786549390.0148542,
-    "seen": 1787087554.0314088,
+    "seen": 1787090313.1418612,
     "ast_hash": "3e155878837a953bfd61460024351050",
     "semantic_hash": "3e155878837a953bfd61460024351050"
   },
   "src/lib/history.ts": {
     "mtime": 1786549390.0151107,
-    "seen": 1787087554.0314088,
+    "seen": 1787090313.141862,
     "ast_hash": "be1f208b1d352088b059a73258310698",
     "semantic_hash": "be1f208b1d352088b059a73258310698"
   },
   "src/lib/liturgy.test.ts": {
     "mtime": 1786549390.0152137,
-    "seen": 1787087554.0314088,
+    "seen": 1787090313.141862,
     "ast_hash": "e5d135182e7f96a0213f9d02e1bbbe7e",
     "semantic_hash": "e5d135182e7f96a0213f9d02e1bbbe7e"
   },
   "src/lib/liturgy.ts": {
     "mtime": 1786549390.015462,
-    "seen": 1787087554.03141,
+    "seen": 1787090313.141862,
     "ast_hash": "e27a5accd17feb95bffb12fdebbc99f0",
     "semantic_hash": "e27a5accd17feb95bffb12fdebbc99f0"
   },
   "src/lib/news.test.ts": {
     "mtime": 1786549390.0155535,
-    "seen": 1787087554.03141,
+    "seen": 1787090313.1418629,
     "ast_hash": "491b493b1f7179953c141afc51c27e99",
     "semantic_hash": "491b493b1f7179953c141afc51c27e99"
   },
   "src/lib/news.ts": {
     "mtime": 1786549390.0156324,
-    "seen": 1787087554.031411,
+    "seen": 1787090313.1418629,
     "ast_hash": "8f3e81c29a3a0b1a14e9e48ca5e90aa2",
     "semantic_hash": "8f3e81c29a3a0b1a14e9e48ca5e90aa2"
   },
   "src/lib/seo.test.ts": {
     "mtime": 1786549390.0157456,
-    "seen": 1787087554.031411,
+    "seen": 1787090313.1418638,
     "ast_hash": "b9c2a2aac1b5af68c743092a2b3a0902",
     "semantic_hash": "b9c2a2aac1b5af68c743092a2b3a0902"
   },
   "src/lib/seo.ts": {
     "mtime": 1786549390.015922,
-    "seen": 1787087554.031412,
+    "seen": 1787090313.1418638,
     "ast_hash": "bafc7bf105aae462fd8a2b05525d7485",
     "semantic_hash": "bafc7bf105aae462fd8a2b05525d7485"
   },
   "src/lib/services.test.ts": {
     "mtime": 1787053137.4860523,
-    "seen": 1787087554.031412,
+    "seen": 1787090313.141865,
     "ast_hash": "c8b5c3f98e576c2dca8c7e7c0a577c9f",
     "semantic_hash": "c8b5c3f98e576c2dca8c7e7c0a577c9f"
   },
   "src/lib/services.ts": {
     "mtime": 1787053097.3155656,
-    "seen": 1787087554.031413,
+    "seen": 1787090313.141865,
     "ast_hash": "eb2cb4ce2c189f429810da5355a8e68c",
     "semantic_hash": "eb2cb4ce2c189f429810da5355a8e68c"
   },
   "src/lib/staff.ts": {
     "mtime": 1786549390.0163429,
-    "seen": 1787087554.031413,
+    "seen": 1787090313.141865,
     "ast_hash": "0a16c8abda4a826b3df6b5750c180f20",
     "semantic_hash": "0a16c8abda4a826b3df6b5750c180f20"
   },
   "src/lib/text.test.ts": {
     "mtime": 1786549390.016827,
-    "seen": 1787087554.031413,
+    "seen": 1787090313.141866,
     "ast_hash": "e1d842d2657fcec1475866d663beb019",
     "semantic_hash": "e1d842d2657fcec1475866d663beb019"
   },
   "src/lib/text.ts": {
     "mtime": 1786549390.0174727,
-    "seen": 1787087554.031414,
+    "seen": 1787090313.141866,
     "ast_hash": "43959aa5dc5c72d4839d3b857a6ca56a",
     "semantic_hash": "43959aa5dc5c72d4839d3b857a6ca56a"
   },
   "src/lib/youtube.test.ts": {
     "mtime": 1787075073.2417479,
-    "seen": 1787087554.031414,
+    "seen": 1787090313.141867,
     "ast_hash": "d24891a13528fdc61934432b4a8aca81",
     "semantic_hash": "d24891a13528fdc61934432b4a8aca81"
   },
   "src/lib/youtube.ts": {
     "mtime": 1787075073.241957,
-    "seen": 1787087554.031415,
+    "seen": 1787090313.141867,
     "ast_hash": "b1105a63f75b92b8c47ac6a2f6408a0c",
     "semantic_hash": "b1105a63f75b92b8c47ac6a2f6408a0c"
   },
   "src/pages/404.astro": {
     "mtime": 1786549390.0177343,
-    "seen": 1787087554.031415,
+    "seen": 1787090313.141868,
     "ast_hash": "1fffa9ef49e3aa3a5c68e52619d1e340",
     "semantic_hash": "1fffa9ef49e3aa3a5c68e52619d1e340"
   },
   "src/pages/[...slug].astro": {
     "mtime": 1787075073.242199,
-    "seen": 1787087554.0314162,
+    "seen": 1787090313.141868,
     "ast_hash": "974c9204fbe4f5b796ccacaeaff1b01d",
     "semantic_hash": "974c9204fbe4f5b796ccacaeaff1b01d"
   },
   "src/pages/about-us/history.astro": {
     "mtime": 1786549390.018002,
-    "seen": 1787087554.0314162,
+    "seen": 1787090313.141869,
     "ast_hash": "b20f9072da05ce0eb06b1ba23275568a",
     "semantic_hash": "b20f9072da05ce0eb06b1ba23275568a"
   },
   "src/pages/about-us/whos-who.astro": {
     "mtime": 1786549390.0180962,
-    "seen": 1787087554.0314162,
+    "seen": 1787090313.141869,
     "ast_hash": "dc4328ef2b7a250fb3f7b0e850d208d3",
     "semantic_hash": "dc4328ef2b7a250fb3f7b0e850d208d3"
   },
   "src/pages/about-us/whos-who/[person].astro": {
     "mtime": 1786549390.0182817,
-    "seen": 1787087554.0314171,
+    "seen": 1787090313.141869,
     "ast_hash": "b327e2f51a717c284f0eff647fc360fb",
     "semantic_hash": "b327e2f51a717c284f0eff647fc360fb"
   },
   "src/pages/calendar.ics.ts": {
     "mtime": 1786549390.0183766,
-    "seen": 1787087554.0314171,
+    "seen": 1787090313.14187,
     "ast_hash": "7c4ac0250bc33cb602b292b0e637ac50",
     "semantic_hash": "7c4ac0250bc33cb602b292b0e637ac50"
   },
   "src/pages/community/pitshanger-pictures.astro": {
     "mtime": 1786549390.018552,
-    "seen": 1787087554.031418,
+    "seen": 1787090313.14187,
     "ast_hash": "313c225d618509409aeb28af88a20fa7",
     "semantic_hash": "313c225d618509409aeb28af88a20fa7"
   },
   "src/pages/contact-us.astro": {
     "mtime": 1787075073.2424924,
-    "seen": 1787087554.031418,
+    "seen": 1787090313.1418712,
     "ast_hash": "7193dddba699ad4ce42dca2c176e37b3",
     "semantic_hash": "7193dddba699ad4ce42dca2c176e37b3"
   },
   "src/pages/documents.astro": {
     "mtime": 1786549390.019047,
-    "seen": 1787087554.0314188,
+    "seen": 1787090313.1418712,
     "ast_hash": "ab381a0608df11e643620a01ac925bd2",
     "semantic_hash": "ab381a0608df11e643620a01ac925bd2"
   },
   "src/pages/give.astro": {
     "mtime": 1786549390.019254,
-    "seen": 1787087554.03142,
+    "seen": 1787090313.1418722,
     "ast_hash": "bd67d6a46ed043447327afb1ad898f3d",
     "semantic_hash": "bd67d6a46ed043447327afb1ad898f3d"
   },
   "src/pages/hire/concerts.astro": {
     "mtime": 1787075073.2427347,
-    "seen": 1787087554.03142,
+    "seen": 1787090313.1418722,
     "ast_hash": "59bb376de5975b1a0695f453a63e3061",
     "semantic_hash": "59bb376de5975b1a0695f453a63e3061"
   },
   "src/pages/hire/halls.astro": {
     "mtime": 1787075073.2429488,
-    "seen": 1787087554.031421,
+    "seen": 1787090313.141873,
     "ast_hash": "89998f6dd55f5383f4c7c303203814c0",
     "semantic_hash": "89998f6dd55f5383f4c7c303203814c0"
   },
   "src/pages/hire/index.astro": {
     "mtime": 1787075073.2433255,
-    "seen": 1787087554.031421,
+    "seen": 1787090313.141873,
     "ast_hash": "f70a1cf92da9b42d12aabc953efc6ca9",
     "semantic_hash": "f70a1cf92da9b42d12aabc953efc6ca9"
   },
   "src/pages/hire/recordings.astro": {
     "mtime": 1787075073.2435474,
-    "seen": 1787087554.031422,
+    "seen": 1787090313.1418738,
     "ast_hash": "95c53b0ffa0c2043dc3e6b8cf59cdeba",
     "semantic_hash": "95c53b0ffa0c2043dc3e6b8cf59cdeba"
   },
   "src/pages/index.astro": {
     "mtime": 1787075073.2437468,
-    "seen": 1787087554.031422,
+    "seen": 1787090313.1418738,
     "ast_hash": "c1e3ef5ac495174a6c55dbb132a16d57",
     "semantic_hash": "c1e3ef5ac495174a6c55dbb132a16d57"
   },
   "src/pages/news/[slug].astro": {
     "mtime": 1786549390.01984,
-    "seen": 1787087554.031422,
+    "seen": 1787090313.141875,
     "ast_hash": "48f54da07d0540e09e646440635615b3",
     "semantic_hash": "48f54da07d0540e09e646440635615b3"
   },
   "src/pages/news/index.astro": {
     "mtime": 1786549390.0199833,
-    "seen": 1787087554.031423,
+    "seen": 1787090313.141875,
     "ast_hash": "f29afb67ef0ae70b1afd60335feb90b1",
     "semantic_hash": "f29afb67ef0ae70b1afd60335feb90b1"
   },
   "src/pages/news/rss.xml.ts": {
     "mtime": 1786549390.0201008,
-    "seen": 1787087554.031423,
+    "seen": 1787090313.141875,
     "ast_hash": "1851d1c031330804ce7a012c019318f0",
     "semantic_hash": "1851d1c031330804ce7a012c019318f0"
   },
   "src/pages/safeguarding.astro": {
     "mtime": 1786549390.0202103,
-    "seen": 1787087554.031424,
+    "seen": 1787090313.141876,
     "ast_hash": "6a37fac65527086df33df119063edbf2",
     "semantic_hash": "6a37fac65527086df33df119063edbf2"
   },
   "src/pages/search.astro": {
     "mtime": 1786549390.0204058,
-    "seen": 1787087554.031424,
+    "seen": 1787090313.141876,
     "ast_hash": "3a3cf396fbe88de47c9eec474136db7a",
     "semantic_hash": "3a3cf396fbe88de47c9eec474136db7a"
   },
   "src/pages/worship/online.astro": {
     "mtime": 1786549390.0206428,
-    "seen": 1787087554.031425,
+    "seen": 1787090313.141877,
     "ast_hash": "de084e3877940bf13323b11133636ad8",
     "semantic_hash": "de084e3877940bf13323b11133636ad8"
   },
   "src/pages/worship/special-services.astro": {
     "mtime": 1786549390.0207448,
-    "seen": 1787087554.031425,
+    "seen": 1787090313.141877,
     "ast_hash": "28ac4ee253f061c5bd4915d6c7b65e49",
     "semantic_hash": "28ac4ee253f061c5bd4915d6c7b65e49"
   },
   "src/pages/worship/sundays.astro": {
     "mtime": 1786549390.020842,
-    "seen": 1787087554.031425,
+    "seen": 1787090313.1418781,
     "ast_hash": "8adefbf227c6b7a66e26de2590c11923",
     "semantic_hash": "8adefbf227c6b7a66e26de2590c11923"
   },
   "src/pages/worship/weekdays.astro": {
     "mtime": 1786549390.02093,
-    "seen": 1787087554.031426,
+    "seen": 1787090313.1418781,
     "ast_hash": "32b1d179f1562335231500abf7914e7a",
     "semantic_hash": "32b1d179f1562335231500abf7914e7a"
   },
   "tsconfig.json": {
     "mtime": 1786549390.0215375,
-    "seen": 1787087554.031426,
+    "seen": 1787090313.141879,
     "ast_hash": "49e5068b4e9a577aa724fce5ebabae11",
     "semantic_hash": "49e5068b4e9a577aa724fce5ebabae11"
   },
   "vitest.config.ts": {
     "mtime": 1786549390.0216312,
-    "seen": 1787087554.0314271,
+    "seen": 1787090313.141879,
     "ast_hash": "aadaf5372f43e3c9409a86975fe585a9",
     "semantic_hash": "aadaf5372f43e3c9409a86975fe585a9"
+  },
+  "AGENTS.md": {
+    "mtime": 1786549389.8417468,
+    "seen": 1787090313.14188,
+    "ast_hash": "269a1a14a7e69d0071bf9b888e22ed38",
+    "semantic_hash": "269a1a14a7e69d0071bf9b888e22ed38"
+  },
+  "CLAUDE.md": {
+    "mtime": 1787089153.6173415,
+    "seen": 1787090313.14188,
+    "ast_hash": "65ca2ed095216a4f3854cc44bfdfdb41",
+    "semantic_hash": "65ca2ed095216a4f3854cc44bfdfdb41"
+  },
+  "CMS-SETUP.md": {
+    "mtime": 1786549389.8419645,
+    "seen": 1787090313.141881,
+    "ast_hash": "3bd87b4f3c0ee70348c1b6121a5a8a74",
+    "semantic_hash": "3bd87b4f3c0ee70348c1b6121a5a8a74"
+  },
+  "DECISIONS.md": {
+    "mtime": 1786549389.842115,
+    "seen": 1787090313.141881,
+    "ast_hash": "172ff090404894fcea371d789984e263",
+    "semantic_hash": "172ff090404894fcea371d789984e263"
+  },
+  "README.md": {
+    "mtime": 1786549389.8422732,
+    "seen": 1787090313.141881,
+    "ast_hash": "2c4022a0ec21d7237559657dbe545142",
+    "semantic_hash": "2c4022a0ec21d7237559657dbe545142"
+  },
+  "docs/AGENT-GUARDRAILS.md": {
+    "mtime": 1786549389.8426275,
+    "seen": 1787090313.1418822,
+    "ast_hash": "64345efda8b9756d3ff214bd8a483abc",
+    "semantic_hash": "64345efda8b9756d3ff214bd8a483abc"
+  },
+  "docs/ROADMAP.md": {
+    "mtime": 1786549389.8428829,
+    "seen": 1787090313.1418822,
+    "ast_hash": "8db8e6571c6834567c4749425a35f773",
+    "semantic_hash": "8db8e6571c6834567c4749425a35f773"
+  },
+  "docs/superpowers/README.md": {
+    "mtime": 1787055201.1535733,
+    "seen": 1787090313.141883,
+    "ast_hash": "b1c910c45a62eaff66d9609ae5a0ab45",
+    "semantic_hash": "b1c910c45a62eaff66d9609ae5a0ab45"
+  },
+  "docs/superpowers/plans/2026-06-02-cms-branding.md": {
+    "mtime": 1786549389.8434107,
+    "seen": 1787090313.141883,
+    "ast_hash": "8c0fa7e22437dea47c29b0199b7c1289",
+    "semantic_hash": "8c0fa7e22437dea47c29b0199b7c1289"
+  },
+  "docs/superpowers/plans/2026-06-02-cms-editable-surface.md": {
+    "mtime": 1786549389.8441656,
+    "seen": 1787090313.1418839,
+    "ast_hash": "20903eb7621290aaa929e8cec4ca0085",
+    "semantic_hash": "20903eb7621290aaa929e8cec4ca0085"
+  },
+  "docs/superpowers/plans/2026-06-23-history-page.md": {
+    "mtime": 1786549389.8451526,
+    "seen": 1787090313.1418839,
+    "ast_hash": "03821b1c58ef658da7021b6becaa36ca",
+    "semantic_hash": "03821b1c58ef658da7021b6becaa36ca"
+  },
+  "docs/superpowers/plans/2026-06-23-our-musicians-page.md": {
+    "mtime": 1786549389.845512,
+    "seen": 1787090313.1418839,
+    "ast_hash": "d910e00cd7231891c2199395494a1c4a",
+    "semantic_hash": "d910e00cd7231891c2199395494a1c4a"
+  },
+  "docs/superpowers/plans/2026-08-18-hire-section-and-photo-foundations.md": {
+    "mtime": 1787075073.1340775,
+    "seen": 1787090313.141885,
+    "ast_hash": "d2bddbce92af4cef31e885d72e27698d",
+    "semantic_hash": "d2bddbce92af4cef31e885d72e27698d"
+  },
+  "docs/superpowers/specs/2026-06-02-cms-branding-design.md": {
+    "mtime": 1786549389.8459458,
+    "seen": 1787090313.141885,
+    "ast_hash": "1377e7fafb50545c69d17f65f64d5890",
+    "semantic_hash": "1377e7fafb50545c69d17f65f64d5890"
+  },
+  "docs/superpowers/specs/2026-06-02-cms-editable-surface-design.md": {
+    "mtime": 1786549389.8463576,
+    "seen": 1787090313.141886,
+    "ast_hash": "1ac49477761ad6e98aac4db2ade664b7",
+    "semantic_hash": "1ac49477761ad6e98aac4db2ade664b7"
+  },
+  "docs/superpowers/specs/2026-06-02-mockup-cms-deploy-design.md": {
+    "mtime": 1786549389.8466213,
+    "seen": 1787090313.141886,
+    "ast_hash": "e9b9576a56663d5542b0b4cc1c20ae9d",
+    "semantic_hash": "e9b9576a56663d5542b0b4cc1c20ae9d"
+  },
+  "docs/superpowers/specs/2026-06-02-whos-who-detail-pages-design.md": {
+    "mtime": 1786549389.8470159,
+    "seen": 1787090313.141887,
+    "ast_hash": "a7489af430d33bbb5e2b81cfafe885e8",
+    "semantic_hash": "a7489af430d33bbb5e2b81cfafe885e8"
+  },
+  "docs/superpowers/specs/2026-06-23-history-page-design.md": {
+    "mtime": 1786549389.8473225,
+    "seen": 1787090313.141887,
+    "ast_hash": "a8df0a93c2b0bfaab4c43e2d9a3b1ee7",
+    "semantic_hash": "a8df0a93c2b0bfaab4c43e2d9a3b1ee7"
+  },
+  "docs/superpowers/specs/2026-06-23-our-musicians-page-design.md": {
+    "mtime": 1786549389.8475919,
+    "seen": 1787090313.141887,
+    "ast_hash": "8cd4231bfa88e1cb24ea92019cb1a7e9",
+    "semantic_hash": "8cd4231bfa88e1cb24ea92019cb1a7e9"
+  },
+  "docs/superpowers/specs/2026-08-12-music-lists-design.md": {
+    "mtime": 1787059713.5565078,
+    "seen": 1787090313.141888,
+    "ast_hash": "eec1a019480a359784add68702af49b4",
+    "semantic_hash": "eec1a019480a359784add68702af49b4"
+  },
+  "docs/superpowers/specs/2026-08-18-photography-and-hire-integration-design.md": {
+    "mtime": 1787075073.135108,
+    "seen": 1787090313.141888,
+    "ast_hash": "b735929d3b7e3b8c95cb00b6021b2045",
+    "semantic_hash": "b735929d3b7e3b8c95cb00b6021b2045"
+  },
+  "src/content/history/01-before-the-church.md": {
+    "mtime": 1786549389.9760652,
+    "seen": 1787090313.141889,
+    "ast_hash": "675259c78ea779f7ecea9e630f9d5b2e",
+    "semantic_hash": "675259c78ea779f7ecea9e630f9d5b2e"
+  },
+  "src/content/history/02-building-the-church.md": {
+    "mtime": 1786549389.9763346,
+    "seen": 1787090313.141889,
+    "ast_hash": "835ea467b4baf1130dfa58147f2deb4f",
+    "semantic_hash": "835ea467b4baf1130dfa58147f2deb4f"
+  },
+  "src/content/history/03-ernest-shearman.md": {
+    "mtime": 1786549389.9766371,
+    "seen": 1787090313.141889,
+    "ast_hash": "961bc17dfb80a94f9bb6b2f0fabfe4a7",
+    "semantic_hash": "961bc17dfb80a94f9bb6b2f0fabfe4a7"
+  },
+  "src/content/history/04-the-angels-of-the-apse.md": {
+    "mtime": 1786549389.9769168,
+    "seen": 1787090313.14189,
+    "ast_hash": "3104acf921f5b30730254762b402a511",
+    "semantic_hash": "3104acf921f5b30730254762b402a511"
+  },
+  "src/content/history/05-glass-banner-and-furnishings.md": {
+    "mtime": 1786549389.9779017,
+    "seen": 1787090313.14189,
+    "ast_hash": "ea60d22793bd51b58a673da42ad2abab",
+    "semantic_hash": "ea60d22793bd51b58a673da42ad2abab"
+  },
+  "src/content/history/06-war-fire-and-renewal.md": {
+    "mtime": 1786549389.9782329,
+    "seen": 1787090313.141891,
+    "ast_hash": "492ba14b2892f1ffa4423e6241dd99b5",
+    "semantic_hash": "492ba14b2892f1ffa4423e6241dd99b5"
+  },
+  "src/content/history/07-the-organ.md": {
+    "mtime": 1786549389.9791806,
+    "seen": 1787090313.141891,
+    "ast_hash": "0462dce8754625368ec95451d7601ba1",
+    "semantic_hash": "0462dce8754625368ec95451d7601ba1"
+  },
+  "src/content/history/08-a-living-church-today.md": {
+    "mtime": 1786549389.9800923,
+    "seen": 1787090313.141891,
+    "ast_hash": "268952fbcc0981219d4a68995afd63e5",
+    "semantic_hash": "268952fbcc0981219d4a68995afd63e5"
+  },
+  "src/content/news/40-ideas-for-keeping-lent-holy.md": {
+    "mtime": 1786549389.9812937,
+    "seen": 1787090313.1418922,
+    "ast_hash": "cac398ab612dd53f628caa28955982a4",
+    "semantic_hash": "cac398ab612dd53f628caa28955982a4"
+  },
+  "src/content/news/a-message-from-robin-griffiths.md": {
+    "mtime": 1786549389.9816835,
+    "seen": 1787090313.1418922,
+    "ast_hash": "d2cc47389d54adb0d5555f0054f490b9",
+    "semantic_hash": "d2cc47389d54adb0d5555f0054f490b9"
+  },
+  "src/content/news/advent-and-christmas-2019-copy.md": {
+    "mtime": 1786549389.9819624,
+    "seen": 1787090313.1418931,
+    "ast_hash": "356fb76169628d2bbf628620b99fbd59",
+    "semantic_hash": "356fb76169628d2bbf628620b99fbd59"
+  },
+  "src/content/news/advent-app.md": {
+    "mtime": 1786549389.9820728,
+    "seen": 1787090313.1418931,
+    "ast_hash": "a85b38a4be47559b52e7b5548980a5d4",
+    "semantic_hash": "a85b38a4be47559b52e7b5548980a5d4"
+  },
+  "src/content/news/annual-meeting-sunday-21-may-2023-10-30-am.md": {
+    "mtime": 1786549389.9826565,
+    "seen": 1787090313.1418939,
+    "ast_hash": "5984966412b06345f8193f707c9350cb",
+    "semantic_hash": "5984966412b06345f8193f707c9350cb"
+  },
+  "src/content/news/annual-meeting-sunday-29-may-2022-10-30-am-please-note-postponed-date.md": {
+    "mtime": 1786549389.9835808,
+    "seen": 1787090313.1418939,
+    "ast_hash": "ecd9734b7e0ef517d4b4b6bb06247063",
+    "semantic_hash": "ecd9734b7e0ef517d4b4b6bb06247063"
+  },
+  "src/content/news/anti-racism-resources.md": {
+    "mtime": 1786549389.9842398,
+    "seen": 1787090313.1418939,
+    "ast_hash": "7b478a22b6bd93c819cbffe495974a15",
+    "semantic_hash": "7b478a22b6bd93c819cbffe495974a15"
+  },
+  "src/content/news/back-to-school-celebration-mass-10-30am-9th-september.md": {
+    "mtime": 1786549389.9843485,
+    "seen": 1787090313.1418948,
+    "ast_hash": "ebad6d799f95a3046d2519a190498f78",
+    "semantic_hash": "ebad6d799f95a3046d2519a190498f78"
+  },
+  "src/content/news/bangers-sparklers.md": {
+    "mtime": 1786549389.9844425,
+    "seen": 1787090313.1418948,
+    "ast_hash": "d843a38d6864a965bce50a4f8cb30e55",
+    "semantic_hash": "d843a38d6864a965bce50a4f8cb30e55"
+  },
+  "src/content/news/bread-of-life-da.md": {
+    "mtime": 1786549389.984531,
+    "seen": 1787090313.141896,
+    "ast_hash": "bdd712113307e7b4c7344315bf8d4601",
+    "semantic_hash": "bdd712113307e7b4c7344315bf8d4601"
+  },
+  "src/content/news/children-s-activity-morning.md": {
+    "mtime": 1786549389.9846148,
+    "seen": 1787090313.141896,
+    "ast_hash": "0443767080a12ab3f355a0e87ced6b00",
+    "semantic_hash": "0443767080a12ab3f355a0e87ced6b00"
+  },
+  "src/content/news/choir-survey.md": {
+    "mtime": 1786549389.9846914,
+    "seen": 1787090313.141896,
+    "ast_hash": "07c3790664ebe1cbabb75d3fece47552",
+    "semantic_hash": "07c3790664ebe1cbabb75d3fece47552"
+  },
+  "src/content/news/christ-and-the-chocolaterie-lent-course.md": {
+    "mtime": 1786549389.9847739,
+    "seen": 1787090313.141897,
+    "ast_hash": "d73fa2e2c59a29b34109a77928d21668",
+    "semantic_hash": "d73fa2e2c59a29b34109a77928d21668"
+  },
+  "src/content/news/church-electoral-roll.md": {
+    "mtime": 1786549389.9848607,
+    "seen": 1787090313.141897,
+    "ast_hash": "d2524f4cab9752d15fa10e86b0f461e8",
+    "semantic_hash": "d2524f4cab9752d15fa10e86b0f461e8"
+  },
+  "src/content/news/church-reopen-for-private-prayer-on-tuesdays.md": {
+    "mtime": 1786549389.984945,
+    "seen": 1787090313.141898,
+    "ast_hash": "01b5ce51ace91d9d5abe9a01d8437656",
+    "semantic_hash": "01b5ce51ace91d9d5abe9a01d8437656"
+  },
+  "src/content/news/climate-listening-groups.md": {
+    "mtime": 1786549389.985022,
+    "seen": 1787090313.141898,
+    "ast_hash": "51d13c4042038dd0a71a6eb5b10b9803",
+    "semantic_hash": "51d13c4042038dd0a71a6eb5b10b9803"
+  },
+  "src/content/news/come-and-sing.md": {
+    "mtime": 1786549389.9851258,
+    "seen": 1787090313.141898,
+    "ast_hash": "bf4e2763b29200bc91778917a456c907",
+    "semantic_hash": "bf4e2763b29200bc91778917a456c907"
+  },
+  "src/content/news/come-thou-long-expected-jesus.md": {
+    "mtime": 1786549389.986331,
+    "seen": 1787090313.141899,
+    "ast_hash": "ac19c7f48b8642ac7a2b509067fe5b40",
+    "semantic_hash": "ac19c7f48b8642ac7a2b509067fe5b40"
+  },
+  "src/content/news/covid19-guidance.md": {
+    "mtime": 1786549389.9871812,
+    "seen": 1787090313.141899,
+    "ast_hash": "aeac6cd45bfd1063ec3004212850852d",
+    "semantic_hash": "aeac6cd45bfd1063ec3004212850852d"
+  },
+  "src/content/news/curacy-in-coventry-for-robin.md": {
+    "mtime": 1786549389.9872966,
+    "seen": 1787090313.1419,
+    "ast_hash": "257b3348bfc041acdd0fe3237d3a7979",
+    "semantic_hash": "257b3348bfc041acdd0fe3237d3a7979"
+  },
+  "src/content/news/curious-about-christianity.md": {
+    "mtime": 1786549389.987593,
+    "seen": 1787090313.1419,
+    "ast_hash": "138d91fcee65254083490b13beab1a02",
+    "semantic_hash": "138d91fcee65254083490b13beab1a02"
+  },
+  "src/content/news/data-protection-notice.md": {
+    "mtime": 1786549389.9876869,
+    "seen": 1787090313.141901,
+    "ast_hash": "4dbfb3514e8c646ae732add059887d82",
+    "semantic_hash": "4dbfb3514e8c646ae732add059887d82"
+  },
+  "src/content/news/ealing-at-the-tate-making-sacred-space-18th-may-2018.md": {
+    "mtime": 1786549389.9877717,
+    "seen": 1787090313.141901,
+    "ast_hash": "9e201d7aa1defeb9de36be59640f412f",
+    "semantic_hash": "9e201d7aa1defeb9de36be59640f412f"
+  },
+  "src/content/news/ealing-citizens-local-jobs-secured-and-commitments-for-living-wage-roles.md": {
+    "mtime": 1786549389.9879644,
+    "seen": 1787090313.141901,
+    "ast_hash": "0dbca0e24f0512e2c4f88e3a9695db41",
+    "semantic_hash": "0dbca0e24f0512e2c4f88e3a9695db41"
+  },
+  "src/content/news/ealing-food-bank-donations.md": {
+    "mtime": 1786549389.9880576,
+    "seen": 1787090313.141902,
+    "ast_hash": "0457ffa8d66f75a7ea5a0f298e218442",
+    "semantic_hash": "0457ffa8d66f75a7ea5a0f298e218442"
+  },
+  "src/content/news/ealing-housing-assembly-30050.md": {
+    "mtime": 1786549389.9882252,
+    "seen": 1787090313.141902,
+    "ast_hash": "9391ba961a395750b6c0e505346c51a9",
+    "semantic_hash": "9391ba961a395750b6c0e505346c51a9"
+  },
+  "src/content/news/ealing-housing-assembly.md": {
+    "mtime": 1786549389.9883795,
+    "seen": 1787090313.1419032,
+    "ast_hash": "8f5349a4720a2bc35be203f0b1eb5fab",
+    "semantic_hash": "8f5349a4720a2bc35be203f0b1eb5fab"
+  },
+  "src/content/news/easter-egg-hunt-2018.md": {
+    "mtime": 1786549389.9884593,
+    "seen": 1787090313.1419032,
+    "ast_hash": "a06502ef018769b8a5ff650d63bb3c03",
+    "semantic_hash": "a06502ef018769b8a5ff650d63bb3c03"
+  },
+  "src/content/news/evensong.md": {
+    "mtime": 1786549389.9886756,
+    "seen": 1787090313.1419039,
+    "ast_hash": "3e59217178071895c759504d4debf7a8",
+    "semantic_hash": "3e59217178071895c759504d4debf7a8"
+  },
+  "src/content/news/extra-surge-testing-for-ealing.md": {
+    "mtime": 1786549389.9888785,
+    "seen": 1787090313.1419039,
+    "ast_hash": "73cc2b47f0b6141fa09179d4ce911d43",
+    "semantic_hash": "73cc2b47f0b6141fa09179d4ce911d43"
+  },
+  "src/content/news/farewell-gift-for-jill-scott.md": {
+    "mtime": 1786549389.9889805,
+    "seen": 1787090313.1419039,
+    "ast_hash": "f25c888ed73f423962dc9b78826b2aa5",
+    "semantic_hash": "f25c888ed73f423962dc9b78826b2aa5"
+  },
+  "src/content/news/female-helpers-for-overnight-urgently-needed.md": {
+    "mtime": 1786549389.989064,
+    "seen": 1787090313.1419048,
+    "ast_hash": "df29cb5399aa8d3f342dbc720427c10c",
+    "semantic_hash": "df29cb5399aa8d3f342dbc720427c10c"
+  },
+  "src/content/news/fr-gerald-reddington-rip.md": {
+    "mtime": 1786549389.9891632,
+    "seen": 1787090313.1419048,
+    "ast_hash": "838ffa7706e1ac3f7c7c0e3de6f1f747",
+    "semantic_hash": "838ffa7706e1ac3f7c7c0e3de6f1f747"
+  },
+  "src/content/news/games-night-2018.md": {
+    "mtime": 1786549389.9892888,
+    "seen": 1787090313.141906,
+    "ast_hash": "61cf247f0b1fed813f6b68dc671e2573",
+    "semantic_hash": "61cf247f0b1fed813f6b68dc671e2573"
+  },
+  "src/content/news/gdpr.md": {
+    "mtime": 1786549389.989378,
+    "seen": 1787090313.141906,
+    "ast_hash": "9823f5ae0a508e9c416ebf0dcc7d4d20",
+    "semantic_hash": "9823f5ae0a508e9c416ebf0dcc7d4d20"
+  },
+  "src/content/news/giving-campaign-2022.md": {
+    "mtime": 1786549389.9894605,
+    "seen": 1787090313.141907,
+    "ast_hash": "a974968dca4b05be9df290d9d6ae5b06",
+    "semantic_hash": "a974968dca4b05be9df290d9d6ae5b06"
+  },
+  "src/content/news/godparents-sunday.md": {
+    "mtime": 1786549389.9895763,
+    "seen": 1787090313.141907,
+    "ast_hash": "30230bed6bae9121f947567445f4e853",
+    "semantic_hash": "30230bed6bae9121f947567445f4e853"
+  },
+  "src/content/news/hallowe-en-special-screening-of-the-hunchback-of-notre-dame.md": {
+    "mtime": 1786549389.9896731,
+    "seen": 1787090313.141907,
+    "ast_hash": "d3833f1fa188e70e4a325866a146fb08",
+    "semantic_hash": "d3833f1fa188e70e4a325866a146fb08"
+  },
+  "src/content/news/harvest-donations.md": {
+    "mtime": 1786549389.989882,
+    "seen": 1787090313.141908,
+    "ast_hash": "894d8207e485be5dae1ebb1bf3d11387",
+    "semantic_hash": "894d8207e485be5dae1ebb1bf3d11387"
+  },
+  "src/content/news/henry-returns-to-noisy-mass.md": {
+    "mtime": 1786549389.9900744,
+    "seen": 1787090313.141908,
+    "ast_hash": "95361b02d3e935c178440f0861ee2b63",
+    "semantic_hash": "95361b02d3e935c178440f0861ee2b63"
+  },
+  "src/content/news/holy-week-a.md": {
+    "mtime": 1786549389.990162,
+    "seen": 1787090313.141909,
+    "ast_hash": "1270a7b3a5b8c3abb0283bbc6c8b2660",
+    "semantic_hash": "1270a7b3a5b8c3abb0283bbc6c8b2660"
+  },
+  "src/content/news/holy-week-services.md": {
+    "mtime": 1786549389.9903598,
+    "seen": 1787090313.141909,
+    "ast_hash": "5f5a541cc0c525b8fcb211c44f2f851a",
+    "semantic_hash": "5f5a541cc0c525b8fcb211c44f2f851a"
+  },
+  "src/content/news/housing-follow-up-action-at-ealing-town-hall.md": {
+    "mtime": 1786549389.990478,
+    "seen": 1787090313.14191,
+    "ast_hash": "3ec51384da18e0e3359864dfad4666d5",
+    "semantic_hash": "3ec51384da18e0e3359864dfad4666d5"
+  },
+  "src/content/news/housing-living-wages-mental-health-sen-for-ealing.md": {
+    "mtime": 1786549389.9905684,
+    "seen": 1787090313.14191,
+    "ast_hash": "e6165d3c232a24eb450ca96f6e382e5c",
+    "semantic_hash": "e6165d3c232a24eb450ca96f6e382e5c"
+  },
+  "src/content/news/hymns-pimms-2019.md": {
+    "mtime": 1786549389.9908156,
+    "seen": 1787090313.14191,
+    "ast_hash": "039018703c2c62e5592b5c1ff5995b8d",
+    "semantic_hash": "039018703c2c62e5592b5c1ff5995b8d"
+  },
+  "src/content/news/indaba-with-catherine-pepinster.md": {
+    "mtime": 1786549389.9909942,
+    "seen": 1787090313.141911,
+    "ast_hash": "a249ebc55b9c86930ba32c163fb4114d",
+    "semantic_hash": "a249ebc55b9c86930ba32c163fb4114d"
+  },
+  "src/content/news/introducing-jazz-on-the-lane-nights.md": {
+    "mtime": 1786549389.991098,
+    "seen": 1787090313.141911,
+    "ast_hash": "3599b992295229d9ac886d0465372dae",
+    "semantic_hash": "3599b992295229d9ac886d0465372dae"
+  },
+  "src/content/news/introducing-mtr-jenny-krige.md": {
+    "mtime": 1786549389.9912026,
+    "seen": 1787090313.141912,
+    "ast_hash": "00647c7de30c1eee142614f6ba1da24d",
+    "semantic_hash": "00647c7de30c1eee142614f6ba1da24d"
+  },
+  "src/content/news/jazz-on-the-lane-2019.md": {
+    "mtime": 1786549389.9913409,
+    "seen": 1787090313.141912,
+    "ast_hash": "151babbc74dbe3c4351a9912ced7b6fb",
+    "semantic_hash": "151babbc74dbe3c4351a9912ced7b6fb"
+  },
+  "src/content/news/jazz-on-the-lane.md": {
+    "mtime": 1786549389.9914384,
+    "seen": 1787090313.141912,
+    "ast_hash": "2f087c8eb3fee84efff60fc041ba6e86",
+    "semantic_hash": "2f087c8eb3fee84efff60fc041ba6e86"
+  },
+  "src/content/news/join-a-pastoral-care-group.md": {
+    "mtime": 1786549389.9915178,
+    "seen": 1787090313.1419132,
+    "ast_hash": "50c97ecc4d0c725842319fc4e7d135b5",
+    "semantic_hash": "50c97ecc4d0c725842319fc4e7d135b5"
+  },
+  "src/content/news/late-summer-ball-2018.md": {
+    "mtime": 1786549389.9915924,
+    "seen": 1787090313.1419132,
+    "ast_hash": "cccdd4de7130b6bc2a4acb418f4a7737",
+    "semantic_hash": "cccdd4de7130b6bc2a4acb418f4a7737"
+  },
+  "src/content/news/late-summer-bbq.md": {
+    "mtime": 1786549389.9916794,
+    "seen": 1787090313.1419141,
+    "ast_hash": "d7be16700c8fa20dc030c3f13c9f4bf4",
+    "semantic_hash": "d7be16700c8fa20dc030c3f13c9f4bf4"
+  },
+  "src/content/news/lent-a-season-of-recovery.md": {
+    "mtime": 1786549389.9917588,
+    "seen": 1787090313.1419141,
+    "ast_hash": "86c1c1484e55528048ad553b5a3bc5e5",
+    "semantic_hash": "86c1c1484e55528048ad553b5a3bc5e5"
+  },
+  "src/content/news/lent-at-st-barnabas-2020-7-sacred-spaces.md": {
+    "mtime": 1786549389.9919758,
+    "seen": 1787090313.1419148,
+    "ast_hash": "534a18089e68d9eb0d55321959cd7e9e",
+    "semantic_hash": "534a18089e68d9eb0d55321959cd7e9e"
+  },
+  "src/content/news/lent-boxes.md": {
+    "mtime": 1786549389.99214,
+    "seen": 1787090313.1419148,
+    "ast_hash": "207d28892311fd3a31e6969981e23732",
+    "semantic_hash": "207d28892311fd3a31e6969981e23732"
+  },
+  "src/content/news/listening-organising-and-responding-to-covid-19.md": {
+    "mtime": 1786549389.992319,
+    "seen": 1787090313.1419148,
+    "ast_hash": "031c7da8cd73bd22121ea120bfc5d7f7",
+    "semantic_hash": "031c7da8cd73bd22121ea120bfc5d7f7"
+  },
+  "src/content/news/london-mayoral-assembly-and-evening-prayer.md": {
+    "mtime": 1786549389.992446,
+    "seen": 1787090313.1419158,
+    "ast_hash": "3828da3ff206c311c9241642783ff6a4",
+    "semantic_hash": "3828da3ff206c311c9241642783ff6a4"
+  },
+  "src/content/news/memory-cafe-receives-a-warm-welcome-from-around-ealing.md": {
+    "mtime": 1786549389.9925692,
+    "seen": 1787090313.1419158,
+    "ast_hash": "e60b4ed6d7765736bb4f61f4e029b710",
+    "semantic_hash": "e60b4ed6d7765736bb4f61f4e029b710"
+  },
+  "src/content/news/memory-cafe.md": {
+    "mtime": 1786549389.9932373,
+    "seen": 1787090313.141917,
+    "ast_hash": "d344261bc6484a2c65007027ec8519b0",
+    "semantic_hash": "d344261bc6484a2c65007027ec8519b0"
+  },
+  "src/content/news/more-questions-than-answers.md": {
+    "mtime": 1786549389.9936383,
+    "seen": 1787090313.141917,
+    "ast_hash": "73c8a4d813ba4f2fb99a39de501c1202",
+    "semantic_hash": "73c8a4d813ba4f2fb99a39de501c1202"
+  },
+  "src/content/news/mozart-festival.md": {
+    "mtime": 1786549389.9939177,
+    "seen": 1787090313.141917,
+    "ast_hash": "8093bf1da8671b3978d3bb3851dad7ca",
+    "semantic_hash": "8093bf1da8671b3978d3bb3851dad7ca"
+  },
+  "src/content/news/mydearnewfriend-project.md": {
+    "mtime": 1786549389.9940066,
+    "seen": 1787090313.141918,
+    "ast_hash": "03bf56b0e4b60103bce82462f7d6b96f",
+    "semantic_hash": "03bf56b0e4b60103bce82462f7d6b96f"
+  },
+  "src/content/news/noisy-mass-copy.md": {
+    "mtime": 1786549389.994162,
+    "seen": 1787090313.141918,
+    "ast_hash": "6f0510e2770423b3b30a9541cccd3c61",
+    "semantic_hash": "6f0510e2770423b3b30a9541cccd3c61"
+  },
+  "src/content/news/noisy-mass.md": {
+    "mtime": 1786549389.9942658,
+    "seen": 1787090313.141919,
+    "ast_hash": "aeda069aba11e5a6e1b28d19a553a8a2",
+    "semantic_hash": "aeda069aba11e5a6e1b28d19a553a8a2"
+  },
+  "src/content/news/nominated-charities.md": {
+    "mtime": 1786549389.9943507,
+    "seen": 1787090313.141919,
+    "ast_hash": "ed7e092f90d61de8846832314161a7fe",
+    "semantic_hash": "ed7e092f90d61de8846832314161a7fe"
+  },
+  "src/content/news/online-celebration-assembly-community-organising-during-lockdown.md": {
+    "mtime": 1786549389.9944403,
+    "seen": 1787090313.14192,
+    "ast_hash": "69e169ac26e5c81675421823817b81df",
+    "semantic_hash": "69e169ac26e5c81675421823817b81df"
+  },
+  "src/content/news/opening-the-church-for-private-prayer.md": {
+    "mtime": 1786549389.994526,
+    "seen": 1787090313.14192,
+    "ast_hash": "9a114139cf20a36be83d26be4ab55f04",
+    "semantic_hash": "9a114139cf20a36be83d26be4ab55f04"
+  },
+  "src/content/news/pancake-evening-volunteers-needed.md": {
+    "mtime": 1786549389.994631,
+    "seen": 1787090313.14192,
+    "ast_hash": "8da16a6a063b5d89d05f0f8e6f52f0ee",
+    "semantic_hash": "8da16a6a063b5d89d05f0f8e6f52f0ee"
+  },
+  "src/content/news/parent-support-group.md": {
+    "mtime": 1786549389.9947374,
+    "seen": 1787090313.141921,
+    "ast_hash": "719fdad18d3b103bd57791bb17776f9a",
+    "semantic_hash": "719fdad18d3b103bd57791bb17776f9a"
+  },
+  "src/content/news/parish-outing-to-st-paul-s-advent-carol-service.md": {
+    "mtime": 1786549389.9948475,
+    "seen": 1787090313.141921,
+    "ast_hash": "34fe0a120c346c36cf17d5ceb8e54a71",
+    "semantic_hash": "34fe0a120c346c36cf17d5ceb8e54a71"
+  },
+  "src/content/news/pcc-induction-pack.md": {
+    "mtime": 1786549389.9949338,
+    "seen": 1787090313.141922,
+    "ast_hash": "4eae495bd4ab555feee4957cf8c34654",
+    "semantic_hash": "4eae495bd4ab555feee4957cf8c34654"
+  },
+  "src/content/news/pilgrimage-to-westminster.md": {
+    "mtime": 1786549389.9950206,
+    "seen": 1787090313.141922,
+    "ast_hash": "9e09d6ebee54400b3390b115f6de791d",
+    "semantic_hash": "9e09d6ebee54400b3390b115f6de791d"
+  },
+  "src/content/news/pitshanger-pictures-even-when-i-fall-12a.md": {
+    "mtime": 1786549389.9951103,
+    "seen": 1787090313.141922,
+    "ast_hash": "0b186709b69c492b1897956dd6abc265",
+    "semantic_hash": "0b186709b69c492b1897956dd6abc265"
+  },
+  "src/content/news/plant-sale.md": {
+    "mtime": 1786549389.9952805,
+    "seen": 1787090313.1419232,
+    "ast_hash": "e2671831bdbc0a67cdfd8ad1ecee5a84",
+    "semantic_hash": "e2671831bdbc0a67cdfd8ad1ecee5a84"
+  },
+  "src/content/news/poetry-by-candlelight-daphne-gloag.md": {
+    "mtime": 1786549389.9953744,
+    "seen": 1787090313.1419232,
+    "ast_hash": "26d36f3f0caa62fa26b1ef966954ac60",
+    "semantic_hash": "26d36f3f0caa62fa26b1ef966954ac60"
+  },
+  "src/content/news/pop-in-day-at-the-seaside.md": {
+    "mtime": 1786549389.9954734,
+    "seen": 1787090313.1419241,
+    "ast_hash": "eabed7dadacb0cd02296fcf83647daa3",
+    "semantic_hash": "eabed7dadacb0cd02296fcf83647daa3"
+  },
+  "src/content/news/prayer-vigil-for-the-living-in-love-and-faith-process.md": {
+    "mtime": 1786549389.9955704,
+    "seen": 1787090313.1419241,
+    "ast_hash": "5a00317a8a1a7a38b116c267c84409f0",
+    "semantic_hash": "5a00317a8a1a7a38b116c267c84409f0"
+  },
+  "src/content/news/q-a-food-pantry-tuesdays-1-4-pm.md": {
+    "mtime": 1786549389.995654,
+    "seen": 1787090313.141925,
+    "ast_hash": "e23934b1cbf01dad432b6bc2ec1cdbcd",
+    "semantic_hash": "e23934b1cbf01dad432b6bc2ec1cdbcd"
+  },
+  "src/content/news/q-a-outdoor-mass-tuesday-1-pm.md": {
+    "mtime": 1786549389.9958415,
+    "seen": 1787090313.141925,
+    "ast_hash": "2387cb8871454913af2cbb162df3b5f5",
+    "semantic_hash": "2387cb8871454913af2cbb162df3b5f5"
+  },
+  "src/content/news/race-equality-commission.md": {
+    "mtime": 1786549389.9959526,
+    "seen": 1787090313.1419258,
+    "ast_hash": "de4bc2861e303586ca88b7659ecbe7fb",
+    "semantic_hash": "de4bc2861e303586ca88b7659ecbe7fb"
+  },
+  "src/content/news/recruitment-willesden-area-finance-adviser.md": {
+    "mtime": 1786549389.9960477,
+    "seen": 1787090313.1419258,
+    "ast_hash": "56315f80f965e3b764cf840533e010d6",
+    "semantic_hash": "56315f80f965e3b764cf840533e010d6"
+  },
+  "src/content/news/reflective-morning-oxygen-for-the-soul.md": {
+    "mtime": 1786549389.996193,
+    "seen": 1787090313.1419258,
+    "ast_hash": "8d18cccb867cc1705faa716b61e16f07",
+    "semantic_hash": "8d18cccb867cc1705faa716b61e16f07"
+  },
+  "src/content/news/regular-activities-and-events-march-2019.md": {
+    "mtime": 1786549389.9963038,
+    "seen": 1787090313.141927,
+    "ast_hash": "22f14ca92668369af2d466b200002c90",
+    "semantic_hash": "22f14ca92668369af2d466b200002c90"
+  },
+  "src/content/news/regular-activities-events-may-2018.md": {
+    "mtime": 1786549389.9964116,
+    "seen": 1787090313.141927,
+    "ast_hash": "f34c1d81e25588a84efd222f150d3d94",
+    "semantic_hash": "f34c1d81e25588a84efd222f150d3d94"
+  },
+  "src/content/news/regular-events-activities-august-2018.md": {
+    "mtime": 1786549389.9964979,
+    "seen": 1787090313.141928,
+    "ast_hash": "94a3b50fe963112b3800309a121913da",
+    "semantic_hash": "94a3b50fe963112b3800309a121913da"
+  },
+  "src/content/news/regular-events-activities-july-2018.md": {
+    "mtime": 1786549389.9965887,
+    "seen": 1787090313.141928,
+    "ast_hash": "1c8cca1fccb44a0b06094f593a31a44c",
+    "semantic_hash": "1c8cca1fccb44a0b06094f593a31a44c"
+  },
+  "src/content/news/regular-events-activities-november-2019.md": {
+    "mtime": 1786549389.996771,
+    "seen": 1787090313.141929,
+    "ast_hash": "9df0100a41a389bba49204fab13d381e",
+    "semantic_hash": "9df0100a41a389bba49204fab13d381e"
+  },
+  "src/content/news/regular-events-activities-october-2018.md": {
+    "mtime": 1786549389.996878,
+    "seen": 1787090313.141929,
+    "ast_hash": "a0c61364972a3a7092c6dc0febb1c8a7",
+    "semantic_hash": "a0c61364972a3a7092c6dc0febb1c8a7"
+  },
+  "src/content/news/regular-events-and-activities-july-2019.md": {
+    "mtime": 1786549389.9969845,
+    "seen": 1787090313.141929,
+    "ast_hash": "7eeed8db025225d2c7f40435d31bbd8d",
+    "semantic_hash": "7eeed8db025225d2c7f40435d31bbd8d"
+  },
+  "src/content/news/regular-events-and-activities-june-2018.md": {
+    "mtime": 1786549389.9971604,
+    "seen": 1787090313.1419299,
+    "ast_hash": "e9721a725de31e50d6f6e3d332af3e52",
+    "semantic_hash": "e9721a725de31e50d6f6e3d332af3e52"
+  },
+  "src/content/news/remembering-her-majesty-the-queen.md": {
+    "mtime": 1786549389.9972486,
+    "seen": 1787090313.1419299,
+    "ast_hash": "961b5d18e68bdd2bf756218fd45ac085",
+    "semantic_hash": "961b5d18e68bdd2bf756218fd45ac085"
+  },
+  "src/content/news/remembering-john-mcglashan.md": {
+    "mtime": 1786549389.9973364,
+    "seen": 1787090313.141931,
+    "ast_hash": "44b9c2e5208b1523fb8135156c70d92b",
+    "semantic_hash": "44b9c2e5208b1523fb8135156c70d92b"
+  },
+  "src/content/news/remembrance-sunday-for-children-s-church.md": {
+    "mtime": 1786549389.997452,
+    "seen": 1787090313.141931,
+    "ast_hash": "a5e12dd61ebb10578fc2ef097b84491f",
+    "semantic_hash": "a5e12dd61ebb10578fc2ef097b84491f"
+  },
+  "src/content/news/revision-of-all-souls-list-2021.md": {
+    "mtime": 1786549389.9975917,
+    "seen": 1787090313.141932,
+    "ast_hash": "6d81a6eea708da87277f8dfab86e443a",
+    "semantic_hash": "6d81a6eea708da87277f8dfab86e443a"
+  },
+  "src/content/news/sacred-sounds.md": {
+    "mtime": 1786549389.997934,
+    "seen": 1787090313.141932,
+    "ast_hash": "f92c65fc372ab0a187463f0bffb687fe",
+    "semantic_hash": "f92c65fc372ab0a187463f0bffb687fe"
+  },
+  "src/content/news/sermon-nine-lessons-and-carols-20-december-2018-fr-justin-dodd.md": {
+    "mtime": 1786549389.998085,
+    "seen": 1787090313.141933,
+    "ast_hash": "503964f7c89a09fc1cf71e4cbbc3605d",
+    "semantic_hash": "503964f7c89a09fc1cf71e4cbbc3605d"
+  },
+  "src/content/news/sign-up-for-the-psalmathon.md": {
+    "mtime": 1786549389.9981868,
+    "seen": 1787090313.141933,
+    "ast_hash": "64b1a4dda635c92c3548ddbf2f6e14dc",
+    "semantic_hash": "64b1a4dda635c92c3548ddbf2f6e14dc"
+  },
+  "src/content/news/st-barnabas-appoints-new-director-of-music.md": {
+    "mtime": 1786549389.9982743,
+    "seen": 1787090313.141933,
+    "ast_hash": "15c5f1ba992058a305461a440fae8d53",
+    "semantic_hash": "15c5f1ba992058a305461a440fae8d53"
+  },
+  "src/content/news/st-barnabas-appoints-new-vicar.md": {
+    "mtime": 1786549389.9983537,
+    "seen": 1787090313.1419342,
+    "ast_hash": "f9ce89b7b47d12cb9d4eb550ab3b53a1",
+    "semantic_hash": "f9ce89b7b47d12cb9d4eb550ab3b53a1"
+  },
+  "src/content/news/st-barnabas-artist-in-residence-program.md": {
+    "mtime": 1786549389.9984736,
+    "seen": 1787090313.1419342,
+    "ast_hash": "d232497441796130e13400886e3fa3ec",
+    "semantic_hash": "d232497441796130e13400886e3fa3ec"
+  },
+  "src/content/news/sunday-indabas-after-covid-reorientation-and-renewal.md": {
+    "mtime": 1786549389.9985633,
+    "seen": 1787090313.141935,
+    "ast_hash": "9f6a6353b6f468336c7e35569ae69db7",
+    "semantic_hash": "9f6a6353b6f468336c7e35569ae69db7"
+  },
+  "src/content/news/sunday-indabas-copy.md": {
+    "mtime": 1786549389.9986491,
+    "seen": 1787090313.141935,
+    "ast_hash": "b49f972903fbbe3f4b2acd815b3900ec",
+    "semantic_hash": "b49f972903fbbe3f4b2acd815b3900ec"
+  },
+  "src/content/news/sunday-indabas.md": {
+    "mtime": 1786549389.9987354,
+    "seen": 1787090313.141936,
+    "ast_hash": "98c0a7f7745bbf97221e465dddee8758",
+    "semantic_hash": "98c0a7f7745bbf97221e465dddee8758"
+  },
+  "src/content/news/the-big-brekkie-2018.md": {
+    "mtime": 1786549389.9988315,
+    "seen": 1787090313.141936,
+    "ast_hash": "5168fa9ab95dc45ec526fa6b06597b94",
+    "semantic_hash": "5168fa9ab95dc45ec526fa6b06597b94"
+  },
+  "src/content/news/the-magic-of-stuff.md": {
+    "mtime": 1786549389.9989104,
+    "seen": 1787090313.1419368,
+    "ast_hash": "3c52ba6c3521d812310cff3e3408d27b",
+    "semantic_hash": "3c52ba6c3521d812310cff3e3408d27b"
+  },
+  "src/content/news/the-need-for-dignity.md": {
+    "mtime": 1786549389.99903,
+    "seen": 1787090313.1419368,
+    "ast_hash": "648edc147b2058ac91065a540fc4872e",
+    "semantic_hash": "648edc147b2058ac91065a540fc4872e"
+  },
+  "src/content/news/the-pain-of-failure.md": {
+    "mtime": 1786549389.9991126,
+    "seen": 1787090313.1419368,
+    "ast_hash": "1636c5ff487ad56d036e068a8312ac87",
+    "semantic_hash": "1636c5ff487ad56d036e068a8312ac87"
+  },
+  "src/content/news/the-problem-of-suffering.md": {
+    "mtime": 1786549389.999462,
+    "seen": 1787090313.141938,
+    "ast_hash": "075408b668ff12eaa3c2db55814b83c2",
+    "semantic_hash": "075408b668ff12eaa3c2db55814b83c2"
+  },
+  "src/content/news/the-way-introducing-the-riches-of-christianity-33083.md": {
+    "mtime": 1786549389.9997337,
+    "seen": 1787090313.141938,
+    "ast_hash": "595574201d17637995eff38915d54c3d",
+    "semantic_hash": "595574201d17637995eff38915d54c3d"
+  },
+  "src/content/news/the-way-introducing-the-riches-of-christianity.md": {
+    "mtime": 1786549389.9998558,
+    "seen": 1787090313.141938,
+    "ast_hash": "2afe925c8c85cbe26287a93f4415cd6d",
+    "semantic_hash": "2afe925c8c85cbe26287a93f4415cd6d"
+  },
+  "src/content/news/thykingdomcome.md": {
+    "mtime": 1786549389.9999526,
+    "seen": 1787090313.141939,
+    "ast_hash": "9fc787168b6b259c9b7a2f19a1b776aa",
+    "semantic_hash": "9fc787168b6b259c9b7a2f19a1b776aa"
+  },
+  "src/content/news/to-live-again-advent-course.md": {
+    "mtime": 1786549390.0008972,
+    "seen": 1787090313.141939,
+    "ast_hash": "939847bb0d3adac25caa00d71f1c4c27",
+    "semantic_hash": "939847bb0d3adac25caa00d71f1c4c27"
+  },
+  "src/content/news/two-ministry-team-announcements.md": {
+    "mtime": 1786549390.0011158,
+    "seen": 1787090313.1419399,
+    "ast_hash": "0278ab16f92930512ea573d0cc0161fa",
+    "semantic_hash": "0278ab16f92930512ea573d0cc0161fa"
+  },
+  "src/content/news/ukraine-crisis-appeal.md": {
+    "mtime": 1786549390.0012288,
+    "seen": 1787090313.1419399,
+    "ast_hash": "bcf39e96ada3591c9b87d4487fc39456",
+    "semantic_hash": "bcf39e96ada3591c9b87d4487fc39456"
+  },
+  "src/content/news/viewing-sublime-sacred-sounds.md": {
+    "mtime": 1786549390.001331,
+    "seen": 1787090313.1419399,
+    "ast_hash": "9f29e5c9f12b2cc440d0127ab02b1535",
+    "semantic_hash": "9f29e5c9f12b2cc440d0127ab02b1535"
+  },
+  "src/content/news/volunteer-mentors-needed-plias-resettlement.md": {
+    "mtime": 1786549390.0015733,
+    "seen": 1787090313.141941,
+    "ast_hash": "a1ae12f7468713f401abd84dfa1e1558",
+    "semantic_hash": "a1ae12f7468713f401abd84dfa1e1558"
+  },
+  "src/content/news/volunteers-needed-at-new-c-a-p-debt-centre.md": {
+    "mtime": 1786549390.0019326,
+    "seen": 1787090313.141941,
+    "ast_hash": "1f97cacf25b36cb7e0f8fcf511d6319a",
+    "semantic_hash": "1f97cacf25b36cb7e0f8fcf511d6319a"
+  },
+  "src/content/news/week-of-giving.md": {
+    "mtime": 1786549390.0020268,
+    "seen": 1787090313.141942,
+    "ast_hash": "75600e6afad909c574144617f2e037d0",
+    "semantic_hash": "75600e6afad909c574144617f2e037d0"
+  },
+  "src/content/news/welcome-amy-merriman.md": {
+    "mtime": 1786549390.0021067,
+    "seen": 1787090313.141942,
+    "ast_hash": "c20b7f26de52b7960dbc1f776ae4ff19",
+    "semantic_hash": "c20b7f26de52b7960dbc1f776ae4ff19"
+  },
+  "src/content/news/welcome-sanjit-sir-as-the-st-barnabas-operations-manager.md": {
+    "mtime": 1786549390.0021937,
+    "seen": 1787090313.141943,
+    "ast_hash": "a2a8ef2880467b45c94351237397e160",
+    "semantic_hash": "a2a8ef2880467b45c94351237397e160"
+  },
+  "src/content/news/worship-august-2018.md": {
+    "mtime": 1786549390.002291,
+    "seen": 1787090313.141943,
+    "ast_hash": "5e9fed5ea8c873e99d1cfa4da8107feb",
+    "semantic_hash": "5e9fed5ea8c873e99d1cfa4da8107feb"
+  },
+  "src/content/news/worship-july-2018.md": {
+    "mtime": 1786549390.002364,
+    "seen": 1787090313.1419442,
+    "ast_hash": "9e0212b83e40b191fc71833fba13ff34",
+    "semantic_hash": "9e0212b83e40b191fc71833fba13ff34"
+  },
+  "src/content/news/worship-july-2019.md": {
+    "mtime": 1786549390.0024369,
+    "seen": 1787090313.1419442,
+    "ast_hash": "3ffb96534e8ab9137c14186ee3c8a203",
+    "semantic_hash": "3ffb96534e8ab9137c14186ee3c8a203"
+  },
+  "src/content/news/worship-june-2018.md": {
+    "mtime": 1786549390.0025177,
+    "seen": 1787090313.141948,
+    "ast_hash": "c6310c44bee5e604ad078d9b4dbf4747",
+    "semantic_hash": "c6310c44bee5e604ad078d9b4dbf4747"
+  },
+  "src/content/news/worship-may-2018.md": {
+    "mtime": 1786549390.0025978,
+    "seen": 1787090313.141949,
+    "ast_hash": "e1256e2c6063393f55d27f2c16344159",
+    "semantic_hash": "e1256e2c6063393f55d27f2c16344159"
+  },
+  "src/content/news/worship-november-2018.md": {
+    "mtime": 1786549390.002815,
+    "seen": 1787090313.141949,
+    "ast_hash": "101c1b9749c3f74058582e8f0631c1e9",
+    "semantic_hash": "101c1b9749c3f74058582e8f0631c1e9"
+  },
+  "src/content/news/worship-november-2019.md": {
+    "mtime": 1786549390.0037875,
+    "seen": 1787090313.14195,
+    "ast_hash": "378385f42689f5a5a16016c46c4351ce",
+    "semantic_hash": "378385f42689f5a5a16016c46c4351ce"
+  },
+  "src/content/news/worship-october-2018.md": {
+    "mtime": 1786549390.003873,
+    "seen": 1787090313.14195,
+    "ast_hash": "fd1728fddcb1b95d96a0017c3817b9a7",
+    "semantic_hash": "fd1728fddcb1b95d96a0017c3817b9a7"
+  },
+  "src/content/pages/about-us.md": {
+    "mtime": 1787075073.2360165,
+    "seen": 1787090313.141951,
+    "ast_hash": "826dbd9b81e10fe3e754f88927cbc792",
+    "semantic_hash": "826dbd9b81e10fe3e754f88927cbc792"
+  },
+  "src/content/pages/about-us/accessibility.md": {
+    "mtime": 1786549390.0042021,
+    "seen": 1787090313.141951,
+    "ast_hash": "bef962b90f07152b46964f62914c6323",
+    "semantic_hash": "bef962b90f07152b46964f62914c6323"
+  },
+  "src/content/pages/about-us/pastoral-care.md": {
+    "mtime": 1786549390.0042968,
+    "seen": 1787090313.141951,
+    "ast_hash": "9781c12318c523cbb24f88f0ceef0b5f",
+    "semantic_hash": "9781c12318c523cbb24f88f0ceef0b5f"
+  },
+  "src/content/pages/about-us/social-action.md": {
+    "mtime": 1786549390.0043852,
+    "seen": 1787090313.141952,
+    "ast_hash": "9787b2fa01fee4010886fdd3aa3be455",
+    "semantic_hash": "9787b2fa01fee4010886fdd3aa3be455"
+  },
+  "src/content/pages/about-us/social-action/winter-night-shelter.md": {
+    "mtime": 1786549390.0045285,
+    "seen": 1787090313.141952,
+    "ast_hash": "1c327c2f503f22fdc11b1dbebe1f9c87",
+    "semantic_hash": "1c327c2f503f22fdc11b1dbebe1f9c87"
+  },
+  "src/content/pages/about-us/visiting.md": {
+    "mtime": 1787075073.2362766,
+    "seen": 1787090313.141953,
+    "ast_hash": "2d8eae0419413e57bdb8669b998abf92",
+    "semantic_hash": "2d8eae0419413e57bdb8669b998abf92"
+  },
+  "src/content/pages/community.md": {
+    "mtime": 1787075073.2365909,
+    "seen": 1787090313.141953,
+    "ast_hash": "bf139765bc3fda3ccd35147f05094327",
+    "semantic_hash": "bf139765bc3fda3ccd35147f05094327"
+  },
+  "src/content/pages/community/food-pantry-at-st-barnabas.md": {
+    "mtime": 1787075073.236949,
+    "seen": 1787090313.141954,
+    "ast_hash": "b253ccd8d541dd39d78aca30de278ec5",
+    "semantic_hash": "b253ccd8d541dd39d78aca30de278ec5"
+  },
+  "src/content/pages/community/memory-cafe.md": {
+    "mtime": 1787075073.2372825,
+    "seen": 1787090313.141954,
+    "ast_hash": "4345c44942440825b39876c917f3e5c6",
+    "semantic_hash": "4345c44942440825b39876c917f3e5c6"
+  },
+  "src/content/pages/curious-about-christianity.md": {
+    "mtime": 1786549390.0052676,
+    "seen": 1787090313.141954,
+    "ast_hash": "f406f89ccbcb46c3d808557d4af1089f",
+    "semantic_hash": "f406f89ccbcb46c3d808557d4af1089f"
+  },
+  "src/content/pages/families-children.md": {
+    "mtime": 1787075073.2375262,
+    "seen": 1787090313.1419551,
+    "ast_hash": "6444a61de992df6833728149350289d0",
+    "semantic_hash": "6444a61de992df6833728149350289d0"
+  },
+  "src/content/pages/families-children/childrens-church-ages-5-9.md": {
+    "mtime": 1786549390.0057988,
+    "seen": 1787090313.1419551,
+    "ast_hash": "3028eaaaf3ce0ce2a50b46860fbe8751",
+    "semantic_hash": "3028eaaaf3ce0ce2a50b46860fbe8751"
+  },
+  "src/content/pages/families-children/noisy.md": {
+    "mtime": 1787075073.2378647,
+    "seen": 1787090313.141956,
+    "ast_hash": "c397d0537df2a8c2ee770f02ac10fc0c",
+    "semantic_hash": "c397d0537df2a8c2ee770f02ac10fc0c"
+  },
+  "src/content/pages/families-children/youth-group.md": {
+    "mtime": 1786549390.005973,
+    "seen": 1787090313.141956,
+    "ast_hash": "bc274db157e1ceca633714985588f5c1",
+    "semantic_hash": "bc274db157e1ceca633714985588f5c1"
+  },
+  "src/content/pages/life-events.md": {
+    "mtime": 1787075073.2381935,
+    "seen": 1787090313.141956,
+    "ast_hash": "da5907f58025b7ea117d9830ad6a5065",
+    "semantic_hash": "da5907f58025b7ea117d9830ad6a5065"
+  },
+  "src/content/pages/music.md": {
+    "mtime": 1787075073.2388625,
+    "seen": 1787090313.141957,
+    "ast_hash": "0fd9c9629381fe2a404d0cf8403a6beb",
+    "semantic_hash": "0fd9c9629381fe2a404d0cf8403a6beb"
+  },
+  "src/content/pages/music/our-musicians.md": {
+    "mtime": 1787075073.2390997,
+    "seen": 1787090313.141957,
+    "ast_hash": "dac26711da2357682bfc764f071ccd4f",
+    "semantic_hash": "dac26711da2357682bfc764f071ccd4f"
+  },
+  "src/content/pages/music/st-barnabas-organ.md": {
+    "mtime": 1787075073.2393482,
+    "seen": 1787090313.141958,
+    "ast_hash": "63ce4e8a956f6584958a1f1e5f154173",
+    "semantic_hash": "63ce4e8a956f6584958a1f1e5f154173"
+  },
+  "src/content/pages/whats-on.md": {
+    "mtime": 1786549390.0066664,
+    "seen": 1787090313.141958,
+    "ast_hash": "89d9b15ae1bf922b3a8d4b0e70b3d6b1",
+    "semantic_hash": "89d9b15ae1bf922b3a8d4b0e70b3d6b1"
+  },
+  "src/content/pages/worship.md": {
+    "mtime": 1787075073.240082,
+    "seen": 1787090313.141959,
+    "ast_hash": "e1d8bd2ef9e023cfff2c886dbae2d30c",
+    "semantic_hash": "e1d8bd2ef9e023cfff2c886dbae2d30c"
   }
 }

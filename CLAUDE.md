@@ -166,5 +166,14 @@ The CMS `config.yml` also still holds **MOCKUP** preview URLs to revert at go-li
 - **`.claude/skills/`** — the recurring workflows packaged as skills (add a page, dual-write a
   schema change, add a feast, write a news post, optimise images); loaded automatically when a
   task matches.
+- **[graphify-out/](graphify-out/README.md)** — a knowledge graph of **both the code and the
+  content** (1,103 nodes, 1,513 edges: `src/`, `docs/`, `scripts/`, root docs, and every
+  `src/content/{history,news,pages}` file). Query it before a cross-cutting change: `/graphify
+  query "…"`, `/graphify path "A" "B"`, `/graphify explain "X"`; `GRAPH_REPORT.md` lists the hub
+  nodes and hyperedges. **Read `graphify-out/README.md` first** — it flags real weak spots (64 of
+  123 communities are lumped under one generic "News & Notices Archive" label; a health check
+  found 77 dangling and ~115 duplicate edges). It excludes `public/`, `.claude/`, `.github/`, and
+  no images went through vision extraction. It is also a **snapshot**: re-run `/graphify --update`
+  after a refactor or a batch of news posts rather than trusting it as current.
 - **[docs/superpowers/](docs/superpowers/README.md)** — dated design specs and plans from past
   work (historical record; indexed in its README).
