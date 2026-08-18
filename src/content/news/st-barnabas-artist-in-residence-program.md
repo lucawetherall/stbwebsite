@@ -10,7 +10,7 @@ legacySlug: "b/blog-89367-st-barnabas-artist-in-residence-program"
 
 * * *
 
-_**How do I make an appointment to see Helen?** [Email Helen directly](<mailto: helencharlemagne23@yahoo.com>)_ to book a 20-minute visit.   
+_**How do I make an appointment to see Helen?** [Email Helen directly](<mailto:helencharlemagne23@yahoo.com>)_ to book a 20-minute visit.   
 
 _**Where will the sessions take place?**_ Helen is located in the upper room of St Barnabas. Once you have booked, an email with further details will be sent to you. 
 
@@ -38,7 +38,7 @@ _**Can you explain a little more about the themes?**_ Although life has just sta
 
 * * *
 
-<img src="/images/news/52fde40c-whatsapp.image.2020-11-23.at.18.23.32.jpeg" alt="St Barnabas Artist in Residence Program" loading="lazy" decoding="async" width="370" height="493">
+<img src="/images/news/52fde40c-whatsapp.image.2020-11-23.at.18.23.32.jpeg" alt="St Barnabas Artist in Residence Programme" loading="lazy" decoding="async" width="370" height="493">
 
 **Helen Charlemange - Biography**
 

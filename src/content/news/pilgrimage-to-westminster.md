@@ -22,7 +22,7 @@ We leave the church and walk along the Grand Union Canal at a consistent but mod
 
 Join the canal walkers for breakfast at 9 am Smith’s Bar (short walk from Paddington Station) or simply complete the pilgrimage with us to Westminster Abbey leaving at 10 am. We make our way to the Abbey for the start of the Festival Eucharist at 11:30 am. Recommended for older children and those who are looking for a shorter walk.
 
-**3\.** ****J**oin us at the Abbey**  
+**3\. Join us at the Abbey**  
 
 **11.30 am Festival Eucharist** 
 

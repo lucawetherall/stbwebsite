@@ -20,7 +20,7 @@ A reflective communion service and short sermon for midweek spiritual refreshmen
 
 **Special Services in November:**
 
-****’S**hh-Free’ Mass - All Saint’s Day | 10.30am, 3rd November**
+**’Shh-Free’ Mass - All Saints’ Day | 10.30am, 3rd November**
 
 This is truly a ’Shh-free’ form of Eucharistic worship that is open to all ages, but particularly suitable for families. Music is led by the Ealing Gospel Choir. 
 

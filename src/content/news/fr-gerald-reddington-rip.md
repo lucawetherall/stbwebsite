@@ -1,5 +1,5 @@
 ---
-title: "Fr. Gerald Reddington RIP"
+title: "Fr Gerald Reddington RIP"
 date: 2020-06-20
 category: "News"
 legacySlug: "b/blog-59098-fr-gerald-reddington-rip"

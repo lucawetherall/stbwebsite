@@ -12,7 +12,7 @@ Have your say in making Ealing a better place to live, learn and work. 
 
 Speak to the commissioners, share your views over the next few months. Anyone who lives, works, or studies in the borough can complete the form until September 2021. Please visit [this link](https://erec.dosomethinggood.org.uk/ealings-race-equality-commission) to have your voice heard and share your views.
 
-You can also write confidentially to the commissioners by [email](<mailto: raceequalitycommission@ealing.gov.uk>) or by post at: Race Equality Commission Perceval House, 14/16 Uxbridge Road, Ealing W5 2HL. 
+You can also write confidentially to the commissioners by [email](<mailto:raceequalitycommission@ealing.gov.uk>) or by post at: Race Equality Commission Perceval House, 14/16 Uxbridge Road, Ealing W5 2HL. 
 
 You can also call 020 8825 6100 to speak to someone. 
 

@@ -53,7 +53,7 @@ Page 4. Note 9 General activities. There are no entries and no total in the Rest
 
 _The _ _difference is the AV Equipment for which funds were raised by the Psalmathon. The receipt from the fund raising has, I think correctly, been reflected as an element of Voluntary Income (Restricted). But unlike other sums raised it has been used to acquire the AV Equipment and as such the sums so raised are reflected as an addition to Fixed Assets in the Balance Sheet. - JH_
 
-[Page 4. Note 9 General activities. The 2020 total of 155,049 is clearly incorrect.](file:///C:/Users/User/Downloads/Annual%20Report%20Questions.docx#_msocom_1)
+Page 4. Note 9 General activities. The 2020 total of 155,049 is clearly incorrect.
 
 Page 5. Note 12. Net Book Value 2019 should read 2020.
 

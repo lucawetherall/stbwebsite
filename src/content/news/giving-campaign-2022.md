@@ -22,7 +22,7 @@ Fr Justin’s opening sermon for the giving campaign.
 
 **Building a church for future Generations**
 
-Aisha Raj (12) and Ellen Coleman (26) talk about the role St Barnabas has played for them and why building a church for future generations is as important now as it has ever has been. 
+Aisha Raj (12) and Ellen Coleman (26) talk about the role St Barnabas has played for them and why building a church for future generations is as important now as it ever has been. 
 
   
 

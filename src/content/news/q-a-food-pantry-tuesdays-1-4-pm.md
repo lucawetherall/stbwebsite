@@ -7,8 +7,7 @@ legacySlug: "b/blog-59981-q-a-food-pantry-tuesdays-1-4-pm"
 
 **St Barnabas Food Pantry** 
 
-**The demand for this initiative which we started in the front entrance porch of the church during Covid lockdown is increasing week by week.  Anyone in need is welcome to come along on a Wednesday between 1:00–3:00pm and collect from our donated supplies.  There is no registration or referral requirement, all are welcome. Make yourself known to one of our volunteers and they will give you a list to complete and pack your shopping for you.  
-**
+The demand for this initiative which we started in the front entrance porch of the church during Covid lockdown is increasing week by week.  Anyone in need is welcome to come along on a Wednesday between 1:00–3:00pm and collect from our donated supplies.  There is no registration or referral requirement, all are welcome. Make yourself known to one of our volunteers and they will give you a list to complete and pack your shopping for you.
 
 **What items are most needed?**
 
@@ -22,7 +21,7 @@ Monetary donations ALWAYS help. It gives us the flexibility to purchase needed i
 
 **What if I or someone else I know could do with food packages?** 
 
-If you, or someone you know, are struggling for food or household supplies please come along to the Food Pantry to collect some items. You will be very welcome!   Wednesdays from 1pm-3pm at St Barnabas Church, Pitshanger Lane, W51QJ.
+If you, or someone you know, are struggling for food or household supplies please come along to the Food Pantry to collect some items. You will be very welcome!   Wednesdays from 1pm-3pm at St Barnabas Church, Pitshanger Lane, W5 1QG.
 
 **Where do I drop off donations?**
 

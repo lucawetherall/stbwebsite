@@ -8,7 +8,7 @@ legacySlug: "b/blog-60360-sunday-indabas-copy"
 
 **_Community Organising_ as a _Spiritual Practice - an Interfaith Exchange_** 
 
-****Sunday 19 July,** 13:30 - 14:30 by [Zoom Webinar](https://us02web.zoom.us/j/88643396271?pwd=SXdrMzZvM0gzeWFhNXNwY1NXcE9odz09) and** **[streamed to Facebook](https://www.facebook.com/barnabites/posts/2778955962389737) Passcode: 508412**
+**Sunday 19 July, 13:30 - 14:30 by [Zoom Webinar](https://us02web.zoom.us/j/88643396271?pwd=SXdrMzZvM0gzeWFhNXNwY1NXcE9odz09) and [streamed to Facebook](https://www.facebook.com/barnabites/posts/2778955962389737) Passcode: 508412**
 
 Joined by a talented interfaith panel, Fr Justin Dodd will host a discussion on the connection between community organising and the spiritual journey. This promises to be a rich and enlightening conversation between passionate organisers in the Muslim (Sufia Alam), Jewish (Daniel McKintosh) and Christian (Vanessa Conant) traditions. See profiles below.
 
