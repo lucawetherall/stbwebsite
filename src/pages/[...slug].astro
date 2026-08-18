@@ -68,6 +68,8 @@ const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
      component used across the Hire section). */
   .page-hero__img {
     width: 100%; height: auto; display: block;
+    max-height: clamp(300px, 52vh, 500px);
+    object-fit: cover;
     background: var(--paper-2);
   }
   .page-body { padding-top: 1rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
