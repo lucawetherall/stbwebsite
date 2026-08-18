@@ -3,6 +3,8 @@ title: Our Musicians
 kicker: Music
 intro: The choir, and those who lead the sung worship of this church.
 description: Meet the choir, our Director of Music and our Organist, at St Barnabas Church, Ealing — a thriving choir in the Anglican choral tradition leading the Sung Mass each Sunday.
+hero: /images/music/choir-procession.webp
+heroAlt: The choir in procession
 ---
 
 We are fortunate to have a well-established and thriving choir, rooted in the Anglican choral
