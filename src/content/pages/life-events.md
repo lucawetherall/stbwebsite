@@ -7,8 +7,8 @@ description: Enquire about a baptism (christening), confirmation, wedding or fun
 hero: /images/life-events/wedding-1.webp
 heroAlt: A wedding at St Barnabas
 gallery:
-  - { src: /images/life-events/wedding-1.webp, alt: A wedding at St Barnabas }
-  - { src: /images/life-events/wedding-2.webp, alt: A newly married couple at St Barnabas }
+  - { src: /images/about/interior.webp, alt: The nave of St Barnabas }
+  - { src: /images/about/lady-chapel.webp, alt: The Lady Chapel }
   - { src: /images/life-events/baptism.webp, alt: Water poured at the font during a baptism }
 ---
 
@@ -26,7 +26,7 @@ no need to be a regular churchgoer to ask.
 We would be honoured to host your wedding. The church is a beautiful and dignified setting,
 and our clergy will guide you through every step of preparing to marry.
 
-## Funerals
+## Funerals and Memorials
 
 At a time of loss, we are here to help. The clergy conduct funerals for everyone, whether or
 not they were churchgoers, and continue to offer bereavement support afterwards (see also our
