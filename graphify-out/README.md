@@ -1,6 +1,24 @@
 # Codebase Knowledge Graph
 
-This directory contains a persistent knowledge graph of the St Barnabas website codebase, built by graphify. Use it to understand architecture, trace dependencies, and navigate the project without reading individual files.
+A knowledge graph of the St Barnabas website **code**, built by graphify. Use it to trace
+dependencies and orient yourself before a cross-cutting change.
+
+## Scope — what this graph does and does not cover
+
+Read this before relying on it.
+
+- **Covered:** TypeScript/Astro/JS symbols — functions, types, components, and the calls and
+  imports between them, extracted deterministically from the AST.
+- **NOT covered:** Markdown and content. The semantic (LLM) extraction pass over the ~180
+  `.md` files failed mid-run on a session limit, so `src/content/**` (news, history, pages,
+  services), `docs/**`, and the root docs (`README.md`, `DECISIONS.md`, `CMS-SETUP.md`,
+  `AGENT-GUARDRAILS.md`) contributed **4 nodes in total** — effectively nothing.
+
+So: **absence from this graph is not evidence of absence in the repo.** For content and prose,
+read the files, or `src/content.config.ts` for the schemas. To fill the content gap, re-run the
+pipeline with a Gemini key set (`GEMINI_API_KEY`) or in a session with headroom.
+
+This is also a **snapshot** taken at the commit that added it — it goes stale as code changes.
 
 ## Files
 
@@ -24,10 +42,22 @@ For humans: open `graph.html` in a browser to explore visually, or read `GRAPH_R
 
 ## Key findings
 
-- **God nodes:** `Site`, `civilFromDateOnly()`, `toIcs()`, `baseEvent()`, `toSiteEvent()`
-- **Architecture:** 455 nodes, 819 edges, 33 communities (Liturgical Engine, Components & Layouts, Content & Pages, Utilities & Lib, etc.)
-- **Cohesion gaps:** Utilities & Lib is weakly interconnected (0.06) — may benefit from refactoring into smaller modules.
-- **Isolated nodes:** 142 nodes with ≤1 connection — suggests documentation gaps or missing edges.
+- **Hub functions:** `Site` (18 edges), `civilFromDateOnly()` (12), `toIcs()` (12),
+  `baseEvent()` (10), `toSiteEvent()` (9) — the events/iCal and date machinery is the most
+  connected part of the codebase.
+- **Shape:** 455 nodes, 819 edges, 33 communities.
+
+Two caveats on the report's own analysis:
+
+- **Community labels are heuristic.** They were assigned by keyword-matching the top node names,
+  not by reading the code. 20 of the 33 are unlabelled ("Community 14"), and the labelled ones
+  may be wrong. Treat them as rough groupings, not as an architectural taxonomy.
+- **"142 isolated nodes" is mostly an artefact**, not a finding. Many are `package.json` and
+  `tsconfig` keys (`name`, `version`, `type`, `private`) that have nothing to connect to. Do not
+  read it as 142 undocumented components.
+
+Likewise the report's "cohesion 0.06 → should Utilities & Lib be split?" is a generated prompt
+from a clustering score, not a reviewed recommendation. Don't action it without reading the code.
 
 For the full report, see GRAPH_REPORT.md.
 

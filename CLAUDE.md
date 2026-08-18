@@ -166,5 +166,16 @@ The CMS `config.yml` also still holds **MOCKUP** preview URLs to revert at go-li
 - **`.claude/skills/`** — the recurring workflows packaged as skills (add a page, dual-write a
   schema change, add a feast, write a news post, optimise images); loaded automatically when a
   task matches.
+- **[graphify-out/](graphify-out/README.md)** — a knowledge graph of the **TypeScript/Astro code**
+  (455 nodes, 819 edges), for orienting yourself before a cross-cutting change: "what calls
+  `toIcs()`?", "what does `Site` touch?". Query it with `/graphify query "…"`, `/graphify path
+  "A" "B"`, `/graphify explain "X"`; `GRAPH_REPORT.md` lists the hub functions.
+  **Scope caveat — read this before trusting it:** it is built from **AST extraction of code
+  only**. The semantic pass over Markdown/content failed (session limit), so the ~180 files in
+  `src/content/**`, `docs/**` and the root `.md` files are **absent from the graph**. It is not a
+  map of the site's *content*, and absence from the graph is not evidence something doesn't
+  exist — for content, read the files or `src/content.config.ts`. It is also a **snapshot**: it
+  goes stale as code changes, so re-run `/graphify --update` rather than trusting it after a
+  refactor.
 - **[docs/superpowers/](docs/superpowers/README.md)** — dated design specs and plans from past
   work (historical record; indexed in its README).
