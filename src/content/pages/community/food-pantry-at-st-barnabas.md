@@ -3,6 +3,8 @@ title: Food Pantry at St Barnabas
 kicker: Community
 intro: Every Wednesday between 1–3pm our Food Pantry is open to all comers — no referral needed.
 description: The St Barnabas Food Pantry is open every Wednesday 1–3pm to all, building relationships and sharing food with our neighbours in Ealing.
+hero: /images/community/pantry.webp
+heroAlt: The Food Pantry at St Barnabas
 ---
 
 Our Food Pantry is about much more than handing out food. The focus is on building

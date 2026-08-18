@@ -4,6 +4,12 @@ seoTitle: Baptisms, Weddings & Funerals
 kicker: Baptisms · Weddings · Funerals
 intro: As the parish church of Pitshanger Lane, it is our privilege to share with you in the sacraments and turning-points of life.
 description: Enquire about a baptism (christening), confirmation, wedding or funeral at St Barnabas Church, Ealing. Contact the parish office or speak to a member of the clergy.
+hero: /images/life-events/wedding-1.webp
+heroAlt: A wedding at St Barnabas
+gallery:
+  - { src: /images/life-events/wedding-1.webp, alt: A wedding at St Barnabas }
+  - { src: /images/life-events/wedding-2.webp, alt: A newly married couple at St Barnabas }
+  - { src: /images/life-events/baptism.webp, alt: Water poured at the font during a baptism }
 ---
 
 Whether you are marking a beginning, making a promise, or saying goodbye, we would be glad to

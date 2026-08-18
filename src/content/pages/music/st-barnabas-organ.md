@@ -3,6 +3,8 @@ title: The St Barnabas Organ
 kicker: Music
 intro: Originally built by Gerard Smith and opened by S. S. Wesley in 1851, our organ is a fine English Romantic instrument.
 description: The history of the St Barnabas organ — built by Gerard Smith, enlarged by Hill & Son in 1877, and rebuilt by Nicholson & Co in 2011. A fine English Romantic instrument in Ealing.
+hero: /images/music/organ-recital.webp
+heroAlt: The organ at St Barnabas during a recital
 ---
 
 The organ was previously at St Jude’s Church, Southsea. It was originally built by **Gerard

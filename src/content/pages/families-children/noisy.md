@@ -3,6 +3,8 @@ title: Noisy Mass (ages 0–4)
 kicker: Families & Children
 intro: A short, lively and interactive service for under-5s and their carers, every Sunday at 10.30am.
 description: Noisy Mass with Stay & Play (ages 0–4) meets every Sunday at 10.30am in the small hall at St Barnabas, Ealing.
+hero: /images/families/noisy-mass.webp
+heroAlt: Families gathered for Noisy Mass
 ---
 
 Noisy Mass with Stay & Play meets in person every Sunday at 10.30am in the small hall. Make
