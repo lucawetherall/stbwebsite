@@ -165,6 +165,17 @@ A single guarded settings file — the `historyPage.json` precedent — holding 
 for the Hire section so staff can change it without code:
 
 - Per-page intro copy (hub, recordings, concerts, halls).
+- **Church-hire rate card** (recordings/concerts) — supplied by the parish:
+  | Item | Rate |
+  |---|---|
+  | Core hire of church | £85 / hour |
+  | Use of the organ | £102 / session |
+  | Use of concert grand piano | £59 / session |
+  | Use of organ **and** concert grand piano | £117.50 / session |
+  | Use of staging | £54 / session |
+  | Choir Vestry **or** Gallery | £27 / session |
+  | Both Choir Vestry **and** Gallery | £43 / session |
+  | Organ & piano tuning | by arrangement, additional cost |
 - **Hall rates** (the table currently hard-coded in `venue-hire.astro`) + booking contact + notes.
 - **Featured films** list for Recordings: `[{ youtubeUrl, title, ensemble, work, posterImage,
   posterAlt }]`.
@@ -279,7 +290,8 @@ Each PR must build green (`npm run build`, `astro check`, `npm test`) before the
 
 1. ⚑ **Photo consent / safeguarding** sign-off for images of identifiable people, especially
    children (see §13).
-2. ⚑ **Church-hire rates** for recordings and concerts.
+2. ✔ **Church-hire rates** supplied (see §7.2). Confirm whether **concerts** use the same rate
+   card as recordings.
 3. ⚑ **Concert capacity** of the building.
 4. ⚑ **Photographer credit(s)**, if any are required.
 5. ⚑ Confirmation of the **occasion/feast/people** depicted where filenames are ambiguous.
