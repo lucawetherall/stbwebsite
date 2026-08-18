@@ -17,8 +17,8 @@
     "description": "Hire St Barnabas, Ealing for recording — a fine acoustic, a concert organ and a grand piano, used by professional choirs, orchestras and record labels.",
     "hero": { "image": "/images/hire/recording-setup.webp", "alt": "A recording session set up in the church" },
     "body": [
-      "St Barnabas offers a warm, generous acoustic well suited to choral and instrumental recording, alongside a concert-standard organ and a grand piano. Professional ensembles and record labels record here regularly.",
-      "Local ensembles are welcome at reduced rates. Organ and piano tuning can be arranged for an additional cost."
+      "St Barnabas offers a warm, generous acoustic well suited to choral and instrumental recording, alongside a concert-standard organ and a grand piano. Its surroundings are exceptionally quiet for a London church, and professional ensembles and record labels record here regularly.",
+      "Local ensembles are welcome at reduced rates, and either the Lady Chapel or the Choir Vestry can serve as a control room. Organ and piano tuning can be arranged for an additional cost."
     ],
     "films": [
       { "youtubeUrl": "https://www.youtube.com/watch?v=x6XVNkIXqlU", "title": "Abide With Me (arr. Moses Hogan)", "ensemble": "Alma Consort", "poster": "/images/hire/film-alma-consort.webp", "posterAlt": "Alma Consort singing in the church" },
