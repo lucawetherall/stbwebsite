@@ -415,7 +415,7 @@ collections:
   # ════════ SET UP ONCE (rarely touched) ════════
   # ── Main pages (text of every standalone & section page) ─────────────────────
   # File collection enumerating each page (Sveltia has no nested-folder tree until v1.0).
-  # `&pf` defines the shared field set once; `*pf` reuses it. Worship has its own set (gallery).
+  # `&pf` defines the shared field set once; `*pf` reuses it on every page.
   - name: pages
     label: 📖 Main Pages
     description: Edit the wording of any page. The formatting buttons are all you need.
@@ -439,6 +439,15 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list, quote]
             editor_components: [image]
             hint: Edit the wording freely. There is no code to break here.
+          - name: gallery
+            label: Photo gallery (optional)
+            widget: list
+            required: false
+            summary: '{{fields.alt}}'
+            hint: 'Shown as a strip of photographs beneath the page. Leave empty for no gallery.'
+            fields:
+              - { name: src, label: Image, widget: image, hint: 'A landscape photo around 1600px wide is plenty.' }
+              - { name: alt, label: Image description (for screen readers), widget: string }
       - { name: about-accessibility, label: 'About · Accessibility', file: src/content/pages/about-us/accessibility.md, fields: *pf }
       - { name: about-pastoral-care, label: 'About · Pastoral Care', file: src/content/pages/about-us/pastoral-care.md, fields: *pf }
       - { name: about-social-action, label: 'About · Social Action', file: src/content/pages/about-us/social-action.md, fields: *pf }
@@ -457,31 +466,7 @@ collections:
       - { name: music, label: Music, file: src/content/pages/music.md, fields: *pf }
       - { name: music-organ, label: 'Music · St Barnabas Organ', file: src/content/pages/music/st-barnabas-organ.md, fields: *pf }
       - { name: music-our-musicians, label: 'Music · Our Musicians', file: src/content/pages/music/our-musicians.md, fields: *pf }
-      - name: worship
-        label: Worship
-        file: src/content/pages/worship.md
-        fields:
-          - { name: title, label: Title, widget: string }
-          - { name: kicker, label: Kicker (small label above the title), widget: string, required: false }
-          - { name: intro, label: Intro line, widget: string, required: false }
-          - { name: description, label: Summary (shown to search engines), widget: text, required: false }
-          - { name: seoTitle, label: Search-engine title (optional), widget: string, required: false, hint: 'The headline people see in Google, when it should differ from the page Title above. Leave empty to use the Title. Around 50 characters; our church name is added for you.' }
-          - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
-          - name: body
-            label: Body
-            widget: markdown
-            modes: [rich_text]
-            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list, quote]
-            editor_components: [image]
-            hint: Edit the wording freely. There is no code to break here.
-          - name: gallery
-            label: Photo gallery
-            widget: list
-            required: false
-            summary: '{{fields.alt}}'
-            fields:
-              - { name: src, label: Image, widget: image, hint: 'A landscape photo around 1600px wide is plenty.' }
-              - { name: alt, label: Image description (for screen readers), widget: string }
+      - { name: worship, label: Worship, file: src/content/pages/worship.md, fields: *pf }
 
   # ── Site-wide settings (contact details, people, links) ──────────────────────
   - name: site_settings

@@ -76,7 +76,7 @@ const events = defineCollection({
     url: z.string().optional(),
     urlLabel: z.string().optional(), // "Book a place"
     image: z.string().optional(),
-    imageAlt: z.string().optional(), // required on the CMS widget, not here
+    imageAlt: z.string().optional(), // optional on the CMS widget too, with a fill-this-in hint
     repeat: z.enum(['none', 'weekly', 'fortnightly', 'monthly']).default('none'),
     repeatUntil: z.coerce.date().optional(), // omit for an open-ended series
     featured: z.boolean().default(false),
