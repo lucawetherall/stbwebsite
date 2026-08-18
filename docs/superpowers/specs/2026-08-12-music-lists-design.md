@@ -228,6 +228,12 @@ it stays developer-owned: it is generated from the `services` collection, `Music
 its own section heading, and nothing in `config.yml` gives an editor a handle on it.
 
 **The Merton College visit.** The 6pm Choral Evensong on 4 July 2027 is a joint service with the
-Choir of Merton College, Oxford. It is named so in the music list and carries a featured event, so
-it reaches What's On, Worship → Special Services and the parish calendar. The printed lists name
-an off-site venue when there is one, and name none here, so it is taken to be at St Barnabas.
+Choir of Merton College, Oxford. It is named so in the music list and carries a featured event for
+What's On, Worship → Special Services and the parish calendar. The printed lists name an off-site
+venue when there is one, and name none here, so it is taken to be at St Barnabas.
+
+The event is deferred until 1 May 2027 by a new optional `announceFrom` field on the `events`
+collection (dual-written into `content.config.ts` and `config.yml`, filtered in one place through
+the pure, tested `isAnnounced`). Without it a 2027 service would have headlined "Coming up" for
+eleven months. The music list still shows the service throughout — it is a forward reference
+document, where a July 2027 entry belongs; What's On is an announcement, where it does not yet.

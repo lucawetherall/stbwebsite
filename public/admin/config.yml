@@ -141,6 +141,7 @@ collections:
         hint: 'For something regular like the Memory Café. "Every month" means the same weekday each month — the second Tuesday, say, taken from the date above.'
       - { name: repeatUntil, label: Repeats until (optional), widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false, picker_utc: true, hint: 'Leave empty if it carries on indefinitely. What''s On shows the next date; the calendar file lists them all.' }
       - { name: featured, label: Highlight this at the top of What's On, widget: boolean, required: false, default: false }
+      - { name: announceFrom, label: Do not announce until (optional), widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false, picker_utc: true, hint: 'Leave empty to announce straight away. Set a date to keep the event off What''s On, Special Services and the calendar until then — useful for something booked a long way ahead.' }
       - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
 
   - divider: true

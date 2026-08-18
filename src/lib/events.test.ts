@@ -6,6 +6,7 @@ import {
   collapseSeries,
   describeRepeat,
   describeWhen,
+  isAnnounced,
   expandOccurrences,
   foldIcsLine,
   formatCivilRange,
@@ -86,6 +87,28 @@ describe('civil dates', () => {
     expect(formatCivilRange('2026-09-04', '2026-09-06')).toBe('4–6 September');
     expect(formatCivilRange('2026-09-30', '2026-10-02')).toBe('30 September – 2 October');
     expect(formatCivilRange('2026-09-04', '2026-09-04')).toBe('4 September');
+  });
+});
+
+describe('isAnnounced', () => {
+  const may = new Date('2027-05-01');
+
+  it('shows an ordinary event', () => {
+    expect(isAnnounced({}, '2026-08-14')).toBe(true);
+  });
+
+  it('hides a draft outright, whatever its announce date', () => {
+    expect(isAnnounced({ draft: true }, '2026-08-14')).toBe(false);
+    expect(isAnnounced({ draft: true, announceFrom: may }, '2027-06-01')).toBe(false);
+  });
+
+  // The Merton College visit: booked a year ahead, but it should not headline What's On
+  // for that whole year first.
+  it('defers an event until its announce date, then shows it', () => {
+    expect(isAnnounced({ announceFrom: may }, '2026-08-14')).toBe(false);
+    expect(isAnnounced({ announceFrom: may }, '2027-04-30')).toBe(false);
+    expect(isAnnounced({ announceFrom: may }, '2027-05-01')).toBe(true);
+    expect(isAnnounced({ announceFrom: may }, '2027-05-02')).toBe(true);
   });
 });
 
