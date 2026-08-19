@@ -14,5 +14,5 @@ have one designated accessibility toilet equipped for mobility needs.
 
 An induction loop operates in the church, and assistance dogs are very welcome.
 
-We are always trying to do better. If there is something that would make your visit easier,
-please [tell us](/contact-us) — your feedback helps us improve.
+If something would make your visit easier, please [tell us](/contact-us) — we are always
+trying to do better.

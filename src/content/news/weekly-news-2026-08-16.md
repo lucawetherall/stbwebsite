@@ -110,7 +110,7 @@ _**Sunday**_
 
 ## **Forward Look - coming dates**
 
-26 Sept QUIZ NIGHT - keep any eye out for the booking details coming shortly
+26 Sept QUIZ NIGHT - keep an eye out for the booking details coming shortly
 
 4 Oct HARVEST SUNDAY SERVICE
 

@@ -24,7 +24,7 @@ With love and prayers for a blessed Holy Week and Easter,
 
 **Mother Sarah**
 
-I am reading: Dappled Beauty: reflections on poems of Gerald Manley Hopkins; Carys Walsh
+I am reading: Dappled Beauty: reflections on poems of Gerard Manley Hopkins; Carys Walsh
 
 _image: Arrest of Christ, Caravaggio_
 

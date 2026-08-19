@@ -1,7 +1,7 @@
 ---
 title: Families & Children
 kicker: For all ages
-intro: St Barnabas welcomes families of all kinds into a vibrant and diverse community of faith.
+intro: St Barnabas welcomes families of all kinds, with a group for every age on Sunday mornings.
 description: Noisy Mass for under-5s, Children's Church for ages 5–9, and a Youth Group for ages 10–16 — children are welcome at every service at St Barnabas, Ealing.
 hero: /images/families/christmas-crafts.webp
 heroAlt: Children making Christmas crafts at St Barnabas

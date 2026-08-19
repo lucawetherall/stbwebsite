@@ -24,7 +24,7 @@ With love and prayers for a blessed Passiontide,
 
 **Mother Sarah**
 
-I am currently reading: Dappled Beauty: reflections on poems of Gerald Manley Hopkins; Carys Walsh
+I am currently reading: Dappled Beauty: reflections on poems of Gerard Manley Hopkins; Carys Walsh
 
 _image: Entry into Jerusalem, Giotto di Bondone c.1305_
 
