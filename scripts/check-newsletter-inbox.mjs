@@ -75,6 +75,22 @@ for (const summary of messages) {
   const haystack = parts.join('\n').replace(/=\r?\n/g, '').replace(/=3D/gi, '=');
   const before = shareUrls.size;
   for (const m of haystack.matchAll(SHARE_LINK)) shareUrls.add(m[0].replace(/=$/, ''));
+
+  // Emails as delivered use short.churchdesk.net click-tracking redirects rather than
+  // bare share links; resolve each unique one and keep those landing on a share page.
+  const SHORT_LINK = /https:\/\/short\.churchdesk\.net\/lnk\/[A-Za-z0-9_-]{20,}/g;
+  const shorts = [...new Set([...haystack.matchAll(SHORT_LINK)].map((m) => m[0]))];
+  if (shorts.length) console.log(`  resolving ${shorts.length} tracking link(s)…`);
+  for (const short of shorts) {
+    try {
+      const r = await fetch(short, { redirect: 'follow' });
+      r.body?.cancel();
+      const m = r.url.match(SHARE_LINK);
+      if (m) shareUrls.add(m[0]);
+    } catch (e) {
+      console.warn(`  could not resolve ${short.slice(0, 60)}…: ${e.message}`);
+    }
+  }
   if (process.env.DEBUG_INBOX === '1') {
     console.log(
       `  msg ${id}: subject=${JSON.stringify(msg.subject ?? '')} from=${JSON.stringify(msg.from ?? '')} ` +
