@@ -115,37 +115,3 @@ _**Sunday**_
 4 Oct HARVEST SUNDAY SERVICE
 
 17 Oct PET SERVICE 2pm
-
-**PARISH OFFICE**
-
-You can contact Sanjit Sil (Operations Manager in the Office) on:
-
-Mondays and Wednesdays 10am - 6pm
-
-020 8998 4079
-
-email: [parish.office@barnabites.net](mailto:parish.office@barnabites.net)
-
-Please contact Mthr Sarah on [vicar@barnabites.net](mailto:%20vicar@barnabites.net)
-
-Sarah's usual day off is a Friday
-
-SAFEGUARDING
-
-St Barnabas Ealing adopts the Diocese of London and Bishops' policies on safeguarding.
-
-Follow our useful links here:
-
-[Basic safeguarding training - accessible online for all](https://www.london.anglican.org/church-and-parish-support/safeguarding/training/basic-awareness-and-foundation-courses/) \- essential for those leading groups, on the PCC, or helping in various roles. Also open to everyone to do, FREE OF CHARGE.
-
-CONTACTS IN CASE OF CONCERN OR QUERY:
-
-Parish Safeguarding Officer: Pat Chapman [safeguarding@barnabites.org](mailto:safeguarding@barnabites.org)
-
-Children's Champion: Helen Ward [childrens.champion@barnabites.org](mailto:childrens.champion@barnabites.org)
-
-## **Quick Links**
-
-[Give a regular amount to St Barnabas](https://www.parishgiving.org.uk/donors/find-your-parish/ealing-st-barnabas-ealing/)
-
-[Join a Pastoral Care Group](https://stbarnabasealing.churchdesk.com/blog/65816)

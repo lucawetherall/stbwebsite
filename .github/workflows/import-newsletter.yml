@@ -79,15 +79,26 @@ jobs:
           SHARE_URL: ${{ github.event.client_payload.share_url }}
         run: node scripts/import-newsletter.mjs $SHARE_URL
 
+      # A broken post committed straight to main would break the production deploy's
+      # build. Prove the site still builds WITH the imported content before pushing;
+      # a failure here leaves main untouched and emails the repository owner.
+      - name: Verify the site builds with the imported content
+        run: |
+          if [ -n "$(git status --porcelain src/content/news public/images/news)" ]; then
+            npm run build
+          else
+            echo "No new content — skipping build check."
+          fi
+
       - name: Commit the new post (if any)
         run: |
           if [ -n "$(git status --porcelain src/content/news public/images/news)" ]; then
-            slug=$(git status --porcelain src/content/news | awk '{print $2}' | head -1 | xargs basename | sed 's/\.md$//')
+            slugs=$(git status --porcelain src/content/news | awk '{print $2}' | xargs -n1 basename | sed 's/\.md$//' | paste -sd ', ' -)
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add src/content/news public/images/news
-            git commit -m "Import Weekly News newsletter (${slug})" \
-              -m "Automated import of the latest ChurchDesk email newsletter as a news post." \
+            git commit -m "Import Weekly News: ${slugs}" \
+              -m "Automated import of ChurchDesk email newsletter(s) as news posts." \
               -m "Co-Authored-By: Claude <noreply@anthropic.com>"
             git push
           else

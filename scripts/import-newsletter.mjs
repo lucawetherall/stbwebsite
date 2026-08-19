@@ -1,19 +1,26 @@
-// Import the parish's ChurchDesk email newsletter as a news post.
+// Import the parish's ChurchDesk email newsletter as one or more news posts.
 //
-// The CMS "Newsletter archive link" (settings/site.json → newsletterArchive) points at a
-// public ChurchDesk share page, app.churchdesk.com/public/newsletter/<uuid>. Behind it,
-// GET api2.churchdesk.com/v2/people/messages/<uuid>/share returns { title, rendered } —
-// the edition's title and its full email HTML (an Unlayer template). This script converts
-// that into a Markdown post in src/content/news/ so each edition also appears on /news.
+// Two sources, one converter:
 //
-// Idempotent: the slug is weekly-news-<date> (date parsed from the edition title); if the
-// post already exists nothing is written. Safe to run on a schedule AND whenever the CMS
-// link changes — whichever happens first imports the edition exactly once.
+//   node scripts/import-newsletter.mjs                      # share link from settings/site.json
+//   node scripts/import-newsletter.mjs <share-url-or-uuid>  # a specific edition
+//   node scripts/import-newsletter.mjs --html <file> [--title "<subject>"]
 //
-//   node scripts/import-newsletter.mjs             # uuid from settings/site.json
-//   node scripts/import-newsletter.mjs <url|uuid>  # import a specific edition
+// The share-link mode fetches { title, rendered } from ChurchDesk's public API
+// (api2.churchdesk.com/v2/people/messages/<uuid>/share). The --html mode converts a
+// newsletter email's own HTML body — the same Unlayer markup — which matters because
+// delivered emails carry click-tracking links rather than share links. If the given
+// HTML contains SEVERAL editions (a bulk forward), it is split on the recurring
+// masthead and each edition becomes its own dated post.
 //
-// Prints "IMPORTED <slug>" on a new import (the GitHub workflow keys off the git diff).
+// The web post keeps only what an online reader needs: the email chrome (masthead
+// logo, date banner, footer, unsubscribe/social) and the standing weekly boilerplate
+// (Parish Office details, Safeguarding block, Quick Links) are stripped — the site
+// has proper pages for those. ChurchDesk click-tracking links are resolved to their
+// real destination, or unwrapped to plain text when dead.
+//
+// Idempotent three ways: by message uuid (marker comment in each post), by slug
+// (one post per edition date), and safe to re-run from any trigger.
 import { readFile, writeFile, mkdir, access, readdir } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import * as cheerio from 'cheerio';
@@ -23,13 +30,14 @@ import sharp from 'sharp';
 const NEWS_DIR = 'src/content/news';
 const IMG_DIR = 'public/images/news';
 const MAX_IMG_WIDTH = 1200;
+const UUID_RE = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
 
-const mkdirNews = () => mkdir(NEWS_DIR, { recursive: true });
+const months = 'January February March April May June July August September October November December'.split(' ');
 
-// With STALENESS_CHECK=1 (set by the scheduled workflow runs), fail loudly if the
-// newest imported edition is old — the likeliest cause is that the "Newsletter
-// archive link" in the CMS still points at a past edition, so new ones are being
-// missed. A workflow failure emails the repository owner; a quiet skip would not.
+// ---------------------------------------------------------------- staleness ----
+// With STALENESS_CHECK=1 (scheduled workflow runs), fail loudly if the newest
+// imported edition is old — the likeliest cause is a broken trigger chain. A
+// workflow failure emails the repository owner; a quiet skip would not.
 const STALE_AFTER_DAYS = 14;
 async function stalenessCheck() {
   if (process.env.STALENESS_CHECK !== '1') return;
@@ -43,53 +51,15 @@ async function stalenessCheck() {
   if (ageDays > STALE_AFTER_DAYS) {
     console.error(
       `STALE: the newest imported Weekly News edition is ${newest} (${Math.round(ageDays)} days ago). ` +
-        'If a newer newsletter has been sent, update the "Newsletter archive link" in the CMS ' +
-        '(Site settings) to its share link so it can be imported.'
+        'Check the AgentMail inbox subscription and the CMS "Newsletter link (latest edition)" setting.'
     );
     process.exit(1);
   }
 }
 
-// ---- resolve the message uuid ------------------------------------------------
-const arg = process.argv[2];
-let uuid;
-if (arg) {
-  const m = arg.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i);
-  if (!m) throw new Error(`Could not find a message uuid in "${arg}"`);
-  uuid = m[0];
-} else {
-  const settings = JSON.parse(await readFile('src/content/settings/site.json', 'utf8'));
-  const link = settings.newsletterArchive || '';
-  const m = link.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i);
-  if (!m) throw new Error(`newsletterArchive in settings/site.json has no message uuid: "${link}"`);
-  uuid = m[0];
-}
-
-// ---- fetch the edition -------------------------------------------------------
-const res = await fetch(`https://api2.churchdesk.com/v2/people/messages/${uuid}/share`);
-if (!res.ok) throw new Error(`ChurchDesk share endpoint returned ${res.status} for ${uuid}`);
-const { title: rawTitle, rendered } = await res.json();
-if (!rendered) throw new Error('Share endpoint returned no rendered HTML');
-
-// ---- dedupe by message uuid --------------------------------------------------
-// Each imported post carries a `<!-- churchdesk-message: <uuid> -->` marker; if any
-// existing post already references this uuid the edition has been imported, whatever
-// its slug ended up as (the slug date can be a fallback — see below).
-await mkdirNews();
-for (const f of (await readdir(NEWS_DIR)).filter((f) => f.endsWith('.md'))) {
-  if ((await readFile(`${NEWS_DIR}/${f}`, 'utf8')).includes(uuid)) {
-    console.log(`Edition "${rawTitle}" is already imported (${NEWS_DIR}/${f}) — nothing to do.`);
-    await stalenessCheck();
-    process.exit(0);
-  }
-}
-
-// ---- date + slug from the title ---------------------------------------------
-// Titles look like "St Barnabas Church newsletter - 31st May 2026", but tolerate
-// "7 June 2026", "June 7th, 2026", abbreviated months and "14/06/2026". If no date
-// can be found at all, fall back to today (the newsletter goes out weekly, and the
-// uuid marker above prevents any duplicate import) rather than missing an edition.
-const months = 'January February March April May June July August September October November December'.split(' ');
+// ------------------------------------------------------------- date parsing ----
+// "31st May 2026", "June 7th, 2026", "14/06/2026", and yearless "16th August"
+// (year inferred: current, or previous if that lands >1 week in the future).
 function parseDate(s) {
   let day, monName, year;
   let m = s.match(/(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+),?\s+(\d{4})/);
@@ -101,76 +71,21 @@ function parseDate(s) {
     (m = s.match(/(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]{3,})/)) ||
     (m = s.match(/([A-Za-z]{3,})\s+(\d{1,2})(?:st|nd|rd|th)?/))
   ) {
-    // No year in the title (e.g. "newsletter - 16th August"): assume the current
-    // year, or last year if that would put the edition more than a week ahead of
-    // today (a late-December edition imported in January).
     [day, monName] = /^\d/.test(m[1]) ? [m[1], m[2]] : [m[2], m[1]];
     const now = new Date();
     year = now.getUTCFullYear();
     const mon = months.findIndex((x) => x.toLowerCase().startsWith(monName.toLowerCase().slice(0, 3)));
     if (mon < 0) return null;
-    const candidate = Date.UTC(year, mon, Number(day));
-    if (candidate - now.getTime() > 7 * 86400000) year -= 1;
+    if (Date.UTC(year, mon, Number(day)) - now.getTime() > 7 * 86400000) year -= 1;
   } else return null;
   const mon = months.findIndex((x) => x.toLowerCase().startsWith(monName.toLowerCase().slice(0, 3)));
   if (mon < 0) return null;
   return new Date(Date.UTC(Number(year), mon, Number(day)));
 }
-let date = parseDate(rawTitle);
-if (!date) {
-  console.warn(`Could not parse an edition date from title "${rawTitle}" — using today's date.`);
-  date = new Date(new Date().toISOString().slice(0, 10) + 'T00:00:00Z');
-}
-const isoDate = date.toISOString().slice(0, 10);
-let slug = `weekly-news-${isoDate}`;
-while (await access(`${NEWS_DIR}/${slug}.md`).then(() => true, () => false)) slug += '-2';
-const outPath = `${NEWS_DIR}/${slug}.md`;
 
-// British-style display date for the post title: "31 May 2026".
-const displayDate = `${date.getUTCDate()} ${months[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
-const title = `Weekly News — ${displayDate}`;
-
-// ---- strip email chrome ------------------------------------------------------
-const $ = cheerio.load(rendered);
-const rows = $('.u-row-container').toArray();
-
-let hero;
-let heroAlt;
-for (const row of rows) {
-  const $row = $(row);
-  const text = $row.text().replace(/\s+/g, ' ').trim();
-  const imgs = $row.find('img').toArray();
-  const srcs = imgs.map((i) => $(i).attr('src') || '');
-
-  // Footer: social icons + unsubscribe.
-  if (/unsubscribe/i.test(text) || srcs.some((s) => s.includes('unlayer.com/social'))) {
-    $row.remove();
-    continue;
-  }
-  // Masthead logo.
-  if (!text && srcs.some((s) => /st\.barnabas\.logo/i.test(s))) {
-    $row.remove();
-    continue;
-  }
-  // Date banner ("31 May 2026 · Your weekly newsletter from St Barnabas Ealing") —
-  // the date and standing strapline live in the post's frontmatter instead.
-  if (/your weekly newsletter from st barnabas/i.test(text) && text.length < 120) {
-    $row.remove();
-    continue;
-  }
-  // First image-only row before any prose is the edition's cover image → hero.
-  if (!hero && !text && srcs.length === 1 && srcs[0]) {
-    hero = srcs[0];
-    heroAlt = ($(imgs[0]).attr('alt') || '').trim() || undefined;
-    $row.remove();
-  }
-}
-
-// ---- download + optimise images ---------------------------------------------
-await mkdir(IMG_DIR, { recursive: true });
+// ------------------------------------------------------------------ images -----
 const sanitize = (n) => n.replace(/[^\w.\-]/g, '_').slice(-60);
-
-async function localise(src) {
+async function localiseImage(src, isoDate) {
   const abs = new URL(src, 'https://edge.churchdesk.com').href;
   const base = sanitize(abs.split('/').pop().split('?')[0] || 'image').replace(/\.(png|jpe?g|gif|webp)$/i, '');
   const name = `newsletter-${isoDate}-${createHash('md5').update(abs).digest('hex').slice(0, 8)}-${base}.webp`;
@@ -184,33 +99,26 @@ async function localise(src) {
   return `/images/news/${name}`;
 }
 
-if (hero) {
+// ------------------------------------------------------------------ links ------
+// Email links are wrapped in short.churchdesk.net click trackers, and forwarded
+// copies of those often 404. Resolve each to its destination; dead or unresolvable
+// trackers are unwrapped to plain text so no tracking link ever reaches the site.
+const trackerCache = new Map();
+async function resolveTracker(url) {
+  if (trackerCache.has(url)) return trackerCache.get(url);
+  let dest = null;
   try {
-    hero = await localise(hero);
-  } catch (e) {
-    console.warn(`hero image failed (${e.message}) — post will have no hero`);
-    hero = undefined;
-  }
+    const r = await fetch(url, { redirect: 'follow' });
+    r.body?.cancel();
+    if (r.ok && !/short\.churchdesk\.net/i.test(r.url)) dest = r.url;
+  } catch {}
+  trackerCache.set(url, dest);
+  return dest;
 }
 
-for (const img of $('.u-row-container img').toArray()) {
-  const src = $(img).attr('src');
-  if (!src) { $(img).remove(); continue; }
-  try {
-    $(img).attr('src', await localise(src));
-    $(img).removeAttr('srcset');
-    if (!($(img).attr('alt') || '').trim()) $(img).attr('alt', title);
-  } catch (e) {
-    console.warn(`dropping image ${src.slice(0, 80)} (${e.message})`);
-    $(img).remove();
-  }
-}
-
-// ---- email HTML → Markdown ---------------------------------------------------
+// ---------------------------------------------------------------- markdown -----
 const td = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced', bulletListMarker: '-' });
 td.remove(['script', 'style', 'noscript', 'title']);
-// Same convention as the migrated legacy posts (scrape-blog.mjs): images as raw
-// lazy-loading <img> tags, which Markdown passes through untouched.
 td.addRule('lazyImg', {
   filter: 'img',
   replacement: (_c, node) => {
@@ -221,52 +129,233 @@ td.addRule('lazyImg', {
   },
 });
 
-// Repair the email's malformed contact links (e.g. href="https://name@domain" or a
-// bare "name:domain") — if the link text is an email address, link it as mailto.
-for (const a of $('.u-row-container a').toArray()) {
-  const text = $(a).text().trim();
-  const href = $(a).attr('href') || '';
-  if (/^[\w.+-]+@[\w.-]+\.\w+$/.test(text) && !href.startsWith('mailto:')) {
-    $(a).attr('href', `mailto:${text}`);
+// ---------------------------------------------------------------- converter ----
+// rowsHtml: the edition's .u-row-container blocks, in order.
+async function convertEdition({ rowsHtml, title: rawTitle, uuid, newsFiles }) {
+  const $ = cheerio.load(`<div id="root">${rowsHtml.join('\n')}</div>`);
+  const rows = $('#root > .u-row-container').toArray();
+
+  // -- derive the edition date: title first, then the date banner row.
+  let date = rawTitle ? parseDate(rawTitle) : null;
+  let bannerText = '';
+  for (const row of rows) {
+    const text = $(row).text().replace(/\s+/g, ' ').trim();
+    if (/your weekly newsletter from st barnabas/i.test(text) && text.length < 140) {
+      bannerText = text;
+      break;
+    }
   }
+  if (!date && bannerText) date = parseDate(bannerText);
+  if (!date) {
+    console.warn(`  no edition date in title or banner — using today.`);
+    date = new Date(new Date().toISOString().slice(0, 10) + 'T00:00:00Z');
+  }
+  const isoDate = date.toISOString().slice(0, 10);
+  const displayDate = `${date.getUTCDate()} ${months[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+  const title = `Weekly News — ${displayDate}`;
+  const slug = `weekly-news-${isoDate}`;
+  const outPath = `${NEWS_DIR}/${slug}.md`;
+
+  // -- dedupe: by uuid marker anywhere, then by slug (one post per edition date).
+  if (uuid) {
+    for (const [f, content] of newsFiles) {
+      if (content.includes(uuid)) {
+        console.log(`  ${title}: already imported (${f}) — skipping.`);
+        return null;
+      }
+    }
+  }
+  if (await access(outPath).then(() => true, () => false)) {
+    console.log(`  ${title}: a post for ${isoDate} already exists — skipping.`);
+    return null;
+  }
+
+  // -- strip email chrome + standing boilerplate.
+  let hero, heroAlt;
+  let tailReached = false;
+  for (const row of rows) {
+    const $row = $(row);
+    const text = $row.text().replace(/\s+/g, ' ').trim();
+    const srcs = $row.find('img').toArray().map((i) => $(i).attr('src') || '');
+
+    // Everything from the first standing-boilerplate block onward is email
+    // furniture: Parish Office contact details, the Safeguarding block, Quick
+    // Links, social icons, unsubscribe. The site has proper pages for all of it.
+    if (!tailReached && /^(PARISH OFFICE|Quick Links|SAFEGUARDING)\b/i.test(text)) tailReached = true;
+    if (
+      tailReached ||
+      /unsubscribe/i.test(text) ||
+      /view (this email )?in (your )?browser/i.test(text) ||
+      srcs.some((s) => s.includes('unlayer.com/social'))
+    ) {
+      $row.remove();
+      continue;
+    }
+    if (!text && srcs.some((s) => /st\.barnabas\.logo/i.test(s))) {
+      $row.remove();
+      continue;
+    }
+    if (/your weekly newsletter from st barnabas/i.test(text) && text.length < 140) {
+      $row.remove();
+      continue;
+    }
+    if (!hero && !text && srcs.length === 1 && srcs[0]) {
+      hero = srcs[0];
+      heroAlt = ($($row.find('img')[0]).attr('alt') || '').trim() || undefined;
+      $row.remove();
+    }
+  }
+
+  // -- de-track links; repair malformed contact links.
+  for (const a of $('a').toArray()) {
+    const href = $(a).attr('href') || '';
+    const text = $(a).text().trim();
+    if (/^[\w.+-]+@[\w.-]+\.\w+$/.test(text) && !href.startsWith('mailto:')) {
+      $(a).attr('href', `mailto:${text}`);
+      continue;
+    }
+    if (/short\.churchdesk\.net/i.test(href)) {
+      const dest = await resolveTracker(href);
+      if (dest) $(a).attr('href', dest);
+      else $(a).replaceWith($(a).contents());
+    }
+  }
+
+  // -- images: download + optimise.
+  if (hero) {
+    try {
+      hero = await localiseImage(hero, isoDate);
+    } catch (e) {
+      console.warn(`  hero image failed (${e.message}) — post will have no hero`);
+      hero = undefined;
+    }
+  }
+  for (const img of $('img').toArray()) {
+    const src = $(img).attr('src');
+    if (!src) { $(img).remove(); continue; }
+    try {
+      $(img).attr('src', await localiseImage(src, isoDate));
+      $(img).removeAttr('srcset');
+      if (!($(img).attr('alt') || '').trim()) $(img).attr('alt', title);
+    } catch (e) {
+      console.warn(`  dropping image ${src.slice(0, 70)} (${e.message})`);
+      $(img).remove();
+    }
+  }
+
+  // -- to Markdown.
+  let body = $('#root > .u-row-container')
+    .toArray()
+    .map((row) => td.turndown($(row).html() || ''))
+    .filter((md) => md.trim())
+    .join('\n\n')
+    .replace(/^#{1,6}\s*$/gm, '') // empty headings the email editor leaves behind
+    .replace(/^# /gm, '## ') // the post title is the page's only h1
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
+  // The standing tail (Parish Office contact block, Safeguarding block, Quick
+  // Links) shares a row with real content, so it can survive the row-level strip;
+  // cut the Markdown at the first boilerplate heading instead. Line-start match
+  // only — prose merely mentioning safeguarding is untouched.
+  const cut = body.search(/^(?:#{1,6}\s*)?(?:\*\*)?\s*(PARISH OFFICE|SAFEGUARDING|QUICK LINKS)/im);
+  if (cut > 200) body = body.slice(0, cut).trim();
+  if (body.length < 200) {
+    console.warn(`  ${title}: converted body suspiciously short (${body.length} chars) — refusing to publish.`);
+    return null;
+  }
+
+  let description = body
+    .split('\n')
+    .map((l) => l.replace(/[#*_>\[\]!]|\(.*?\)|<[^>]+>/g, '').trim())
+    .filter((l) => l.length > 40)[0];
+  if (description && description.length > 160) {
+    description = description.slice(0, 160).replace(/\s+\S*$/, '') + '…';
+  }
+
+  const fm = [
+    '---',
+    `title: ${JSON.stringify(title)}`,
+    `date: ${isoDate}`,
+    'category: "Weekly News"',
+    'author: "St Barnabas Church"',
+    description ? `description: ${JSON.stringify(description)}` : null,
+    hero ? `hero: ${JSON.stringify(hero)}` : null,
+    hero ? `heroAlt: ${JSON.stringify(heroAlt || title)}` : null,
+    '---',
+    '',
+    '',
+  ].filter((x) => x !== null).join('\n');
+
+  const marker = `<!-- churchdesk-message: ${uuid || 'email-' + createHash('md5').update(title + isoDate).digest('hex').slice(0, 12)} -->`;
+  await writeFile(outPath, fm + marker + '\n\n' + body + '\n');
+  console.log(`IMPORTED ${slug}`);
+  return slug;
 }
 
-const body = $('.u-row-container')
-  .toArray()
-  .map((row) => td.turndown($(row).html() || ''))
-  .filter((md) => md.trim())
-  .join('\n\n')
-  .replace(/^#{1,6}\s*$/gm, '') // empty headings the email editor leaves behind
-  .replace(/^# /gm, '## ') // the post title is the page's only h1
-  .replace(/\n{3,}/g, '\n\n')
-  .trim();
-
-if (body.length < 200) throw new Error(`Converted body is suspiciously short (${body.length} chars) — refusing to publish it.`);
-
-// First real paragraph → meta description.
-let description = body
-  .split('\n')
-  .map((l) => l.replace(/[#*_>\[\]!]|\(.*?\)|<[^>]+>/g, '').trim())
-  .filter((l) => l.length > 40)[0];
-if (description && description.length > 160) {
-  description = description.slice(0, 160).replace(/\s+\S*$/, '') + '…';
+// Split a document's u-row-containers into editions on the recurring masthead
+// logo. A single-edition document yields one segment.
+function splitEditions(html) {
+  const $ = cheerio.load(html);
+  const rows = $('.u-row-container').toArray();
+  if (!rows.length) return [];
+  const starts = [];
+  rows.forEach((row, i) => {
+    const srcs = $(row).find('img').toArray().map((im) => $(im).attr('src') || '');
+    if (srcs.some((s) => /st\.barnabas\.logo/i.test(s))) starts.push(i);
+  });
+  if (starts.length <= 1) return [rows.map((r) => $.html(r))];
+  if (starts[0] !== 0) starts.unshift(0);
+  return starts.map((s, j) => rows.slice(s, starts[j + 1] ?? rows.length).map((r) => $.html(r)));
 }
 
-// ---- write the post ----------------------------------------------------------
-const fm = [
-  '---',
-  `title: ${JSON.stringify(title)}`,
-  `date: ${isoDate}`,
-  'category: "Weekly News"',
-  'author: "St Barnabas Church"',
-  description ? `description: ${JSON.stringify(description)}` : null,
-  hero ? `hero: ${JSON.stringify(hero)}` : null,
-  hero ? `heroAlt: ${JSON.stringify(heroAlt || title)}` : null,
-  '---',
-  '',
-  '',
-].filter((x) => x !== null).join('\n');
+// -------------------------------------------------------------------- main -----
+await mkdir(NEWS_DIR, { recursive: true });
+await mkdir(IMG_DIR, { recursive: true });
+const newsFiles = await Promise.all(
+  (await readdir(NEWS_DIR))
+    .filter((f) => f.endsWith('.md'))
+    .map(async (f) => [f, await readFile(`${NEWS_DIR}/${f}`, 'utf8')])
+);
 
-await writeFile(outPath, fm + `<!-- churchdesk-message: ${uuid} -->\n\n` + body + '\n');
-console.log(`IMPORTED ${slug}`);
+const args = process.argv.slice(2);
+let imported = 0;
+
+if (args[0] === '--html') {
+  const html = await readFile(args[1], 'utf8');
+  const titleIdx = args.indexOf('--title');
+  const title = titleIdx > -1 ? args[titleIdx + 1] : undefined;
+  const editions = splitEditions(html);
+  if (!editions.length) {
+    console.warn('No newsletter rows (.u-row-container) found in the HTML — nothing to import.');
+  } else {
+    console.log(`Found ${editions.length} edition(s) in the HTML.`);
+    for (const rowsHtml of editions) {
+      // Per-segment banner dates take precedence inside convertEdition; the
+      // supplied title only helps a single-edition email.
+      if ((await convertEdition({ rowsHtml, title: editions.length === 1 ? title : undefined, newsFiles })) !== null)
+        imported++;
+    }
+  }
+} else {
+  let uuid;
+  if (args[0]) {
+    const m = args[0].match(UUID_RE);
+    if (!m) throw new Error(`Could not find a message uuid in "${args[0]}"`);
+    uuid = m[0];
+  } else {
+    const settings = JSON.parse(await readFile('src/content/settings/site.json', 'utf8'));
+    const m = (settings.newsletterArchive || '').match(UUID_RE);
+    if (!m) throw new Error(`newsletterArchive in settings/site.json has no message uuid`);
+    uuid = m[0];
+  }
+  const res = await fetch(`https://api2.churchdesk.com/v2/people/messages/${uuid}/share`);
+  if (!res.ok) throw new Error(`ChurchDesk share endpoint returned ${res.status} for ${uuid}`);
+  const { title, rendered } = await res.json();
+  if (!rendered) throw new Error('Share endpoint returned no rendered HTML');
+  const [rowsHtml = []] = splitEditions(rendered);
+  if ((await convertEdition({ rowsHtml, title, uuid, newsFiles })) !== null) imported++;
+}
+
+if (!imported) console.log('Nothing new imported.');
 await stalenessCheck();
