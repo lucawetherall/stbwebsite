@@ -4,15 +4,8 @@ seoTitle: Services & Mass Times
 kicker: At the heart of our life
 intro: Worship is one of the ways human beings open themselves to life-giving mystery.
 description: Worship at St Barnabas, Ealing — Sung Mass on Sundays, weekday services, choral music and the great feasts of the Church's year, in the modern Catholic tradition.
-hero: /images/worship/liturgy-procession.webp
-heroAlt: The procession at a Sung Mass
-gallery:
-  - { src: /images/worship/candlelit-mass.webp, alt: The church at a candlelit Mass }
-  - { src: /images/worship/sung-compline.webp, alt: Sung Compline by candlelight }
-  - { src: /images/worship/easter-eve.webp, alt: Lighting the new fire at the Easter Vigil }
-  - { src: /images/worship/carols.webp, alt: The choir in cassocks at the carol service }
-  - { src: /images/worship/remembrance.webp, alt: The War Memorial on Remembrance Sunday }
-  - { src: /images/worship/liturgy-altar.webp, alt: The altar prepared for Mass }
+hero: /images/worship/candlelit-mass.webp
+heroAlt: The church at a candlelit Mass
 ---
 
 We hope that the experience of God in worship — through Scripture, prayer, silence, music,
@@ -22,9 +15,12 @@ that the Holy Spirit is at work in our worship, bringing us into communion as th
 Christ, and through Christ into relationship with God the Father — connecting ourselves, our
 neighbour and our world.
 
-## Find your way in
+Whoever you are, and wherever you are on your journey of faith, you are welcome at any
+of our services. Come as you are — there is no test to pass at the door.
 
-- **[Sundays](/worship/sundays)** — the Sung Mass at 10.30am, and more
+## Go deeper
+
+- **[Sundays](/worship/sundays)** — the Sung Mass at 10.30am, the heart of our week
 - **[During the week](/worship/weekdays)** — Mass, Morning Prayer and quiet worship
 - **[Special Services](/worship/special-services)** — the great feasts of the Church's year
 - **[Worship Online](/worship/online)** — join the Sunday Mass by livestream

@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import EventsList from '../../components/EventsList.astro';
+import Figure from '../../components/Figure.astro';
 import { getDiaryEvents } from '../../lib/events-source';
 import { eventsJsonLd } from '../../lib/events-jsonld';
 
@@ -64,6 +65,12 @@ const groups = [
         </section>
       ))}
     </div>
+    <Figure
+      class="page-figure"
+      src="/images/worship/easter-eve.webp"
+      alt="Lighting the new fire at the Easter Vigil"
+      caption="Lighting the new fire at the Easter Vigil"
+    />
     <p class="page-aside">
       Dates and times for these and everything else in the parish are on
       <a href="/whats-on">What's On</a>, announced in our <a href="/news">weekly newsletter</a>,

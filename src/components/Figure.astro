@@ -32,7 +32,9 @@ const srcset = `${src800} 800w, ${src} 1600w`;
 </figure>
 
 <style>
-  .figure { margin: 0; }
+  /* Margin is a hook, not a constant: the scoped selector outweighs page-level
+     classes, so callers adjust spacing via --figure-margin (e.g. .page-figure). */
+  .figure { margin: var(--figure-margin, 0); }
   .figure img {
     width: 100%;
     aspect-ratio: var(--figure-aspect, 3 / 2);
