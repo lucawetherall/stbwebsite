@@ -2,6 +2,7 @@ import { getCollection } from 'astro:content';
 import { fetchFeedEvents } from './events-feed';
 import {
   addDays,
+  collapseFeedRepeats,
   collapseSeries,
   expandOccurrences,
   mergeEvents,
@@ -60,7 +61,7 @@ export async function getDiaryEvents(now: Date = new Date()): Promise<SiteEvent[
     .map((entry) => nextOccurrence(entry, today))
     .filter((e): e is SiteEvent => e !== undefined);
 
-  const fromFeed = collapseSeries(upcomingEvents(feed, today));
+  const fromFeed = collapseFeedRepeats(collapseSeries(upcomingEvents(feed, today)));
 
   return mergeEvents(fromCms, fromFeed);
 }

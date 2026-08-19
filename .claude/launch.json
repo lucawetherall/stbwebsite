@@ -4,9 +4,23 @@
     {
       "name": "astro",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 4321,
-      "autoPort": false
+      "autoPort": true
+    },
+    {
+      "name": "preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "astro",
+        "preview",
+        "--port",
+        "4399"
+      ],
+      "port": 4399
     }
   ]
 }

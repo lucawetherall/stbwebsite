@@ -6,6 +6,8 @@ import {
   toLondonCivil,
   daysBetween,
   formatCivilDate,
+  tidyFeedDescription,
+  tidyFeedTitle,
   weekdayOf,
   type SiteEvent,
 } from './events';
@@ -31,9 +33,24 @@ const ORDINALS = ['first', 'second', 'third', 'fourth', 'fifth'];
 
 const FETCH_TIMEOUT_MS = 8000;
 
+/**
+ * The parish's own ChurchDesk feeds — one per event category the office keeps: Community,
+ * Concert, and the two Worship calendars (occasional services and the regular pattern). These are
+ * public, unauthenticated addresses, so they live in code rather than in a secret; the
+ * environment variables below still override them wholesale for testing or a future migration.
+ * The same list drives the calendar view's in-browser refresh (WhatsOnCalendar.astro).
+ */
+export const DEFAULT_FEED_URLS = [
+  'https://api2.churchdesk.com/ical/taxonomy/48613?organizationId=1901',
+  'https://api2.churchdesk.com/ical/taxonomy/46604?organizationId=1901',
+  'https://api2.churchdesk.com/ical/taxonomy/46609?organizationId=1901',
+  'https://api2.churchdesk.com/ical/taxonomy/181496?organizationId=1901',
+] as const;
+
 /** Feed URLs from the environment, newest name first, legacy name still honoured. */
 export function feedUrls(env: NodeJS.ProcessEnv = process.env): string[] {
-  const raw = env.EVENTS_ICAL_URLS ?? env.CHURCHDESK_ICAL_URL ?? '';
+  const raw = env.EVENTS_ICAL_URLS ?? env.CHURCHDESK_ICAL_URL;
+  if (raw === undefined) return [...DEFAULT_FEED_URLS];
   return raw
     .split(/[\n,]/)
     .map((u) => u.trim())
@@ -265,7 +282,7 @@ function toSiteEvent(
   return {
     id: occurrence ? `${seriesId}@${startCivil.date}` : seriesId,
     seriesId,
-    title: String(vevent.summary ?? 'Event').trim() || 'Event',
+    title: tidyFeedTitle(String(vevent.summary ?? 'Event')) || 'Event',
     start,
     end: end instanceof Date && !Number.isNaN(end.getTime()) ? end : undefined,
     date: startCivil.date,
@@ -281,7 +298,7 @@ function toSiteEvent(
           : undefined
     ),
     location: cleanText(vevent.location),
-    description: cleanText(vevent.description),
+    description: tidyFeedDescription(cleanText(vevent.description)),
     url: typeof vevent.url === 'string' ? vevent.url : undefined,
     featured: false,
     source: 'feed',

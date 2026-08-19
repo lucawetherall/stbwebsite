@@ -50,6 +50,12 @@ export interface SiteEvent {
   featured: boolean;
   /** "Every Thursday, until 17 December" — set only on a repeating series. */
   recurrenceText?: string;
+  /**
+   * A regular pattern of worship or parish life collapsed out of the feed — a weekly Mass, a
+   * monthly Evensong. The diary shows it once; pages that want only the *special* occasions
+   * (Worship → Special Services) filter it out.
+   */
+  regular?: boolean;
   source: 'cms' | 'feed';
 }
 
@@ -418,7 +424,7 @@ export function nextOccurrence(entry: EventEntry, today: string): SiteEvent | un
 
 /* ------------------------------------------------------------------ lists */
 
-const normaliseTitle = (t: string) =>
+export const normaliseTitle = (t: string) =>
   t
     .toLowerCase()
     .replace(/[‘’“”]/g, '')
@@ -467,6 +473,64 @@ export function collapseSeries(events: SiteEvent[]): SiteEvent[] {
   });
 }
 
+/**
+ * Collapse a feed's *repeated single events* into one diary row each, the way `collapseSeries`
+ * collapses an RRULE series. ChurchDesk publishes every Sunday Mass as its own VEVENT with its
+ * own UID, so without this the diary would carry fifty-odd identical "Sunday Mass" rows ahead of
+ * the special services anyone came to find.
+ *
+ * The cadence is inferred from the dates themselves, cautiously: three or more occurrences of a
+ * title on one weekday become "Every Sunday" / "Every other Sunday" / "The first Sunday of the
+ * month" as the gaps and ordinals allow, falling back to a phrase that promises nothing.
+ * Anything that repeats often enough to collapse is by definition part of the parish's regular
+ * pattern, so the kept row is flagged `regular`. Expects a date-sorted list; CMS events and
+ * already-collapsed series pass through untouched.
+ */
+export function collapseFeedRepeats(events: SiteEvent[]): SiteEvent[] {
+  const groups = new Map<string, SiteEvent[]>();
+  for (const e of events) {
+    if (e.source !== 'feed' || e.recurrenceText) continue;
+    const key = normaliseTitle(e.title);
+    const group = groups.get(key);
+    if (group) group.push(e);
+    else groups.set(key, [e]);
+  }
+
+  const drop = new Set<string>();
+  const phrases = new Map<string, string>();
+  for (const group of groups.values()) {
+    if (group.length < 3) continue;
+    const dates = group.map((e) => e.date);
+    const weekdays = new Set(dates.map(weekdayOf));
+
+    let phrase: string | undefined;
+    if (weekdays.size === 1) {
+      const weekday = WEEKDAYS[weekdayOf(dates[0])];
+      const gaps = dates.slice(1).map((d, i) => daysBetween(dates[i], d)).sort((a, b) => a - b);
+      const median = gaps[Math.floor(gaps.length / 2)];
+      const ordinals = new Set(dates.map((d) => Math.floor((Number(d.split('-')[2]) - 1) / 7)));
+      if (median <= 9) phrase = `Every ${weekday}`;
+      else if (median <= 16) phrase = `Every other ${weekday}`;
+      else if (ordinals.size === 1)
+        phrase = `The ${ORDINALS[[...ordinals][0]]} ${weekday} of the month`;
+      else phrase = `Several ${weekday}s through the year`;
+    } else if (group.length >= 4) {
+      phrase = 'Several dates through the year';
+    } else {
+      continue;
+    }
+
+    phrases.set(group[0].id, phrase);
+    for (const e of group.slice(1)) drop.add(e.id);
+  }
+
+  return events.flatMap((e) => {
+    if (drop.has(e.id)) return [];
+    const phrase = phrases.get(e.id);
+    return phrase ? [{ ...e, recurrenceText: phrase, regular: true }] : [e];
+  });
+}
+
 export interface MonthGroup {
   key: string;
   label: string;
@@ -511,6 +575,42 @@ export function describeWhen(event: SiteEvent, opts: { includeDate?: boolean } =
   if (from) parts.push(to ? `${from} – ${to}` : from);
   if (event.location) parts.push(event.location);
   return parts.join(' · ');
+}
+
+/**
+ * Strip the machinery ChurchDesk folds into an event description before it reaches a page or the
+ * published calendar: the "Event URL: …" line (the URL field already carries it), tracking-link
+ * markup like `[http://…]`, and the "Rotas:" block — who is reading and arranging flowers is for
+ * the parish's own sheet, not for us to publish beside the event. Returns undefined when nothing
+ * meaningful is left.
+ */
+/**
+ * Tidy a feed event's title for display: collapse stray whitespace and drop the shouted
+ * "IN PERSON" marker left over from the Zoom era — the site says where a service happens in its
+ * location line, not in capitals in its name. Deliberately conservative: nothing else is touched,
+ * and a title that is *only* the marker keeps it rather than vanishing.
+ */
+export function tidyFeedTitle(value: string): string {
+  const tidied = value
+    .replace(/\s*\bIN PERSON\b\s*/g, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+  return tidied || value.trim();
+}
+
+export function tidyFeedDescription(value: string | undefined): string | undefined {
+  if (!value) return undefined;
+  const text = value
+    .replace(/\r\n/g, '\n')
+    // The rota block runs from its heading to the next blank line (or the end).
+    .replace(/^rotas?:\s*\n(?:.+\n?)*?(?=\n\s*\n|$)/gim, '')
+    .replace(/^event url:.*$/gim, '')
+    // "…via Zoom [http://tracking.example/…]." — drop the bracketed tracking link.
+    .replace(/\s*\[https?:\/\/[^\]]*\]/gi, '')
+    .replace(/[ \t]+$/gm, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+  return text || undefined;
 }
 
 /* ------------------------------------------------------------------ ICS */
