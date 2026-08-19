@@ -47,9 +47,43 @@ for (const summary of messages) {
     continue;
   }
   const msg = await msgRes.json();
+
+  // Bodies, plus any text-ish attachments — a bulk forward carries each original
+  // newsletter as a message/rfc822 (.eml) attachment, so the share links live in
+  // attachment content, not the covering email's body.
+  const parts = [`${msg.html ?? ''}\n${msg.text ?? ''}`];
+  for (const att of msg.attachments ?? []) {
+    const type = att.content_type ?? '';
+    const name = att.filename ?? '';
+    if (!/rfc822|message|text|html/i.test(type) && !/\.(eml|html?|txt)$/i.test(name)) continue;
+    try {
+      const metaRes = await fetch(
+        `${API}/inboxes/${encodeURIComponent(inbox)}/messages/${encodeURIComponent(id)}/attachments/${encodeURIComponent(att.attachment_id)}`,
+        { headers }
+      );
+      if (!metaRes.ok) throw new Error(`meta ${metaRes.status}`);
+      const { download_url } = await metaRes.json();
+      const fileRes = await fetch(download_url);
+      if (!fileRes.ok) throw new Error(`download ${fileRes.status}`);
+      parts.push(await fileRes.text());
+    } catch (e) {
+      console.warn(`  could not read attachment "${name}" of ${id}: ${e.message}`);
+    }
+  }
+
   // Quoted-printable soft breaks may survive in raw bodies; normalise before matching.
-  const haystack = `${msg.html ?? ''}\n${msg.text ?? ''}`.replace(/=\r?\n/g, '').replace(/=3D/gi, '=');
-  for (const m of haystack.matchAll(SHARE_LINK)) shareUrls.add(m[0]);
+  const haystack = parts.join('\n').replace(/=\r?\n/g, '').replace(/=3D/gi, '=');
+  const before = shareUrls.size;
+  for (const m of haystack.matchAll(SHARE_LINK)) shareUrls.add(m[0].replace(/=$/, ''));
+  if (process.env.DEBUG_INBOX === '1') {
+    console.log(
+      `  msg ${id}: subject=${JSON.stringify(msg.subject ?? '')} from=${JSON.stringify(msg.from ?? '')} ` +
+        `bodyChars=${(msg.html ?? '').length + (msg.text ?? '').length} attachments=[${(msg.attachments ?? [])
+          .map((a) => `${a.filename}:${a.content_type}`)
+          .join(', ')}] newLinks=${shareUrls.size - before} ` +
+        `churchdeskUrls=${JSON.stringify([...haystack.matchAll(/https?:\/\/[^\s"'<>]*churchdesk[^\s"'<>]*/gi)].map((m) => m[0].slice(0, 90)).slice(0, 12))}`
+    );
+  }
 }
 
 if (!shareUrls.size) {

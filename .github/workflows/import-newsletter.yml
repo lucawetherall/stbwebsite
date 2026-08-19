@@ -33,7 +33,12 @@ on:
   # and client_payload { "share_url": "https://app.churchdesk.com/public/newsletter/<uuid>" }.
   repository_dispatch:
     types: [newsletter]
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Print per-message inbox diagnostics'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -63,6 +68,7 @@ jobs:
         env:
           AGENTMAIL_API_KEY: ${{ secrets.AGENTMAIL_API_KEY }}
           AGENTMAIL_INBOX: ${{ secrets.AGENTMAIL_INBOX }}
+          DEBUG_INBOX: ${{ inputs.debug && '1' || '0' }}
         run: node scripts/check-newsletter-inbox.mjs
 
       - name: Import the current newsletter edition
