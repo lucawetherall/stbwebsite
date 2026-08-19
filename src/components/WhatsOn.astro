@@ -1,6 +1,7 @@
 ---
 import EventRow from './EventRow.astro';
 import ServiceTimes from './ServiceTimes.astro';
+import WhatsOnCalendar from './WhatsOnCalendar.astro';
 import {
   describeWhen,
   formatCivilDate,
@@ -66,7 +67,22 @@ const featuredWhen = featured ? describeWhen(featured, { includeDate: false }) :
   </section>
 )}
 
-<section class="whats-on-diary" aria-labelledby="diary-heading">
+{/* Diary <-> Calendar. Revealed and wired by the calendar's script; without JavaScript the
+    diary list below simply stands alone, which is the page working as designed. The visible
+    label is decorative — each section carries its own heading for assistive tech. */}
+<div class="wo-head">
+  <p class="label wo-head__label" aria-hidden="true">The diary</p>
+  <div class="wo-views" data-wo-toggle hidden role="group" aria-label="How to show the diary">
+    <button type="button" class="wo-views__btn is-active" data-wo-view="diary" aria-pressed="true">
+      Diary
+    </button>
+    <button type="button" class="wo-views__btn" data-wo-view="calendar" aria-pressed="false">
+      Calendar
+    </button>
+  </div>
+</div>
+
+<section class="whats-on-diary" data-wo-diary aria-labelledby="diary-heading">
   <h2 class="sr-only" id="diary-heading">The diary</h2>
 
   {months.length > 0 ? (
@@ -87,6 +103,8 @@ const featuredWhen = featured ? describeWhen(featured, { includeDate: false }) :
   )}
 </section>
 
+<WhatsOnCalendar />
+
 <section class="whats-on-regular" aria-labelledby="regular-heading">
   <h2 class="label whats-on-regular__title" id="regular-heading">Week by week</h2>
   <ServiceTimes />
@@ -99,6 +117,39 @@ const featuredWhen = featured ? describeWhen(featured, { includeDate: false }) :
 </p>
 
 <style>
+  /* ---- section head: label + view toggle ---- */
+  .wo-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+  }
+  .wo-head__label { color: var(--burgundy); }
+  .wo-views { display: flex; }
+  .wo-views__btn {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: .68rem;
+    font-weight: 600;
+    padding: .55rem 1.3rem;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .wo-views__btn:first-child { border-radius: 3px 0 0 3px; }
+  .wo-views__btn:last-child { border-radius: 0 3px 3px 0; border-left: none; }
+  .wo-views__btn:hover { color: var(--burgundy-deep); }
+  .wo-views__btn.is-active {
+    background: var(--burgundy);
+    border-color: var(--burgundy);
+    color: var(--white);
+  }
+  .wo-views__btn.is-active:hover { color: var(--white); }
+
   /* ---- featured ---- */
   .whats-on-featured {
     display: grid;

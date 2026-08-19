@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import ical from 'node-ical';
-import { eventsFromCalendar, feedUrls } from './events-feed';
+import { DEFAULT_FEED_URLS, eventsFromCalendar, feedUrls } from './events-feed';
 
 const VTIMEZONE = `BEGIN:VTIMEZONE
 TZID:Europe/London
@@ -44,11 +44,20 @@ describe('feedUrls', () => {
     ]);
   });
 
-  it('still honours the legacy variable, and copes with neither being set', () => {
+  it('still honours the legacy variable', () => {
     expect(feedUrls({ CHURCHDESK_ICAL_URL: 'https://old/x.ics' } as never)).toEqual([
       'https://old/x.ics',
     ]);
-    expect(feedUrls({} as never)).toEqual([]);
+  });
+
+  it("falls back to the parish's own ChurchDesk feeds when nothing is set", () => {
+    const urls = feedUrls({} as never);
+    expect(urls).toEqual([...DEFAULT_FEED_URLS]);
+    expect(urls.length).toBe(4);
+  });
+
+  it('treats an explicitly empty variable as "no feeds" — the off-switch', () => {
+    expect(feedUrls({ EVENTS_ICAL_URLS: '' } as never)).toEqual([]);
   });
 });
 
@@ -245,6 +254,24 @@ END:VEVENT`
       WINDOW
     );
     expect(out[0].category).toBe('Worship');
+  });
+
+  it('tidies ChurchDesk machinery out of the description', () => {
+    const out = eventsFromCalendar(
+      calendar(
+        `BEGIN:VEVENT
+UID:mass@example.org
+DTSTART:20260927T093000Z
+DTEND:20260927T104500Z
+SUMMARY:Sunday Mass
+DESCRIPTION:Event URL: https://example.org/b/sunday-mass-1\\n\\n\\nRotas:\\nRea
+ ders : 1st Reading: A Parishioner\\n
+END:VEVENT`
+      ),
+      WINDOW
+    );
+    expect(out).toHaveLength(1);
+    expect(out[0].description).toBeUndefined();
   });
 
   it('ignores non-event components', () => {

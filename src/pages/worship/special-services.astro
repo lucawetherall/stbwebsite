@@ -5,8 +5,9 @@ import EventsList from '../../components/EventsList.astro';
 import { getDiaryEvents } from '../../lib/events-source';
 import { eventsJsonLd } from '../../lib/events-jsonld';
 
-// This page keeps the liturgical year; What's On carries everything else.
-const upcoming = (await getDiaryEvents()).filter((e) => e.category === 'Worship');
+// This page keeps the liturgical year; What's On carries everything else — including the
+// regular weekly pattern the feed repeats, which is filtered out here (`regular`).
+const upcoming = (await getDiaryEvents()).filter((e) => e.category === 'Worship' && !e.regular);
 
 const eventLd = eventsJsonLd(upcoming);
 const groups = [

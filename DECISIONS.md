@@ -14,7 +14,7 @@ violations** on the page types tested (home, content, contact, news article).
 
 | # | Item | Default implemented | Notes |
 |---|------|---------------------|-------|
-| 1 | **ChurchDesk events feed** (iCal/API for org 1901) | Manual `events` collection + env-driven iCal hook, surfaced on **What's On** (`/whats-on`) | The old `barnabites.org` has **no events/calendar page and no calendar widget** — events were communicated only via the weekly ChurchDesk newsletter and periodic "Regular Events & Activities [month]" blog posts (migrated to `/news/`). So the `events` collection and the `/whats-on` diary are a **new feature**, not a migration. The public ChurchDesk API/iCal endpoints are also **not exposed** server-side (all probes 404), which is why the feed is provider-agnostic: set **`EVENTS_ICAL_URLS`** (comma- or newline-separated; `CHURCHDESK_ICAL_URL` still honoured) to any iCal/webcal address — ChurchDesk, Google Calendar's "secret address in iCal format", Outlook — and add a daily deploy hook (see §6). Feed events are merged with the collection, with a CMS entry winning over a feed entry of the same title on the same day so an editor can enrich it. A missing, slow or broken feed only logs a warning; it can never fail a deploy. See §8 for the full events architecture. |
+| 1 | **ChurchDesk events feed** (iCal/API for org 1901) | Manual `events` collection + env-driven iCal hook, surfaced on **What's On** (`/whats-on`) | The old `barnabites.org` has **no events/calendar page and no calendar widget** — events were communicated only via the weekly ChurchDesk newsletter and periodic "Regular Events & Activities [month]" blog posts (migrated to `/news/`). So the `events` collection and the `/whats-on` diary are a **new feature**, not a migration. **Update (19 August 2026):** working public ChurchDesk iCal endpoints were later supplied by the parish (`api2.churchdesk.com/ical/taxonomy/<id>?organizationId=1901` — Community 48613, Concert 46604, Worship 46609 & 181496, superseding the earlier finding that no endpoint was exposed). They are unauthenticated and CORS-open, so they are baked into `src/lib/events-feed.ts` as **`DEFAULT_FEED_URLS`**; **`EVENTS_ICAL_URLS`** (comma- or newline-separated; `CHURCHDESK_ICAL_URL` still honoured) *overrides* them wholesale, and setting it to an empty string turns feeds off. The twice-daily scheduled deploy (deploy.yml) keeps build-time pages fresh, and the What's On **calendar view** re-reads the feeds live in the visitor's browser (see §8). Feed events are merged with the collection, with a CMS entry winning over a feed entry of the same title on the same day so an editor can enrich it. A missing, slow or broken feed only logs a warning; it can never fail a deploy. See §8 for the full events architecture. |
 | 2 | **Music-list source** for `services` | Manual JSON in `src/content/services/` | Seeded with the two real sheets from the brief (Corpus Christi 7 Jun, St Mary Magdalene 19 Jul). Add one JSON file per Sunday; `ThisSunday` auto-selects the coming Sunday and falls back to the standing pattern. |
 | 3 | **Blog/photography reuse rights** | Migrated all 129 posts; self-hosted the parish's own liturgy photos with on-page credit support | **Confirm** the parish holds rights to the liturgy photographs and blog images before go-live. |
 | 4 | **Children's Church age range** (nav 5–9 vs home 5–11) | **5–9** | The live `/families-children/childrens-church-ages-5-9` page itself states 5–9 in both heading and body, so 5–9 is used throughout. (Slug kept as `…-5-9`.) |
@@ -201,9 +201,11 @@ diary injected by `src/pages/[...slug].astro`, following the same opt-in hook as
 |---|---|
 | `src/data/eventCategories.ts` | The category vocabulary. A leaf module with no imports, so `content.config.ts` and `lib/events.ts` can share it. |
 | `src/lib/events.ts` | **Pure and unit-tested.** Civil dates, clock-time parsing, recurrence description/expansion, merging, month grouping, ICS generation. |
-| `src/lib/events-feed.ts` | The iCal fetch, with RRULE/EXDATE expansion. Never throws. |
+| `src/lib/events-feed.ts` | The iCal fetch, with RRULE/EXDATE expansion and the default ChurchDesk feed URLs. Never throws. |
 | `src/lib/events-source.ts` | The single, memoised loader both consumers share. |
+| `src/lib/events-client.ts` | **Pure and unit-tested.** The browser-side iCal reading the calendar view refreshes from. |
 | `src/lib/events-jsonld.ts` | schema.org `Event` markup. |
+| `src/components/WhatsOnCalendar.astro` | The month-grid calendar view (added August 2026): renders from a build-time snapshot, then re-fetches the feeds in the browser on load, on tab focus and every ten minutes, so it tracks ChurchDesk edits without a rebuild. Hidden without JavaScript — the diary list is the no-JS experience. |
 | `src/pages/calendar.ics.ts` | The published, subscribable calendar. |
 
 Three decisions worth not undoing:
@@ -216,6 +218,14 @@ Three decisions worth not undoing:
   and under the wrong month heading.
 - **The diary shows one row per repeating series**, with its pattern in words; `/calendar.ics`
   carries every occurrence. Expanding a weekly event into the diary would bury the feasts.
+  ChurchDesk publishes every Sunday Mass as its *own* VEVENT with its own UID, so
+  `collapseFeedRepeats` additionally collapses repeated titles, inferring the cadence ("Every
+  Sunday", "The first Sunday of the month") from the dates themselves and flagging the row
+  `regular` — which is how Worship → Special Services keeps only the feasts.
+- **Feed descriptions are tidied before publication** (`tidyFeedDescription`): the "Rotas:" block
+  — which names individual parishioners — the redundant "Event URL:" line and bracketed tracking
+  links are stripped before anything reaches a page, the JSON-LD or `/calendar.ics`. Don't undo
+  this: the rota names are for the parish's own sheet, not for us to republish.
 
 **Two midnights — the all-day trap (fixed 3 August 2026).** A date-only value reaches us under two
 conventions. Everything we build ourselves (`addDays`, `shiftBack`, the collection's
