@@ -16,6 +16,7 @@ import {
   mergeEvents,
   nextOccurrence,
   parseClockTime,
+  shortLocation,
   tidyFeedDescription,
   tidyFeedTitle,
   toIcs,
@@ -451,13 +452,49 @@ describe('groupByMonth', () => {
   });
 });
 
+describe('shortLocation', () => {
+  it('drops the parish postal address tail, keeping the venue name', () => {
+    expect(shortLocation('St Barnabas Hall, Pitshanger Lane, London W5 1QG')).toBe(
+      'St Barnabas Hall'
+    );
+    expect(shortLocation('Pitshanger Methodist Church, Pitshanger Lane, Ealing')).toBe(
+      'Pitshanger Methodist Church'
+    );
+  });
+
+  it('hides the church itself — the default venue needs no naming', () => {
+    expect(shortLocation('St Barnabas Church, Pitshanger Lane, London W5 1QG')).toBeUndefined();
+    expect(shortLocation('St Barnabas Church')).toBeUndefined();
+    expect(shortLocation('St Barnabas')).toBeUndefined();
+  });
+
+  it('leaves other venues and their addresses alone', () => {
+    expect(shortLocation('Ealing Abbey, Charlbury Grove')).toBe('Ealing Abbey, Charlbury Grove');
+    expect(shortLocation('The small hall')).toBe('The small hall');
+    expect(shortLocation(undefined)).toBeUndefined();
+  });
+});
+
 describe('describeWhen', () => {
   it('reads as the parish would say it', () => {
     expect(
-      describeWhen(event({ time: '19:30', endTime: '21:00', location: 'St Barnabas Church' }))
-    ).toBe('7.30pm – 9pm · St Barnabas Church');
+      describeWhen(event({ time: '19:30', endTime: '21:00', location: 'The Lady Chapel' }))
+    ).toBe('7.30pm – 9pm · The Lady Chapel');
     expect(describeWhen(event({ time: '10:30' }))).toBe('10.30am');
     expect(describeWhen(event({ location: 'The small hall' }))).toBe('The small hall');
+  });
+
+  it('never repeats the church address down the diary', () => {
+    expect(
+      describeWhen(
+        event({ time: '10:30', location: 'St Barnabas Church, Pitshanger Lane, London W5 1QG' })
+      )
+    ).toBe('10.30am');
+    expect(
+      describeWhen(
+        event({ time: '10:30', location: 'St Barnabas Hall, Pitshanger Lane, London W5 1QG' })
+      )
+    ).toBe('10.30am · St Barnabas Hall');
   });
 
   it('prefixes a multi-day range, unless the date is shown alongside', () => {

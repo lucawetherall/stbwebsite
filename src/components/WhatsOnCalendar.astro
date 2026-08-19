@@ -71,6 +71,7 @@ const payload = {
     addDays,
     formatCivilDate,
     formatClockTime,
+    shortLocation,
     toLondonCivil,
     weekdayOf,
   } from '../lib/events';
@@ -343,10 +344,12 @@ const payload = {
           meta.textContent = when;
           li.append(meta);
         }
-        if (e.location) {
+        // The venue, without the parish's own postal address repeated under every event.
+        const venue = shortLocation(e.location);
+        if (venue) {
           const loc = document.createElement('p');
           loc.className = 'wo-cal__dayloc';
-          loc.textContent = e.location;
+          loc.textContent = venue;
           li.append(loc);
         }
         if (e.url && /^https?:\/\//i.test(e.url)) {

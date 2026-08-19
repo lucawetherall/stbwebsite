@@ -18,7 +18,14 @@ const { events } = Astro.props;
 
 // One highlighted event at most — the soonest the parish has asked us to lift up.
 const featured = events.find((e) => e.featured);
-const diary = featured ? events.filter((e) => e !== featured) : events;
+
+// The diary lists the *special* occasions. A weekly Mass collapsed out of the feed would only
+// restate "Week by week" below, filed under whichever month its next date happens to fall in —
+// so regular worship stays out of the months. A regular series of anything else (a Memory Café,
+// a recurring concert) is not covered down there, so it keeps its row.
+const diary = events.filter(
+  (e) => e !== featured && !(e.regular && e.category === 'Worship')
+);
 const months = groupByMonth(diary);
 
 const calendarUrl = new URL('/calendar.ics', site.url);
@@ -123,6 +130,8 @@ const featuredWhen = featured ? describeWhen(featured, { includeDate: false }) :
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    /* Collapses with the featured panel's bottom margin when one is shown. */
+    margin-top: 3rem;
     margin-bottom: 1.8rem;
   }
   .wo-head__label { color: var(--burgundy); }
