@@ -1,0 +1,89 @@
+name: Import Weekly News newsletter
+
+# Turns each ChurchDesk email newsletter into a news post on /news (auto-publish —
+# the content is already public in the ChurchDesk share page the site links to).
+#
+# scripts/import-newsletter.mjs reads the newsletter share link from
+# src/content/settings/site.json, fetches the edition behind it from the public
+# ChurchDesk API, converts the email HTML to Markdown (downloading and optimising
+# images), and writes src/content/news/weekly-news-<date>.md. It is idempotent —
+# an edition already imported is skipped — so this workflow runs on BOTH triggers
+# without double-posting:
+#
+#   • schedule — catches the case where ChurchDesk serves the newest edition at a
+#     stable share URL. Fridays (send day) and Saturdays, off the hour.
+#   • push touching settings/site.json — catches the case where an editor updates
+#     the "Newsletter archive link" in the CMS to point at a new edition.
+#
+# The commit lands on main, which triggers the normal Pages deploy. The commit only
+# touches src/content/news/ and public/images/news/, so it cannot re-trigger the
+# path-filtered push event (no loop).
+
+on:
+  schedule:
+    - cron: '24 8 * * FRI'
+    - cron: '24 14 * * FRI'
+    - cron: '24 8 * * SAT'
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/settings/site.json'
+  # For an inbound-email hook (e.g. a Cloudflare Email Worker subscribed to the
+  # newsletter): POST /repos/<owner>/<repo>/dispatches with event_type "newsletter"
+  # and client_payload { "share_url": "https://app.churchdesk.com/public/newsletter/<uuid>" }.
+  repository_dispatch:
+    types: [newsletter]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-newsletter
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Domain-free inbound email via AgentMail: an inbox subscribed to the newsletter
+      # is polled for new editions. Stateless — the importer's uuid dedupe makes
+      # re-seeing an email a no-op. Skips itself when the secrets are not configured.
+      - name: Check the AgentMail inbox for new editions
+        env:
+          AGENTMAIL_API_KEY: ${{ secrets.AGENTMAIL_API_KEY }}
+          AGENTMAIL_INBOX: ${{ secrets.AGENTMAIL_INBOX }}
+        run: node scripts/check-newsletter-inbox.mjs
+
+      - name: Import the current newsletter edition
+        env:
+          # Scheduled runs alarm if the newest edition looks stale (missed imports).
+          STALENESS_CHECK: ${{ github.event_name == 'schedule' && '1' || '0' }}
+          # A repository_dispatch (inbound-email hook) names the edition directly.
+          SHARE_URL: ${{ github.event.client_payload.share_url }}
+        run: node scripts/import-newsletter.mjs $SHARE_URL
+
+      - name: Commit the new post (if any)
+        run: |
+          if [ -n "$(git status --porcelain src/content/news public/images/news)" ]; then
+            slug=$(git status --porcelain src/content/news | awk '{print $2}' | head -1 | xargs basename | sed 's/\.md$//')
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add src/content/news public/images/news
+            git commit -m "Import Weekly News newsletter (${slug})" \
+              -m "Automated import of the latest ChurchDesk email newsletter as a news post." \
+              -m "Co-Authored-By: Claude <noreply@anthropic.com>"
+            git push
+          else
+            echo "No new edition — nothing to commit."
+          fi

@@ -8,6 +8,15 @@ const technical = {
   mapEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.2438991924796!2d-0.3115046840361693!3d51.52708621708429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876126d1066d097%3A0xdfc50a4e636cce59!2sSt+Barnabas+Church!5e0!3m2!1sen!2suk!4v1498738937601',
   churchdeskOrgId: 1901,
+  // ChurchDesk People newsletter list ("Sign-up to get the latest news from St Barnabas").
+  // Reverse-engineered from the old portal-widget signup: the widget POSTs
+  // { name, email, peopleNewsletterListIds } to
+  // https://api2.churchdesk.com/people/segments/newsletter-lists/subscribe?organizationId=<org>
+  // and ChurchDesk then sends a double-opt-in confirmation email.
+  churchdeskNewsletterListId: 32533,
+  churchdeskSubscribeApi: 'https://api2.churchdesk.com/people/segments/newsletter-lists/subscribe',
+  // GDPR consent document the old widget linked to ("being contacted by St Barnabas Church under GDPR").
+  newsletterPrivacyNotice: 'https://stbarnabasealing.churchdesk.com/file/558825',
 } as const;
 
 /** Throws (failing the build) if the editor has emptied a field the site depends on. */
