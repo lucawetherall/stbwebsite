@@ -87,6 +87,7 @@ for (const summary of messages) {
       r.body?.cancel();
       const m = r.url.match(SHARE_LINK);
       if (m) shareUrls.add(m[0]);
+      if (process.env.DEBUG_INBOX === '1') console.log(`    ${short.slice(-12)} → ${r.url.slice(0, 110)}`);
     } catch (e) {
       console.warn(`  could not resolve ${short.slice(0, 60)}…: ${e.message}`);
     }
