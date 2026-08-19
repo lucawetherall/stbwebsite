@@ -1,16 +1,16 @@
 ---
-title: "Weekly News — 31 May 2026"
-date: 2026-05-31
+title: "Weekly News — 7 June 2026"
+date: 2026-06-07
 category: "Weekly News"
 author: "St Barnabas Church"
-description: "Preparations continue at real pace for our Summer Fayre - this year on Sunday 14 June at 12noon-4pm."
-hero: "/images/news/newsletter-2026-05-31-67483064-rublev.trinity.webp"
-heroAlt: "Weekly News — 31 May 2026"
+description: "Preparations continue at real pace for our Summer Fayre - next Sunday 14 June at 12noon-4pm."
+hero: "/images/news/newsletter-2026-06-07-d273e26a-st.barnabas.summer.fayre.2026.webp"
+heroAlt: "Weekly News — 7 June 2026"
 ---
 
-<!-- churchdesk-message: 6b44359c-38fc-4441-812f-3a62e1fce3c2 -->
+<!-- churchdesk-message: email-2e9a3f5bfcd9 -->
 
-Preparations continue at real pace for our Summer Fayre - this year on Sunday 14 June at 12noon-4pm.
+Preparations continue at real pace for our Summer Fayre - next Sunday 14 June at 12noon-4pm.
 
 **This year we start early - so food and drink are available on the spot - don't go home after church - feed your children and yourselves at our BBQ!**
 
@@ -24,47 +24,49 @@ Drinks served to your table on the lawn all afternoon.
 
 Relax, chat, try the tombola, take cake slices away for the week!
 
+   
+
+Worship this Sunday:
+
+8am BCP said communion
+
+10.30 Sung Mass for Corpus Christi; Noisy Mass; Youth Groups
+
+6pm Choral Evensong
+
+   
+
 **Mother Sarah**
 
 I am reading: _Theo of Golden,_ Allen Levi
 
-_image: Trinity; Andrei Rublev (early 15th century)_
+<img src="/images/news/newsletter-2026-06-07-1a9cce61-recording.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async">
 
-<img src="/images/news/newsletter-2026-05-31-9c6a738b-display1.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+Lots happens at St Barnabas between Sundays! This week a professional recording by Kings College London Chamber Choir used the space for 5 days. A joy that we are part of this wider musical community; also, recording hire fees contribute to our careful stewardship of finances.
 
-**Church Finances - what does St Barnabas mean to you?** Please do look at the St Barnabas church finance posters on the display boards. Three key points:
+The warm acoustic, concert-grade piano and organ, and quiet location together make us one of London's growing recording venues - ask via the office for more details!
 
-1\. Expected deficit in 2026 £19,501.
+<img src="/images/news/newsletter-2026-06-07-14f1c8bf-edited-image_161.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async">
 
-2\. Please join the Parish Giving Scheme (PGS) with regular monthly donations.
+Next Choral Evensong this Sunday at 6pm
 
-3\. If already donating monthly, please increase your donation by 3.5% if you can.
-
-"A good measure, pressed down, shaken together, running over, will be put in your lap; for the measure you give will be the measure you get back." Luke 6:38
-
-<img src="/images/news/newsletter-2026-05-31-8843efdc-valerie.drinks.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
-
-Mthr Valerie's 80th
-
-Thanks to all who joined in the festivities as we joined Valerie in her 80th birthday celebrations. Special thanks to those on the bar!
-
-<img src="/images/news/newsletter-2026-05-31-14f1c8bf-edited-image_161.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
-
-Next Choral Evensong dates are Sunday 7 June and Sunday 5 July, at 6pm.
+Next date is Sunday 5 July, at 6pm.
 
 Join us.
 
-<img src="/images/news/newsletter-2026-05-31-e3d49542-pentecost.2.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-07-4787a263-jeanny.licensing.1.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async">
 
-<img src="/images/news/newsletter-2026-05-31-a2f7425a-pentecost.3.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+Mother Jeanny was licensed as curate to St Barnabas by Bishop Lusa on Tuesday this week.
 
-<img src="/images/news/newsletter-2026-05-31-a9a271f3-pentecost.1.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
++Lusa gave us a couple of bottles of fizz to mark the event - we will serve them at coffee after Mass on Sunday!
+
+<img src="/images/news/newsletter-2026-06-07-a0e3cc16-pentecost.1_1.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async">
 
 Pentecost 2026
 
-A wonderful crowd of witnesses and worshippers as we marked the close of Easter with the gifts of the Holy Spirit at Pentecost. Thanks to Valerie for her preaching and vivid visual aid (sadly not captured here!)
+Thanks to Valerie for her preaching and vivid visual aid (now captured here!)
 
-<img src="/images/news/newsletter-2026-05-31-31aad026-summer.fayre.tombola.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-07-31aad026-summer.fayre.tombola.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async">
 
 TOMBOLA! ROLL UP, ROLL UP! \- donations sought now for the Tombola stall at the Fayre.
 
@@ -72,11 +74,11 @@ Bottles, gifts, kids items in particular. Good quality stuff of all kinds welcom
 
 Leave at the back of church anytime - before the day!
 
-<img src="/images/news/newsletter-2026-05-31-780ccffe-summer.fayre.cakes.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-07-780ccffe-summer.fayre.cakes.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async">
 
 CAKE STALL donations \- please contact Janet if you will be donating a cake or baked goods.
 
-<img src="/images/news/newsletter-2026-05-31-e77ef14b-payg.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-07-e77ef14b-payg.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async">
 
 Pray as you Go
 
@@ -94,7 +96,7 @@ For a deep spiritual dive for 10 minutes on the Go, this is a great resource. De
 
 **It takes 5 minutes to set up regular giving - and the benefit is limitless to this community.** 
 
-**To get set up, or to review your regular giving, our easy form can be filled in [HERE](https://www.parishgiving.org.uk/donors/find-your-parish/ealing-st-barnabas-ealing/)**
+**To get set up, or to review your regular giving, our easy form can be filled in [HERE](https://www.parishgiving.org.uk/donors/find-your-parish/ealing-st-barnabas-ealing)**
 
 **Thank you!**
 
@@ -106,13 +108,13 @@ For a deep spiritual dive for 10 minutes on the Go, this is a great resource. De
 
 **Summer Fayre!** Bring your friends and family - Fayre opens at 12noon with food on offer.  Join us straight from Mass. Any extra offers of help: please contact Janet Robinson on [jrobinson611@aol.com](mailto:jrobinson611@gmail.com)
 
-**Garden Team** meets both this Saturday and next.  On 6 June the Churches Count on Nature takes place - come and join in with our expert botanist Roger Watson and Garden co-lead Dilys Griffiths.  Both Saturdays 10-12, with refreshments.
+**Garden Team** meets this Saturday - the Churches Count on Nature takes place - come and join in with our expert botanist Roger Watson and Garden co-lead Dilys Griffiths.  10am-12, with refreshments.
 
 **Newcomers Vicarage garden party - Saturday 20 June, 2-5pm**.  All those who are new in the past year, or missed last year, or are not so new but feel it - WELCOME!
 
 **Ealing Half Marathon** This year on Sunday 29 Sept - volunteers sought as stewards, register at 
 
-[https://www.ealinghalfmarathon.com/volunteer/](https://www.ealinghalfmarathon.com/volunteer/ "https://www.ealinghalfmarathon.com/volunteer/")
+[https://www.ealinghalfmarathon.com/volunteer/](https://ealinghalfmarathon.com/volunteer)
 
 If anyone would like to run in aid of St Barnabas this year (thanks again Rich and John in 2025) please do let me know and the organiser will send us some codes.
 
@@ -128,7 +130,11 @@ Small amounts of fresh produce can be accepted ONLY when the Pantry is open on W
 
 _**Sunday**_ 
 
-****Sung Mass for Trinity Sunday at 10:30**** in person and [online](https://www.youtube.com/@stbarnabasealing2270).  Noisy Mass; half term for groups and CC
+****Holy Communion at 8am**** - Lady Chapel
+
+****Sung Mass for Corpus Christi at 10:30**** in person and [online](https://www.youtube.com/@stbarnabasealing2270).  Noisy Mass; CC in the main service, Noisy Mass and Youth Groups run
+
+**Choral Evensong** at 6pm
 
 **_Monday_**
 
@@ -152,20 +158,20 @@ _**Thursday**_
 
 **Memory Cafe** open 10.30-12
 
-_**Saturday**_
-
 _**Sunday**_
 
-**Sung Mass at 10.30**; Noisy Mass and Youth Groups; Children's Church
+**Patronal Sung Mass at 10.30**; Noisy Mass and Youth Groups; Children's Church
 
-<img src="/images/news/newsletter-2026-05-31-d273e26a-st.barnabas.summer.fayre.2026.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+**Summer Fayre** 12-4pm
 
-<img src="/images/news/newsletter-2026-05-31-c4dd04c1-creation.care.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-07-c4dd04c1-creation.care.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async">
 
 ## **Forward Look - coming dates**
 
 14 June SUMMER FAYRE - 12-4pm
 
 16-18 July FLOWER FESTIVAL with Ealing Flower Club (revised dates)
+
+19 Sept WEDDING of Mother Sarah and Julian Braybrook - 12noon
 
 26 Sept QUIZ NIGHT
