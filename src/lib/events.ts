@@ -561,9 +561,31 @@ export function formatCivilRange(from: string, to: string): string {
     : `${formatCivilDate(from, { year: false })} – ${formatCivilDate(to, { year: false })}`;
 }
 
+/** Address segments that are just the parish's postal address, not a venue. */
+const PARISH_ADDRESS_TAIL =
+  /^(pitshanger lane|ealing|greater london|london(\s+w5\s*1qg)?|w5\s*1qg|uk|united kingdom)$/i;
+
 /**
- * "10.30am · St Barnabas Church" — the row's meta line, prefixed with a date range when the event
+ * The venue as a diary row should carry it. ChurchDesk sends the full postal address with every
+ * event — "St Barnabas Church, Pitshanger Lane, London W5 1QG" — which repeated down a page is
+ * noise, not information. This keeps the venue name, drops the address tail, and hides the church
+ * itself: on this site an event is at St Barnabas unless a row says otherwise, so only the Hall
+ * or an off-site venue earns a mention. The full address still goes out in the ICS feed.
+ */
+export function shortLocation(location: string | undefined): string | undefined {
+  if (!location) return undefined;
+  const parts = location.split(',').map((p) => p.trim()).filter(Boolean);
+  while (parts.length > 1 && PARISH_ADDRESS_TAIL.test(parts[parts.length - 1])) parts.pop();
+  const venue = parts.join(', ');
+  if (/^st\.?\s*barnabas(\s+church)?$/i.test(venue)) return undefined;
+  return venue || undefined;
+}
+
+/**
+ * "10.30am · St Barnabas Hall" — the row's meta line, prefixed with a date range when the event
  * runs over several days. Pass `includeDate: false` where the date is already displayed alongside.
+ * The venue passes through `shortLocation`, so the church's own postal address never repeats
+ * down the diary.
  */
 export function describeWhen(event: SiteEvent, opts: { includeDate?: boolean } = {}): string {
   const parts: string[] = [];
@@ -573,7 +595,8 @@ export function describeWhen(event: SiteEvent, opts: { includeDate?: boolean } =
   const from = formatClockTime(event.time);
   const to = formatClockTime(event.endTime);
   if (from) parts.push(to ? `${from} – ${to}` : from);
-  if (event.location) parts.push(event.location);
+  const venue = shortLocation(event.location);
+  if (venue) parts.push(venue);
   return parts.join(' · ');
 }
 
