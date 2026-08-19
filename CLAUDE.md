@@ -163,6 +163,9 @@ The CMS `config.yml` also still holds **MOCKUP** preview URLs to revert at go-li
 - **[CMS-SETUP.md](CMS-SETUP.md)** — Sveltia CMS setup & the editor's guide.
 - **[docs/AGENT-GUARDRAILS.md](docs/AGENT-GUARDRAILS.md)** — the editability contract in full, the
   design rules, the safe-to-edit map, and "how to add X" recipes.
+- **[docs/NEWSLETTER-PIPELINE.md](docs/NEWSLETTER-PIPELINE.md)** — how the ChurchDesk email
+  newsletter auto-publishes to `/news` (sign-up form, importer, AgentMail inbox, workflow,
+  failure modes).
 - **`.claude/skills/`** — the recurring workflows packaged as skills (add a page, dual-write a
   schema change, add a feast, write a news post, optimise images); loaded automatically when a
   task matches.

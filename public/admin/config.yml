@@ -507,7 +507,8 @@ collections:
               - { name: instagram, label: Instagram, widget: string, type: url }
               - { name: youtube, label: YouTube, widget: string, type: url }
           - { name: giving, label: Giving page link, widget: string, type: url }
-          - { name: newsletterArchive, label: Newsletter archive link, widget: string, type: url }
+          - { name: newsletterArchive, label: Newsletter link (latest edition), widget: string, type: url,
+              hint: 'Paste the newest newsletter''s public share link (app.churchdesk.com/public/newsletter/…) each week. Saving it updates the "Read the latest newsletter" link AND automatically publishes that edition as a news post on the News page within a few minutes.' }
           - { name: diocesanSafeguardingPolicy, label: Diocesan safeguarding policy link, widget: string, type: url }
           - name: affiliations
             label: Affiliations

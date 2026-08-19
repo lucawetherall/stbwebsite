@@ -1,0 +1,12 @@
+name = "newsletter-email"
+main = "worker.js"
+compatibility_date = "2026-08-01"
+
+[vars]
+GITHUB_REPO = "lucawetherall/stbwebsite"
+# The From header must contain one of these (comma-separated). ChurchDesk sends the
+# newsletter with the parish as the visible sender; tighten/adjust after the first
+# real edition arrives if needed.
+ALLOWED_FROM = "barnabites.org, churchdesk"
+
+# Secret (set once, never committed):  npx wrangler secret put GITHUB_TOKEN
