@@ -140,7 +140,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
 
 <style>
   .music-list__section { margin-top: 2.8rem; }
-  .music-list__heading { color: var(--burgundy); display: block; margin-bottom: 1rem; }
+  .music-list__heading { color: var(--violet); display: block; margin-bottom: 1rem; }
   .music-list__empty { max-width: 60ch; color: var(--ink-soft); }
   .music-list { margin-top: 2rem; }
 
@@ -198,18 +198,18 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     border-radius: 3px;
     transition: color .2s, background-color .2s;
   }
-  .ml-bar__link.is-next-month { color: var(--burgundy); }
+  .ml-bar__link.is-next-month { color: var(--violet); }
   .ml-bar__mark {
     display: inline-block;
     width: 4px;
     height: 4px;
     margin-right: .4rem;
     vertical-align: .1em;
-    background: var(--burgundy);
+    background: var(--violet);
     transform: rotate(45deg);
   }
-  .ml-bar__link:hover { color: var(--burgundy); background: var(--burgundy-faint); }
-  .ml-bar__link[aria-current='true'] { color: var(--burgundy); background: var(--burgundy-faint); }
+  .ml-bar__link:hover { color: var(--violet); background: var(--violet-faint); }
+  .ml-bar__link[aria-current='true'] { color: var(--violet); background: var(--violet-faint); }
 
   /* ── the month rule, from the printed list, now also the stepper ───────── */
   .ml-month { scroll-margin-top: 3.2rem; }
@@ -223,7 +223,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
   .month__diamond {
     width: 5px;
     height: 5px;
-    background: var(--burgundy);
+    background: var(--violet);
     transform: rotate(45deg);
     flex-shrink: 0;
   }
@@ -234,7 +234,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     letter-spacing: .28em;
     font-size: .72rem;
     font-weight: 600;
-    color: var(--burgundy);
+    color: var(--violet);
     white-space: nowrap;
   }
   /* Bare chevrons, not buttons. They sit on a hairline rule in a page whose only other
@@ -256,9 +256,9 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     cursor: pointer;
     transition: color .2s, opacity .2s;
   }
-  .month__nav:hover { color: var(--burgundy); }
+  .month__nav:hover { color: var(--violet); }
   .month__nav:focus-visible {
-    outline: 2px solid var(--burgundy);
+    outline: 2px solid var(--violet);
     outline-offset: 2px;
     border-radius: 3px;
   }
@@ -277,7 +277,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
   /* The next service, foregrounded: a tint lifts it off the list, and the top hairline of it
      and the row below give way so the tinted block reads as one card. */
   .ml-service.is-next {
-    background: var(--burgundy-faint);
+    background: var(--violet-faint);
     border-top-color: transparent;
     border-radius: 5px;
     padding: 1.5rem 1.2rem;
@@ -298,7 +298,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     top: .95rem;
     width: 5px;
     height: 5px;
-    background: var(--burgundy);
+    background: var(--violet);
     transform: rotate(45deg);
   }
   .ml-when__next {
@@ -309,7 +309,7 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     letter-spacing: .14em;
     font-size: .62rem;
     font-weight: 600;
-    color: var(--burgundy);
+    color: var(--violet);
   }
 
   /* The feast is the entry's own heading here, so it sits at list scale rather than the

@@ -159,7 +159,7 @@ const endpoint = `${site.churchdeskSubscribeApi}?organizationId=${site.churchdes
     width: 100%;
     transition: border-color .2s;
   }
-  .nl-field input:focus { border-color: var(--burgundy); }
+  .nl-field input:focus { border-color: var(--violet); }
 
   /* honeypot: off-screen, not display:none (some bots skip hidden fields) */
   .nl-hp {
@@ -176,11 +176,11 @@ const endpoint = `${site.churchdeskSubscribeApi}?organizationId=${site.churchdes
     align-items: center;
     gap: 1.2rem 1.8rem;
   }
-  .nl-submit .btn { border: 1px solid var(--burgundy); }
+  .nl-submit .btn { border: 1px solid var(--violet); }
   .nl-submit .btn:disabled { opacity: .6; cursor: default; }
 
   .nl-status { grid-column: 1 / -1; margin: 0; display: none; }
-  .nl-status.is-error { display: block; color: var(--burgundy); }
+  .nl-status.is-error { display: block; color: var(--violet); }
   .nl-status.is-success {
     display: block;
     font-family: var(--font-display);
@@ -199,8 +199,8 @@ const endpoint = `${site.churchdeskSubscribeApi}?organizationId=${site.churchdes
   .nl-consent a {
     color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid var(--burgundy);
+    border-bottom: 1px solid var(--violet);
     transition: color .2s, border-color .2s;
   }
-  .nl-consent a:hover { color: var(--burgundy-deep); border-color: var(--burgundy-deep); }
+  .nl-consent a:hover { color: var(--violet-deep); border-color: var(--violet-deep); }
 </style>

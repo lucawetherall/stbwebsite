@@ -80,9 +80,12 @@ Full wiring, the dual-write checklist, and "how to add a page" are in
 The house style is **the parish's printed service sheet / prayer book, translated to the web**.
 Three watchwords: **restraint, reverence, readability.** The tenets:
 
-- **One accent, used sparingly.** A single liturgical red — `--burgundy #6A1B2D` ("deep Sarum
-  wine"), with `--burgundy-deep` for hover only. No other accent colours. Everything comes from
-  the tokens in `src/styles/tokens.css`; **use tokens, never hard-code a hex or a stray px.**
+- **One accent, used sparingly.** A single liturgical violet — `--violet #400642`, a very dark
+  plum drawn from the parish logo, with `--violet-deep` for hover only. (It replaced a Sarum wine
+  `#6A1B2D`; older docs under `docs/superpowers/` still describe that, and are historical.) No
+  other accent colours — the logo's own five colours are the one exception, and they live only in
+  `Logo.astro`. Everything comes from the tokens in `src/styles/tokens.css`; **use tokens, never
+  hard-code a hex or a stray px.**
 - **Three typefaces, one job each.** **Montserrat** (`--font-heading` / `--font-ui`) sets headings,
   titles, the menu bar and every tracked uppercase label — **700 for headings and `.title`, 600 for
   the nav and labels, 500 for unweighted UI text**; **Cormorant Garamond** (`--font-display`)
@@ -92,7 +95,7 @@ Three watchwords: **restraint, reverence, readability.** The tenets:
   it is a class and out-specifies the `h1–h4` rule, so putting it on a heading silently reverts
   that heading. Non-heading title text takes `.title`.
 - **Warm, flat, quiet.** Paper ground, near-black ink. **No gradients** — the image scrim is a
-  flat overlay on purpose. A constant 2px burgundy ribbon sits at the top of every page; buttons
+  flat overlay on purpose. A constant 2px violet ribbon sits at the top of every page; buttons
   are outlined and fill on hover; labels are tracked uppercase small-caps.
 - **Liturgically alive.** The hero artwork changes with the church season/feast
   (`src/data/artwork.ts` keyed off `src/lib/liturgy.ts`); the footer shows a live season line.

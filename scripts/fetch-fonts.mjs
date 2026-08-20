@@ -1,13 +1,15 @@
 // One-time: download self-hosted woff2 for the design-system typefaces and
 // emit src/styles/fonts.css with @font-face rules pointing at /fonts/*.
 // Weights (per brief §4.1):
-//   Montserrat        500/600/700  — no italic
+//   Montserrat        300/500/600/700  — no italic
 //   Cormorant Garamond 400/500/600 + italic 400/500
 //   Source Serif 4     400/600      + italic 400
 // Montserrat carries the headings and the tracked-uppercase label layer; it needs no
-// italic because every italic display line on the site stays Cormorant. Its three weights
+// italic because every italic display line on the site stays Cormorant. Its weights
 // each have a job: 700 headings and titles, 600 the nav and tracked labels, 500 the
-// unweighted UI text (buttons, dropdown links) that would otherwise resolve to a bolder cut.
+// unweighted UI text (buttons, dropdown links) that would otherwise resolve to a bolder
+// cut. 300 exists solely for the brand lockup — "St" and "Church" are Light in the
+// parish's logo artwork — so it is used nowhere else and stays out of the type scale.
 import { writeFile, mkdir } from 'node:fs/promises';
 
 const UA =
@@ -18,7 +20,7 @@ const FAMILIES = [
   {
     name: 'Montserrat',
     slug: 'montserrat',
-    url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap',
+    url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;700&display=swap',
   },
   {
     name: 'Cormorant Garamond',

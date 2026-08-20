@@ -550,8 +550,8 @@ const payload = {
     padding-inline: .9rem;
   }
   .wo-cal__navbtn:hover:not(:disabled) {
-    background: var(--burgundy);
-    border-color: var(--burgundy);
+    background: var(--violet);
+    border-color: var(--violet);
     color: var(--white);
   }
   .wo-cal__navbtn:disabled { opacity: .35; cursor: default; }
@@ -581,7 +581,7 @@ const payload = {
   /* Days outside the month keep their rule so the grid reads as one printed table. */
   .wo-cal__cell.is-out { background: none; }
   /* The Lord's Day, faintly warmed — the column almost everything in the diary falls on. */
-  .wo-cal__grid tbody td:last-child:not(.is-out) { background: var(--burgundy-faint); }
+  .wo-cal__grid tbody td:last-child:not(.is-out) { background: var(--violet-faint); }
   .wo-cal__cell.is-past .wo-cal__num,
   .wo-cal__cell.is-past .wo-cal__dots i,
   .wo-cal__cell.is-past .wo-cal__ev { opacity: .45; }
@@ -597,7 +597,7 @@ const payload = {
     color: var(--ink-soft);
   }
   .wo-cal__cell.is-today .wo-cal__num {
-    background: var(--burgundy);
+    background: var(--violet);
     border-radius: 50%;
     color: var(--white);
   }
@@ -613,14 +613,14 @@ const payload = {
     border: none;
     cursor: pointer;
   }
-  .wo-cal__daybtn:hover .wo-cal__num { color: var(--burgundy); }
+  .wo-cal__daybtn:hover .wo-cal__num { color: var(--violet); }
   .wo-cal__cell.is-today .wo-cal__daybtn:hover .wo-cal__num { color: var(--white); }
   .wo-cal__dots { display: none; gap: .2rem; }
   .wo-cal__dots i {
     width: .3rem;
     height: .3rem;
     border-radius: 50%;
-    background: var(--burgundy);
+    background: var(--violet);
   }
 
   .wo-cal__list {
@@ -642,8 +642,8 @@ const payload = {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
-  a.wo-cal__ev:hover .wo-cal__evtitle { color: var(--burgundy-deep); text-decoration: underline; }
-  .wo-cal__evtime { color: var(--burgundy); font-weight: 600; }
+  a.wo-cal__ev:hover .wo-cal__evtitle { color: var(--violet-deep); text-decoration: underline; }
+  .wo-cal__evtime { color: var(--violet); font-weight: 600; }
 
   .wo-cal__daypanel {
     position: relative;
@@ -653,8 +653,8 @@ const payload = {
     border-radius: 5px;
   }
   .wo-cal__daypanel:focus { outline: none; }
-  .wo-cal__daypanel:focus-visible { outline: 2px solid var(--burgundy); outline-offset: 2px; }
-  .wo-cal__dayheading { display: block; margin-bottom: .9rem; color: var(--burgundy); }
+  .wo-cal__daypanel:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+  .wo-cal__dayheading { display: block; margin-bottom: .9rem; color: var(--violet); }
   .wo-cal__dayclose {
     position: absolute;
     top: .6rem;
@@ -668,7 +668,7 @@ const payload = {
     color: var(--ink-soft);
     cursor: pointer;
   }
-  .wo-cal__dayclose:hover { color: var(--burgundy-deep); }
+  .wo-cal__dayclose:hover { color: var(--violet-deep); }
   .wo-cal__daylist { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
   .wo-cal__dayev { border-top: 1px solid var(--line); padding-top: .8rem; }
   .wo-cal__dayev:first-child { border-top: none; padding-top: 0; }
@@ -680,7 +680,7 @@ const payload = {
     letter-spacing: .1em;
     font-size: .64rem;
     font-weight: 600;
-    color: var(--burgundy);
+    color: var(--violet);
   }
   .wo-cal__dayloc { margin-top: .2rem; font-size: .9rem; color: var(--ink-soft); }
   .wo-cal__dayev p:last-child { margin-top: .35rem; }
