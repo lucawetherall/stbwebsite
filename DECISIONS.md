@@ -37,6 +37,21 @@ violations** on the page types tested (home, content, contact, news article).
   it and rendered only when a sheet exists. With the homepage doing that front-door job,
   `/visit` no longer earned a top-level nav slot: it moved to `/about-us/visiting` ("Visiting
   Us", `seoTitle` still "Plan Your Visit"), with a 301 from `/visit`.
+- **Seasonal features derive from the music list (August 2026).** The homepage hero insert,
+  the site notice line and the season panels on What's On / Special Services are computed at
+  build time by `src/lib/seasons.ts` from the existing `services` collection — windows anchored
+  on `liturgicalDates()` in the engine, services gathered **by date containment, never by
+  matching the Director of Music's wording**, which stays verbatim. A new content collection
+  was considered and rejected: the music list already records every special service, the parish
+  keeps exactly one artefact, and a derived feature cannot go stale. Consequences accepted
+  knowingly: the engine states kalendar dates while the parish often keeps feasts *transferred*
+  to Sunday (the sheets say so — the features take their dates from the sheets where the
+  keeping moves, e.g. the Requiem on All Saints' evening); a principal window with no sheets
+  warns at build and renders nothing (never a throwing guard — a CMS Publish must not be able
+  to fail the production deploy); and the twice-daily cron is now more load-bearing — a stalled
+  schedule (GitHub disables crons after ~60 days of repo inactivity, and failures are silent)
+  freezes the seasonal panels along with "This Sunday", so check the Actions tab if the site
+  seems stuck in time.
 - **`/worship/online` is a new clean URL.** The live "Worship online" page lives at the opaque
   `/worship/p1663` (a ChurchDesk landing redirect). We built a clean `/worship/online` page and
   301 the old URL to it.
@@ -91,19 +106,24 @@ violations** on the page types tested (home, content, contact, news article).
    site-wide for music, incl. the footer), but the brief's `site.ts` specified
    `directorofmusic@barnabites.org`. Both likely reach the Director of Music — confirm which is
    preferred (`src/data/site.ts` → `emails.music`).
-4. **Who's Who.** The directory (`src/content/staff/`) lists everyone published on the live page
+4. **Special Services naming (August 2026).** The page now follows the music list's printed
+   usage — "Easter Day", "The Easter Vigil & First Mass of Easter", and "Solemn Requiem for the
+   Faithful Departed" (with an All Souls gloss) in place of "Easter Sunday", "The Great Vigil"
+   and "All Souls' Requiem". Also to confirm: may visitors ask for a name on the list of the
+   departed, and are confessions heard before Christmas and Easter? (Both flagged, not built.)
+5. **Who's Who.** The directory (`src/content/staff/`) lists everyone published on the live page
    (Mother Sarah Howard-Jones, Mother Valerie Aitken, Mother Jenny Krige, Felicity Mather, Luca
    Wetherall, Nick Barnes) **plus Hugh Mather (Organist)**, who comes from the brief's `site.ts`
    but is **not** on the current live who's-who. Confirm he should be listed (and add
    churchwardens / PCC officers if wanted).
-5. **Youth Group age.** The brief's home copy said "12 and up"; the live page says **10–16**. We
+6. **Youth Group age.** The brief's home copy said "12 and up"; the live page says **10–16**. We
    used 10–16 (the live page is authoritative). Confirm.
-6. **Patronal/Corpus Christi event details** seeded in `src/content/events/` are dated correctly
+7. **Patronal/Corpus Christi event details** seeded in `src/content/events/` are dated correctly
    but service times should be confirmed (or replaced by the live calendar feed — item §1.1).
-7. **Photography rights** (see §1.3).
-8. **Choral Scholarship details** on `/worship/music` (eligibility/stipend) were written to a
+8. **Photography rights** (see §1.3).
+9. **Choral Scholarship details** on `/worship/music` (eligibility/stipend) were written to a
    sensible default + the "apply by 12 June" line; confirm specifics and the role-description PDF.
-9. **Hugh Mather in Who's Who — update 23 June 2026.** Resolving item 4 for launch: Hugh appears
+10. **Hugh Mather in Who's Who — update 23 June 2026.** Resolving item 5 for launch: Hugh appears
    as **Organist (name + role only)** on the new Our Musicians page (`/music/our-musicians`),
    pulled from his `staff` record. A full Who's-Who profile (bio + photo) remains pending parish
    sign-off.

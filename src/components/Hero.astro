@@ -51,6 +51,19 @@ const imgSm = imageSibling(img, 1280) ?? img;
   </div>
   {creditText && <p class="hero__credit">{creditText}</p>}
 </section>
+{Astro.slots.has('aside') && (
+  <div class="wrap hero__aside-row">
+    {/* The seasonal insert: laid over the artwork's lower edge by a negative top margin,
+        straddling into the paper band below — a printed insert across the page, in normal
+        flow (the band beneath is pushed down, never covered; the hero's own geometry and
+        min-height are untouched, so out of season the page is byte-for-byte as before).
+        The hero section is positioned, so it paints above later in-flow siblings; the
+        insert rides with it. */}
+    <div class="hero__aside fade-in">
+      <slot name="aside" />
+    </div>
+  </div>
+)}
 
 <style>
   .hero {
@@ -136,5 +149,28 @@ const imgSm = imageSibling(img, 1280) ?? img;
 
   @media (min-width: 800px) {
     .hero { background-image: var(--hero-lg); }
+  }
+
+  /* ---- the seasonal insert ---- */
+  .hero__aside-row { position: relative; z-index: 1; }
+  .hero__aside {
+    /* One orchestrated beat after the hero's own fade. */
+    animation-delay: .25s;
+  }
+  @media (min-width: 1024px) {
+    .hero__aside {
+      width: min(24rem, 40%);
+      margin-left: auto;
+      margin-top: clamp(-13rem, -24vh, -7rem);
+      margin-bottom: 1.5rem;
+    }
+  }
+  @media (max-width: 1023.98px) {
+    /* Below the join the insert leaves the artwork entirely and becomes a full-width
+       band between the hero and the service times — same content, nothing cramped. */
+    .hero__aside-row { max-width: none; padding: 0; }
+  }
+  @media print {
+    .hero__aside { animation: none; }
   }
 </style>

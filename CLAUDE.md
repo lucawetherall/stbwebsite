@@ -98,7 +98,10 @@ Three watchwords: **restraint, reverence, readability.** The tenets:
   flat overlay on purpose. A constant 2px violet ribbon sits at the top of every page; buttons
   are outlined and fill on hover; labels are tracked uppercase small-caps.
 - **Liturgically alive.** The hero artwork changes with the church season/feast
-  (`src/data/artwork.ts` keyed off `src/lib/liturgy.ts`); the footer shows a live season line.
+  (`src/data/artwork.ts` keyed off `src/lib/liturgy.ts`); the footer shows a live season line;
+  and around the great feasts a seasonal panel (homepage hero insert, notice line, What's On)
+  is derived at build time from the music list by `src/lib/seasons.ts` + `src/data/seasonFeatures.ts`
+  — windows anchored on the engine's dates, services gathered by date, wording verbatim.
 - **Accessibility is part of the aesthetic.** WCAG 2.1 AA; visible focus rings, skip link,
   `.sr-only`, full `prefers-reduced-motion` support. `body` uses `overflow-x: clip` (not
   `hidden`) deliberately — **do not "fix" it back** (it would break scrolling/anchors/sticky; see

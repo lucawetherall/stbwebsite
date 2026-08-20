@@ -1,5 +1,6 @@
 ---
 import EventRow from './EventRow.astro';
+import SeasonCard from './SeasonCard.astro';
 import ServiceTimes from './ServiceTimes.astro';
 import WhatsOnCalendar from './WhatsOnCalendar.astro';
 import {
@@ -11,6 +12,8 @@ import {
   type SiteEvent,
 } from '../lib/events';
 import { getCalendarEvents } from '../lib/events-source';
+import { getCollection } from 'astro:content';
+import { activeFeature } from '../lib/seasons';
 import { site } from '../data/site';
 
 interface Props {
@@ -18,8 +21,20 @@ interface Props {
 }
 const { events } = Astro.props;
 
-// One highlighted event at most — the soonest the parish has asked us to lift up.
-const featured = events.find((e) => e.featured);
+// The live seasonal feature (derived from the music list — src/lib/seasons.ts), and the
+// one event the parish has asked us to lift up. Both can show: editor intent must not
+// lose to derived content, so a featured Christmas concert keeps its panel beneath the
+// season card — suppressed only when the card already lists that very service.
+const sheets = (await getCollection('services')).map((e) => e.data);
+const season = activeFeature(sheets);
+const featuredCandidate = events.find((e) => e.featured);
+const featured =
+  featuredCandidate &&
+  season?.services.some(
+    (s) => s.date === featuredCandidate.date && s.name === featuredCandidate.title
+  )
+    ? undefined
+    : featuredCandidate;
 
 // The list shows *everything* the calendar knows — every occurrence, regular worship included —
 // so the two views never disagree about what is on. It reaches as far as the calendar's month
@@ -44,6 +59,21 @@ const featuredDate = featured
   : '';
 const featuredWhen = featured ? describeWhen(featured, { includeDate: false }) : '';
 ---
+<section class="whats-on-week" aria-labelledby="week-heading">
+  <h2 class="label whats-on-week__title" id="week-heading">Week by week</h2>
+  <ServiceTimes compact />
+  <p class="whats-on-week__more">
+    <a class="txt-link" href="/worship/sundays">Sundays in full</a>
+    <a class="txt-link" href="/worship/weekdays">Weekdays in full</a>
+  </p>
+</section>
+
+{season && (
+  <div class="whats-on-season">
+    <SeasonCard feature={season} variant="page" />
+  </div>
+)}
+
 {featured && (
   <section
     class:list={['whats-on-featured', !featured.image && 'is-textonly']}
@@ -116,11 +146,6 @@ const featuredWhen = featured ? describeWhen(featured, { includeDate: false }) :
 </section>
 
 <WhatsOnCalendar />
-
-<section class="whats-on-regular" aria-labelledby="regular-heading">
-  <h2 class="label whats-on-regular__title" id="regular-heading">Week by week</h2>
-  <ServiceTimes />
-</section>
 
 <p class="page-aside">
   You can <a href={subscribeUrl}>subscribe to our calendar</a> in Apple Calendar, Google Calendar
@@ -216,9 +241,12 @@ const featuredWhen = featured ? describeWhen(featured, { includeDate: false }) :
   }
   .whats-on-empty a:hover { color: var(--violet-deep); border-color: var(--violet-deep); }
 
-  /* ---- regular pattern ---- */
-  .whats-on-regular { margin-top: 3.4rem; padding-top: 2.4rem; border-top: 1px solid var(--line); }
-  .whats-on-regular__title { display: block; margin-bottom: 1.4rem; }
+  .whats-on-season { margin-bottom: 3rem; }
+
+  /* ---- the standing pattern, up top: the answer most visitors came for ---- */
+  .whats-on-week { margin-top: 2.6rem; margin-bottom: 3rem; }
+  .whats-on-week__title { color: var(--violet); display: block; margin-bottom: 1.4rem; }
+  .whats-on-week__more { display: flex; flex-wrap: wrap; gap: 1.2rem 2rem; margin-top: 1.8rem; }
 
   @media (max-width: 700px) {
     .whats-on-featured { grid-template-columns: 1fr; gap: 1.2rem; padding: 1.4rem; }

@@ -1,0 +1,69 @@
+---
+/**
+ * The seasonal notice line — a pew-sheet rubric under the menu bar, not a banner.
+ *
+ * Live only while a *principal* season is (Christmas, Holy Week — `notice: true` in
+ * seasonFeatures.ts): twice a year, when strangers genuinely look for a church, a quiet
+ * dated line is information; the rest of the year it would be marketing cadence. The
+ * liturgical engine writes the lead — "The Second Week of Advent" — so the strip reads
+ * as the church telling you where the year stands.
+ *
+ * Paper ground, hairline-bounded, the accent carried by the violet lead-in words and the
+ * constant ribbon above (tokens.css: at this size weight, tracking and case do the
+ * marking-out, not colour). One link, ≥44px tall. Suppressed on the homepage (the hero
+ * insert already says it, better), on the link's own target, and on noindex pages.
+ */
+import { getCollection } from 'astro:content';
+import { activeFeature } from '../lib/seasons';
+
+interface Props {
+  pathname: string;
+  suppress?: boolean;
+}
+const { pathname, suppress = false } = Astro.props;
+
+const sheets = (await getCollection('services')).map((e) => e.data);
+const feature = activeFeature(sheets);
+
+const clean = (p: string) => p.replace(/\/+$/, '') || '/';
+const show =
+  !suppress &&
+  feature?.notice &&
+  clean(pathname) !== '/' &&
+  clean(pathname) !== clean(feature.href);
+---
+{show && feature && (
+  <div class="season-notice">
+    <a href={feature.href}>
+      {feature.noticeLead && <strong>{feature.noticeLead}</strong>}
+      {feature.noticeLead && <span aria-hidden="true"> · </span>}
+      {feature.noticeLabel ?? feature.ctaLabel} →
+    </a>
+  </div>
+)}
+
+<style>
+  .season-notice {
+    background: var(--paper-2);
+    border-block: 1px solid var(--line);
+  }
+  .season-notice a {
+    display: block;
+    padding: .8rem var(--pad);
+    text-align: center;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .season-notice a:hover { background: var(--violet-faint); }
+  .season-notice strong { color: var(--violet); font-weight: 600; }
+
+  @media print {
+    .season-notice { display: none; }
+  }
+</style>

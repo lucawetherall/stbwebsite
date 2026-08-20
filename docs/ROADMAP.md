@@ -72,15 +72,17 @@ times in `src/content/settings/serviceTimes.json` are *not* in the feed — thei
 free text ("first Sunday of the month") and would need parsing into recurrence rules before
 Sunday Mass could appear in a subscriber's calendar. *Effort: M (done) / M (service times).*
 
-## 6. Liturgical engine: feast coverage and curated artwork — **Open**
+## 6. Liturgical engine: feast coverage and curated artwork — **Feasts shipped (August 2026); artwork sourcing open**
 
-`src/lib/liturgy.ts` hard-codes only five principal feasts (St Barnabas, the BVM, All Saints,
-Ascension, Trinity). The parish demonstrably observes more: Corpus Christi (a real 2026 event in
-the repo), Candlemas, Christmas Day, Epiphany, and the named days of Holy Week (Maundy Thursday,
-Good Friday) are all absent. Use the **`add-feast` skill** — every feast needs an engine row, an
-`artwork.ts` key and a test. Artwork is the second half: all keys currently reuse five parish
-photos; DECISIONS §7 records the intent to move to curated public-domain feast paintings.
-*Effort: M (feasts) + M (artwork sourcing). Parish input: artwork choices, ideally.*
+The engine now carries the full round the parish keeps: Ash Wednesday, Mothering Sunday, the
+named days of Holy Week, Easter Day, Corpus Christi, the Commemoration of the Faithful
+Departed, Remembrance Sunday, Christ the King, Advent Sunday, Christmas Eve and Day, the
+Epiphany and Candlemas — each with an artwork key and two-year test coverage (the
+**`add-feast` skill** remains the recipe for the next one). It also exports
+`liturgicalDates(year)` (civil-date strings), which anchors the seasonal features
+(`src/lib/seasons.ts`). **Still open:** curated artwork — the feast keys draw on the parish's
+seasonal photography in `public/images/worship/`, and DECISIONS §7 records the intent to move
+to curated public-domain feast paintings. *Effort: M (artwork sourcing). Parish input: yes.*
 
 ## 7. Go-live debt — **Blocked (parish)**
 
