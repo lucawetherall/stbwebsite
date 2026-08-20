@@ -5,16 +5,19 @@ const year = new Date().getFullYear();
 
 const links = [
   { label: 'Contact', href: '/contact-us' },
-  { label: 'Venue hire', href: '/venue-hire' },
+  { label: 'Hire', href: '/hire' },
   { label: 'Documents', href: '/documents' },
   { label: 'Weekly News', href: site.newsletterArchive, external: true },
   { label: 'Give', href: '/give' },
   { label: 'Safeguarding', href: '/safeguarding' },
   { label: 'Accessibility', href: '/about-us/accessibility' },
-  { label: 'Inclusive Church', href: site.affiliations[0].url, external: true },
-  { label: 'Church of England', href: site.affiliations[1].url, external: true },
+  // The editor owns this list (site.json → Affiliations): use their names and order,
+  // and skip a half-filled row rather than failing the build on it.
+  ...site.affiliations
+    .filter((a) => a?.name && a?.url)
+    .map((a) => ({ label: a.name, href: a.url, external: true })),
 ];
-const tel = `tel:${site.phoneIntl.replace(/\s+/g, '')}`;
+const tel = site.phoneHref;
 ---
 <footer class="site-footer">
   <div class="wrap footer-top">
@@ -22,7 +25,7 @@ const tel = `tel:${site.phoneIntl.replace(/\s+/g, '')}`;
       {/* `mono` keeps the window white against the dark ground, as it has always been
           here; only the wordmark changes, and it follows currentColor to white too. */}
       <a href="/" class="footer-brand" aria-label="St Barnabas Church, Ealing — home">
-        <BrandLockup mono />
+        <BrandLockup mono use />
       </a>
       <p class="serif footer-brand__locality">The Church of England parish church of Pitshanger</p>
     </div>
@@ -142,6 +145,8 @@ const tel = `tel:${site.phoneIntl.replace(/\s+/g, '')}`;
     .footer-info { flex-direction: column; align-items: flex-start; gap: .25rem; }
     .footer-info > * + *::before { content: none; }
   }
+  /* The global violet ring vanishes against the ink-dark footer. */
+  .site-footer :is(a, button):focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
 </style>
 
 <script>

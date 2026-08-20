@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHeader from '../components/PageHeader.astro';
 import MapEmbed from '../components/MapEmbed.astro';
+import Figure from '../components/Figure.astro';
 import { site } from '../data/site';
 ---
 <Base
@@ -11,8 +12,18 @@ import { site } from '../data/site';
   <PageHeader
     kicker="Get in touch"
     title="Contact Us"
-    intro="We would love to hear from you — whether you are planning a visit, an enquiry or a booking."
+    intro="We would love to hear from you, whether you are planning a visit, making an enquiry or booking a space."
   />
+  <div class="wrap">
+    <Figure
+      src="/images/about/exterior-spring.webp"
+      alt="St Barnabas Church on Pitshanger Lane"
+      caption="St Barnabas — on the corner of Pitshanger Lane and Denison Road"
+      aspect="16 / 9"
+      sizes="(max-width: 1140px) 100vw, 1100px"
+      eager
+    />
+  </div>
   <div class="wrap page-body contact">
     <div class="contact__details">
       <div class="contact__block">
@@ -28,7 +39,7 @@ import { site } from '../data/site';
 
       <div class="contact__block">
         <h2 class="label">Telephone</h2>
-        <p><a class="content-link" href={`tel:${site.phoneIntl.replace(/\s+/g, '')}`}>{site.phone}</a></p>
+        <p><a class="content-link" href={site.phoneHref}>{site.phone}</a></p>
       </div>
 
       <div class="contact__block">

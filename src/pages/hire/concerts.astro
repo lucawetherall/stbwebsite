@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Figure from '../../components/Figure.astro';
+import Gallery from '../../components/Gallery.astro';
+import ChurchHireRates from '../../components/ChurchHireRates.astro';
+import { hire } from '../../data/hire';
+import { site } from '../../data/site';
+const c = hire.concerts;
+---
+<Base title="Hire the church for concerts — Ealing" breadcrumbTitle="Concerts" description={c.description} image={c.hero.image}>
+  <PageHeader kicker={c.kicker} title={c.title} intro={c.intro} />
+  <div class="wrap page-body">
+    <Figure src={c.hero.image} alt={c.hero.alt} eager aspect="16 / 9" sizes="(max-width: 1140px) 100vw, 1100px" />
+    <div class="prose">{c.body.map((p) => <p>{p}</p>)}</div>
+
+    <ChurchHireRates capacity={c.capacity}>
+      For the organ, see the <a class="content-link" href="/music/st-barnabas-organ">St Barnabas organ</a>.
+    </ChurchHireRates>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">The space</h2>
+      <Gallery images={c.gallery} />
+    </section>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">How to book</h2>
+      <p>To discuss a concert, contact the parish office on <a class="content-link" href={site.phoneHref}>{site.phone}</a> or <a class="content-link" href={`mailto:${site.emails.office}`}>{site.emails.office}</a>. Upcoming concerts appear on <a class="content-link" href="/whats-on">What's On</a>.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page-body { padding-top: 1.5rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+  .prose { margin-top: 1.6rem; }
+  .hire-section { margin-top: 2.8rem; }
+  .hire-section__label { color: var(--violet); display: block; margin-bottom: 1.2rem; }
+</style>

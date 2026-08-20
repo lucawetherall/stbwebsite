@@ -1,0 +1,30 @@
+{
+  "date": "2027-07-11",
+  "feast": "The Seventh Sunday after Trinity",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "85. 8–13"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Gounod, Missa brevis No. 7"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Rogers, Hymnus Eucharisticus"
+          ]
+        }
+      ]
+    }
+  ]
+}

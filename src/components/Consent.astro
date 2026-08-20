@@ -21,7 +21,15 @@
     const KEY = 'stb-consent';
     const banner = document.querySelector('[data-consent-banner]') as HTMLElement | null;
     if (!banner) return;
-    if (!localStorage.getItem(KEY)) banner.hidden = false;
+    // localStorage throws under "block all cookies"/some private modes; the banner (and the
+    // buttons below) must still work, the choice just won't be remembered across pages.
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem(KEY);
+    } catch {
+      /* storage blocked */
+    }
+    if (!stored) banner.hidden = false;
 
     function decide(all: boolean) {
       const consent = {
@@ -29,10 +37,16 @@
         maps: all,
         youtube: all,
       };
-      localStorage.setItem(KEY, JSON.stringify(consent));
+      // Apply the choice first; persist last, so a blocked localStorage cannot stop the
+      // buttons working on the page the reader is looking at.
       (window as any).__consent = consent;
-      if (banner) banner.hidden = true;
+      banner!.hidden = true;
       window.dispatchEvent(new CustomEvent('stb:consent', { detail: consent }));
+      try {
+        localStorage.setItem(KEY, JSON.stringify(consent));
+      } catch {
+        /* storage blocked — the choice still applies to this page */
+      }
     }
 
     banner.querySelector('[data-consent="all"]')?.addEventListener('click', () => decide(true));
@@ -69,4 +83,6 @@
   .consent .btn:hover { background: var(--white); color: var(--ink); }
   .consent .btn--solid { background: var(--violet); border-color: var(--violet); }
   .consent .btn--solid:hover { background: var(--violet-deep); color: var(--white); }
+  /* The global violet ring vanishes against the ink-dark banner. */
+  .consent .btn:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
 </style>

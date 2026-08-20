@@ -16,6 +16,7 @@ itself as the final word.
 | 2 June 2026 | Who's Who detail pages | [spec](specs/2026-06-02-whos-who-detail-pages-design.md) | — (folded into the editable-surface plan) | Shipped |
 | 23 June 2026 | Parish history page | [spec](specs/2026-06-23-history-page-design.md) | [plan](plans/2026-06-23-history-page.md) | Shipped |
 | 23 June 2026 | Our Musicians page | [spec](specs/2026-06-23-our-musicians-page-design.md) | [plan](plans/2026-06-23-our-musicians-page.md) | Shipped |
+| 12 August 2026 | Music lists, Sept 2026 – July 2027 | [spec](specs/2026-08-12-music-lists-design.md) | — | Shipped |
 
 ## Convention
 

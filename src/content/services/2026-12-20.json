@@ -1,0 +1,37 @@
+{
+  "date": "2026-12-20",
+  "feast": "The Fourth Sunday of Advent",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Let all mortal flesh keep silence (arr. Holst)"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "89. 1–4, 19–26"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Ives, Salisbury Service (Gloria omitted)"
+          ]
+        },
+        {
+          "label": "Anthems",
+          "values": [
+            "MacMillan, Advent IV",
+            "Rachmaninoff, Bogoroditse Djevo"
+          ]
+        }
+      ]
+    }
+  ]
+}

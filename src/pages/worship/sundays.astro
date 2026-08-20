@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import ServiceTimes from '../../components/ServiceTimes.astro';
+import Figure from '../../components/Figure.astro';
 ---
 <Base
   title="Sunday Mass Times"
@@ -15,7 +16,13 @@ import ServiceTimes from '../../components/ServiceTimes.astro';
     intro="The Sung Mass at 10.30am is the heart of our week."
   />
   <div class="wrap page-body">
-    <ServiceTimes only="sundays" />
+    <ServiceTimes only="sundays" headingLevel="h2" />
+    <Figure
+      class="page-figure"
+      src="/images/worship/liturgy-procession.webp"
+      alt="The procession at a Sung Mass"
+      caption="The procession at the Sung Mass"
+    />
     <p class="page-aside">
       Children are welcome at every service — there is <a href="/families-children">Noisy Mass,
       Children’s Church and a Youth Group</a> each Sunday. Can’t be with us in person?

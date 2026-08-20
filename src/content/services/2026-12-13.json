@@ -1,0 +1,49 @@
+{
+  "date": "2026-12-13",
+  "feast": "The Third Sunday of Advent",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "126 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Missa de Angelis (Gloria omitted)"
+          ]
+        },
+        {
+          "label": "Anthems",
+          "values": [
+            "MacMillan, Advent III",
+            "Gibbons, This is the record of John"
+          ]
+        }
+      ]
+    },
+    {
+      "time": "6.00pm",
+      "name": "A Festival of Nine Lessons & Carols",
+      "items": [
+        {
+          "label": "Carols",
+          "values": [
+            "Warlock, Adam lay ybounden",
+            "Vaughan Williams, This is the truth sent from above",
+            "Ponniah, Seeing the star",
+            "Briggs, A tender shoot",
+            "Beamish, In the stillness",
+            "Farrington, Nova, nova",
+            "arr. Willberg, In the bleak midwinter"
+          ]
+        }
+      ]
+    }
+  ]
+}

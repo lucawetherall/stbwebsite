@@ -1,0 +1,37 @@
+{
+  "date": "2026-12-06",
+  "feast": "The Second Sunday of Advent",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Advent Prose (Rorate caeli)"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "85. 1–2, 8–13"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "MacMillan, St Anne’s Mass (Gloria omitted)"
+          ]
+        },
+        {
+          "label": "Anthems",
+          "values": [
+            "MacMillan, Advent II",
+            "Praetorius, Lo, how a rose e’er blooming"
+          ]
+        }
+      ]
+    }
+  ]
+}

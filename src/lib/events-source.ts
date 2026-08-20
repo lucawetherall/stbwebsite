@@ -2,9 +2,11 @@ import { getCollection } from 'astro:content';
 import { fetchFeedEvents } from './events-feed';
 import {
   addDays,
+  collapseFeedRepeats,
   collapseSeries,
   expandOccurrences,
   mergeEvents,
+  isAnnounced,
   nextOccurrence,
   todayInLondon,
   upcomingEvents,
@@ -44,7 +46,7 @@ function load(now: Date): Promise<LoadedEvents> {
   cache ??= (async () => {
     const today = todayInLondon(now);
     const window = { from: addDays(today, -PAST_DAYS), to: addDays(today, FUTURE_DAYS) };
-    const cms = await getCollection('events', ({ data }) => !data.draft);
+    const cms = await getCollection('events', ({ data }) => isAnnounced(data, today));
     const feed = await fetchFeedEvents(window);
     return { today, cms, feed, window };
   })();
@@ -59,7 +61,7 @@ export async function getDiaryEvents(now: Date = new Date()): Promise<SiteEvent[
     .map((entry) => nextOccurrence(entry, today))
     .filter((e): e is SiteEvent => e !== undefined);
 
-  const fromFeed = collapseSeries(upcomingEvents(feed, today));
+  const fromFeed = collapseFeedRepeats(collapseSeries(upcomingEvents(feed, today)));
 
   return mergeEvents(fromCms, fromFeed);
 }

@@ -39,7 +39,22 @@ export type RosterMember = CollectionEntry<'staff'> & { slug: string };
  */
 export async function getRoster(): Promise<RosterMember[]> {
   const people = await getCollection('staff');
-  return people
+  const roster = people
     .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
     .map((person) => ({ ...person, slug: staffSlug(person.id) }));
+  // Two files like "3-john-smith" and "13-john-smith" would collapse to one URL and
+  // silently build a single page for two people — fail the build with a clear message
+  // instead, so whoever added the duplicate can rename the file.
+  const seen = new Map<string, string>();
+  for (const person of roster) {
+    const other = seen.get(person.slug);
+    if (other) {
+      throw new Error(
+        `Who's Who: "${person.id}" and "${other}" both resolve to the URL slug "${person.slug}". ` +
+          'Rename one file (the part after the number must be unique) so each person gets their own page.'
+      );
+    }
+    seen.set(person.slug, person.id);
+  }
+  return roster;
 }

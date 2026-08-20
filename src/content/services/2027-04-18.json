@@ -1,0 +1,30 @@
+{
+  "date": "2027-04-18",
+  "feast": "The Fourth Sunday of Easter",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "23"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Darke in A minor"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Paulus, The Road Home"
+          ]
+        }
+      ]
+    }
+  ]
+}

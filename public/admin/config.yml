@@ -141,6 +141,7 @@ collections:
         hint: 'For something regular like the Memory Café. "Every month" means the same weekday each month — the second Tuesday, say, taken from the date above.'
       - { name: repeatUntil, label: Repeats until (optional), widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false, picker_utc: true, hint: 'Leave empty if it carries on indefinitely. What''s On shows the next date; the calendar file lists them all.' }
       - { name: featured, label: Highlight this at the top of What's On, widget: boolean, required: false, default: false }
+      - { name: announceFrom, label: Do not announce until (optional), widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false, picker_utc: true, hint: 'Leave empty to announce straight away. Set a date to keep the event off What''s On, Special Services and the calendar until then — useful for something booked a long way ahead.' }
       - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
 
   - divider: true
@@ -258,6 +259,125 @@ collections:
               - { name: label, label: Link text, widget: string }
               - { name: href, label: Link, widget: string, hint: 'e.g. /worship/st-barnabas-organ' }
 
+  - name: hire
+    label: 🎟️ Hire section (rates, films, photos)
+    description: Everything on the Hire pages — the church for recordings/concerts and the halls.
+    files:
+      - name: hire
+        label: Hire pages
+        file: src/content/settings/hire.json
+        media_folder: /public/images/hire
+        public_folder: /images/hire
+        fields:
+          - name: hub
+            label: Hire — landing page
+            widget: object
+            fields:
+              - { name: kicker, label: Kicker, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: intro, label: Intro line, widget: text }
+              - { name: description, label: Summary (for search engines), widget: text }
+              - name: hero
+                label: Hero photograph
+                widget: object
+                fields:
+                  - { name: image, label: Image, widget: image, hint: 'Wide landscape photo, ~1600px.' }
+                  - { name: alt, label: Image description (for screen readers), widget: string }
+              - { name: body, label: Paragraphs, widget: list, field: { name: p, label: Paragraph, widget: text } }
+          - name: recordings
+            label: The church for recordings
+            widget: object
+            fields:
+              - { name: kicker, label: Kicker, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: intro, label: Intro line, widget: text }
+              - { name: description, label: Summary (for search engines), widget: text }
+              - name: hero
+                label: Hero photograph
+                widget: object
+                fields:
+                  - { name: image, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+              - { name: body, label: Paragraphs, widget: list, field: { name: p, label: Paragraph, widget: text } }
+              - name: films
+                label: Featured films
+                widget: list
+                summary: '{{fields.title}} — {{fields.ensemble}}'
+                fields:
+                  - { name: youtubeUrl, label: YouTube link, widget: string, hint: 'Paste the normal watch?v= link.' }
+                  - { name: title, label: Title, widget: string }
+                  - { name: ensemble, label: Ensemble / credit, widget: string }
+                  - { name: poster, label: Poster image, widget: image }
+                  - { name: posterAlt, label: Poster description, widget: string }
+              - name: gallery
+                label: Photo gallery
+                widget: list
+                fields:
+                  - { name: src, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+          - name: concerts
+            label: The church for concerts
+            widget: object
+            fields:
+              - { name: kicker, label: Kicker, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: intro, label: Intro line, widget: text }
+              - { name: description, label: Summary (for search engines), widget: text }
+              - name: hero
+                label: Hero photograph
+                widget: object
+                fields:
+                  - { name: image, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+              - { name: body, label: Paragraphs, widget: list, field: { name: p, label: Paragraph, widget: text } }
+              - { name: capacity, label: Concert capacity (leave blank until confirmed), widget: string, required: false }
+              - name: gallery
+                label: Photo gallery
+                widget: list
+                fields:
+                  - { name: src, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+          - name: halls
+            label: Church halls
+            widget: object
+            fields:
+              - { name: kicker, label: Kicker, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: intro, label: Intro line, widget: text }
+              - { name: description, label: Summary (for search engines), widget: text }
+              - name: hero
+                label: Hero photograph
+                widget: object
+                fields:
+                  - { name: image, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+              - { name: body, label: Paragraphs, widget: list, field: { name: p, label: Paragraph, widget: text } }
+              - name: rates
+                label: Hall rates
+                widget: list
+                summary: '{{fields.space}}'
+                fields:
+                  - { name: space, label: Space, widget: string }
+                  - { name: size, label: Size, widget: string }
+                  - { name: capacity, label: Capacity, widget: string }
+                  - { name: day, label: Daytime rate, widget: string }
+                  - { name: eve, label: Evening rate, widget: string }
+              - { name: ratesNote, label: Note under the table, widget: text }
+              - name: gallery
+                label: Photo gallery
+                widget: list
+                fields:
+                  - { name: src, label: Image, widget: image }
+                  - { name: alt, label: Image description, widget: string }
+          - name: churchHireRates
+            label: Church-hire rate card (recordings & concerts)
+            widget: list
+            summary: '{{fields.item}} — {{fields.rate}}'
+            fields:
+              - { name: item, label: Item, widget: string }
+              - { name: rate, label: Rate, widget: string }
+          - { name: churchHireNote, label: Note under the rate card, widget: text }
+
   - name: history
     label: 🏛️ History chapters
     label_singular: Chapter
@@ -295,7 +415,7 @@ collections:
   # ════════ SET UP ONCE (rarely touched) ════════
   # ── Main pages (text of every standalone & section page) ─────────────────────
   # File collection enumerating each page (Sveltia has no nested-folder tree until v1.0).
-  # `&pf` defines the shared field set once; `*pf` reuses it. Worship has its own set (gallery).
+  # `&pf` defines the shared field set once; `*pf` reuses it on every page.
   - name: pages
     label: 📖 Main Pages
     description: Edit the wording of any page. The formatting buttons are all you need.
@@ -310,6 +430,7 @@ collections:
           - { name: description, label: Summary (shown to search engines), widget: text, required: false }
           - { name: seoTitle, label: Search-engine title (optional), widget: string, required: false, hint: 'The headline people see in Google, when it should differ from the page Title above — a page headed "Sundays" might use "Sunday Mass Times" here. Leave empty to use the Title. Around 50 characters; our church name is added for you.' }
           - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
+          - { name: updated, label: 'Last updated (optional)', widget: datetime, format: 'YYYY-MM-DD', time_format: false, required: false, hint: 'Set this when the wording meaningfully changes — search engines are told the date. Leave empty otherwise.' }
           - { name: hero, label: Banner photo (optional), widget: image, required: false, hint: 'A wide landscape photo. Leave empty for a text-only page.' }
           - { name: heroAlt, label: Banner photo description (for screen readers), widget: string, required: false }
           - name: body
@@ -319,6 +440,15 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list, quote]
             editor_components: [image]
             hint: Edit the wording freely. There is no code to break here.
+          - name: gallery
+            label: Photo gallery (optional)
+            widget: list
+            required: false
+            summary: '{{fields.alt}}'
+            hint: 'Shown as a strip of photographs beneath the page. Leave empty for no gallery.'
+            fields:
+              - { name: src, label: Image, widget: image, hint: 'A landscape photo around 1600px wide is plenty.' }
+              - { name: alt, label: Image description (for screen readers), widget: string }
       - { name: about-accessibility, label: 'About · Accessibility', file: src/content/pages/about-us/accessibility.md, fields: *pf }
       - { name: about-pastoral-care, label: 'About · Pastoral Care', file: src/content/pages/about-us/pastoral-care.md, fields: *pf }
       - { name: about-social-action, label: 'About · Social Action', file: src/content/pages/about-us/social-action.md, fields: *pf }
@@ -334,33 +464,10 @@ collections:
       - { name: families-youth-group, label: 'Families · Youth Group', file: src/content/pages/families-children/youth-group.md, fields: *pf }
       - { name: life-events, label: Life Events, file: src/content/pages/life-events.md, fields: *pf }
       - { name: whats-on, label: What's On, file: src/content/pages/whats-on.md, fields: *pf }
+      - { name: music, label: Music, file: src/content/pages/music.md, fields: *pf }
       - { name: music-organ, label: 'Music · St Barnabas Organ', file: src/content/pages/music/st-barnabas-organ.md, fields: *pf }
       - { name: music-our-musicians, label: 'Music · Our Musicians', file: src/content/pages/music/our-musicians.md, fields: *pf }
-      - name: worship
-        label: Worship
-        file: src/content/pages/worship.md
-        fields:
-          - { name: title, label: Title, widget: string }
-          - { name: kicker, label: Kicker (small label above the title), widget: string, required: false }
-          - { name: intro, label: Intro line, widget: string, required: false }
-          - { name: description, label: Summary (shown to search engines), widget: text, required: false }
-          - { name: seoTitle, label: Search-engine title (optional), widget: string, required: false, hint: 'The headline people see in Google, when it should differ from the page Title above. Leave empty to use the Title. Around 50 characters; our church name is added for you.' }
-          - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
-          - name: body
-            label: Body
-            widget: markdown
-            modes: [rich_text]
-            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list, quote]
-            editor_components: [image]
-            hint: Edit the wording freely. There is no code to break here.
-          - name: gallery
-            label: Photo gallery
-            widget: list
-            required: false
-            summary: '{{fields.alt}}'
-            fields:
-              - { name: src, label: Image, widget: image, hint: 'A landscape photo around 1600px wide is plenty.' }
-              - { name: alt, label: Image description (for screen readers), widget: string }
+      - { name: worship, label: Worship, file: src/content/pages/worship.md, fields: *pf }
 
   # ── Site-wide settings (contact details, people, links) ──────────────────────
   - name: site_settings
@@ -401,7 +508,8 @@ collections:
               - { name: instagram, label: Instagram, widget: string, type: url }
               - { name: youtube, label: YouTube, widget: string, type: url }
           - { name: giving, label: Giving page link, widget: string, type: url }
-          - { name: newsletterArchive, label: Newsletter archive link, widget: string, type: url }
+          - { name: newsletterArchive, label: Newsletter link (latest edition), widget: string, type: url,
+              hint: 'Paste the newest newsletter''s public share link (app.churchdesk.com/public/newsletter/…) each week. Saving it updates the "Read the latest newsletter" link AND automatically publishes that edition as a news post on the News page within a few minutes.' }
           - { name: diocesanSafeguardingPolicy, label: Diocesan safeguarding policy link, widget: string, type: url }
           - name: affiliations
             label: Affiliations

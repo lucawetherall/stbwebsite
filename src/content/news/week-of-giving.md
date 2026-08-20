@@ -13,7 +13,7 @@ St Barnabas is a thriving community hub. Over 500 people come through our doors 
 
 -   **CASH: Donate cash using Gift Aid envelopes so we can claim from your tax at no additional cost.**
 
--   **CARD: You can also pay by card in the Parish Office (****Mon-Fri, 10am to 3pm).**
+-   **CARD: You can also pay by card in the Parish Office (Mon-Fri, 10am to 3pm).**
 
 **OR Click on the sticker below to donate!**
 

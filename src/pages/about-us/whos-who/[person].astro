@@ -46,7 +46,7 @@ const personJsonLd = {
           <img
             class="person__photo"
             src={photo}
-            alt={photoAlt ?? `Portrait of ${name}`}
+            alt={photoAlt || `Portrait of ${name}`}
             decoding="async"
           />
         ) : (

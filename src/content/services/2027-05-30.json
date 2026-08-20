@@ -1,0 +1,38 @@
+{
+  "date": "2027-05-30",
+  "feast": "Corpus Christi (transferred)",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Pange lingua (plainsong)"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "116. 10–end"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Gloria de Lourdes (Lécot)",
+            "MacMillan, St Anne’s Mass"
+          ]
+        },
+        {
+          "label": "Anthems",
+          "values": [
+            "Sweet Sacrament divine",
+            "MacMillan, Hymn to the Blessed Sacrament"
+          ]
+        }
+      ]
+    }
+  ]
+}

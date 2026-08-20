@@ -1,0 +1,37 @@
+{
+  "date": "2026-12-24",
+  "feast": "The First Eucharist of Christmas",
+  "offices": [
+    {
+      "time": "11.00pm",
+      "name": "Midnight Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Stille Nacht (arr. Hazel Baker)"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "96 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Gloria de Lourdes (Lécot)",
+            "Missa de Angelis"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Todd, My Lord has come"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -18,7 +18,6 @@ const pages = defineCollection({
     intro: z.string().optional(),
     hero: z.string().optional(),
     heroAlt: z.string().optional(),
-    order: z.number().optional(),
     updated: z.coerce.date().optional(),
     draft: z.boolean().default(false),
     gallery: z
@@ -76,10 +75,13 @@ const events = defineCollection({
     url: z.string().optional(),
     urlLabel: z.string().optional(), // "Book a place"
     image: z.string().optional(),
-    imageAlt: z.string().optional(), // required on the CMS widget, not here
+    imageAlt: z.string().optional(), // optional on the CMS widget too, with a fill-this-in hint
     repeat: z.enum(['none', 'weekly', 'fortnightly', 'monthly']).default('none'),
     repeatUntil: z.coerce.date().optional(), // omit for an open-ended series
     featured: z.boolean().default(false),
+    // Keeps an event off the site until the date given — for something booked a long way ahead
+    // that should not headline What's On for a year first. Mirrored in public/admin/config.yml.
+    announceFrom: z.coerce.date().optional(),
     draft: z.boolean().default(false),
   }),
 });
@@ -105,7 +107,6 @@ const documents = defineCollection({
     description: z.string().optional(),
     category: z.string().optional(),
     external: z.boolean().default(false),
-    updated: z.coerce.date().optional(),
     order: z.number().optional(),
   }),
 });

@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-20",
+  "feast": "The Sixteenth Sunday after Trinity",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "145. 1–8 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Darke in A minor"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Lloyd, View me, Lord"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "date": "2027-01-24",
+  "feast": "The Third Sunday of Epiphany",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "128"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Byrd, Mass for Four Voices"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Brough, Tantum ergo"
+          ]
+        }
+      ]
+    }
+  ]
+}

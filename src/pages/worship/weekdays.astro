@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import ServiceTimes from '../../components/ServiceTimes.astro';
+import Figure from '../../components/Figure.astro';
 ---
 <Base
   title="Weekday Mass & Prayer Times"
@@ -15,7 +16,13 @@ import ServiceTimes from '../../components/ServiceTimes.astro';
     intro="Quieter, said worship through the week, mostly in the Lady Chapel."
   />
   <div class="wrap page-body">
-    <ServiceTimes only="weekdays" />
+    <ServiceTimes only="weekdays" headingLevel="h2" />
+    <Figure
+      class="page-figure"
+      src="/images/worship/liturgy-altar.webp"
+      alt="The altar prepared for Mass"
+      caption="The altar prepared for Mass"
+    />
     <p class="page-aside">
       The Lady Chapel is reached by the small south door. The dementia-friendly service on
       Thursdays follows our <a href="/community/memory-cafe">Memory Café</a>.

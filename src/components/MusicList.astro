@@ -1,0 +1,456 @@
+---
+/**
+ * The music list: the choir year, shown a month at a time.
+ *
+ * The page opens on the month that holds the next service — foregrounded with a tint and the
+ * "Next" mark — and the reader steps between months with the chevrons on the month rule or the
+ * month bar above. Only one month is on screen at once; the rest are in the page but hidden, so
+ * navigation is instant and needs no round-trip.
+ *
+ * The month rule itself — hairline, diamond, month, diamond, hairline — is lifted from the
+ * printed lists the Director of Music produces each term; borrowing it keeps the page and the
+ * booklet plainly the same document. The same diamond, small, marks the next service.
+ *
+ * Progressive enhancement. With scripting off, a <noscript> block reveals every month and the
+ * bar's anchors jump between them — the whole year on one scroll, as a printed list would be.
+ * The print stylesheet does the same, so a chorister prints the booklet, not just one month.
+ *
+ * Grouped by month, not by liturgical season: `liturgy.ts` could name the season, but the
+ * parish transfers feasts freely — Corpus Christi to 30 May, Candlemas to 31 January — so the
+ * engine would confidently label those with a season the parish is not keeping.
+ */
+import ServiceSheet from './ServiceSheet.astro';
+import { groupByMonth, upcomingSheets, type SheetLike } from '../lib/services';
+
+interface Props {
+  sheets: SheetLike[];
+  /** Injectable for tests and previews; the page passes nothing and gets "now". */
+  now?: Date;
+}
+const { sheets, now = new Date() } = Astro.props;
+
+const upcoming = upcomingSheets(sheets, now);
+const groups = groupByMonth(upcoming);
+
+// The next service is simply the first one still ahead of us — always present when the list is,
+// unlike the homepage's within-the-week picker. The page opens on the month that holds it.
+const next = upcoming[0] ?? null;
+const nextKey = next ? +next.date : null;
+const nextMonthKey = groups.find((g) => g.sheets.some((s) => +s.date === nextKey))?.key;
+// The month shown on arrival. It moves as the reader steps through the year, which is why the
+// bar marks `nextMonthKey` separately — otherwise there is no way back to "now" once you browse.
+const activeKey = nextMonthKey ?? groups[0]?.key;
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-GB', {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    timeZone: 'UTC',
+  });
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+---
+<section class="music-list__section" aria-labelledby="music-list-heading">
+<h2 class="label music-list__heading" id="music-list-heading">Music List</h2>
+
+{groups.length === 0 ? (
+  <p class="music-list__empty">
+    The music list for the coming term has not been published yet. It usually appears a few
+    weeks before the choir returns — in the meantime, our
+    <a href="/worship">regular pattern of worship</a> continues as usual.
+  </p>
+) : (
+  <div class="music-list" data-music-list>
+    <p class="sr-only" aria-live="polite" data-announce></p>
+
+    <nav class="ml-bar" aria-label="Choose a month">
+      <ul class="ml-bar__list">
+        {groups.map((group, i) => (
+          <>
+            {(i === 0 || groups[i - 1].year !== group.year) && (
+              <li class="ml-bar__year" aria-hidden="true">{group.year}</li>
+            )}
+            <li>
+              <a
+                class="ml-bar__link"
+                class:list={{ 'is-next-month': group.key === nextMonthKey }}
+                href={`#${group.key}`}
+                aria-current={group.key === activeKey ? 'true' : undefined}
+              >
+                <span class="sr-only">
+                  {group.key === nextMonthKey
+                    ? `${group.label} ${group.year}, next service`
+                    : `${group.label} ${group.year}`}
+                </span>
+                {group.key === nextMonthKey && <span class="ml-bar__mark" aria-hidden="true"></span>}
+                <span aria-hidden="true">{group.label.slice(0, 3)}</span>
+              </a>
+            </li>
+          </>
+        ))}
+      </ul>
+    </nav>
+
+    {groups.map((group) => (
+      <section
+        class="ml-month"
+        class:list={{ 'is-active': group.key === activeKey }}
+        id={group.key}
+        data-month={group.key}
+        aria-labelledby={`${group.key}-heading`}
+      >
+        <div class="month">
+          <button class="month__nav" type="button" data-prev aria-label="Previous month">‹</button>
+          <span class="month__rule" aria-hidden="true"></span>
+          <span class="month__diamond" aria-hidden="true"></span>
+          <h3 class="month__name" id={`${group.key}-heading`}>{`${group.label} ${group.year}`}</h3>
+          <span class="month__diamond" aria-hidden="true"></span>
+          <span class="month__rule" aria-hidden="true"></span>
+          <button class="month__nav" type="button" data-next aria-label="Next month">›</button>
+        </div>
+
+        {group.sheets.map((sheet) => (
+          <article class="ml-service" class:list={{ 'is-next': +sheet.date === nextKey }}>
+            <p class="ml-when">
+              {+sheet.date === nextKey && (
+                <span class="ml-when__mark" aria-hidden="true"></span>
+              )}
+              <time class="ml-when__date" datetime={iso(sheet.date)}>{fmtDate(sheet.date)}</time>
+              {+sheet.date === nextKey && <span class="ml-when__next">Next service</span>}
+            </p>
+            <div class="ml-body">
+              <ServiceSheet sheet={sheet} level={4} />
+            </div>
+          </article>
+        ))}
+      </section>
+    ))}
+  </div>
+)}
+</section>
+
+<noscript>
+  <style>
+    /* No scripting: show the whole year at once and let the bar's anchors jump between months.
+       The steppers cannot work without JS, so they are hidden. */
+    .ml-month { display: block !important; }
+    .month__nav { display: none !important; }
+  </style>
+</noscript>
+
+<style>
+  .music-list__section { margin-top: 2.8rem; }
+  .music-list__heading { color: var(--violet); display: block; margin-bottom: 1rem; }
+  .music-list__empty { max-width: 60ch; color: var(--ink-soft); }
+  .music-list { margin-top: 2rem; }
+
+  /* One month at a time. The active month is chosen server-side (the next service's month) and
+     moved by the script; a deep link like #2027-03 is honoured by the script reading the hash on
+     load, not by :target — so navigating away can never leave the loaded month stuck on screen
+     beside the active one. With scripting off, the <noscript> block above reveals them all. */
+  .ml-month:not(.is-active) { display: none; }
+
+  /* ── the month bar ──────────────────────────────────────────────────────
+     The site header does not stick, so this can pin flush to the top with no
+     offset arithmetic. */
+  .ml-bar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: .5rem;
+  }
+  .ml-bar__list {
+    display: flex;
+    align-items: baseline;
+    gap: .2rem;
+    list-style: none;
+    margin: 0;
+    padding: .55rem 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .ml-bar__list::-webkit-scrollbar { display: none; }
+  .ml-bar__year {
+    font-family: var(--font-display);
+    font-size: .95rem;
+    color: var(--ink-soft);
+    padding: 0 .55rem 0 .3rem;
+    margin-right: .2rem;
+    border-right: 1px solid var(--line);
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+  }
+  .ml-bar__year:first-child { padding-left: 0; }
+  .ml-bar__link {
+    display: block;
+    padding: .3rem .6rem;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 3px;
+    transition: color .2s, background-color .2s;
+  }
+  .ml-bar__link.is-next-month { color: var(--violet); }
+  .ml-bar__mark {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin-right: .4rem;
+    vertical-align: .1em;
+    background: var(--violet);
+    transform: rotate(45deg);
+  }
+  .ml-bar__link:hover { color: var(--violet); background: var(--violet-faint); }
+  .ml-bar__link[aria-current='true'] { color: var(--violet); background: var(--violet-faint); }
+
+  /* ── the month rule, from the printed list, now also the stepper ───────── */
+  .ml-month { scroll-margin-top: 3.2rem; }
+  .month {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    margin: 1.6rem 0;
+  }
+  .month__rule { flex: 1; height: 1px; background: var(--line); }
+  .month__diamond {
+    width: 5px;
+    height: 5px;
+    background: var(--violet);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+  .month__name {
+    margin: 0;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .28em;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--violet);
+    white-space: nowrap;
+  }
+  /* Bare chevrons, not buttons. They sit on a hairline rule in a page whose only other
+     controls are outlined links, and a pair of filled circles drew far more attention than a
+     month stepper deserves. The tap target keeps its full size; only the ink is quiet. */
+  .month__nav {
+    flex-shrink: 0;
+    width: 1.9rem;
+    height: 1.9rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ink-soft);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .2s, opacity .2s;
+  }
+  .month__nav:hover { color: var(--violet); }
+  .month__nav:focus-visible {
+    outline: 2px solid var(--violet);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+  .month__nav:disabled { opacity: .25; cursor: default; pointer-events: none; }
+
+  /* ── one service ────────────────────────────────────────────────────────── */
+  .ml-service {
+    display: grid;
+    grid-template-columns: 165px 1fr;
+    gap: clamp(1.2rem, 3vw, 2.4rem);
+    padding: 1.6rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .ml-service:first-of-type { border-top: none; padding-top: .4rem; }
+
+  /* The next service, foregrounded: a tint lifts it off the list, and the top hairline of it
+     and the row below give way so the tinted block reads as one card. */
+  .ml-service.is-next {
+    background: var(--violet-faint);
+    border-top-color: transparent;
+    border-radius: 5px;
+    padding: 1.5rem 1.2rem;
+    margin: .3rem -1.2rem;
+  }
+  .ml-service.is-next + .ml-service { border-top-color: transparent; }
+
+  .ml-when { position: relative; padding-top: .3rem; }
+  .ml-when__date {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .ml-when__mark {
+    position: absolute;
+    left: -1rem;
+    top: .95rem;
+    width: 5px;
+    height: 5px;
+    background: var(--violet);
+    transform: rotate(45deg);
+  }
+  .ml-when__next {
+    display: block;
+    margin-top: .45rem;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: .62rem;
+    font-weight: 600;
+    color: var(--violet);
+  }
+
+  /* The feast is the entry's own heading here, so it sits at list scale rather than the
+     display scale it takes on the homepage. */
+  .ml-body :global(.sheet__feast) {
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.25;
+  }
+  .ml-body :global(.office) { margin-top: 1.2rem; }
+  .ml-body :global(.office:first-of-type) { margin-top: 1rem; }
+  .ml-body :global(.office__heading) { border-top: none; padding-top: 0; margin-bottom: .7rem; }
+  /* Guarded, because this out-specifies ServiceSheet's own mobile rule: without the query the
+     label column would stay pinned at 110px on a phone instead of stacking above its value. */
+  @media (min-width: 561px) {
+    .ml-body :global(.office__row) { grid-template-columns: 110px 1fr; }
+  }
+  .ml-body :global(.office__value) { font-size: 1rem; }
+  .ml-body :global(.office__value em) { font-size: 1.1rem; }
+
+  @media (max-width: 640px) {
+    .ml-service { grid-template-columns: 1fr; gap: .5rem; padding: 1.3rem 0; }
+    .ml-service.is-next { padding: 1.2rem 1rem; margin-inline: -1rem; }
+    .ml-when { padding-top: 0; }
+    .ml-when__mark { left: auto; right: calc(100% + .5rem); top: .6rem; }
+    .ml-when__next { display: inline; margin-left: .7rem; }
+    .month { gap: .5rem; }
+    .month__nav { width: 2.2rem; height: 2.2rem; font-size: 1.45rem; }
+    /* Two steppers leave the hairlines about 10px each at this width — a stub that reads as
+       broken rather than as the printed list's rule. Drop them and centre the name between the
+       diamonds, which carry the motif on their own. */
+    .month__rule { display: none; }
+    .month__name { flex: 1; text-align: center; letter-spacing: .2em; }
+  }
+
+  /* ── on paper ───────────────────────────────────────────────────────────
+     The house style is the printed service sheet translated to the web; this
+     translates it back, so a chorister can print the whole booklet — every
+     month, not just the one on screen. */
+  @media print {
+    .ml-bar { display: none; }
+    .month__nav { display: none; }
+    .ml-month { display: block !important; }
+    .music-list { margin-top: 0; }
+    .month { margin: 1.4rem 0 .8rem; break-after: avoid; }
+    .month__name, .month__diamond { color: #000; }
+    .month__diamond { background: #000; }
+    .ml-service {
+      grid-template-columns: 130px 1fr;
+      gap: 1.6rem;
+      padding: .5rem 0;
+      break-inside: avoid;
+    }
+    .ml-service.is-next { background: none; margin: 0; padding: .5rem 0; }
+    .ml-when__date, .ml-when__next { color: #000; }
+    .ml-when__mark { display: none; }
+  }
+</style>
+
+<script>
+  // Single-month controller. The markup ships with every month present but only one carrying
+  // `.is-active`; this swaps that class in response to the steppers, the month bar, and the URL
+  // hash, so a link like /music#2027-03 opens on March.
+  const root = document.querySelector<HTMLElement>('[data-music-list]');
+  if (root) {
+    const months = Array.from(root.querySelectorAll<HTMLElement>('.ml-month'));
+    const chips = Array.from(root.querySelectorAll<HTMLAnchorElement>('.ml-bar__link'));
+    const bar = root.querySelector<HTMLElement>('.ml-bar__list');
+    const announce = root.querySelector<HTMLElement>('[data-announce]');
+    const keys = months.map((m) => m.dataset.month ?? '');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let current = Math.max(0, months.findIndex((m) => m.classList.contains('is-active')));
+
+    // `focusSel` moves focus into the newly shown month. Without it the stepper the reader just
+    // pressed is display:none'd with focus still on it, and the next Tab restarts from the top of
+    // the document — the reader loses their place entirely.
+    const show = (i: number, moveView: boolean, focusSel?: string) => {
+      current = Math.max(0, Math.min(months.length - 1, i));
+      const key = keys[current];
+
+      months.forEach((m, j) => m.classList.toggle('is-active', j === current));
+      chips.forEach((c) => {
+        if (c.getAttribute('href') === `#${key}`) c.setAttribute('aria-current', 'true');
+        else c.removeAttribute('aria-current');
+      });
+      months.forEach((m) => {
+        const prev = m.querySelector<HTMLButtonElement>('[data-prev]');
+        const next = m.querySelector<HTMLButtonElement>('[data-next]');
+        if (prev) prev.disabled = current === 0;
+        if (next) next.disabled = current === months.length - 1;
+      });
+
+      // Centre the active chip in the bar. On a phone only about five months fit, so jumping to
+      // July would otherwise leave the highlighted chip off-screen behind the scroll.
+      // Instant, not smooth: the page scroll below is itself a smooth scroll, and starting a
+      // second one cancels the first — the bar simply never moved. A nudge inside a control
+      // strip gains nothing from being animated anyway.
+      if (bar && chips[current]) {
+        const chipBox = chips[current].getBoundingClientRect();
+        const barBox = bar.getBoundingClientRect();
+        const delta = chipBox.left - barBox.left - (bar.clientWidth - chipBox.width) / 2;
+        bar.scrollTo({ left: bar.scrollLeft + delta, behavior: 'auto' });
+      }
+
+      const name = months[current].querySelector('.month__name')?.textContent ?? '';
+      if (announce) announce.textContent = `Showing ${name}`;
+
+      if (focusSel) {
+        const wanted = months[current].querySelector<HTMLButtonElement>(focusSel);
+        const fallback = focusSel === '[data-next]' ? '[data-prev]' : '[data-next]';
+        if (wanted && !wanted.disabled) wanted.focus();
+        else months[current].querySelector<HTMLButtonElement>(fallback)?.focus();
+      }
+
+      // Only once the reader has chosen a month: landing on /music should not silently
+      // rewrite the address bar to /music#2026-09.
+      if (moveView && `#${key}` !== location.hash) history.replaceState(null, '', `#${key}`);
+      if (moveView) root.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+
+    root.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const chip = target.closest<HTMLAnchorElement>('.ml-bar__link');
+      if (chip) {
+        e.preventDefault();
+        show(keys.indexOf(chip.getAttribute('href')!.slice(1)), true);
+        return;
+      }
+      if (target.closest('[data-prev]')) show(current - 1, true, '[data-prev]');
+      else if (target.closest('[data-next]')) show(current + 1, true, '[data-next]');
+    });
+
+    window.addEventListener('hashchange', () => {
+      const i = keys.indexOf(location.hash.slice(1));
+      // moveView: the month is display:none at native-scroll time, so without our own
+      // scroll the address changes and the page appears to do nothing.
+      if (i >= 0) show(i, true);
+    });
+
+    const fromHash = keys.indexOf(location.hash.slice(1));
+    // A shared link like /music#2027-03 should land on the list, not the top of the page.
+    show(fromHash >= 0 ? fromHash : current, fromHash >= 0);
+  }
+</script>

@@ -3,8 +3,11 @@ import { serviceTimes, type ServiceTime } from '../data/serviceTimes';
 
 interface Props {
   only?: 'sundays' | 'weekdays';
+  /** Block-title heading level — 'h2' when the component sits directly under a page h1. */
+  headingLevel?: 'h2' | 'h3';
 }
-const { only } = Astro.props;
+const { only, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
 
 const blocks: { title: string; items: ServiceTime[] }[] = [];
 if (only !== 'weekdays') blocks.push({ title: 'Sundays', items: serviceTimes.sundays });
@@ -14,7 +17,7 @@ if (only !== 'sundays')
 <div class="service-times">
   {blocks.map((block) => (
     <section class="service-block">
-      <h3 class="service-block__title label">{block.title}</h3>
+      <Heading class="service-block__title label">{block.title}</Heading>
       <dl class="service-list">
         {block.items.map((s) => (
           <div class="service-row">

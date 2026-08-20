@@ -1,0 +1,36 @@
+{
+  "date": "2027-07-25",
+  "feast": "St Mary Magdalene (transferred)",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Magdalen, cease from sobs and sighs (arr. Peter Hurford)"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "42. 1–10"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Darke in A minor"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Stanford, When Mary thro’ the garden went"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -3,6 +3,8 @@ import { site } from '../data/site';
 
 interface Props { ground?: 'paper' | 'paper-2' }
 const { ground = 'paper-2' } = Astro.props;
+
+const endpoint = `${site.churchdeskSubscribeApi}?organizationId=${site.churchdeskOrgId}`;
 ---
 <section class:list={['newsletter', `is-${ground}`]} aria-labelledby="nl-heading">
   <div class="wrap newsletter__inner">
@@ -13,13 +15,112 @@ const { ground = 'paper-2' } = Astro.props;
       life of the parish. Sign up and we’ll keep you in touch.
     </p>
 
-    <div class="newsletter__actions">
-      <a class="btn btn--solid" href={site.newsletterArchive} target="_blank" rel="noopener">
-        Sign up for our newsletter
-      </a>
-    </div>
+    <form
+      class="nl-form"
+      method="post"
+      novalidate
+      data-endpoint={endpoint}
+      data-list={String(site.churchdeskNewsletterListId)}
+    >
+      <div class="nl-field">
+        <label class="nl-label" for="nl-name">Name</label>
+        <input id="nl-name" name="name" type="text" autocomplete="name" required />
+      </div>
+      <div class="nl-field">
+        <label class="nl-label" for="nl-email">Email address</label>
+        <input id="nl-email" name="email" type="email" autocomplete="email" required inputmode="email" />
+      </div>
+      <!-- honeypot: hidden from people, tempting to bots -->
+      <div class="nl-hp" aria-hidden="true">
+        <label for="nl-website">Website</label>
+        <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="nl-submit">
+        <button class="btn btn--solid" type="submit">Sign up</button>
+        <a class="txt-link" href={site.newsletterArchive} target="_blank" rel="noopener">
+          Read the latest newsletter
+        </a>
+      </div>
+      <p class="nl-status" role="status" aria-live="polite" tabindex="-1"></p>
+      <p class="nl-consent">
+        By signing up you consent to being contacted by St Barnabas Church. We look after your
+        details in line with our
+        <a href={site.newsletterPrivacyNotice} target="_blank" rel="noopener">privacy notice</a>,
+        and every email includes an unsubscribe link.
+      </p>
+    </form>
+
+    <noscript>
+      <p class="nl-consent">
+        Signing up here needs JavaScript. If you’d rather, email the Parish Office at
+        <a href={`mailto:${site.emails.office}`}>{site.emails.office}</a> and we’ll add you to
+        the list.
+      </p>
+    </noscript>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.nl-form').forEach((form) => {
+    const status = form.querySelector<HTMLParagraphElement>('.nl-status')!;
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+
+    const fail = (message: string) => {
+      status.textContent = message;
+      status.classList.add('is-error');
+      button.disabled = false;
+      button.textContent = 'Sign up';
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const data = new FormData(form);
+      const name = String(data.get('name') ?? '').trim();
+      const email = String(data.get('email') ?? '').trim();
+      const honeypot = String(data.get('website') ?? '').trim();
+
+      status.classList.remove('is-error');
+      if (!name) return fail('Please enter your name.');
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return fail('Please enter a valid email address.');
+      }
+
+      const showSuccess = () => {
+        form.querySelectorAll<HTMLElement>('.nl-field, .nl-hp, .nl-submit').forEach((el) => {
+          el.style.display = 'none';
+        });
+        status.textContent =
+          'Almost there — we’ve sent you an email. Click the link in it to confirm your sign-up.';
+        status.classList.add('is-success');
+        status.focus?.();
+      };
+
+      // A filled honeypot means a bot: quietly pretend it worked.
+      if (honeypot) return showSuccess();
+
+      button.disabled = true;
+      button.textContent = 'Signing up…';
+
+      try {
+        const res = await fetch(form.dataset.endpoint!, {
+          method: 'POST',
+          signal: AbortSignal.timeout(10_000),
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            peopleNewsletterListIds: Number(form.dataset.list),
+          }),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        showSuccess();
+      } catch {
+        fail('Sorry — something went wrong. Please try again in a moment.');
+      }
+    });
+  });
+</script>
 
 <style>
   .newsletter.is-paper { background: var(--paper); }
@@ -28,5 +129,78 @@ const { ground = 'paper-2' } = Astro.props;
   .newsletter__inner { max-width: 640px; }
   .newsletter__title { margin-top: .9rem; font-size: clamp(1.45rem, 2.9vw, 2rem); }
   .newsletter__body { margin-top: 1rem; color: var(--ink-soft); }
-  .newsletter__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 1.8rem; margin-top: 1.8rem; }
+
+  .nl-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.2rem;
+    margin-top: 1.8rem;
+  }
+  @media (max-width: 34rem) {
+    .nl-form { grid-template-columns: 1fr; }
+  }
+  .nl-field { display: flex; flex-direction: column; gap: .45rem; }
+  .nl-label {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .nl-field input {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 0;
+    padding: .8rem .95rem;
+    width: 100%;
+    transition: border-color .2s;
+  }
+  .nl-field input:focus { border-color: var(--violet); }
+
+  /* honeypot: off-screen, not display:none (some bots skip hidden fields) */
+  .nl-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px; height: 1px;
+    overflow: hidden;
+  }
+
+  .nl-submit {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.2rem 1.8rem;
+  }
+  .nl-submit .btn { border: 1px solid var(--violet); }
+  .nl-submit .btn:disabled { opacity: .6; cursor: default; }
+
+  .nl-status { grid-column: 1 / -1; margin: 0; display: none; }
+  .nl-status.is-error { display: block; color: var(--violet); }
+  .nl-status.is-success {
+    display: block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  .nl-consent {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: .82rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .nl-consent a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--violet);
+    transition: color .2s, border-color .2s;
+  }
+  .nl-consent a:hover { color: var(--violet-deep); border-color: var(--violet-deep); }
 </style>

@@ -1,0 +1,36 @@
+{
+  "date": "2027-02-28",
+  "feast": "The Third Sunday of Lent",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Farrant, Lord, for thy tender mercy’s sake"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "19 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "MacMillan, St Anne’s Mass (Gloria omitted)"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Hogan, We shall walk through the valley"
+          ]
+        }
+      ]
+    }
+  ]
+}

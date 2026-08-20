@@ -1,5 +1,5 @@
 ---
-title: "​The Way - Introducing the Riches of Christianity"
+title: "The Way - Introducing the Riches of Christianity"
 date: 2018-06-26
 category: "News"
 legacySlug: "b/blog-30347-the-way-introducing-the-riches-of-christianity"

@@ -9,8 +9,11 @@ import Musicians from '../components/Musicians.astro';
 import VisitDetails from '../components/VisitDetails.astro';
 import EnquireCTA from '../components/EnquireCTA.astro';
 import WhatsOn from '../components/WhatsOn.astro';
+import MusicList from '../components/MusicList.astro';
+import ServiceTimes from '../components/ServiceTimes.astro';
 import { getDiaryEvents } from '../lib/events-source';
 import { eventsJsonLd } from '../lib/events-jsonld';
+import { imageSrcset } from '../lib/images';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages', ({ data }) => !data.draft);
@@ -20,15 +23,24 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, seoTitle, description, kicker, intro, gallery, hero, heroAlt } = entry.data;
+// Responsive sibling per the house convention (src/lib/images.ts); omitted for non-WebP.
+const heroSrcset = hero ? imageSrcset(hero) : undefined;
 const showOrganSpec = entry.id === 'music/st-barnabas-organ';
 const showMusicians = entry.id === 'music/our-musicians';
 const showVisitDetails = entry.id === 'about-us/visiting';
 const showEnquireCTA = entry.id === 'life-events';
 const showWhatsOn = entry.id === 'whats-on';
+const showMusicList = entry.id === 'music';
+// The service-times outline is code-driven (src/data/serviceTimes.ts), like the music list:
+// the wording around it stays the editor's.
+const showServiceTimes = entry.id === 'worship';
 
 // Loaded here rather than inside the component: the diary events become JSON-LD nodes in the
 // page's site graph, which Base assembles.
 const events = showWhatsOn ? await getDiaryEvents() : [];
+// The music list is deliberately code-driven: the wording around it is the editor's, the
+// list itself is generated from the services collection.
+const sheets = showMusicList ? (await getCollection('services')).map((e) => e.data) : [];
 const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
 ---
 {/* `seoTitle` drives the <title> only; the h1 and the breadcrumb stay as the editor titled the
@@ -37,30 +49,60 @@ const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
   title={seoTitle ?? title}
   breadcrumbTitle={title}
   description={description}
+  image={hero}
   jsonLd={eventLd}
+  serviceSchema={showServiceTimes}
 >
   <PageHeader kicker={kicker} title={title} intro={intro} />
   {hero && (
     <div class="wrap page-hero">
-      <img class="page-hero__img" src={hero} alt={heroAlt || title} loading="eager" decoding="async" />
+      <img
+        class="page-hero__img"
+        src={hero}
+        srcset={heroSrcset}
+        sizes={heroSrcset ? '(max-width: 1140px) 100vw, 1100px' : undefined}
+        alt={heroAlt || title}
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
     </div>
   )}
   <div class="wrap page-body">
     {showVisitDetails && <VisitDetails />}
+    {showServiceTimes && (
+      <section class="service-outline" aria-labelledby="service-times-heading">
+        <h2 class="label service-outline__title" id="service-times-heading">Service times</h2>
+        <ServiceTimes />
+      </section>
+    )}
     <Prose><Content /></Prose>
-    {gallery && gallery.length > 0 && <Gallery images={gallery} />}
+    {gallery && gallery.length > 0 && (
+      <div class="page-gallery"><Gallery images={gallery} /></div>
+    )}
     {showOrganSpec && <OrganSpec />}
     {showMusicians && <Musicians />}
     {showEnquireCTA && <EnquireCTA />}
     {showWhatsOn && <WhatsOn events={events} />}
+    {showMusicList && <MusicList sheets={sheets} />}
   </div>
 </Base>
 
 <style>
-  .page-hero { padding-top: 1rem; }
+  .page-hero { padding-top: 1rem; padding-bottom: 1rem; }
+  .page-gallery { margin-top: 2.6rem; }
+  /* House photo style: contained, square corners, no border (matches the Figure
+     component used across the Hire section). */
   .page-hero__img {
     width: 100%; height: auto; display: block;
-    border-radius: 5px; border: 1px solid var(--line);
+    /* Reserve the box before the image arrives (no CLS): a wide-landscape ratio,
+       still capped by max-height exactly as before — object-fit crops either way. */
+    aspect-ratio: 2 / 1;
+    max-height: clamp(300px, 52vh, 500px);
+    object-fit: cover;
+    background: var(--paper-2);
   }
   .page-body { padding-top: 1rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+  .service-outline { margin-bottom: 3.2rem; }
+  .service-outline__title { color: var(--violet); display: block; margin-bottom: 1.6rem; }
 </style>

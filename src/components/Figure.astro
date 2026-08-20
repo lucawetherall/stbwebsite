@@ -1,0 +1,55 @@
+---
+// src/components/Figure.astro
+import { imageSrcset } from '../lib/images';
+
+interface Props {
+  src: string;         // /images/… (the ~1600w WebP)
+  alt: string;
+  caption?: string;
+  credit?: string;
+  aspect?: string;     // CSS aspect-ratio for the frame, default "3 / 2"
+  sizes?: string;
+  eager?: boolean;     // set true for a page's lead image only
+  class?: string;
+}
+const { src, alt, caption, credit, aspect = '3 / 2', sizes = '(max-width: 760px) 100vw, 720px', eager = false, class: klass } = Astro.props;
+// Responsive sibling per the house convention (src/lib/images.ts); omitted for non-WebP.
+const srcset = imageSrcset(src);
+---
+<figure class:list={['figure', klass]}>
+  <img
+    src={src}
+    srcset={srcset}
+    sizes={srcset ? sizes : undefined}
+    alt={alt}
+    style={`--figure-aspect:${aspect};`}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    fetchpriority={eager ? 'high' : undefined}
+  />
+  {caption && (
+    <figcaption class="figure__cap">{caption}{credit && <span class="figure__credit"> · {credit}</span>}</figcaption>
+  )}
+</figure>
+
+<style>
+  /* Margin is a hook, not a constant: the scoped selector outweighs page-level
+     classes, so callers adjust spacing via --figure-margin (e.g. .page-figure). */
+  .figure { margin: var(--figure-margin, 0); }
+  .figure img {
+    width: 100%;
+    aspect-ratio: var(--figure-aspect, 3 / 2);
+    object-fit: cover;
+    background: var(--paper-2);
+    display: block;
+  }
+  .figure__cap {
+    margin-top: .6rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.4;
+  }
+  .figure__credit { font-style: normal; font-size: .82em; letter-spacing: .02em; color: var(--violet); }
+</style>

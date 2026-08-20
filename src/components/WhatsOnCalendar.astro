@@ -1,0 +1,689 @@
+---
+import { getCalendarEvents } from '../lib/events-source';
+import { feedUrls } from '../lib/events-feed';
+import { addDays, todayInLondon } from '../lib/events';
+
+/**
+ * The What's On calendar view — a month grid of everything in the parish diary, in the manner of
+ * the printed calendar at the back of a service sheet: hairline rules, one accent, no chrome.
+ *
+ * The grid is rendered entirely in the browser (the diary list above is the no-JS experience):
+ * it starts from the build-time snapshot embedded below, then re-fetches the parish's public
+ * ChurchDesk feeds so the calendar stays current even though the site itself is static — the
+ * office edits ChurchDesk, not this repository. See src/lib/events-client.ts.
+ */
+
+// The grid navigates three months back and twelve ahead of the *visitor's* today; the snapshot
+// carries a little extra either side so a page built some days ago still covers the window.
+const today = todayInLondon();
+const snapshotFrom = addDays(today, -130);
+const snapshotTo = addDays(today, 400);
+const events = (await getCalendarEvents()).filter(
+  (e) => (e.endDate ?? e.date) >= snapshotFrom && e.date <= snapshotTo
+);
+const payload = {
+  feeds: feedUrls(),
+  events: events.map((e) => ({
+    date: e.date,
+    ...(e.endDate ? { endDate: e.endDate } : {}),
+    ...(e.time ? { time: e.time } : {}),
+    ...(e.endTime ? { endTime: e.endTime } : {}),
+    allDay: e.allDay,
+    title: e.title,
+    category: e.category,
+    ...(e.location ? { location: e.location } : {}),
+    ...(e.url ? { url: e.url } : {}),
+    source: e.source,
+  })),
+};
+---
+<section class="wo-cal" id="calendar" data-wo-cal hidden aria-labelledby="wo-cal-heading">
+  <h2 class="sr-only" id="wo-cal-heading">The calendar</h2>
+
+  <div class="wo-cal__bar">
+    <p class="title wo-cal__month" data-wo-month aria-live="polite"></p>
+    <div class="wo-cal__nav">
+      <button type="button" class="wo-cal__navbtn" data-wo-prev aria-label="Previous month">&#8249;</button>
+      <button type="button" class="wo-cal__navbtn wo-cal__navbtn--today" data-wo-today>Today</button>
+      <button type="button" class="wo-cal__navbtn" data-wo-next aria-label="Next month">&#8250;</button>
+    </div>
+  </div>
+
+  <div class="wo-cal__gridwrap" data-wo-grid></div>
+
+  <div class="wo-cal__daypanel" id="wo-cal-day" data-wo-day hidden tabindex="-1"></div>
+
+  <p class="wo-cal__note" data-wo-note hidden>
+    The live calendar could not be refreshed just now, so this shows the diary as at the last
+    site update.
+  </p>
+</section>
+
+<script
+  type="application/json"
+  id="wo-cal-data"
+  is:inline
+  set:html={JSON.stringify(payload).replace(/</g, '\\u003c')}
+/>
+
+<script>
+  import {
+    addDays,
+    formatCivilDate,
+    formatClockTime,
+    shortLocation,
+    toLondonCivil,
+    weekdayOf,
+  } from '../lib/events';
+  import {
+    mergeCalendarEvents,
+    parseIcsEvents,
+    type CalendarEvent,
+  } from '../lib/events-client';
+
+  const root = document.querySelector<HTMLElement>('[data-wo-cal]');
+  const dataEl = document.getElementById('wo-cal-data');
+
+  if (root && dataEl) {
+    const MONTHS = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December',
+    ];
+    const WEEKDAY_COLS = [
+      ['Mon', 'Monday'], ['Tue', 'Tuesday'], ['Wed', 'Wednesday'], ['Thu', 'Thursday'],
+      ['Fri', 'Friday'], ['Sat', 'Saturday'], ['Sun', 'Sunday'],
+    ];
+    const FETCH_TIMEOUT_MS = 8000;
+    /** How far the month navigation reaches around today. */
+    const MONTHS_BACK = 3;
+    const MONTHS_AHEAD = 12;
+    /** Belt-and-braces cap on a malformed multi-day span. */
+    const MAX_SPAN_DAYS = 60;
+
+    const payload = JSON.parse(dataEl.textContent ?? '{}') as {
+      feeds: string[];
+      events: CalendarEvent[];
+    };
+
+    const gridWrap = root.querySelector<HTMLElement>('[data-wo-grid]')!;
+    const monthTitle = root.querySelector<HTMLElement>('[data-wo-month]')!;
+    const dayPanel = root.querySelector<HTMLElement>('[data-wo-day]')!;
+    const note = root.querySelector<HTMLElement>('[data-wo-note]')!;
+    const prevBtn = root.querySelector<HTMLButtonElement>('[data-wo-prev]')!;
+    const nextBtn = root.querySelector<HTMLButtonElement>('[data-wo-next]')!;
+    const todayBtn = root.querySelector<HTMLButtonElement>('[data-wo-today]')!;
+
+    const today = toLondonCivil(new Date()).date;
+    const [todayY, todayM] = today.split('-').map(Number);
+
+    /** Months as a single index (year * 12 + month-1) so navigation is plain arithmetic. */
+    const monthIndex = (y: number, m: number) => y * 12 + (m - 1);
+    const minMonth = monthIndex(todayY, todayM) - MONTHS_BACK;
+    const maxMonth = monthIndex(todayY, todayM) + MONTHS_AHEAD;
+    let current = monthIndex(todayY, todayM);
+
+    let byDate = new Map<string, CalendarEvent[]>();
+    let lastOpener: HTMLButtonElement | null = null;
+    let openDate: string | null = null;
+
+    /** Keep only events inside the months the grid can show, so snapshot and fresh data agree. */
+    function clip(events: CalendarEvent[]): CalendarEvent[] {
+      const from = `${Math.floor(minMonth / 12)}-${String((minMonth % 12) + 1).padStart(2, '0')}-01`;
+      const to = `${Math.floor(maxMonth / 12)}-${String((maxMonth % 12) + 1).padStart(2, '0')}-31`;
+      return events.filter((e) => (e.endDate ?? e.date) >= from && e.date <= to);
+    }
+
+    function index(events: CalendarEvent[]): Map<string, CalendarEvent[]> {
+      const map = new Map<string, CalendarEvent[]>();
+      const from = `${Math.floor(minMonth / 12)}-${String((minMonth % 12) + 1).padStart(2, '0')}-01`;
+      for (const e of events) {
+        const last = e.endDate && e.endDate > e.date ? e.endDate : e.date;
+        // Start indexing at the visible window, not the event's start: a long-running
+        // event that began months ago must not exhaust the span cap before today.
+        let d = e.date < from ? from : e.date;
+        for (let i = 0; i < MAX_SPAN_DAYS && d <= last; i++, d = addDays(d, 1)) {
+          const list = map.get(d);
+          if (list) list.push(e);
+          else map.set(d, [e]);
+        }
+      }
+      return map;
+    }
+
+    const pad = (n: number) => String(n).padStart(2, '0');
+
+    /** "10.30am", or "10.30am – 11.45am" when the day shows full details. */
+    function timeText(e: CalendarEvent, withEnd: boolean): string | undefined {
+      const from = formatClockTime(e.time);
+      if (!from) return undefined;
+      const to = withEnd ? formatClockTime(e.endTime) : undefined;
+      return to ? `${from} – ${to}` : from;
+    }
+
+    function eventNode(e: CalendarEvent): HTMLElement {
+      const isLink = !!e.url && /^https?:\/\//i.test(e.url);
+      const node = document.createElement(isLink ? 'a' : 'span');
+      node.className = 'wo-cal__ev';
+      if (isLink) (node as HTMLAnchorElement).href = e.url!;
+      const when = timeText(e, false);
+      if (when) {
+        const t = document.createElement('span');
+        t.className = 'wo-cal__evtime';
+        t.textContent = when;
+        node.append(t, ' ');
+      }
+      const title = document.createElement('span');
+      title.className = 'wo-cal__evtitle';
+      title.textContent = e.title;
+      node.append(title);
+      return node;
+    }
+
+    function render(preserveDay = false) {
+      // A background refresh keeps the day panel the reader has open; navigation closes it.
+      const keepDate = preserveDay ? openDate : null;
+      const year = Math.floor(current / 12);
+      const month = (current % 12) + 1;
+      monthTitle.textContent = `${MONTHS[month - 1]} ${year}`;
+      prevBtn.disabled = current <= minMonth;
+      nextBtn.disabled = current >= maxMonth;
+      closeDay();
+
+      const first = `${year}-${pad(month)}-01`;
+      const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+      const lead = (weekdayOf(first) + 6) % 7; // Monday-first
+      const rows = Math.ceil((lead + daysInMonth) / 7);
+
+      const table = document.createElement('table');
+      table.className = 'wo-cal__grid';
+      const caption = document.createElement('caption');
+      caption.className = 'sr-only';
+      caption.textContent = `Events in ${MONTHS[month - 1]} ${year}`;
+      table.append(caption);
+
+      const thead = document.createElement('thead');
+      const headRow = document.createElement('tr');
+      for (const [short, full] of WEEKDAY_COLS) {
+        const th = document.createElement('th');
+        th.scope = 'col';
+        const abbr = document.createElement('span');
+        abbr.setAttribute('aria-hidden', 'true');
+        abbr.textContent = short;
+        const sr = document.createElement('span');
+        sr.className = 'sr-only';
+        sr.textContent = full;
+        th.append(abbr, sr);
+        headRow.append(th);
+      }
+      thead.append(headRow);
+      table.append(thead);
+
+      const tbody = document.createElement('tbody');
+      for (let row = 0; row < rows; row++) {
+        const tr = document.createElement('tr');
+        for (let col = 0; col < 7; col++) {
+          const dayNum = row * 7 + col - lead + 1;
+          const td = document.createElement('td');
+          td.className = 'wo-cal__cell';
+          if (dayNum < 1 || dayNum > daysInMonth) {
+            td.classList.add('is-out');
+            tr.append(td);
+            continue;
+          }
+          const date = `${year}-${pad(month)}-${pad(dayNum)}`;
+          const events = byDate.get(date) ?? [];
+          if (date === today) td.classList.add('is-today');
+          if (date < today) td.classList.add('is-past');
+
+          if (events.length === 0) {
+            const num = document.createElement('span');
+            num.className = 'wo-cal__num';
+            num.textContent = String(dayNum);
+            td.append(num);
+            tr.append(td);
+            continue;
+          }
+
+          td.classList.add('has-events');
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'wo-cal__daybtn';
+          btn.dataset.date = date;
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-controls', 'wo-cal-day');
+          btn.setAttribute(
+            'aria-label',
+            `${formatCivilDate(date, { weekday: true, year: false })}, ` +
+              `${events.length} ${events.length === 1 ? 'event' : 'events'}`
+          );
+          const num = document.createElement('span');
+          num.className = 'wo-cal__num';
+          num.setAttribute('aria-hidden', 'true');
+          num.textContent = String(dayNum);
+          const dots = document.createElement('span');
+          dots.className = 'wo-cal__dots';
+          dots.setAttribute('aria-hidden', 'true');
+          for (let i = 0; i < Math.min(events.length, 3); i++)
+            dots.append(document.createElement('i'));
+          btn.append(num, dots);
+          btn.addEventListener('click', () => toggleDay(date, btn));
+          td.append(btn);
+
+          const list = document.createElement('ol');
+          list.className = 'wo-cal__list';
+          for (const e of events) {
+            const li = document.createElement('li');
+            li.append(eventNode(e));
+            list.append(li);
+          }
+          td.append(list);
+          tr.append(td);
+        }
+        tbody.append(tr);
+      }
+      table.append(tbody);
+      gridWrap.replaceChildren(table);
+
+      if (keepDate && byDate.has(keepDate)) {
+        const btn = gridWrap.querySelector<HTMLButtonElement>(
+          `.wo-cal__daybtn[data-date="${keepDate}"]`
+        );
+        if (btn) openDay(keepDate, btn, false);
+      }
+    }
+
+    function closeDay() {
+      dayPanel.hidden = true;
+      dayPanel.replaceChildren();
+      root!
+        .querySelectorAll('[data-wo-grid] .wo-cal__daybtn[aria-expanded="true"]')
+        .forEach((b) => b.setAttribute('aria-expanded', 'false'));
+      lastOpener = null;
+      openDate = null;
+    }
+
+    function toggleDay(date: string, opener: HTMLButtonElement) {
+      if (lastOpener === opener) closeDay();
+      else openDay(date, opener, true);
+    }
+
+    function openDay(date: string, opener: HTMLButtonElement, focus: boolean) {
+      closeDay();
+      lastOpener = opener;
+      openDate = date;
+      opener.setAttribute('aria-expanded', 'true');
+
+      const heading = document.createElement('h3');
+      heading.className = 'label wo-cal__dayheading';
+      // The month bar above already names the year.
+      heading.textContent = formatCivilDate(date, { weekday: true, year: false });
+
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.className = 'wo-cal__dayclose';
+      close.setAttribute('aria-label', 'Close day view');
+      close.textContent = '×';
+      close.addEventListener('click', () => {
+        const opener = lastOpener;
+        closeDay();
+        opener?.focus();
+      });
+
+      const list = document.createElement('ul');
+      list.className = 'wo-cal__daylist';
+      for (const e of byDate.get(date) ?? []) {
+        const li = document.createElement('li');
+        li.className = 'wo-cal__dayev';
+
+        const title = document.createElement('p');
+        title.className = 'wo-cal__daytitle';
+        title.textContent = e.title;
+        li.append(title);
+
+        const when = timeText(e, true);
+        if (when) {
+          const meta = document.createElement('p');
+          meta.className = 'wo-cal__daymeta';
+          meta.textContent = when;
+          li.append(meta);
+        }
+        // The venue, without the parish's own postal address repeated under every event.
+        const venue = shortLocation(e.location);
+        if (venue) {
+          const loc = document.createElement('p');
+          loc.className = 'wo-cal__dayloc';
+          loc.textContent = venue;
+          li.append(loc);
+        }
+        if (e.url && /^https?:\/\//i.test(e.url)) {
+          const p = document.createElement('p');
+          const a = document.createElement('a');
+          a.className = 'txt-link';
+          a.href = e.url;
+          a.textContent = 'More details';
+          p.append(a);
+          li.append(p);
+        }
+        list.append(li);
+      }
+
+      // Heading first in the DOM so screen readers announce the day before the close control.
+      dayPanel.replaceChildren(heading, close, list);
+      dayPanel.hidden = false;
+      if (focus) dayPanel.focus();
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (current > minMonth) {
+        current--;
+        render();
+      }
+    });
+    nextBtn.addEventListener('click', () => {
+      if (current < maxMonth) {
+        current++;
+        render();
+      }
+    });
+    todayBtn.addEventListener('click', () => {
+      current = monthIndex(todayY, todayM);
+      render();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !dayPanel.hidden) {
+        const opener = lastOpener;
+        closeDay();
+        opener?.focus();
+      }
+    });
+
+    /* ---- the view toggle (diary <-> calendar) ---- */
+
+    const toggle = document.querySelector<HTMLElement>('[data-wo-toggle]');
+    const diary = document.querySelector<HTMLElement>('[data-wo-diary]');
+    const buttons = toggle
+      ? [...toggle.querySelectorAll<HTMLButtonElement>('[data-wo-view]')]
+      : [];
+
+    function setView(view: string, focusTarget = false) {
+      const showCalendar = view === 'calendar';
+      root!.hidden = !showCalendar;
+      if (diary) diary.hidden = showCalendar;
+      for (const b of buttons) {
+        const active = b.dataset.woView === view;
+        b.setAttribute('aria-pressed', String(active));
+        b.classList.toggle('is-active', active);
+      }
+      try {
+        localStorage.setItem('whats-on-view', view);
+      } catch {
+        /* private browsing — the toggle still works, it just isn't remembered */
+      }
+      if (focusTarget && showCalendar) monthTitle.scrollIntoView({ block: 'nearest' });
+    }
+
+    if (toggle && diary) {
+      toggle.hidden = false;
+      for (const b of buttons)
+        b.addEventListener('click', () => setView(b.dataset.woView ?? 'diary', true));
+      let initial = 'diary';
+      try {
+        initial = localStorage.getItem('whats-on-view') ?? 'diary';
+      } catch {
+        /* ignored */
+      }
+      if (window.location.hash === '#calendar') initial = 'calendar';
+      // focusTarget when the reader asked for #calendar: the view is far below the intro
+      // prose, and landing at the top makes the link look broken.
+      setView(initial, window.location.hash === '#calendar');
+      // Someone can land on /whats-on and then follow an in-page #calendar link.
+      window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#calendar') setView('calendar', true);
+      });
+    } else {
+      // No toggle on the page — show the calendar outright.
+      root.hidden = false;
+    }
+
+    /* ---- first paint from the snapshot, then refresh from the live feeds ---- */
+
+    const snapshot = clip(payload.events);
+    byDate = index(snapshot);
+    render();
+
+    const cmsEvents = payload.events.filter((e) => e.source === 'cms');
+    let refreshing = false;
+    let lastDataKey = JSON.stringify(snapshot);
+
+    // The feeds are re-read on load and every ten minutes the page stays open (ChurchDesk's
+    // responses are cached for ten minutes anyway), so the calendar tracks the office's edits
+    // without waiting for a site rebuild. The panel stays open through a refresh only if its
+    // day still exists.
+    async function refresh() {
+      if (refreshing || payload.feeds.length === 0 || document.hidden) return;
+      refreshing = true;
+      const results = await Promise.allSettled(
+        payload.feeds.map(async (url) => {
+          const response = await fetch(url, {
+            signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+            headers: { Accept: 'text/calendar, text/plain;q=0.9, */*;q=0.8' },
+          });
+          if (!response.ok) throw new Error(`feed responded ${response.status}`);
+          return parseIcsEvents(await response.text());
+        })
+      );
+      refreshing = false;
+      if (results.every((r) => r.status === 'fulfilled')) {
+        // Fresh data replaces the snapshot's feed events; CMS events still win their day.
+        const fresh = results.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));
+        const merged = clip(mergeCalendarEvents(cmsEvents, fresh));
+        note.hidden = true;
+        // Rebuild only when something actually changed, keeping any open day panel.
+        const key = JSON.stringify(merged);
+        if (key !== lastDataKey) {
+          // Rebuilding replaces the focused node and drops keyboard focus to <body>;
+          // wait for the next cycle rather than interrupt a reader mid-interaction.
+          if (root!.contains(document.activeElement) && document.activeElement !== document.body) {
+            return;
+          }
+          lastDataKey = key;
+          byDate = index(merged);
+          render(true);
+        }
+      } else {
+        note.hidden = false;
+      }
+    }
+
+    refresh();
+    setInterval(refresh, 10 * 60_000);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) refresh();
+    });
+  }
+</script>
+
+{/* The grid is built at runtime, so these rules are global by necessity — everything is scoped
+    under .wo-cal by hand. */}
+<style is:global>
+  .wo-cal__bar {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+  }
+  .wo-cal__month {
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    font-weight: 700;
+  }
+  .wo-cal__nav { display: flex; gap: .5rem; }
+  .wo-cal__navbtn {
+    display: inline-grid;
+    place-items: center;
+    min-width: 2.3rem;
+    min-height: 2.1rem;
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: .4rem .7rem;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .wo-cal__navbtn--today {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: .66rem;
+    padding-inline: .9rem;
+  }
+  .wo-cal__navbtn:hover:not(:disabled) {
+    background: var(--violet);
+    border-color: var(--violet);
+    color: var(--white);
+  }
+  .wo-cal__navbtn:disabled { opacity: .35; cursor: default; }
+
+  .wo-cal__gridwrap { overflow-x: auto; }
+  .wo-cal__grid {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .wo-cal__grid thead th {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: .64rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-align: left;
+    padding: 0 .5rem .5rem;
+  }
+  .wo-cal__cell {
+    border: 1px solid var(--line);
+    vertical-align: top;
+    padding: .45rem .5rem .55rem;
+    height: 6.4rem;
+  }
+  /* Days outside the month keep their rule so the grid reads as one printed table. */
+  .wo-cal__cell.is-out { background: none; }
+  /* The Lord's Day, faintly warmed — the column almost everything in the diary falls on. */
+  .wo-cal__grid tbody td:last-child:not(.is-out) { background: var(--violet-faint); }
+  .wo-cal__cell.is-past .wo-cal__num,
+  .wo-cal__cell.is-past .wo-cal__dots i,
+  .wo-cal__cell.is-past .wo-cal__ev { opacity: .45; }
+
+  .wo-cal__num {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.7rem;
+    height: 1.7rem;
+    font-family: var(--font-ui);
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .wo-cal__cell.is-today .wo-cal__num {
+    background: var(--violet);
+    border-radius: 50%;
+    color: var(--white);
+  }
+  .wo-cal__cell.has-events .wo-cal__num { color: var(--ink); }
+  .wo-cal__cell.is-today.has-events .wo-cal__num { color: var(--white); }
+
+  .wo-cal__daybtn {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .wo-cal__daybtn:hover .wo-cal__num { color: var(--violet); }
+  .wo-cal__cell.is-today .wo-cal__daybtn:hover .wo-cal__num { color: var(--white); }
+  .wo-cal__dots { display: none; gap: .2rem; }
+  .wo-cal__dots i {
+    width: .3rem;
+    height: .3rem;
+    border-radius: 50%;
+    background: var(--violet);
+  }
+
+  .wo-cal__list {
+    list-style: none;
+    margin: .25rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: .3rem;
+  }
+  .wo-cal__ev {
+    font-family: var(--font-ui);
+    font-size: .7rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--ink);
+    text-decoration: none;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  a.wo-cal__ev:hover .wo-cal__evtitle { color: var(--violet-deep); text-decoration: underline; }
+  .wo-cal__evtime { color: var(--violet); font-weight: 600; }
+
+  .wo-cal__daypanel {
+    position: relative;
+    margin-top: 1rem;
+    padding: 1.2rem 1.4rem 1.3rem;
+    background: var(--paper-2);
+    border-radius: 5px;
+  }
+  .wo-cal__daypanel:focus { outline: none; }
+  .wo-cal__daypanel:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+  .wo-cal__dayheading { display: block; margin-bottom: .9rem; color: var(--violet); }
+  .wo-cal__dayclose {
+    position: absolute;
+    top: .6rem;
+    right: .7rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.1rem;
+    line-height: 1;
+    background: none;
+    border: none;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .wo-cal__dayclose:hover { color: var(--violet-deep); }
+  .wo-cal__daylist { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
+  .wo-cal__dayev { border-top: 1px solid var(--line); padding-top: .8rem; }
+  .wo-cal__dayev:first-child { border-top: none; padding-top: 0; }
+  .wo-cal__daytitle { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; }
+  .wo-cal__daymeta {
+    margin-top: .25rem;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: .64rem;
+    font-weight: 600;
+    color: var(--violet);
+  }
+  .wo-cal__dayloc { margin-top: .2rem; font-size: .9rem; color: var(--ink-soft); }
+  .wo-cal__dayev p:last-child { margin-top: .35rem; }
+
+  .wo-cal__note { margin-top: 1rem; color: var(--ink-soft); font-size: .9rem; }
+
+  @media (max-width: 700px) {
+    .wo-cal__cell { height: auto; padding: .35rem .3rem .45rem; }
+    .wo-cal__list { display: none; }
+    .wo-cal__daybtn { flex-direction: column; gap: .25rem; width: 100%; }
+    .wo-cal__dots { display: flex; justify-content: center; }
+    .wo-cal__grid thead th { padding-inline: .3rem; }
+  }
+</style>

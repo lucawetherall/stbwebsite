@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Figure from '../../components/Figure.astro';
+import Gallery from '../../components/Gallery.astro';
+import ChurchHireRates from '../../components/ChurchHireRates.astro';
+import YouTubeFacade from '../../components/YouTubeFacade.astro';
+import { hire } from '../../data/hire';
+import { youtubeEmbedUrl } from '../../lib/youtube';
+import { site } from '../../data/site';
+
+const r = hire.recordings;
+const videoLd = r.films.map((f) => ({
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: f.title,
+  description: `${f.title} — recorded at St Barnabas, Ealing by ${f.ensemble}.`,
+  thumbnailUrl: `${site.url}${f.poster}`,
+  contentUrl: f.youtubeUrl,
+  embedUrl: youtubeEmbedUrl(f.youtubeUrl),
+}));
+---
+<Base title="Hire the church for recordings — Ealing" breadcrumbTitle="Recordings" description={r.description} image={r.hero.image} jsonLd={videoLd}>
+  <PageHeader kicker={r.kicker} title={r.title} intro={r.intro} />
+  <div class="wrap page-body">
+    <Figure src={r.hero.image} alt={r.hero.alt} eager aspect="16 / 9" sizes="(max-width: 1140px) 100vw, 1100px" />
+    <div class="prose">{r.body.map((p) => <p>{p}</p>)}</div>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">Recorded here</h2>
+      <div class="films">
+        {r.films.map((f) => (
+          <YouTubeFacade url={f.youtubeUrl} title={f.title} poster={f.poster} posterAlt={f.posterAlt} credit={f.ensemble} />
+        ))}
+      </div>
+    </section>
+
+    <ChurchHireRates>
+      See also the <a class="content-link" href="/music/st-barnabas-organ">St Barnabas organ</a>.
+    </ChurchHireRates>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">The space</h2>
+      <Gallery images={r.gallery} />
+    </section>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">How to book</h2>
+      <p>To arrange a recording, contact the parish office on <a class="content-link" href={site.phoneHref}>{site.phone}</a> or <a class="content-link" href={`mailto:${site.emails.office}`}>{site.emails.office}</a>.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page-body { padding-top: 1.5rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+  .prose { margin-top: 1.6rem; }
+  .hire-section { margin-top: 2.8rem; }
+  .hire-section__label { color: var(--violet); display: block; margin-bottom: 1.2rem; }
+  .films { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+</style>

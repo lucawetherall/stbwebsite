@@ -1,0 +1,46 @@
+{
+  "date": "2027-01-03",
+  "feast": "The Epiphany (transferred)",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "72. [1–9]10–15 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Ireland in C"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Warlock, Bethlehem Down"
+          ]
+        }
+      ]
+    },
+    {
+      "time": "6.00pm",
+      "name": "Epiphany Carol Service",
+      "items": [
+        {
+          "label": "Carols",
+          "values": [
+            "Rutter, Carol of the Magi",
+            "Darke, In the bleak midwinter",
+            "Stopford, Lully, lullay",
+            "Cornelius, Three Kings",
+            "We three kings"
+          ]
+        }
+      ]
+    }
+  ]
+}

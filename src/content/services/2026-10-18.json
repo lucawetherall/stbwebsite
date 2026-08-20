@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-18",
+  "feast": "The Twentieth Sunday after Trinity — Baptisms",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "96. 1–9[10–13]"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Schubert in G (Gloria)",
+            "Shephard, Wiltshire Service"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Imogen Holst, Hymn to Christ"
+          ]
+        }
+      ]
+    },
+    {
+      "time": "6.30pm",
+      "name": "Joint Choral Service for St Luke, at St John the Baptist, Holland Road",
+      "items": [
+        {
+          "label": "Setting",
+          "values": [
+            "Gloria de Lourdes (Lécot)",
+            "Missa de Angelis"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Bairstow, Blessed city, heavenly Salem"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -142,7 +142,15 @@ import PageHeader from '../components/PageHeader.astro';
     const token = ++latest;
     status.textContent = 'Searching…';
     const pf = await loadPagefind();
-    if (!pf || token !== latest) return;
+    if (token !== latest) return;
+    if (!pf) {
+      // Every query after a failed load lands here; without this the reader is
+      // left staring at "Searching…" forever.
+      results.innerHTML = '';
+      status.textContent =
+        'Search is unavailable just now. Please use the menu, or contact the parish office.';
+      return;
+    }
 
     const search = await pf.search(trimmed);
     if (token !== latest) return;
@@ -154,16 +162,20 @@ import PageHeader from '../components/PageHeader.astro';
   }
 
   // Debounced as-you-type, so a slow connection is not asked for a query per keystroke.
+  // Keep ?q= in the address bar so a search can be refreshed, shared, or returned to.
+  function syncUrl(q: string): void {
+    const url = new URL(window.location.href);
+    if (q.trim()) url.searchParams.set('q', q.trim());
+    else url.searchParams.delete('q');
+    window.history.replaceState({}, '', url);
+  }
+
   let timer: ReturnType<typeof setTimeout>;
   input.addEventListener('input', () => {
     clearTimeout(timer);
     timer = setTimeout(() => {
-      const q = input.value;
-      const url = new URL(window.location.href);
-      if (q.trim()) url.searchParams.set('q', q.trim());
-      else url.searchParams.delete('q');
-      window.history.replaceState({}, '', url);
-      void run(q);
+      syncUrl(input.value);
+      void run(input.value);
     }, 180);
   });
 
@@ -171,7 +183,8 @@ import PageHeader from '../components/PageHeader.astro';
   // reload, since the results are already on the page.
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    clearTimeout(timer);
+    clearTimeout(timer); // a pending debounce would double-run and race the URL update
+    syncUrl(input.value);
     void run(input.value);
   });
 

@@ -3,9 +3,11 @@ import ical from 'node-ical';
 import {
   civilFromDateOnly,
   utcMidnightOfDateOnly,
+  collapseFeedRepeats,
   collapseSeries,
   describeRepeat,
   describeWhen,
+  isAnnounced,
   expandOccurrences,
   foldIcsLine,
   formatCivilRange,
@@ -14,6 +16,9 @@ import {
   mergeEvents,
   nextOccurrence,
   parseClockTime,
+  shortLocation,
+  tidyFeedDescription,
+  tidyFeedTitle,
   toIcs,
   toLondonCivil,
   upcomingEvents,
@@ -86,6 +91,28 @@ describe('civil dates', () => {
     expect(formatCivilRange('2026-09-04', '2026-09-06')).toBe('4–6 September');
     expect(formatCivilRange('2026-09-30', '2026-10-02')).toBe('30 September – 2 October');
     expect(formatCivilRange('2026-09-04', '2026-09-04')).toBe('4 September');
+  });
+});
+
+describe('isAnnounced', () => {
+  const may = new Date('2027-05-01');
+
+  it('shows an ordinary event', () => {
+    expect(isAnnounced({}, '2026-08-14')).toBe(true);
+  });
+
+  it('hides a draft outright, whatever its announce date', () => {
+    expect(isAnnounced({ draft: true }, '2026-08-14')).toBe(false);
+    expect(isAnnounced({ draft: true, announceFrom: may }, '2027-06-01')).toBe(false);
+  });
+
+  // The Merton College visit: booked a year ahead, but it should not headline What's On
+  // for that whole year first.
+  it('defers an event until its announce date, then shows it', () => {
+    expect(isAnnounced({ announceFrom: may }, '2026-08-14')).toBe(false);
+    expect(isAnnounced({ announceFrom: may }, '2027-04-30')).toBe(false);
+    expect(isAnnounced({ announceFrom: may }, '2027-05-01')).toBe(true);
+    expect(isAnnounced({ announceFrom: may }, '2027-05-02')).toBe(true);
   });
 });
 
@@ -294,6 +321,123 @@ describe('collapseSeries', () => {
   });
 });
 
+describe('collapseFeedRepeats', () => {
+  // ChurchDesk publishes each occurrence as its own VEVENT with its own UID, so seriesId
+  // cannot collapse them — only the repeated title can.
+  const mass = (id: string, date: string, over: Partial<SiteEvent> = {}) =>
+    event({ id, seriesId: id, date, title: 'Sunday Mass', source: 'feed', ...over });
+
+  it('collapses a weekly repeat into one flagged row', () => {
+    const out = collapseFeedRepeats([
+      mass('a', '2026-08-23'),
+      mass('b', '2026-08-30'),
+      mass('c', '2026-09-06'),
+      mass('d', '2026-09-13'),
+    ]);
+    expect(out).toHaveLength(1);
+    expect(out[0]).toMatchObject({
+      id: 'a',
+      recurrenceText: 'Every Sunday',
+      regular: true,
+    });
+  });
+
+  it('survives an occasional skipped week', () => {
+    const out = collapseFeedRepeats([
+      mass('a', '2026-08-23'),
+      mass('b', '2026-08-30'),
+      // 13 September missed out — a fifth-Sunday variation, say.
+      mass('c', '2026-09-06'),
+      mass('d', '2026-09-20'),
+    ]);
+    expect(out[0].recurrenceText).toBe('Every Sunday');
+  });
+
+  it('reads a first-Sunday-of-the-month pattern, even with a month skipped', () => {
+    const out = collapseFeedRepeats([
+      mass('a', '2026-09-06', { title: 'Choral Evensong' }),
+      mass('b', '2026-10-04', { title: 'Choral Evensong' }),
+      mass('c', '2026-11-01', { title: 'Choral Evensong' }),
+      mass('d', '2027-01-03', { title: 'Choral Evensong' }),
+    ]);
+    expect(out).toHaveLength(1);
+    expect(out[0].recurrenceText).toBe('The first Sunday of the month');
+  });
+
+  it('claims nothing it cannot see: irregular Sundays get a modest phrase', () => {
+    const out = collapseFeedRepeats([
+      mass('a', '2026-08-23'),
+      mass('b', '2026-08-30'),
+      mass('c', '2026-10-11'),
+      mass('d', '2026-12-13'),
+    ]);
+    expect(out[0].recurrenceText).toBe('Several Sundays through the year');
+  });
+
+  it('leaves pairs, CMS events and already-described series alone', () => {
+    const events = [
+      mass('a', '2026-08-23'),
+      mass('b', '2026-08-30'),
+      event({ id: 'cms1', date: '2026-09-01', title: 'Sunday Mass', source: 'cms' }),
+      event({ id: 'cms2', date: '2026-09-08', title: 'Sunday Mass', source: 'cms' }),
+      event({ id: 'cms3', date: '2026-09-15', title: 'Sunday Mass', source: 'cms' }),
+      mass('r', '2026-09-03', { title: 'Café', recurrenceText: 'Every Thursday' }),
+    ];
+    expect(collapseFeedRepeats(events)).toEqual(events);
+  });
+
+  it('keeps the earliest occurrence and the surrounding order', () => {
+    const out = collapseFeedRepeats([
+      event({ id: 'x', date: '2026-08-20', title: 'A concert', source: 'feed' }),
+      mass('a', '2026-08-23'),
+      mass('b', '2026-08-30'),
+      mass('c', '2026-09-06'),
+    ]);
+    expect(out.map((e) => e.id)).toEqual(['x', 'a']);
+  });
+});
+
+describe('tidyFeedTitle', () => {
+  it('drops the shouted "IN PERSON" marker wherever it falls', () => {
+    expect(tidyFeedTitle('Noisy Mass IN PERSON')).toBe('Noisy Mass');
+    expect(tidyFeedTitle('IN PERSON Noisy Mass')).toBe('Noisy Mass');
+  });
+
+  it('leaves ordinary titles, and sentence-case "in person", alone', () => {
+    expect(tidyFeedTitle('Sunday Mass')).toBe('Sunday Mass');
+    expect(tidyFeedTitle('An in person gathering')).toBe('An in person gathering');
+  });
+
+  it('never tidies a title away to nothing', () => {
+    expect(tidyFeedTitle('IN PERSON')).toBe('IN PERSON');
+  });
+});
+
+describe('tidyFeedDescription', () => {
+  it('drops the "Event URL:" line the URL field already carries', () => {
+    expect(
+      tidyFeedDescription('A lovely evening.\n\nEvent URL: https://example.org/b/x-123')
+    ).toBe('A lovely evening.');
+  });
+
+  it('drops a rota block — names on the parish sheet, not the website', () => {
+    const text =
+      'Sung Mass.\n\nRotas:\nChalice bearing: A Person\nFlower Arranging: Another Person\n';
+    expect(tidyFeedDescription(text)).toBe('Sung Mass.');
+  });
+
+  it('drops bracketed tracking links but keeps the sentence', () => {
+    expect(
+      tidyFeedDescription('You can watch via Zoom [http://tracking.example/abc123].')
+    ).toBe('You can watch via Zoom.');
+  });
+
+  it('returns undefined when only machinery remains', () => {
+    expect(tidyFeedDescription('Event URL: https://example.org/b/x')).toBeUndefined();
+    expect(tidyFeedDescription(undefined)).toBeUndefined();
+  });
+});
+
 describe('groupByMonth', () => {
   it('groups under UK month headings, in order', () => {
     const groups = groupByMonth([
@@ -308,13 +452,49 @@ describe('groupByMonth', () => {
   });
 });
 
+describe('shortLocation', () => {
+  it('drops the parish postal address tail, keeping the venue name', () => {
+    expect(shortLocation('St Barnabas Hall, Pitshanger Lane, London W5 1QG')).toBe(
+      'St Barnabas Hall'
+    );
+    expect(shortLocation('Pitshanger Methodist Church, Pitshanger Lane, Ealing')).toBe(
+      'Pitshanger Methodist Church'
+    );
+  });
+
+  it('hides the church itself — the default venue needs no naming', () => {
+    expect(shortLocation('St Barnabas Church, Pitshanger Lane, London W5 1QG')).toBeUndefined();
+    expect(shortLocation('St Barnabas Church')).toBeUndefined();
+    expect(shortLocation('St Barnabas')).toBeUndefined();
+  });
+
+  it('leaves other venues and their addresses alone', () => {
+    expect(shortLocation('Ealing Abbey, Charlbury Grove')).toBe('Ealing Abbey, Charlbury Grove');
+    expect(shortLocation('The small hall')).toBe('The small hall');
+    expect(shortLocation(undefined)).toBeUndefined();
+  });
+});
+
 describe('describeWhen', () => {
   it('reads as the parish would say it', () => {
     expect(
-      describeWhen(event({ time: '19:30', endTime: '21:00', location: 'St Barnabas Church' }))
-    ).toBe('7.30pm – 9pm · St Barnabas Church');
+      describeWhen(event({ time: '19:30', endTime: '21:00', location: 'The Lady Chapel' }))
+    ).toBe('7.30pm – 9pm · The Lady Chapel');
     expect(describeWhen(event({ time: '10:30' }))).toBe('10.30am');
     expect(describeWhen(event({ location: 'The small hall' }))).toBe('The small hall');
+  });
+
+  it('never repeats the church address down the diary', () => {
+    expect(
+      describeWhen(
+        event({ time: '10:30', location: 'St Barnabas Church, Pitshanger Lane, London W5 1QG' })
+      )
+    ).toBe('10.30am');
+    expect(
+      describeWhen(
+        event({ time: '10:30', location: 'St Barnabas Hall, Pitshanger Lane, London W5 1QG' })
+      )
+    ).toBe('10.30am · St Barnabas Hall');
   });
 
   it('prefixes a multi-day range, unless the date is shown alongside', () => {

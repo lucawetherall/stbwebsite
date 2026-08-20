@@ -3,10 +3,12 @@ title: St Barnabas Memory Café
 kicker: Community
 intro: Every Thursday, 10.30am to 12pm, in the church — a warm and friendly welcome for all.
 description: The St Barnabas Memory Café meets every Thursday 10.30am–12pm — company, refreshments and gentle activities for those living with memory difficulties, and their carers.
+hero: /images/community/memory-cafe.webp
+heroAlt: The Memory Café at St Barnabas
 ---
 
-Running since it reopened in September 2021, our Memory Café meets every Thursday morning
-from 10.30am to 12pm in the church. We welcome anyone experiencing loneliness, living alone,
+Our Memory Café has met every Thursday morning since it reopened in September 2021 —
+10.30am to 12pm in the church. We welcome anyone experiencing loneliness, living alone,
 or living with memory difficulties — and carers are very welcome to come along too. A local
 residential dementia home sends regular participants, and we typically gather around
 thirty-five guests each week.

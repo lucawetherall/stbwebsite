@@ -48,7 +48,6 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
               href={item.href}
               class:list={['primary-nav__link', item.cta && 'primary-nav__link--cta', isTopActive(item) && 'is-active']}
               aria-current={path === item.href ? 'page' : isTopActive(item) ? 'true' : undefined}
-              aria-haspopup={item.children ? 'true' : undefined}
             >{item.label}</a>
             {item.children && (
               <div class="submenu">
@@ -106,7 +105,7 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
 <!-- Full-screen mobile / overflow nav panel -->
 <div id="mobile-nav" class="mobile-nav" hidden>
   <div class="mobile-nav__head wrap">
-    <BrandLockup />
+    <BrandLockup use />
     <button class="mobile-nav__close" type="button" aria-label="Close menu">&times;</button>
   </div>
   <nav class="mobile-nav__body wrap" aria-label="Full site">
@@ -314,6 +313,7 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
     if (!panel || !toggle) return;
     panel.hidden = !open;
     toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     if (open) {
       savedScroll = window.scrollY;
       document.documentElement.style.overflow = 'hidden';
@@ -328,7 +328,25 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
   toggle?.addEventListener('click', () => setOpen(!!(panel?.hidden ?? true)));
   closeBtn?.addEventListener('click', () => setOpen(false));
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && panel && !panel.hidden) setOpen(false);
+    if (!panel || panel.hidden) return;
+    if (e.key === 'Escape') setOpen(false);
+    // Trap Tab inside the open panel — the page behind it is still in the DOM,
+    // and letting focus wander into it fails WCAG 2.4.3.
+    if (e.key === 'Tab') {
+      const focusables = [...panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')];
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+      const inside = active ? panel.contains(active) : false;
+      if (e.shiftKey && (active === first || !inside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || !inside)) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
   // Close after navigating via a link in the panel
   panel?.addEventListener('click', (e) => {

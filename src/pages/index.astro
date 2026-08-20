@@ -6,6 +6,7 @@ import ThisSunday from '../components/ThisSunday.astro';
 import WelcomeBand from '../components/WelcomeBand.astro';
 import MusicBand from '../components/MusicBand.astro';
 import CommunityBand from '../components/CommunityBand.astro';
+import ParishLifeStrip from '../components/ParishLifeStrip.astro';
 import NewsIndex from '../components/NewsIndex.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import GiveCTA from '../components/GiveCTA.astro';
@@ -43,12 +44,14 @@ import { site } from '../data/site';
   </WelcomeBand>
 
   <MusicBand
-    title="A warm acoustic, and a warm welcome"
-    body="Our choir leads the Sung Mass each Sunday in the Anglican choral tradition. Choral Scholarships for 2026/27 are open now — apply by 12 June."
+    title="A church that sings"
+    body="Our choir leads the Sung Mass each Sunday in the Anglican choral tradition, under our Director of Music (Luca) and our Organist (Hugh)."
     link={{ label: 'The music of St Barnabas', href: '/music' }}
   />
 
   <NewsIndex limit={3} />
+
+  <ParishLifeStrip />
 
   <CommunityBand />
 

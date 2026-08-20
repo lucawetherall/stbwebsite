@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-29",
+  "feast": "The First Sunday of Advent",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Palestrina, Responsory for Advent Sunday"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "80. 1–8, 18–20 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Byrd, Mass for Four Voices (Gloria omitted)"
+          ]
+        },
+        {
+          "label": "Anthems",
+          "values": [
+            "MacMillan, Advent I",
+            "Fleming, Kindle a light"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 ---
 import { getLiturgicalDay } from '../lib/liturgy';
 import { heroFor } from '../data/artwork';
+import { imageSibling } from '../lib/images';
 
 interface Props {
   kicker?: string;
@@ -23,7 +24,7 @@ const img = image ?? auto.image;
 const altText = alt ?? auto.alt;
 const focalPos = focal ?? auto.focal ?? 'center center';
 const creditText = credit ?? auto.credit;
-const imgSm = img.endsWith('.webp') ? img.replace(/\.webp$/, '-1280.webp') : img;
+const imgSm = imageSibling(img, 1280) ?? img;
 ---
 {/* The hero artwork is a CSS background (discovered late); preload it so it
     paints as the LCP element. Mirrors the 800px breakpoint in the styles. */}
@@ -125,9 +126,11 @@ const imgSm = img.endsWith('.webp') ? img.replace(/\.webp$/, '-1280.webp') : img
     position: absolute;
     right: 1rem;
     bottom: .6rem;
-    font-size: .62rem;
+    /* Large enough to read, and full white — --white-soft over arbitrary artwork
+       falls below AA at this size. */
+    font-size: .72rem;
     letter-spacing: .08em;
-    color: var(--white-soft);
+    color: var(--white);
     z-index: 1;
   }
 

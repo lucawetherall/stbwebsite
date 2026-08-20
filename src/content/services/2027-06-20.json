@@ -1,0 +1,30 @@
+{
+  "date": "2027-06-20",
+  "feast": "The Fourth Sunday after Trinity",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "107. 1–3, 23–32 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Darke in F"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Sumsion, They that go down to the sea in ships"
+          ]
+        }
+      ]
+    }
+  ]
+}

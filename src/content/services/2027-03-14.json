@@ -1,0 +1,30 @@
+{
+  "date": "2027-03-14",
+  "feast": "The Fifth Sunday of Lent (Passiontide begins)",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Psalm",
+          "values": [
+            "51. 1–13 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Byrd, Mass for Four Voices (Gloria omitted)"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Guilmant, Stabat mater dolorosa"
+          ]
+        }
+      ]
+    }
+  ]
+}

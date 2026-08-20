@@ -3,6 +3,8 @@ title: About Us
 kicker: Who we are
 intro: A diverse, sacramental and hopeful people in the heart of west London.
 description: St Barnabas is an inclusive Anglican community in Pitshanger, Ealing — diverse in age, background and outlook, and a member of Inclusive Church.
+hero: /images/about/exterior-summer.webp
+heroAlt: St Barnabas Church in summer
 ---
 
 We are the people of west London — diverse in ages, ethnicities, sexual orientation and

@@ -6,11 +6,15 @@ import {
   toLondonCivil,
   daysBetween,
   formatCivilDate,
+  tidyFeedDescription,
+  tidyFeedTitle,
   weekdayOf,
   type SiteEvent,
 } from './events';
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+// The rrule library numbers weekdays from Monday = 0, unlike JS Date.
+const RRULE_WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const ORDINALS = ['first', 'second', 'third', 'fourth', 'fifth'];
 
 /**
@@ -29,9 +33,24 @@ const ORDINALS = ['first', 'second', 'third', 'fourth', 'fifth'];
 
 const FETCH_TIMEOUT_MS = 8000;
 
+/**
+ * The parish's own ChurchDesk feeds — one per event category the office keeps: Community,
+ * Concert, and the two Worship calendars (occasional services and the regular pattern). These are
+ * public, unauthenticated addresses, so they live in code rather than in a secret; the
+ * environment variables below still override them wholesale for testing or a future migration.
+ * The same list drives the calendar view's in-browser refresh (WhatsOnCalendar.astro).
+ */
+export const DEFAULT_FEED_URLS = [
+  'https://api2.churchdesk.com/ical/taxonomy/48613?organizationId=1901',
+  'https://api2.churchdesk.com/ical/taxonomy/46604?organizationId=1901',
+  'https://api2.churchdesk.com/ical/taxonomy/46609?organizationId=1901',
+  'https://api2.churchdesk.com/ical/taxonomy/181496?organizationId=1901',
+] as const;
+
 /** Feed URLs from the environment, newest name first, legacy name still honoured. */
 export function feedUrls(env: NodeJS.ProcessEnv = process.env): string[] {
-  const raw = env.EVENTS_ICAL_URLS ?? env.CHURCHDESK_ICAL_URL ?? '';
+  const raw = env.EVENTS_ICAL_URLS ?? env.CHURCHDESK_ICAL_URL;
+  if (raw === undefined) return [...DEFAULT_FEED_URLS];
   return raw
     .split(/[\n,]/)
     .map((u) => u.trim())
@@ -172,14 +191,32 @@ function describeRule(rrule: AnyEvent, firstDate: string): string | undefined {
     case 'DAILY':
       phrase = every === 1 ? 'Every day' : `Every ${every} days`;
       break;
-    case 'WEEKLY':
+    case 'WEEKLY': {
+      // A multi-day BYDAY rule (MO,WE,FR) is not "every <start weekday>" — name every
+      // day, or give up (undefined) on shapes we cannot phrase cleanly, like nth-weekday.
+      const byday: unknown[] = Array.isArray(options.byweekday) ? options.byweekday : [];
+      // node-ical hands BYDAY through as "MO".."SU" strings; the rrule library uses
+      // Monday-based numbers. Anything else (nth-weekday like "2FR") we cannot phrase.
+      const days = byday.map((d) =>
+        typeof d === 'number'
+          ? RRULE_WEEKDAYS[d]
+          : typeof d === 'string'
+            ? RRULE_WEEKDAYS[['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'].indexOf(d)]
+            : undefined
+      );
+      if (days.some((d) => !d)) return undefined;
+      const dayText =
+        days.length > 1
+          ? `${days.slice(0, -1).join(', ')} and ${days[days.length - 1]}`
+          : weekday;
       phrase =
         every === 1
-          ? `Every ${weekday}`
+          ? `Every ${dayText}`
           : every === 2
-            ? `Every other ${weekday}`
-            : `Every ${every} weeks, on a ${weekday}`;
+            ? `Every other ${dayText}`
+            : `Every ${every} weeks, on a ${dayText}`;
       break;
+    }
     case 'MONTHLY': {
       const ordinal = ORDINALS[Math.floor((Number(firstDate.split('-')[2]) - 1) / 7)];
       phrase = ordinal ? `The ${ordinal} ${weekday} of the month` : 'Every month';
@@ -245,7 +282,7 @@ function toSiteEvent(
   return {
     id: occurrence ? `${seriesId}@${startCivil.date}` : seriesId,
     seriesId,
-    title: String(vevent.summary ?? 'Event').trim() || 'Event',
+    title: tidyFeedTitle(String(vevent.summary ?? 'Event')) || 'Event',
     start,
     end: end instanceof Date && !Number.isNaN(end.getTime()) ? end : undefined,
     date: startCivil.date,
@@ -261,7 +298,7 @@ function toSiteEvent(
           : undefined
     ),
     location: cleanText(vevent.location),
-    description: cleanText(vevent.description),
+    description: tidyFeedDescription(cleanText(vevent.description)),
     url: typeof vevent.url === 'string' ? vevent.url : undefined,
     featured: false,
     source: 'feed',

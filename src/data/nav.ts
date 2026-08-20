@@ -58,6 +58,15 @@ export const nav: NavItem[] = [
       { label: 'Pitshanger Pictures', href: '/community/pitshanger-pictures' },
     ],
   },
+  {
+    label: 'Hire',
+    href: '/hire',
+    children: [
+      { label: 'Recordings', href: '/hire/recordings' },
+      { label: 'Concerts', href: '/hire/concerts' },
+      { label: 'Halls', href: '/hire/halls' },
+    ],
+  },
   { label: 'News', href: '/news' },
   { label: 'Give', href: '/give', cta: true },
 ];
@@ -65,7 +74,6 @@ export const nav: NavItem[] = [
 // Utility links (footer / overflow)
 export const utilityNav: NavItem[] = [
   { label: 'Contact', href: '/contact-us' },
-  { label: 'Venue hire', href: '/venue-hire' },
   { label: 'Documents', href: '/documents' },
   { label: 'Safeguarding', href: '/safeguarding' },
 ];

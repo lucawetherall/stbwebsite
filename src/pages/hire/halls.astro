@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Figure from '../../components/Figure.astro';
+import Gallery from '../../components/Gallery.astro';
+import { hire } from '../../data/hire';
+import { site } from '../../data/site';
+const h = hire.halls;
+---
+<Base title="Hall & Venue Hire in Ealing" breadcrumbTitle="Halls" description={h.description} image={h.hero.image}>
+  <PageHeader kicker={h.kicker} title={h.title} intro={h.intro} />
+  <div class="wrap page-body">
+    <Figure src={h.hero.image} alt={h.hero.alt} eager aspect="16 / 9" sizes="(max-width: 1140px) 100vw, 1100px" />
+    <div class="prose">{h.body.map((p) => <p>{p}</p>)}</div>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">The halls at a glance</h2>
+      <div class="rate-table-wrap">
+        <table class="rate-table">
+          <thead>
+            <tr><th scope="col">Space</th><th scope="col">Size</th><th scope="col">Capacity</th><th scope="col">Daytime<span class="rate-table__sub">to 6pm</span></th><th scope="col">Evening<span class="rate-table__sub">6–11pm</span></th></tr>
+          </thead>
+          <tbody>
+            {h.rates.map((row) => (<tr><th scope="row">{row.space}</th><td>{row.size}</td><td>{row.capacity}</td><td>{row.day}</td><td>{row.eve}</td></tr>))}
+          </tbody>
+        </table>
+      </div>
+      <p class="venue-note">{h.ratesNote}</p>
+    </section>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">The spaces</h2>
+      <Gallery images={h.gallery} />
+    </section>
+
+    <section class="hire-section">
+      <h2 class="label hire-section__label">How to book</h2>
+      <p>To check availability or arrange a visit, contact the parish office on <a class="content-link" href={site.phoneHref}>{site.phone}</a> or <a class="content-link" href={`mailto:${site.emails.office}`}>{site.emails.office}</a>. You can also <a class="content-link" href="/documents">download a booking form</a>.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page-body { padding-top: 1.5rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+  .prose { margin-top: 1.6rem; }
+  .hire-section { margin-top: 2.8rem; }
+  .hire-section__label { color: var(--violet); display: block; margin-bottom: 1.2rem; }
+  .rate-table-wrap { overflow-x: auto; }
+  .rate-table { width: 100%; border-collapse: collapse; font-size: .98rem; }
+  .rate-table th, .rate-table td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rate-table thead th { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: .1em; font-size: .66rem; font-weight: 600; color: var(--violet); border-bottom-color: var(--ink); }
+  .rate-table tbody th { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; }
+  .rate-table__sub { display: block; text-transform: none; letter-spacing: 0; font-size: .62rem; color: var(--ink-soft); font-weight: 400; margin-top: .15rem; }
+  .venue-note { margin-top: 1.2rem; color: var(--ink-soft); }
+</style>

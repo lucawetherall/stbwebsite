@@ -1,7 +1,7 @@
 ---
 title: Pastoral Care
 kicker: About Us
-intro: We share in the joys and griefs of our community, and offer a listening ear and personal prayer to those going through a difficult time.
+intro: A listening ear, personal prayer and practical support when life is hard.
 description: Prayer for healing, a weekly prayer basket, home and hospital visits, the Pastoral Network and bereavement support at St Barnabas, Ealing.
 ---
 

@@ -2,8 +2,14 @@
 title: Visiting Us
 seoTitle: Plan Your Visit
 kicker: About Us
-intro: New to St Barnabas? Here is everything you need to feel at home on a Sunday morning.
+intro: New to St Barnabas? Here is what to expect on a Sunday morning, and how to find us.
 description: Planning your first visit to St Barnabas, Ealing. The Sung Mass is at 10.30am — here is what to expect, how to find us, and the welcome that awaits you.
+hero: /images/about/portal.webp
+heroAlt: The west door of St Barnabas, dressed for harvest
+gallery:
+  - { src: /images/about/interior.webp, alt: The nave of St Barnabas }
+  - { src: /images/about/lady-chapel.webp, alt: The Lady Chapel }
+  - { src: /images/about/reredos.webp, alt: The reredos above the high altar }
 ---
 
 The main service is the **Sung Mass at 10.30am** every Sunday, and it lasts about an hour and
@@ -19,16 +25,15 @@ Hanger Lane stations are each about fifteen minutes away on foot.
 ## When you arrive
 
 A Welcomer will greet you at the door, give you an order of service, and help you to a seat —
-sit wherever you like. If you would rather slip in quietly at the back, that is completely
-fine too.
+sit wherever you like. If you would rather slip in quietly at the back, that is fine too.
 
 ## What happens in the service
 
 Our worship is in the modern Catholic tradition. There is singing from the choir, hymns that
 everyone joins, moments of stillness, and at certain points incense — the sweet smoke you may
-see rising near the altar. Incense is an ancient sign of our prayers ascending to God; if it
-is new to you, simply enjoy it. You don’t need to follow every movement. The order of service
-will guide you, and no one minds if you stay seated when others stand.
+see rising near the altar. Incense is an ancient sign of our prayers ascending to God. You
+don’t need to follow every movement. The order of service will guide you, and no one minds
+if you stay seated when others stand.
 
 ## Coming to communion
 

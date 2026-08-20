@@ -3,17 +3,23 @@ import { describeWhen, formatCivilDate, weekdayOf, type SiteEvent } from '../lib
 
 interface Props {
   event: SiteEvent;
-  /** Show the weekday above the numeral. Off inside a tight strip. */
-  showWeekday?: boolean;
 }
-const { event, showWeekday = true } = Astro.props;
+const { event } = Astro.props;
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-const day = Number(event.date.split('-')[2]);
-const lastDay = event.endDate ? Number(event.endDate.split('-')[2]) : undefined;
-// The month heading above already names the month, so the row need only carry the numeral.
-const numeral = lastDay && lastDay !== day ? `${day}–${lastDay}` : String(day);
+const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const [, startMonth, startDay] = event.date.split('-').map(Number);
+const [, endMonth, endDay] = (event.endDate ?? event.date).split('-').map(Number);
+// The month heading above already names the month, so a same-month span needs only the
+// numerals; a span into the next month names it ("30–2 Oct") so "30–2" never appears.
+const numeral =
+  event.endDate && event.endDate !== event.date
+    ? startMonth === endMonth
+      ? `${startDay}–${endDay}`
+      : `${startDay}–${endDay} ${MONTHS_SHORT[endMonth - 1]}`
+    : String(startDay);
 const weekday = WEEKDAYS[weekdayOf(event.date)];
 const when = describeWhen(event);
 // Screen readers get the full date spelled out; the visible cell is just the numeral.
@@ -23,22 +29,29 @@ const fullDate = event.endDate
 ---
 <li class="event-row">
   <time class="event-row__date" datetime={event.date}>
-    {showWeekday && <span class="event-row__weekday">{weekday}</span>}
+    <span class="event-row__weekday">{weekday}</span>
     <span class="event-row__day serif">{numeral}</span>
     <span class="sr-only">{fullDate}</span>
   </time>
 
+  {/* The title itself is the link, as on the news listing — no "More details" line per row. */}
   <div class="event-row__body">
-    <h3 class="event-row__title">{event.title}</h3>
+    <h3 class="event-row__title">
+      {event.url ? (
+        <a class="event-row__titlelink" href={event.url}>{event.title}</a>
+      ) : (
+        event.title
+      )}
+    </h3>
     {when && <p class="event-row__meta">{when}</p>}
     {event.recurrenceText && <p class="event-row__repeat">{event.recurrenceText}</p>}
     {event.description && <p class="event-row__desc">{event.description}</p>}
-    <p class="event-row__foot">
-      <span class="event-row__cat">{event.category}</span>
-      {event.url && (
-        <a class="txt-link event-row__link" href={event.url}>{event.urlLabel ?? 'More details'}</a>
-      )}
-    </p>
+    {/* Only an editor's explicit call to action ("Book tickets") earns its own line. */}
+    {event.url && event.urlLabel && (
+      <p class="event-row__action">
+        <a class="txt-link" href={event.url}>{event.urlLabel}</a>
+      </p>
+    )}
   </div>
 
   {event.image && (
@@ -84,6 +97,16 @@ const fullDate = event.endDate
   }
 
   .event-row__title { font-size: clamp(1.05rem, 1.9vw, 1.3rem); }
+  .event-row__titlelink {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .event-row__titlelink:hover {
+    color: var(--violet-deep);
+    text-decoration: underline;
+    text-underline-offset: .2em;
+  }
   .event-row__meta,
   .event-row__repeat {
     margin-top: .35rem;
@@ -95,22 +118,8 @@ const fullDate = event.endDate
     color: var(--ink-soft);
   }
   .event-row__repeat { text-transform: none; letter-spacing: 0; font-size: .9rem; font-weight: 400; }
-  .event-row__desc { margin-top: .55rem; color: var(--ink-soft); }
-  .event-row__foot {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: .5rem 1.4rem;
-    margin-top: .7rem;
-  }
-  .event-row__cat {
-    font-family: var(--font-ui);
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    font-size: .64rem;
-    font-weight: 600;
-    color: var(--violet);
-  }
+  .event-row__desc { margin-top: .55rem; color: var(--ink-soft); max-width: 62ch; }
+  .event-row__action { margin-top: .7rem; }
 
   .event-row__thumb {
     width: 128px;

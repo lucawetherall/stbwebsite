@@ -24,14 +24,17 @@ interface Props {
   size?: number | string;
   /** Draw the mark in currentColor instead of the brand colours (the footer's white window). */
   mono?: boolean;
+  /** Reuse the page's first Logo's path data (see Logo.astro) — pass for any lockup
+      that renders after the header's. */
+  use?: boolean;
   class?: string;
 }
-const { size = 'clamp(1.27rem, 0.88rem + 2vw, 1.8rem)', mono = false, class: cls } = Astro.props;
+const { size = 'clamp(1.27rem, 0.88rem + 2vw, 1.8rem)', mono = false, use = false, class: cls } = Astro.props;
 const markW = typeof size === 'number' ? `${size}px` : size;
 ---
 
 <span class:list={['lockup', cls]} style={`--mark-w:${markW}`}>
-  <Logo size="var(--mark-w)" mono={mono} class="lockup__mark" />
+  <Logo size="var(--mark-w)" mono={mono} use={use} class="lockup__mark" />
   <span class="lockup__word">
     <span class="lockup__line lockup__line--light">St</span>
     <span class="lockup__line lockup__line--bold">Barnabas</span>

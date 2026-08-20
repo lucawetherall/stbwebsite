@@ -1,8 +1,16 @@
 ---
 title: Community
 kicker: Life together
-intro: We are proud to be part of the vibrant life of Pitshanger Lane, with a regular programme of concerts, films and events.
+intro: Concerts, films, quizzes and fayres — we are glad to share in the life of Pitshanger Lane.
 description: Concerts, films, a food pantry, a garden team and social events — St Barnabas is a hub for the community of Pitshanger, Ealing.
+hero: /images/community/summer-fayre-garden.webp
+heroAlt: The Summer Fayre in the church garden
+gallery:
+  - { src: /images/community/frost-fair.webp, alt: The Frost Fair at St Barnabas }
+  - { src: /images/community/fayre.webp, alt: Stalls at the parish fayre }
+  - { src: /images/community/quiz.webp, alt: A parish quiz evening }
+  - { src: /images/community/pets.webp, alt: The animal blessing service }
+  - { src: /images/community/walk-of-witness.webp, alt: The Good Friday Walk of Witness }
 ---
 
 We are proud to be part of the vibrant community life of Pitshanger Lane, with a regular

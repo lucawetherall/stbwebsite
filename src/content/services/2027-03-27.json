@@ -1,0 +1,36 @@
+{
+  "date": "2027-03-27",
+  "feast": "Holy Saturday",
+  "offices": [
+    {
+      "time": "7.30pm",
+      "name": "The Easter Vigil & First Mass of Easter",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "The Exsultet (sung)"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "114"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Ireland in C"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Walford Davies, Ye sons and daughters of the King"
+          ]
+        }
+      ]
+    }
+  ]
+}

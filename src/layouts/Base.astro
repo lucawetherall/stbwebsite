@@ -97,7 +97,8 @@ const section = crumbs.length > 1 ? crumbs[1].label : 'Home';
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(graph)} />
+    {/* <-escape so an editor-authored "</script>" in any description can never close the tag early. */}
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
 
     {/* Read stored consent early so embeds can decide whether to load on first paint */}
     <script is:inline>

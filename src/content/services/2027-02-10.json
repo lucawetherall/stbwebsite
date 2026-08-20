@@ -1,0 +1,36 @@
+{
+  "date": "2027-02-10",
+  "feast": "Ash Wednesday",
+  "offices": [
+    {
+      "time": "7.00pm",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Lenten Prose (Attende Domine)"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "51. 1–18 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Missa de Angelis (Gloria omitted in Lent)"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "Allegri, Miserere mei, Deus"
+          ]
+        }
+      ]
+    }
+  ]
+}

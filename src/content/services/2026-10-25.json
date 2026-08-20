@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-25",
+  "feast": "Bible Sunday",
+  "offices": [
+    {
+      "time": "10.30am",
+      "name": "Sung Mass",
+      "items": [
+        {
+          "label": "Introit",
+          "values": [
+            "Diemer, Come into the house of the Lord"
+          ]
+        },
+        {
+          "label": "Psalm",
+          "values": [
+            "119. 9–16 (plainsong)"
+          ]
+        },
+        {
+          "label": "Setting",
+          "values": [
+            "Gounod, Missa brevis No. 7"
+          ]
+        },
+        {
+          "label": "Anthem",
+          "values": [
+            "S. S. Wesley, Lead me, Lord"
+          ]
+        }
+      ]
+    }
+  ]
+}

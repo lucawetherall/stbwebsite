@@ -8,7 +8,7 @@ legacySlug: "b/blog-64233-sacred-sounds"
 
 **The Journey to Bethlehem** 
 
-****A new season for Advent and Christmas begins Thursday 3 December at 6 pm.**** 
+**A new season for Advent and Christmas begins Thursday 3 December at 6 pm.** 
 
 Sublime Sacred Sounds is a weekly dose of sacred word and music. Presented online by the musicians and clergy of St Barnabas Ealing, each weekly episode explores a specific theme weaving together transcendent music and moving spoken word.  
 
