@@ -105,16 +105,19 @@ places or it will be missing on that one page.
 
 **The why.** The site is the parish's **printed service sheet / prayer book, translated to the
 web** (README: "service-sheet house style"). Every visual decision serves **restraint, reverence
-and readability**, never marketing flash. The single accent is a liturgical red — "deep Sarum
-wine" — a deliberate nod to English liturgical use; the site quietly **breathes with the church
-calendar** through its hero art and footer season line.
+and readability**, never marketing flash. The single accent is a liturgical violet — a very dark
+plum taken from the parish logo, and a colour of the church's own seasons; the site quietly
+**breathes with the church calendar** through its hero art and footer season line.
 
 **The rules** (all enforced by `src/styles/tokens.css` + `src/styles/base.css`):
 
 - **Tokens only.** Colour, spacing and fonts come from `tokens.css`. Never hard-code a hex value
   or an arbitrary px. Need a new value? Add a token and justify it.
-- **One accent.** `--burgundy #6A1B2D`, `--burgundy-deep` for hover/pressed only. No second accent
-  colour. Retune the whole site by changing the one token.
+- **One accent.** `--violet #400642` (a very dark plum-violet taken from the parish logo),
+  `--violet-deep` for hover/pressed only. No second accent colour — the logo's own five colours
+  are the single exception and stay inside `Logo.astro`. Retune the whole site by changing the one
+  token; if you do, keep an eye on its contrast against `--ink`, not just against the paper, since
+  a dark accent stops marking anything out long before it fails AA.
 - **Three typefaces, one job each** — **Montserrat** (`--font-heading`, aliased `--font-ui`) for
   headings, titles, the menu bar and tracked uppercase labels; **Cormorant Garamond**
   (`--font-display`) for decorative display text only; **Source Serif 4** (`--font-body`) for body
@@ -140,8 +143,8 @@ calendar** through its hero art and footer season line.
   don't reintroduce one. Only the *Cormorant* decorative rules (monograms, the big date numeral,
   `.welcome__statement`, `.visit-glance__lead`, `.feast-list__item`) still set `font-weight: 500`.
 - **Flat, not glossy.** No gradients anywhere; the image overlay (`--scrim`) is a flat colour on
-  purpose. The 2px burgundy ribbon at the top of every page is constant (never season-variable).
-- **Components, patterns.** Outlined buttons that fill burgundy on hover; tracked uppercase
+  purpose. The 2px violet ribbon at the top of every page is constant (never season-variable).
+- **Components, patterns.** Outlined buttons that fill violet on hover; tracked uppercase
   small-caps `.label`s; hairline rules. Reuse these rather than inventing new treatments.
 - **Motion is minimal.** A single `.fade-in`; honour `prefers-reduced-motion` (it disables all
   animation/transition — don't add motion that ignores it).

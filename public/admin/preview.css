@@ -96,7 +96,7 @@
 :root {
   --paper:#F6F2EA; --paper-2:#EFEADD; --ink:#1A1611; --ink-soft:#6A6051;
   --line:rgba(26,22,17,.20); --white:#FBF9F4;
-  --burgundy:#6A1B2D; --burgundy-deep:#551521;
+  --violet:#400642; --violet-deep:#360039;
   --font-display:"Cormorant Garamond",Garamond,"Times New Roman",serif;
   --font-body:"Source Serif 4",Georgia,serif;
 }
@@ -118,12 +118,12 @@ body {
   max-width:var(--maxw,860px);
   margin-inline:auto;
 }
-/* the constant top burgundy ribbon from the live site (base.css body::before) */
-body::before { content:""; display:block; height:2px; background:var(--burgundy);
+/* the constant top violet ribbon from the live site (base.css body::before) */
+body::before { content:""; display:block; height:2px; background:var(--violet);
   margin:calc(-1*clamp(1.6rem,4vw,3rem)) calc(-1*clamp(1.25rem,5vw,2.5rem)) clamp(1.6rem,4vw,3rem); }
 
-::selection { background:rgba(106,27,45,.14); }
-a { color:var(--burgundy); text-decoration:none; border-bottom:1px solid var(--burgundy); }
+::selection { background:rgba(64,6,66,.14); }
+a { color:var(--violet); text-decoration:none; border-bottom:1px solid var(--violet); }
 
 /* ============================================================================
    GENERIC FIELD FRAMING — every collection's default preview is a list of
@@ -147,7 +147,7 @@ section[data-key-path]:not([data-key-path*="."]) + section[data-key-path]:not([d
   padding-top:1.4rem;
 }
 
-/* field LABEL (the <h4>) → the site's tracked small-caps .label, in burgundy.
+/* field LABEL (the <h4>) → the site's tracked small-caps .label, in violet.
    !important: Sveltia's own preview sheet styles this <h4> with higher-specificity
    class selectors that reference undefined --sui-* vars; we must win. */
 section[data-key-path] > h4 {
@@ -156,7 +156,7 @@ section[data-key-path] > h4 {
   letter-spacing:.18em !important;
   font-size:.66rem !important;
   font-weight:600 !important;
-  color:var(--burgundy) !important;
+  color:var(--violet) !important;
   margin:0 0 .55rem !important;
   line-height:1.3 !important;
 }
@@ -184,12 +184,12 @@ section[data-key-path] img {
   margin:.2rem 0;
 }
 
-/* links inside values keep the burgundy underline */
-section[data-key-path] a { color:var(--burgundy); border-bottom:1px solid var(--burgundy); }
+/* links inside values keep the violet underline */
+section[data-key-path] a { color:var(--violet); border-bottom:1px solid var(--violet); }
 
 /* ---- nested list / object fields (music list, service times, settings) -----
    Sveltia nests child fields as <section data-key-path="parent.0.child">. Indent
-   them so deep structures stay readable. Labels stay the standard burgundy
+   them so deep structures stay readable. Labels stay the standard violet
    small-caps — which is exactly how the live site renders these (e.g. the music
    list's "Setting"/"Psalm" labels, service-time "when" notes). */
 section[data-key-path*="."] {
@@ -219,7 +219,7 @@ section[data-key-path="name"] > p {
      default, whose --sui-* values are undefined inside the preview iframe. */
   font-family:var(--font-display) !important;
   font-weight:500 !important;
-  color:var(--burgundy) !important;
+  color:var(--violet) !important;
   font-size:clamp(2.2rem,4.6vw,3.4rem) !important;
   line-height:1.08 !important;
   letter-spacing:.005em;
@@ -235,7 +235,7 @@ section[data-key-path="kicker"] > p {
   letter-spacing:.18em;
   font-size:.7rem;
   font-weight:600;
-  color:var(--burgundy);
+  color:var(--violet);
 }
 
 /* INTRO (Main Pages) → the site's serif-italic standfirst. */
@@ -253,7 +253,7 @@ section[data-key-path="intro"] > p {
 section[data-key-path="role"] > h4 { display:none; }
 section[data-key-path="role"] > p {
   text-transform:uppercase; letter-spacing:.16em; font-size:.7rem;
-  font-weight:600; color:var(--burgundy);
+  font-weight:600; color:var(--violet);
 }
 
 /* ---- BODY (Markdown) → the site's .prose (src/styles/base.css) ------------- */
@@ -277,11 +277,11 @@ section[data-field-type="markdown"] ol { padding-left:1.4rem; }
 section[data-field-type="markdown"] li { margin-top:.4rem; }
 section[data-field-type="markdown"] ul { list-style:disc; }
 section[data-field-type="markdown"] ol { list-style:decimal; }
-section[data-field-type="markdown"] ul li::marker { color:var(--burgundy); }
+section[data-field-type="markdown"] ul li::marker { color:var(--violet); }
 section[data-field-type="markdown"] ol li::marker { color:var(--ink-soft); }
 
 section[data-field-type="markdown"] blockquote {
-  border-left:2px solid var(--burgundy);
+  border-left:2px solid var(--violet);
   padding-left:1.4rem;
   font-family:var(--font-display);
   font-style:italic;
@@ -292,7 +292,7 @@ section[data-field-type="markdown"] blockquote {
 section[data-field-type="markdown"] blockquote p { max-width:none; font-size:inherit; }
 section[data-field-type="markdown"] strong { font-weight:600; }
 section[data-field-type="markdown"] em { font-style:italic; }
-section[data-field-type="markdown"] a { color:var(--ink); border-bottom:1px solid var(--burgundy); }
+section[data-field-type="markdown"] a { color:var(--ink); border-bottom:1px solid var(--violet); }
 section[data-field-type="markdown"] img { margin-block:1.6rem; border:0; }
 section[data-field-type="markdown"] hr { border:0; border-top:1px solid var(--line); margin-block:2.4rem; }
 

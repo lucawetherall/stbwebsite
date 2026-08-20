@@ -204,9 +204,9 @@ import PageHeader from '../components/PageHeader.astro';
   }
   .search-form__input::placeholder { color: var(--ink-soft); font-style: italic; }
   .search-form__input:focus-visible {
-    outline: 2px solid var(--burgundy);
+    outline: 2px solid var(--violet);
     outline-offset: 1px;
-    border-color: var(--burgundy);
+    border-color: var(--violet);
   }
   .search-form__submit { flex: 0 0 auto; }
 
@@ -246,7 +246,7 @@ import PageHeader from '../components/PageHeader.astro';
     max-width: 46ch;
     transition: color .2s;
   }
-  #search-results .search-row__link:hover .search-row__title { color: var(--burgundy); }
+  #search-results .search-row__link:hover .search-row__title { color: var(--violet); }
   #search-results .search-row__excerpt {
     display: block;
     margin-top: .5rem;
@@ -255,7 +255,7 @@ import PageHeader from '../components/PageHeader.astro';
   }
   /* Pagefind wraps matched words in <mark>; the browser default is a yellow highlighter. */
   #search-results mark {
-    background: var(--burgundy-faint);
+    background: var(--violet-faint);
     color: var(--ink);
     font-weight: 600;
   }

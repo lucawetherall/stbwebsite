@@ -27,8 +27,8 @@ body {
   overflow-x: clip;
 }
 
-/* top burgundy ribbon (constant, never season-variable) */
-body::before { content: ""; display: block; height: 2px; background: var(--burgundy); }
+/* top violet ribbon (constant, never season-variable) */
+body::before { content: ""; display: block; height: 2px; background: var(--violet); }
 
 /* ---- type -------------------------------------------------------------- */
 /* .serif is Cormorant, and means *decorative* display text — the wordmark, monograms,
@@ -66,7 +66,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
   letter-spacing: .12em;
   font-size: .7rem;
   font-weight: 600;
-  color: var(--burgundy);
+  color: var(--violet);
 }
 
 p { max-width: 66ch; }
@@ -75,7 +75,7 @@ a { color: inherit; }
 img { display: block; max-width: 100%; height: auto; }
 a, button { cursor: pointer; }
 
-:focus-visible { outline: 2px solid var(--burgundy); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
 
 /* ---- layout helpers ---------------------------------------------------- */
 .wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad); }
@@ -118,10 +118,10 @@ a, button { cursor: pointer; }
   font-size: .74rem;
   text-decoration: none;
   padding-bottom: .25rem;
-  border-bottom: 1px solid var(--burgundy);
+  border-bottom: 1px solid var(--violet);
   transition: border-color .2s, color .2s;
 }
-.txt-link:hover { color: var(--burgundy-deep); border-color: var(--burgundy-deep); }
+.txt-link:hover { color: var(--violet-deep); border-color: var(--violet-deep); }
 
 .btn {
   display: inline-block;
@@ -131,19 +131,19 @@ a, button { cursor: pointer; }
   font-size: .74rem;
   text-decoration: none;
   color: var(--ink);
-  border: 1px solid var(--burgundy);
+  border: 1px solid var(--violet);
   padding: .95rem 1.8rem;
   background: transparent;
   transition: background .2s, color .2s;
 }
-.btn:hover { background: var(--burgundy); color: var(--white); }
+.btn:hover { background: var(--violet); color: var(--white); }
 
-.btn--solid { background: var(--burgundy); color: var(--white); }
-.btn--solid:hover { background: var(--burgundy-deep); }
+.btn--solid { background: var(--violet); color: var(--white); }
+.btn--solid:hover { background: var(--violet-deep); }
 
-/* in-prose text links keep the burgundy underline */
-.prose a { text-decoration: none; border-bottom: 1px solid var(--burgundy); transition: color .2s, border-color .2s; }
-.prose a:hover { color: var(--burgundy-deep); border-color: var(--burgundy-deep); }
+/* in-prose text links keep the violet underline */
+.prose a { text-decoration: none; border-bottom: 1px solid var(--violet); transition: color .2s, border-color .2s; }
+.prose a:hover { color: var(--violet-deep); border-color: var(--violet-deep); }
 
 /* hairline rule */
 hr, .rule { border: none; border-top: 1px solid var(--line); margin-block: 2rem; }
@@ -160,10 +160,10 @@ hr, .rule { border: none; border-top: 1px solid var(--line); margin-block: 2rem;
 .page-aside { margin-top: 2.6rem; color: var(--ink-soft); max-width: 62ch; }
 .content-link, .page-aside a {
   text-decoration: none;
-  border-bottom: 1px solid var(--burgundy);
+  border-bottom: 1px solid var(--violet);
   transition: color .2s, border-color .2s;
 }
-.content-link:hover, .page-aside a:hover { color: var(--burgundy-deep); border-color: var(--burgundy-deep); }
+.content-link:hover, .page-aside a:hover { color: var(--violet-deep); border-color: var(--violet-deep); }
 
 /* ---- prose (MDX editorial content) ------------------------------------ */
 .prose { max-width: 68ch; }
@@ -177,10 +177,10 @@ hr, .rule { border: none; border-top: 1px solid var(--line); margin-block: 2rem;
 .prose li { margin-top: .4rem; }
 .prose ul { list-style: disc; }
 .prose ol { list-style: decimal; }
-.prose ul li::marker { color: var(--burgundy); }
+.prose ul li::marker { color: var(--violet); }
 .prose ol li::marker { color: var(--ink-soft); }
 .prose blockquote {
-  border-left: 2px solid var(--burgundy);
+  border-left: 2px solid var(--violet);
   padding-left: 1.4rem;
   font-family: var(--font-display);
   font-style: italic;
@@ -212,7 +212,7 @@ hr, .rule { border: none; border-top: 1px solid var(--line); margin-block: 2rem;
   @page { margin: 1.6cm; }
   html { font-size: 11.5pt; }
   body { background: #fff; color: #000; }
-  body::before { display: none; }            /* the burgundy ribbon */
+  body::before { display: none; }            /* the violet ribbon */
   a { color: #000; }
   .wrap { max-width: none; padding-inline: 0; }
   .section { padding-block: 1.2rem; }

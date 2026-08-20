@@ -7,9 +7,25 @@
   --white:    #FBF9F4;             /* type over imagery               */
   --white-soft: rgba(251, 249, 244, .78);
   --ink-on-dark-muted: #B2A899;    /* muted warm grey on the dark (--ink) footer */
-  --burgundy:      #6A1B2D;        /* single accent (deep Sarum wine) */
-  --burgundy-deep: #551521;        /* accent hover / pressed          */
-  --burgundy-faint: rgba(106, 27, 45, .08); /* faint accent wash (monogram tint) */
+  /* The single accent. Formerly a Sarum wine (#6A1B2D); now a very dark plum-violet
+     drawn from the parish logo, which is where the site's only other colour lives.
+
+     L*13.3, C*41.2, hue 327° — deep enough to read as near-black at a glance, but far
+     enough off the body ink (#1A1611, L*7.5) to keep a visible violet cast on a label
+     rather than going black outright. The hue sits about a third of the way from the
+     logo's violet (318°) back towards the wine it replaced (14°), which is what lets it
+     read as of a piece with both.
+
+     Contrast is 14.22 on paper and 15.09 for white type on the accent, well above the
+     wine's 10.41 / 11.04, so AA holds everywhere it held before. Note it clears the ink
+     by only 1.13 in luminance, against the wine's 1.55: the accent marks things out
+     less strongly than it used to, so on small tracked labels weight, tracking and case
+     carry more of that job than colour does. Going darker still would erase the
+     difference entirely — this is about the floor for an accent that must stay legible
+     as an accent. */
+  --violet:      #400642;        /* single accent (very dark plum-violet) */
+  --violet-deep: #360039;        /* accent hover / pressed                */
+  --violet-faint: rgba(64, 6, 66, .08); /* faint accent wash (monogram tint) */
   --scrim:    rgba(12, 9, 5, .42); /* flat image scrim (NOT a gradient) */
   --maxw: 1180px;
   --pad: 2rem;

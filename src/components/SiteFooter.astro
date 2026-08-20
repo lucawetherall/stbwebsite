@@ -1,5 +1,5 @@
 ---
-import Logo from './Logo.astro';
+import BrandLockup from './BrandLockup.astro';
 import { site } from '../data/site';
 const year = new Date().getFullYear();
 
@@ -18,13 +18,14 @@ const tel = `tel:${site.phoneIntl.replace(/\s+/g, '')}`;
 ---
 <footer class="site-footer">
   <div class="wrap footer-top">
-    <a href="/" class="footer-brand" aria-label="St Barnabas Church, Ealing — home">
-      <Logo size={32} />
-      <span class="footer-brand__text">
-        <span class="serif footer-brand__name">St Barnabas Church, Ealing</span>
-        <span class="serif footer-brand__locality">The Church of England parish church of Pitshanger</span>
-      </span>
-    </a>
+    <div class="footer-brand-block">
+      {/* `mono` keeps the window white against the dark ground, as it has always been
+          here; only the wordmark changes, and it follows currentColor to white too. */}
+      <a href="/" class="footer-brand" aria-label="St Barnabas Church, Ealing — home">
+        <BrandLockup mono />
+      </a>
+      <p class="serif footer-brand__locality">The Church of England parish church of Pitshanger</p>
+    </div>
 
     <ul class="footer-social" aria-label="Social media">
       <li>
@@ -80,9 +81,8 @@ const tel = `tel:${site.phoneIntl.replace(/\s+/g, '')}`;
     gap: 1.2rem 2rem;
     flex-wrap: wrap;
   }
-  .footer-brand { display: inline-flex; align-items: center; gap: .75rem; color: var(--white); }
-  .footer-brand__text { display: flex; flex-direction: column; line-height: 1.18; }
-  .footer-brand__name { font-size: 1.2rem; font-weight: 600; }
+  .footer-brand-block { display: flex; flex-direction: column; gap: .6rem; }
+  .footer-brand { display: inline-flex; align-items: center; color: var(--white); align-self: flex-start; }
   .footer-brand__locality { font-style: italic; font-size: .92rem; color: var(--white-soft); }
   .footer-social { list-style: none; display: flex; gap: 1rem; }
   .footer-social a { display: inline-flex; }

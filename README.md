@@ -18,7 +18,7 @@ Site search is indexed from `dist/`, so it returns nothing under `npm run dev`. 
 
 ## How it's put together
 
-- **Design system** — `src/styles/tokens.css` (one burgundy accent, Cormorant Garamond +
+- **Design system** — `src/styles/tokens.css` (one violet accent, Cormorant Garamond +
   Source Serif 4) and `src/styles/base.css`. Fonts self-hosted in `public/fonts/`.
 - **Liturgical engine** — `src/lib/liturgy.ts` computes the season/feast (Computus); the hero
   artwork is chosen from `src/data/artwork.ts`; the footer shows a live season line.

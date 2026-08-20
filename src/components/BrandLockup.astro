@@ -1,0 +1,84 @@
+---
+/* The parish's logo, rebuilt from the artwork rather than shipped as a picture: the window
+   mark as vector panes, and "St / Barnabas / Church" as live Montserrat.
+
+   Setting the wordmark as text (not paths, not a PNG) is what makes it adapt — it inherits
+   currentColor, so it is near-black on the paper header and white on the dark footer, with
+   no second asset to keep in step. The artwork's own typeface is Montserrat, so this is the
+   logo, not an approximation: Light for "St" and "Church", Bold for "Barnabas".
+
+   Every measurement below is expressed as a ratio of the mark's width, taken off the source
+   artwork (mark 1129 x 1951; cap height 586; baseline step 691; font size 837). That keeps
+   the lockup exact at any `size`. The two lines are also why `align-items: center` is the
+   correct alignment and not a fudge: at these ratios the text column is a little taller than
+   the mark, and centring lands the "St" cap on the mark's top edge and the "Church" baseline
+   on its bottom edge — the artwork's own alignment, to within a third of a pixel at 30px. */
+import Logo from './Logo.astro';
+
+interface Props {
+  /** Width of the window mark — a number is px, a string is any CSS length. Every other
+      dimension in the lockup is derived from it, so this is the only size to set.
+      The default is fluid: the logo would otherwise sit at desktop size on a 320px
+      phone, where it swallowed half the header. rem (not px) at the ends so it still
+      follows the site's stepped type scale for older readers. */
+  size?: number | string;
+  /** Draw the mark in currentColor instead of the brand colours (the footer's white window). */
+  mono?: boolean;
+  class?: string;
+}
+const { size = 'clamp(1.27rem, 0.88rem + 2vw, 1.8rem)', mono = false, class: cls } = Astro.props;
+const markW = typeof size === 'number' ? `${size}px` : size;
+---
+
+<span class:list={['lockup', cls]} style={`--mark-w:${markW}`}>
+  <Logo size="var(--mark-w)" mono={mono} class="lockup__mark" />
+  <span class="lockup__word">
+    <span class="lockup__line lockup__line--light">St</span>
+    <span class="lockup__line lockup__line--bold">Barnabas</span>
+    <span class="lockup__line lockup__line--light">Church</span>
+  </span>
+</span>
+
+<style>
+  .lockup {
+    display: inline-flex;
+    align-items: center;
+    /* The artwork's gap is measured ink-to-ink (130/1129 of the mark's width to the "C"
+       of Church, 140 to the "S", 160 to the "B"). CSS gaps are box-to-box, so this is
+       that distance less the left sidebearing Montserrat adds and the outlines do not —
+       fitted across all three lines, which lands each within a quarter-pixel of the
+       artwork at a 30px mark. */
+    gap: calc(var(--mark-w) * 0.0774);
+    color: inherit;
+  }
+  .lockup__mark { flex: none; }
+
+  .lockup__word {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-heading);
+    /* 837/1129 and 691/837 — the artwork's type size and baseline step. */
+    font-size: calc(var(--mark-w) * 0.7414);
+    line-height: 0.826;
+    white-space: nowrap;
+    text-transform: none;
+    /* Centring aligns the line boxes, but the artwork aligns the ink, and Montserrat's
+       leading is not symmetric about it — which left every baseline a shade low. This is
+       the measured correction (5.26px against a 282px mark), applied as a paint-time
+       offset so it cannot disturb the row it sits in. */
+    position: relative;
+    top: calc(var(--mark-w) * -0.0187);
+  }
+
+  /* Weights and tracking are fitted to the artwork, not guessed: measuring its stems
+     against cap height gives 0.060 for the light lines and 0.162 for "Barnabas", which
+     lands nearest Montserrat 300 and 600 of the cuts we hold. The negative tracking is
+     what closes the gap between Montserrat's natural fit and the artwork's own widths
+     (0.895 / 4.423 / 3.295 em at matched cap height); it is set per line because the
+     lockup was spaced by eye, line by line. */
+  .lockup__line--light { font-weight: 300; }
+  .lockup__line--bold { font-weight: 600; }
+  .lockup__line:nth-child(1) { letter-spacing: -0.028em; }
+  .lockup__line:nth-child(2) { letter-spacing: -0.047em; }
+  .lockup__line:nth-child(3) { letter-spacing: -0.040em; }
+</style>

@@ -1,5 +1,5 @@
 ---
-import Logo from './Logo.astro';
+import BrandLockup from './BrandLockup.astro';
 import { nav, utilityNav, type NavItem } from '../data/nav';
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -32,40 +32,15 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
 ---
 
 <header class="site-header">
-  {/* Row 1 — the masthead: wordmark left, search right. */}
-  <div class="wrap site-header__masthead">
+  {/* One bar: logo, menu and search share a line. The menu had its own band beneath the
+      masthead until the lockup replaced the old wide wordmark — at 141px the logo leaves
+      the nav room enough to sit beside it, and the header costs a row less height. */}
+  <div class="wrap site-header__bar">
     <a href="/" class="brand" aria-label="St Barnabas Church, Ealing — home">
-      <Logo size={30} class="brand__mark" />
-      <span class="brand__text">
-        <span class="brand__name serif">St Barnabas Church, Ealing</span>
-        <span class="brand__locality">Pitshanger Lane</span>
-      </span>
+      <BrandLockup />
     </a>
 
-    {/* Kept out of the primary nav list: an icon sits beside the menu button on every width. */}
-    <a class="search-link" href="/search/" aria-label="Search this site" title="Search">
-      <svg class="search-link__icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-        <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6" />
-        <line x1="12.6" y1="12.6" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-      </svg>
-    </a>
-
-    <button
-      class="nav-toggle"
-      type="button"
-      aria-expanded="false"
-      aria-controls="mobile-nav"
-      aria-label="Open menu"
-    >
-      <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
-    </button>
-  </div>
-
-  {/* Row 2 — the nav band. Its own ruled ground so the menu reads as a bar rather than as
-      a line of small print beside the wordmark; it also gives the larger type the width it
-      needs, with slack left over for a longer editor-added label in nav.ts. */}
-  <div class="nav-band">
-    <nav class="wrap primary-nav" aria-label="Primary">
+    <nav class="primary-nav" aria-label="Primary">
       <ul class="primary-nav__list">
         {nav.map((item) => (
           <li class:list={['primary-nav__item', item.children && 'has-children']}>
@@ -107,13 +82,31 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
         ))}
       </ul>
     </nav>
+
+    {/* Kept out of the primary nav list: an icon sits beside the menu button on every width. */}
+    <a class="search-link" href="/search/" aria-label="Search this site" title="Search">
+      <svg class="search-link__icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+        <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <line x1="12.6" y1="12.6" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open menu"
+    >
+      <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
   </div>
 </header>
 
 <!-- Full-screen mobile / overflow nav panel -->
 <div id="mobile-nav" class="mobile-nav" hidden>
   <div class="mobile-nav__head wrap">
-    <span class="brand__name serif">St Barnabas Church, Ealing</span>
+    <BrandLockup />
     <button class="mobile-nav__close" type="button" aria-label="Close menu">&times;</button>
   </div>
   <nav class="mobile-nav__body wrap" aria-label="Full site">
@@ -156,54 +149,65 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
     background: var(--paper); color: var(--ink);
     border-bottom: 1px solid var(--line);
   }
-  .site-header__masthead {
+  .site-header__bar {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 1.5rem; padding-block: 1.1rem;
+    gap: 1.5rem; padding-block: .8rem;
   }
 
-  /* The nav band is desktop-only; below the breakpoint the hamburger takes over. */
-  .nav-band { display: none; }
+  /* The nav is desktop-only; below the breakpoint the hamburger takes over. */
+  .primary-nav { display: none; }
 
-  /* brand */
-  .brand { display: inline-flex; align-items: center; gap: .7rem; text-decoration: none; color: inherit; }
-  .brand__mark { flex: none; }
-  .brand__text { display: flex; flex-direction: column; line-height: 1.05; }
-  .brand__name { font-size: 1.32rem; font-weight: 600; letter-spacing: .005em; }
-  .brand__locality {
-    font-family: var(--font-display); font-style: italic; font-size: .92rem; opacity: .85;
-  }
+  /* brand — the lockup carries its own proportions; the link only has to not disturb them.
+     Its wordmark is currentColor, so it takes --ink here and white on the footer's dark
+     ground without a second asset. */
+  .brand { display: inline-flex; align-items: center; text-decoration: none; color: inherit; }
 
-  /* desktop nav — laid out edge to edge so the band reads as a filled bar. The items
-     need ~810px of the ~1109px available, and space-between distributes the remaining
-     ~300px evenly; that slack is also the headroom for a longer label, since nav.ts is
-     editor-editable. */
+  /* desktop nav — it takes the space the logo and search leave and spreads the items
+     across it. `gap` is a floor, not the spacing: space-between hands out whatever is
+     left over, so the painted gaps are ~18px at the 1180px breakpoint and ~20px once
+     the .wrap is capped. Keeping the floor low is what leaves 58px spare at the tightest
+     width — the headroom for a longer label, since nav.ts is editor-editable.
+
+     The free space is fixed (the row is the 1180px content column, shared with a 141px
+     lockup and the search icon), so the only real question is how it is divided. It
+     lands on roughly 1.5:1 — ~27px where one group meets the next, ~20px between items
+     within the nav — which is what keeps the logo, the menu and the search reading as
+     three things rather than one long row. Widening the bar past --maxw would buy more,
+     but it pulls the logo out of line with every other page margin, and this design
+     keeps one margin throughout. */
   .primary-nav__list {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 1rem; list-style: none; flex-wrap: nowrap;
+    gap: .6rem; list-style: none; flex-wrap: nowrap;
   }
   .primary-nav__item { position: relative; }
+  /* The CTA is a bordered box, so the gap that reads as generous beside a text label
+     reads as a collision beside its frame. It gets its own separation from "News". */
+  .primary-nav__item:last-child { margin-left: .45rem; }
   .primary-nav__link {
     display: inline-block; white-space: nowrap; text-decoration: none; color: inherit;
     font-family: var(--font-ui); text-transform: uppercase;
-    /* .1em, down from .15em: Montserrat needs less tracking than the serif it replaced,
-       and the saving pays for the larger size. */
-    letter-spacing: .1em; font-size: .82rem; font-weight: 600;
+    /* .07em, down from .1em (itself down from .15em in the serif): sharing the row with
+       the logo left the items ~17px apart, and tracking is the one lever that buys space
+       back without touching the type size — which the congregation's eyesight rules out.
+       It also earns its keep on its own terms: tighter labels cohere as units, so the
+       gaps between them do more of the work of separating one item from the next. */
+    letter-spacing: .07em; font-size: .82rem; font-weight: 600;
     padding-block: .5rem; border-bottom: 1px solid transparent;
     transition: border-color .2s, color .2s;
   }
   .primary-nav__link:hover { border-bottom-color: currentColor; }
-  .primary-nav__link.is-active { border-bottom-color: var(--burgundy); }
-  .primary-nav__link.is-active:not(.primary-nav__link--cta) { color: var(--burgundy); }
+  .primary-nav__link.is-active { border-bottom-color: var(--violet); }
+  .primary-nav__link.is-active:not(.primary-nav__link--cta) { color: var(--violet); }
 
-  /* Give: outlined CTA button — burgundy frame, fills on hover */
+  /* Give: outlined CTA button — violet frame, fills on hover */
   .primary-nav__link--cta {
     background: transparent;
-    padding: .5rem 1.1rem; border: 1px solid var(--burgundy); border-radius: 2px;
+    padding: .5rem 1.1rem; border: 1px solid var(--violet); border-radius: 2px;
     transition: background .2s, color .2s, border-color .2s;
   }
   .primary-nav__link--cta:hover,
   .primary-nav__link--cta.is-active {
-    color: var(--white); background: var(--burgundy); border-color: var(--burgundy);
+    color: var(--white); background: var(--violet); border-color: var(--violet);
   }
 
   /* dropdown panels (always readable: paper ground, ink text) */
@@ -223,18 +227,19 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
     font-family: var(--font-ui); font-size: .85rem; padding: .46rem 1.3rem;
     transition: color .2s, background .2s;
   }
-  .submenu__link:hover { color: var(--burgundy); background: var(--paper-2); }
-  .submenu__link.is-active { color: var(--burgundy); }
+  .submenu__link:hover { color: var(--violet); background: var(--paper-2); }
+  .submenu__link.is-active { color: var(--violet); }
   .submenu__link--nested { padding-left: 2.4rem; font-size: .8rem; color: var(--ink-soft); }
 
-  /* search */
+  /* search — `margin-left: auto` holds it to the right edge on narrow widths, where the
+     nav is hidden and only the lockup shares the row. */
   .search-link {
     display: inline-flex; align-items: center; justify-content: center;
     color: inherit; padding: .35rem; margin-left: auto;
     border-bottom: 1px solid transparent; transition: color .2s;
   }
   .search-link__icon { width: 19px; height: 19px; display: block; }
-  .search-link:hover { color: var(--burgundy); }
+  .search-link:hover { color: var(--violet); }
 
   /* mobile toggle */
   .nav-toggle {
@@ -252,7 +257,6 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
   }
   .mobile-nav[hidden] { display: none; }
   .mobile-nav__head { display: flex; align-items: center; justify-content: space-between; padding-block: .4rem 1.4rem; border-bottom: 1px solid var(--line); }
-  .mobile-nav__head .brand__name { font-size: 1.25rem; }
   .mobile-nav__close { background: none; border: none; font-size: 2rem; line-height: 1; color: var(--ink); padding: .2rem .5rem; }
   .mobile-nav__list, .mobile-nav__utility { list-style: none; }
   .mobile-nav__list { margin-top: 1.4rem; }
@@ -268,7 +272,7 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
     display: block; text-decoration: none; font-family: var(--font-ui);
     font-size: .95rem; padding: .34rem 0; color: var(--ink-soft);
   }
-  .mobile-nav a.is-active { color: var(--burgundy); }
+  .mobile-nav a.is-active { color: var(--violet); }
   .mobile-nav__utility { margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
   .mobile-nav__utility a {
     display: block; text-decoration: none; font-family: var(--font-ui);
@@ -276,27 +280,27 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
     font-size: .72rem; font-weight: 600; padding: .4rem 0; color: var(--ink-soft);
   }
 
-  /* The wordmark is a mark, not reading copy: hold it at its previous size on narrow
-     phones so "St Barnabas Church, Ealing" keeps to one line as it did before the
-     type scale. Everything else on the page still grows. */
-  @media (max-width: 480px) {
-    .brand__name { font-size: 1.26rem; }
-  }
-
   /* 1180px = --maxw: above it the .wrap is capped, so the nav's available width is
      constant at every larger viewport. Below it (incl. iPad landscape) the full-screen
      menu is used instead — larger tap targets, and no cramped single-line nav bar. */
   @media (min-width: 1180px) {
-    .nav-band {
-      display: block;
-      background: var(--paper-2);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .primary-nav__list { padding-block: .3rem; }
+    /* The nav takes the width the lockup and search leave, and spreads across it. */
+    .primary-nav { display: block; flex: 1; min-width: 0; }
     .nav-toggle { display: none; }
-    /* The masthead is now just wordmark + search, so the icon is pushed right on its own. */
-    .site-header { border-bottom: none; }
+    /* The search icon follows the nav rather than being flung to the far edge. */
+    .search-link { margin-left: 0; }
+
+    /* Centring the row leaves the labels sitting on no line at all: their ink centre
+       lands within a pixel of the mark's centre, but their baseline floats 3.4px above
+       the baseline of "Barnabas" — the bold, widest line, and the one the eye takes for
+       the wordmark. Dropping the row onto that baseline is what makes the logo and the
+       menu read as set together rather than merely both being in the bar.
+
+       A fixed rem is safe here because this only applies above 1180px, where the root
+       size is settled at 111% and the lockup's clamp is pinned to its 1.8rem maximum —
+       so the offset it corrects for cannot drift. The search icon comes too, or it would
+       be left behind by the labels it sits beside. */
+    .primary-nav__list, .search-link { position: relative; top: .19rem; }
   }
 </style>
 

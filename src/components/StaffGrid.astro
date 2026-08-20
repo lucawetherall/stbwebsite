@@ -65,9 +65,9 @@ const people = await getRoster();
     font-size: clamp(2.4rem, 6vw, 3.4rem);
     font-weight: 500;
     letter-spacing: 0.02em;
-    color: var(--burgundy);
+    color: var(--violet);
     background:
-      radial-gradient(120% 120% at 50% 0%, var(--burgundy-faint), transparent 60%),
+      radial-gradient(120% 120% at 50% 0%, var(--violet-faint), transparent 60%),
       var(--paper-2);
   }
   .staff-card__role {
@@ -84,13 +84,13 @@ const people = await getRoster();
   }
   .staff-card:hover .staff-card__name,
   .staff-card:focus-visible .staff-card__name {
-    border-color: var(--burgundy);
+    border-color: var(--violet);
   }
   .staff-card:hover .staff-card__photo {
     transform: scale(1.04);
   }
   .staff-card:focus-visible {
-    outline: 2px solid var(--burgundy);
+    outline: 2px solid var(--violet);
     outline-offset: 4px;
     border-radius: 4px;
   }
