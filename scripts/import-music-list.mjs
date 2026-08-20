@@ -82,14 +82,24 @@ const byDate = new Map();
 
 for (const file of process.argv.slice(2)) {
   const $ = cheerio.load(readFileSync(file, 'utf8'));
-  const year = Number($('.doc-period').text().match(/(\d{4})/)[1]);
+  const period = $('.doc-period').text();
+  const yearMatch = period.match(/(\d{4})/);
+  if (!yearMatch) throw new Error(`No year found in the period line ("${period.trim()}") of ${basename(file)}`);
+  let year = Number(yearMatch[1]);
+  let lastMonth = -1;
 
   $('article.service').each((_, el) => {
     const $s = $(el);
     const raw = $s.find('.service-date').text().trim(); // "Sunday 4th April"
     const m = raw.match(/(\d+)\w{2}\s+([A-Za-z]+)$/);
     if (!m) throw new Error(`Unreadable date "${raw}" in ${basename(file)}`);
-    const date = `${year}-${String(MONTHS.indexOf(m[2]) + 1).padStart(2, '0')}-${m[1].padStart(2, '0')}`;
+    const monthIdx = MONTHS.indexOf(m[2]);
+    // Services run in document order, so a month index going backwards means the list
+    // has rolled over the new year (December → January) — a Michaelmas-to-Candlemas
+    // list must not file its January services a year early.
+    if (monthIdx < lastMonth) year += 1;
+    lastMonth = monthIdx;
+    const date = `${year}-${String(monthIdx + 1).padStart(2, '0')}-${m[1].padStart(2, '0')}`;
 
     const feast = feastText(flatten($s.find('.service-feast').html() ?? ''));
     if (!byDate.has(date)) byDate.set(date, { date, feast: '', offices: [] });

@@ -49,8 +49,11 @@ const phoneIntl =
     .trim()
     .replace(/^(?:0044|44|0)\s*/, '');
 
+// The phone number as a tel: link — spaces stripped, one derivation for every call site.
+const phoneHref = `tel:${phoneIntl.replace(/\s+/g, '')}`;
+
 // `technical` is spread LAST so developer-only constants always win over the
 // editor-owned JSON — a CMS editor must never be able to override url/geo/mapEmbed/etc.
-export const site = { ...editable, ...technical, phoneIntl } as const;
+export const site = { ...editable, ...technical, phoneIntl, phoneHref } as const;
 
 export type Site = typeof site;

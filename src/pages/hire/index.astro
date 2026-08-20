@@ -13,7 +13,7 @@ const cards = [
 <Base title="Hire our space in Ealing" breadcrumbTitle="Hire" description={hub.description} image={hub.hero.image}>
   <PageHeader kicker={hub.kicker} title={hub.title} intro={hub.intro} />
   <div class="wrap page-body">
-    <Figure src={hub.hero.image} alt={hub.hero.alt} eager aspect="16 / 9" />
+    <Figure src={hub.hero.image} alt={hub.hero.alt} eager aspect="16 / 9" sizes="(max-width: 1140px) 100vw, 1100px" />
     <div class="prose">{hub.body.map((p) => <p>{p}</p>)}</div>
     <nav class="hire-cards" aria-label="What you can hire">
       {cards.map((c) => (

@@ -24,35 +24,35 @@ with prayers and best wishes,
 
 **Mother Sarah**
 
-<img src="/images/news/newsletter-2026-06-21-127451b5-fayre.4.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-21-127451b5-fayre.4.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-06-21-b30160be-band.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-21-b30160be-band.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-06-21-56d71327-cakes.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-21-56d71327-cakes.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-06-21-6b8789ff-fayre.3.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-21-6b8789ff-fayre.3.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-06-21-2ff49a9f-michael.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-21-2ff49a9f-michael.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-06-21-952c3347-fayre.2.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-21-952c3347-fayre.2.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-06-21-14f1c8bf-edited-image_161.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-24-14f1c8bf-edited-image_161.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="615" height="526">
 
 Next Choral Evensong Sunday 5 July at 6pm
 
 Join us.
 
-<img src="/images/news/newsletter-2026-06-21-9e807499-nick.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-21-9e807499-nick.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Bring and Share Lunch - Sunday 5 July Come and celebrate Nick's 40 years of St Barnabas with a whole parish lunch after the 10.30 Mass! For details and contributions for the Bring and Share please contact Sue Proud (if you're not in contact with her, please let Mthr Sarah know and she will introduce you).
 
 Photo of Nick - as ever on the move and fixing things!
 
-<img src="/images/news/newsletter-2026-06-21-de44dfb0-clav.2.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-21-de44dfb0-clav.2.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="797">
 
 Clavinova seeks a good home. We have one surplus clavinova (electric piano) which we would like to re-home. If you know someone who needs a practice keyboard at home, and would welcome something compact and moveable - and always in tune! - then please take a look at it in the Lady Chapel. One or two keys are imperfect, but we hope it is useful for FREE. Please speak to Mthr Sarah, or to Ministry Team
 
-<img src="/images/news/newsletter-2026-06-21-77598c56-chance.arts.illustrated.picnic.poster-3.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-21-77598c56-chance.arts.illustrated.picnic.poster-3.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="920">
 
 ## **Giving to St Barnabas - we need your help!**
 
@@ -122,7 +122,7 @@ _**Sunday**_
 
 **Sung Mass at 10.30**; Noisy Mass and Youth Groups; Children's Church
 
-<img src="/images/news/newsletter-2026-06-21-d38d0a0f-strawberry.tea.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-14-d38d0a0f-strawberry.tea.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="990">
 
 ## **Forward Look - coming dates**
 

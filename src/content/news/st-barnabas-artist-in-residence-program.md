@@ -22,7 +22,7 @@ _**_**
 
 **_What is this about?_** In September 2021 we launched an exciting Artist in Residence programme at St Barnabas. During this 12-month period Helen Charlemagne (a local artist) will meet with parishioners and members of the community to create a collection of art centred on the themes of faith, hope and love. Each of the themes will be explored over a 4-month period beginning with ‘faith’ during the months of September–December 2021.   
 
-**(Watch Fr Justin explain his choice of object and it’s connection to his faith experience of the pandemic.)**
+**(Watch Fr Justin explain his choice of object and its connection to his faith experience of the pandemic.)**
 
 _**How do I participate?**_ Start by identifying an object that represents your experience of ‘faith’ during the past 18 months. Then, make an appointment to see Helen on this page. Bring your object along to discuss why you chose it and how it relates to faith for you. Helen will then produce an artistic rendering of the object as interpreted through your conversation. 
 
@@ -40,7 +40,7 @@ _**Can you explain a little more about the themes?**_ Although life has just sta
 
 <img src="/images/news/52fde40c-whatsapp.image.2020-11-23.at.18.23.32.jpeg" alt="St Barnabas Artist in Residence Programme" loading="lazy" decoding="async" width="370" height="493">
 
-**Helen Charlemange - Biography**
+**Helen Charlemagne - Biography**
 
 My name is Helen Charlemagne, I am an artist, a proud mum of two and I live in the borough of Ealing.
 

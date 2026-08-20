@@ -12,8 +12,8 @@ gallery:
   - { src: /images/life-events/baptism.webp, alt: Water poured at the font during a baptism }
 ---
 
-Whether you are marking a beginning, making a promise, or saying goodbye, we would be glad to
-walk alongside you.
+We would be glad to walk alongside you, whether you are marking a beginning, making a
+promise or saying goodbye.
 
 ## Baptisms & confirmation
 
@@ -26,7 +26,7 @@ no need to be a regular churchgoer to ask.
 We would be honoured to host your wedding. The church is a beautiful and dignified setting,
 and our clergy will guide you through every step of preparing to marry.
 
-## Funerals and Memorials
+## Funerals & memorials
 
 At a time of loss, we are here to help. The clergy conduct funerals for everyone, whether or
 not they were churchgoers, and continue to offer bereavement support afterwards (see also our

@@ -30,7 +30,7 @@ I am reading: _Theo of Golden,_ Allen Levi
 
 _image: Trinity; Andrei Rublev (early 15th century)_
 
-<img src="/images/news/newsletter-2026-05-31-9c6a738b-display1.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-17-9c6a738b-display1.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
 **Church Finances - what does St Barnabas mean to you?** Please do look at the St Barnabas church finance posters on the display boards. Three key points:
 
@@ -42,29 +42,29 @@ _image: Trinity; Andrei Rublev (early 15th century)_
 
 "A good measure, pressed down, shaken together, running over, will be put in your lap; for the measure you give will be the measure you get back." Luke 6:38
 
-<img src="/images/news/newsletter-2026-05-31-8843efdc-valerie.drinks.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-31-8843efdc-valerie.drinks.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Mthr Valerie's 80th
 
 Thanks to all who joined in the festivities as we joined Valerie in her 80th birthday celebrations. Special thanks to those on the bar!
 
-<img src="/images/news/newsletter-2026-05-31-14f1c8bf-edited-image_161.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-24-14f1c8bf-edited-image_161.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="615" height="526">
 
 Next Choral Evensong dates are Sunday 7 June and Sunday 5 July, at 6pm.
 
 Join us.
 
-<img src="/images/news/newsletter-2026-05-31-e3d49542-pentecost.2.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-31-e3d49542-pentecost.2.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-05-31-a2f7425a-pentecost.3.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-31-a2f7425a-pentecost.3.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-05-31-a9a271f3-pentecost.1.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-31-a9a271f3-pentecost.1.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Pentecost 2026
 
 A wonderful crowd of witnesses and worshippers as we marked the close of Easter with the gifts of the Holy Spirit at Pentecost. Thanks to Valerie for her preaching and vivid visual aid (sadly not captured here!)
 
-<img src="/images/news/newsletter-2026-05-31-31aad026-summer.fayre.tombola.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-31-31aad026-summer.fayre.tombola.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
 TOMBOLA! ROLL UP, ROLL UP! \- donations sought now for the Tombola stall at the Fayre.
 
@@ -72,11 +72,11 @@ Bottles, gifts, kids items in particular. Good quality stuff of all kinds welcom
 
 Leave at the back of church anytime - before the day!
 
-<img src="/images/news/newsletter-2026-05-31-780ccffe-summer.fayre.cakes.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-31-780ccffe-summer.fayre.cakes.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
 CAKE STALL donations \- please contact Janet if you will be donating a cake or baked goods.
 
-<img src="/images/news/newsletter-2026-05-31-e77ef14b-payg.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-03-e77ef14b-payg.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="382" height="355">
 
 Pray as you Go
 
@@ -158,9 +158,9 @@ _**Sunday**_
 
 **Sung Mass at 10.30**; Noisy Mass and Youth Groups; Children's Church
 
-<img src="/images/news/newsletter-2026-05-31-d273e26a-st.barnabas.summer.fayre.2026.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-10-d273e26a-st.barnabas.summer.fayre.2026.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="256" height="320">
 
-<img src="/images/news/newsletter-2026-05-31-c4dd04c1-creation.care.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-17-c4dd04c1-creation.care.webp" alt="Weekly News — 31 May 2026" loading="lazy" decoding="async" width="700" height="379">
 
 ## **Forward Look - coming dates**
 

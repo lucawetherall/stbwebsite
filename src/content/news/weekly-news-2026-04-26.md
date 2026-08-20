@@ -28,11 +28,11 @@ I am reading: _Enlightenment_, by Sarah Perry
 
 _image: morning reflections, Lady Chapel_
 
-<img src="/images/news/newsletter-2026-04-26-114d9d53-jeanny.webp" alt="Weekly News — 26 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-26-114d9d53-jeanny.webp" alt="Weekly News — 26 April 2026" loading="lazy" decoding="async" width="455" height="483">
 
 We welcome the Revd Jeanny Wang in mid May onwards in her 3rd year of curacy. We will be delighted to have Jeanny with us for just under a year, and are excited to be encouraged in new ways in our faith through her gifts. Jeanny has in particular a passion for enabling children's spirituality through Godly Play, which will be a blessing to revive at St Barnabas.
 
-<img src="/images/news/newsletter-2026-04-26-4477ec7e-garden.webp" alt="Weekly News — 26 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-26-4477ec7e-garden.webp" alt="Weekly News — 26 April 2026" loading="lazy" decoding="async" width="700" height="749">
 
 Celebrate Ascension Day with vicarage garden sparkling drinks, and Mass for 30 mins beforehand.
 
@@ -40,7 +40,7 @@ Thursday 14 May, mass at 7pm in the church, drinks follow straight after at 7.30
 
 Please note, this will be drinks only, so do eat before you set out!
 
-<img src="/images/news/newsletter-2026-04-26-29e1c553-annual.report.webp" alt="Weekly News — 26 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-26-29e1c553-annual.report.webp" alt="Weekly News — 26 April 2026" loading="lazy" decoding="async" width="330" height="335">
 
 Read the [St Barnabas annual report to the APCM](https://api2.churchdesk.com/files/390c9660-8cc2-4bdc-b2d4-bcfc68f1c845/view).
 
@@ -48,7 +48,7 @@ Also the [financial report and accounts for 2025](https://api2.churchdesk.com/fi
 
 Download from these separate links - or pick up a hard copy in church.
 
-<img src="/images/news/newsletter-2026-04-26-05ef2e6d-choral.evensong.square.2025.v2.webp" alt="Weekly News — 26 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-26-05ef2e6d-choral.evensong.square.2025.v2.webp" alt="Weekly News — 26 April 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Next Choral Evensong is on Sunday 17 May, at 6pm.
 
@@ -130,7 +130,7 @@ _**Sunday**_
 
 **Sung Mass at 10.30**; Noisy Mass and Youth Group; no scheduled Children's Church
 
-<img src="/images/news/newsletter-2026-04-26-dc8c07f8-16may26.fresh.ayres.webp" alt="Weekly News — 26 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-26-dc8c07f8-16may26.fresh.ayres.webp" alt="Weekly News — 26 April 2026" loading="lazy" decoding="async" width="700" height="993">
 
 ## **Forward Look - coming dates**
 

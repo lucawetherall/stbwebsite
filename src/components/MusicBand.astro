@@ -1,10 +1,14 @@
 ---
+import { imageSibling, imageSrcset } from '../lib/images';
+
 interface Props {
   kicker?: string;
   title: string;
   body: string;
   link?: { label: string; href: string };
   image?: string;
+  /** Screen-reader description of the artwork — pass one whenever `image` is overridden. */
+  imageAlt?: string;
 }
 const {
   kicker = 'Music',
@@ -12,14 +16,22 @@ const {
   body,
   link = { label: 'The music of St Barnabas', href: '/music' },
   image = '/images/hero/altar.webp',
+  imageAlt = 'The high altar and sanctuary of St Barnabas during the liturgy.',
 } = Astro.props;
-const imgSm = image.endsWith('.webp') ? image.replace(/\.webp$/, '-1280.webp') : image;
 ---
-<section
-  class="music-band"
-  style={`--mb-lg:url('${image}'); --mb-sm:url('${imgSm}');`}
->
-  <p class="sr-only">The high altar and sanctuary of St Barnabas during the liturgy.</p>
+<section class="music-band">
+  {/* A real <img>, not a CSS background: the band sits below the fold, and an <img> can
+      lazy-load — a background image downloads during first paint and competes with the
+      hero, fonts and CSS for bandwidth. The scrim (::before) sits between image and text. */}
+  <img
+    class="music-band__bg"
+    src={imageSibling(image, 1280) ?? image}
+    srcset={imageSrcset(image)}
+    sizes={imageSrcset(image) ? '100vw' : undefined}
+    alt={imageAlt}
+    loading="lazy"
+    decoding="async"
+  />
   <div class="wrap music-band__inner">
     <p class="music-band__kicker">{kicker}</p>
     <h2 class="music-band__title">{title}</h2>
@@ -32,11 +44,18 @@ const imgSm = image.endsWith('.webp') ? image.replace(/\.webp$/, '-1280.webp') :
   .music-band {
     position: relative;
     color: var(--white);
-    background-image: var(--mb-sm);
-    background-size: cover;
-    background-position: center 35%;
     isolation: isolate;
   }
+  .music-band__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    z-index: -2;
+  }
+  /* flat scrim — NOT a gradient */
   .music-band::before {
     content: '';
     position: absolute;
@@ -83,8 +102,6 @@ const imgSm = image.endsWith('.webp') ? image.replace(/\.webp$/, '-1280.webp') :
     transition: opacity .2s;
   }
   .music-band__link:hover { opacity: .72; }
-
-  @media (min-width: 800px) {
-    .music-band { background-image: var(--mb-lg); }
-  }
+  /* The global burgundy ring vanishes against the scrim-darkened photograph. */
+  .music-band__link:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
 </style>

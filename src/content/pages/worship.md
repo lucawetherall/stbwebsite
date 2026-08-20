@@ -16,7 +16,7 @@ Christ, and through Christ into relationship with God the Father — connecting 
 neighbour and our world.
 
 Whoever you are, and wherever you are on your journey of faith, you are welcome at any
-of our services. Come as you are — there is no test to pass at the door.
+of our services — come as you are.
 
 ## Go deeper
 

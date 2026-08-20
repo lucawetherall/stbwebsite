@@ -13,6 +13,7 @@ import MusicList from '../components/MusicList.astro';
 import ServiceTimes from '../components/ServiceTimes.astro';
 import { getDiaryEvents } from '../lib/events-source';
 import { eventsJsonLd } from '../lib/events-jsonld';
+import { imageSrcset } from '../lib/images';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages', ({ data }) => !data.draft);
@@ -22,11 +23,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, seoTitle, description, kicker, intro, gallery, hero, heroAlt } = entry.data;
-// Responsive sibling produced by the prep script (same convention as Figure.astro):
-// foo.webp → foo-800.webp. Only offered when the hero follows the house .webp convention.
-const heroSrcset = hero?.endsWith('.webp')
-  ? `${hero.replace(/\.webp$/, '-800.webp')} 800w, ${hero} 1600w`
-  : undefined;
+// Responsive sibling per the house convention (src/lib/images.ts); omitted for non-WebP.
+const heroSrcset = hero ? imageSrcset(hero) : undefined;
 const showOrganSpec = entry.id === 'music/st-barnabas-organ';
 const showMusicians = entry.id === 'music/our-musicians';
 const showVisitDetails = entry.id === 'about-us/visiting';
@@ -62,7 +60,7 @@ const eventLd = showWhatsOn ? eventsJsonLd(events) : [];
         class="page-hero__img"
         src={hero}
         srcset={heroSrcset}
-        sizes="(max-width: 1140px) 100vw, 1100px"
+        sizes={heroSrcset ? '(max-width: 1140px) 100vw, 1100px' : undefined}
         alt={heroAlt || title}
         loading="eager"
         decoding="async"

@@ -1,6 +1,6 @@
 ---
 title: Music
-intro: Music is woven through everything we do — and it carries the prayer of this place.
+intro: Music carries the prayer of this place, from the Sunday Sung Mass to the feasts of the year.
 description: Music at St Barnabas, Ealing — a thriving choir in the Anglican choral tradition leading the Sung Mass each Sunday, with paid choral scholarships and young singers welcome.
 hero: /images/music/choir-organ.webp
 heroAlt: The choir and the gilded organ pipes

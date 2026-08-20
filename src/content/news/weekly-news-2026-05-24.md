@@ -22,7 +22,7 @@ I am reading: _Theo of Golden,_ Allen Levi
 
 _image: Pentecost, Leslie Xuereb (b.1957)_
 
-<img src="/images/news/newsletter-2026-05-24-9c6a738b-display1.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-17-9c6a738b-display1.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
 **Church Finances - what does St Barnabas mean to you?** Please do look at the St Barnabas church finance posters on the display boards. Three key points:
 
@@ -34,19 +34,19 @@ _image: Pentecost, Leslie Xuereb (b.1957)_
 
 "A good measure, pressed down, shaken together, running over, will be put in your lap; for the measure you give will be the measure you get back." Luke 6:38
 
-<img src="/images/news/newsletter-2026-05-24-0db768a7-edited-image_162.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-24-0db768a7-edited-image_162.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async" width="700" height="761">
 
 Invitation to drinks to celebrate Mthr Valerie's 80th
 
 Valerie would love you to stay and join her for drinks after the 10.30 Mass on Sunday. At the back of church - come along!
 
-<img src="/images/news/newsletter-2026-05-24-14f1c8bf-edited-image_161.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-24-14f1c8bf-edited-image_161.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async" width="615" height="526">
 
 Next Choral Evensong dates are Sunday 7 June and Sunday 5 July, at 6pm.
 
 Join us.
 
-<img src="/images/news/newsletter-2026-05-24-044e1817-candles.1.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-17-044e1817-candles.1.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Candle wax recycling
 
@@ -56,7 +56,7 @@ Old candles from homes, restaurants and churches are collected by Recycled Wax a
 
 Browse their collection online, and buy back the wax we have donated!
 
-<img src="/images/news/newsletter-2026-05-24-e77ef14b-payg.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-03-e77ef14b-payg.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async" width="382" height="355">
 
 Pray as you Go
 
@@ -136,11 +136,11 @@ _**Sunday**_
 
 **Sung Mass at 10.30**; Noisy Mass and Youth Groups; Children's Church
 
-<img src="/images/news/newsletter-2026-05-24-d273e26a-st.barnabas.summer.fayre.2026.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-10-d273e26a-st.barnabas.summer.fayre.2026.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async" width="256" height="320">
 
-<img src="/images/news/newsletter-2026-05-24-1a7037b4-flower.event.poster.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-10-1a7037b4-flower.event.poster.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async" width="700" height="990">
 
-<img src="/images/news/newsletter-2026-05-24-c4dd04c1-creation.care.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-05-17-c4dd04c1-creation.care.webp" alt="Weekly News — 24 May 2026" loading="lazy" decoding="async" width="700" height="379">
 
 ## **Forward Look - coming dates**
 

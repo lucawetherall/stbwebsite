@@ -30,33 +30,33 @@ Scenes from Holy Week and Easter
 
 Compline; the deserted Gethsemane; sacristan and vicar planning!; Ealing Churches Good Friday Walk of Witness; Good Friday children's workshop tombs; Holy Saturday morning prayer; Saturday church cleaning and decorating; the Easter Garden created by families; Easter Vigil; Easter Day. We don't generally take photos of children's activities but the Easter Egg Hunt was also a real success. What a blessed week!
 
-<img src="/images/news/newsletter-2026-04-19-f3216535-img_4491.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-f3216535-img_4491.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="725">
 
-<img src="/images/news/newsletter-2026-04-19-5a7b3619-img_4509.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-5a7b3619-img_4509.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-04-19-043dcc6a-img_4494.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-043dcc6a-img_4494.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="617">
 
-<img src="/images/news/newsletter-2026-04-19-3e767370-img_4514_1.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-3e767370-img_4514_1.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="548">
 
-<img src="/images/news/newsletter-2026-04-19-6c2c2ec5-img_4518.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-6c2c2ec5-img_4518.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="722">
 
-<img src="/images/news/newsletter-2026-04-19-345b726d-img_4523_1.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-345b726d-img_4523_1.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="767">
 
-<img src="/images/news/newsletter-2026-04-19-3a00d07b-img_4527.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-3a00d07b-img_4527.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="774">
 
-<img src="/images/news/newsletter-2026-04-19-f491ada3-img_4530.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-f491ada3-img_4530.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="833">
 
-<img src="/images/news/newsletter-2026-04-19-af50f43d-img_4526.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-af50f43d-img_4526.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="775">
 
-<img src="/images/news/newsletter-2026-04-19-09d83a7f-img_4538.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-09d83a7f-img_4538.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="819">
 
-<img src="/images/news/newsletter-2026-04-19-8bfc3aff-easter.decorations.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-12-8bfc3aff-easter.decorations.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="668">
 
-<img src="/images/news/newsletter-2026-04-19-3d134892-pitshanger.pictures.square.size.april.18.2026.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-05-3d134892-pitshanger.pictures.square.size.april.18.2026.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-04-19-84bff7a6-pitshanger.pictures.square.size.april.2026_1.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-03-29-84bff7a6-pitshanger.pictures.square.size.april.2026_1.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-04-19-e405afe2-271478.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-19-e405afe2-271478.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Electoral Roll
 

@@ -5,4 +5,4 @@ intro: The feasts, concerts and gatherings that make up our life together.
 description: Special services, concerts, talks and community events at St Barnabas Church, Ealing — with our regular pattern of worship week by week.
 draft: false
 ---
-Everyone is welcome at everything here, whether you belong already or are simply curious.
+Everyone is welcome at everything here.

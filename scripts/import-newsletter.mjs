@@ -21,7 +21,7 @@
 //
 // Idempotent three ways: by message uuid (marker comment in each post), by slug
 // (one post per edition date), and safe to re-run from any trigger.
-import { readFile, writeFile, mkdir, access, readdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, access, readdir, rm } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import * as cheerio from 'cheerio';
 import TurndownService from 'turndown';
@@ -73,10 +73,15 @@ function parseDate(s) {
   ) {
     [day, monName] = /^\d/.test(m[1]) ? [m[1], m[2]] : [m[2], m[1]];
     const now = new Date();
-    year = now.getUTCFullYear();
     const mon = months.findIndex((x) => x.toLowerCase().startsWith(monName.toLowerCase().slice(0, 3)));
     if (mon < 0) return null;
-    if (Date.UTC(year, mon, Number(day)) - now.getTime() > 7 * 86400000) year -= 1;
+    // A yearless date names the edition just sent, so the right year is whichever
+    // candidate lands nearest today — "16th August" seen in January is last year's,
+    // and "2nd January" seen on 31 December is NEXT year's, not eleven months ago.
+    const thisYear = now.getUTCFullYear();
+    year = [thisYear - 1, thisYear, thisYear + 1]
+      .map((y) => ({ y, gap: Math.abs(Date.UTC(y, mon, Number(day)) - now.getTime()) }))
+      .sort((a, b) => a.gap - b.gap)[0].y;
   } else return null;
   const mon = months.findIndex((x) => x.toLowerCase().startsWith(monName.toLowerCase().slice(0, 3)));
   if (mon < 0) return null;
@@ -85,18 +90,47 @@ function parseDate(s) {
 
 // ------------------------------------------------------------------ images -----
 const sanitize = (n) => n.replace(/[^\w.\-]/g, '_').slice(-60);
-async function localiseImage(src, isoDate) {
+const fileExists = (f) => access(f).then(() => true, () => false);
+
+// Named by a hash of the source URL alone — deliberately NO edition-date prefix. The same
+// picture recurs week after week (a poster, the giving banner), and a per-edition name
+// gave the identical bytes a fresh URL every Friday: the repo accumulated exact duplicates
+// and returning readers re-downloaded a file they already had, defeating the year-long
+// image cache. One URL per source image fixes both; an already-localised image is reused.
+// Returns { path, width, height } so the caller can stamp dimensions on the <img> (no
+// layout shift as the reader scrolls a long newsletter).
+async function localiseImage(src, created) {
   const abs = new URL(src, 'https://edge.churchdesk.com').href;
   const base = sanitize(abs.split('/').pop().split('?')[0] || 'image').replace(/\.(png|jpe?g|gif|webp)$/i, '');
-  const name = `newsletter-${isoDate}-${createHash('md5').update(abs).digest('hex').slice(0, 8)}-${base}.webp`;
+  const name = `newsletter-${createHash('md5').update(abs).digest('hex').slice(0, 8)}-${base}.webp`;
+  const file = `${IMG_DIR}/${name}`;
+  if (await fileExists(file)) {
+    const meta = await sharp(file).metadata();
+    return { path: `/images/news/${name}`, width: meta.width, height: meta.height };
+  }
   const r = await fetch(abs);
   if (!r.ok) throw new Error(`image fetch ${r.status}`);
   const buf = Buffer.from(await r.arrayBuffer());
-  await sharp(buf)
+  const info = await sharp(buf)
     .resize({ width: MAX_IMG_WIDTH, withoutEnlargement: true })
-    .webp({ quality: 80, effort: 6 })
-    .toFile(`${IMG_DIR}/${name}`);
-  return `/images/news/${name}`;
+    .webp({ quality: 72, effort: 6 })
+    .toFile(file);
+  created.push(file);
+  return { path: `/images/news/${name}`, width: info.width, height: info.height };
+}
+
+// The -256/-800 siblings src/lib/images.ts offers the news list (128px thumbnail slot),
+// so a fresh post's hero behaves like the prepared archive's. Idempotent.
+async function heroSiblings(path, created) {
+  const file = `public${path}`;
+  const { width = 0 } = await sharp(file).metadata();
+  for (const [w, q] of [[256, 70], [800, 72]]) {
+    if (w !== 256 && width <= w) continue;
+    const out = file.replace(/\.webp$/, `-${w}.webp`);
+    if (await fileExists(out)) continue;
+    await sharp(file).resize({ width: w, withoutEnlargement: true }).webp({ quality: q, effort: 6 }).toFile(out);
+    created.push(out);
+  }
 }
 
 // ------------------------------------------------------------------ links ------
@@ -125,7 +159,10 @@ td.addRule('lazyImg', {
     const src = node.getAttribute('src') || '';
     if (!src) return '';
     const alt = (node.getAttribute('alt') || '').replace(/"/g, '&quot;');
-    return `<img src="${src}" alt="${alt}" loading="lazy" decoding="async">`;
+    const w = node.getAttribute('width');
+    const h = node.getAttribute('height');
+    const size = w && h ? ` width="${w}" height="${h}"` : '';
+    return `<img src="${src}" alt="${alt}"${size} loading="lazy" decoding="async">`;
   },
 });
 
@@ -221,10 +258,15 @@ async function convertEdition({ rowsHtml, title: rawTitle, uuid, newsFiles }) {
     }
   }
 
-  // -- images: download + optimise.
+  // -- images: download + optimise. Files written this run are tracked so the
+  // refuse-to-publish path below can remove them again — otherwise a refusal would
+  // leave orphan images for the workflow to commit beside no post.
+  const created = [];
   if (hero) {
     try {
-      hero = await localiseImage(hero, isoDate);
+      const localised = await localiseImage(hero, created);
+      hero = localised.path;
+      await heroSiblings(hero, created);
     } catch (e) {
       console.warn(`  hero image failed (${e.message}) — post will have no hero`);
       hero = undefined;
@@ -234,8 +276,13 @@ async function convertEdition({ rowsHtml, title: rawTitle, uuid, newsFiles }) {
     const src = $(img).attr('src');
     if (!src) { $(img).remove(); continue; }
     try {
-      $(img).attr('src', await localiseImage(src, isoDate));
+      const localised = await localiseImage(src, created);
+      $(img).attr('src', localised.path);
       $(img).removeAttr('srcset');
+      if (localised.width && localised.height) {
+        $(img).attr('width', String(localised.width));
+        $(img).attr('height', String(localised.height));
+      }
       if (!($(img).attr('alt') || '').trim()) $(img).attr('alt', title);
     } catch (e) {
       console.warn(`  dropping image ${src.slice(0, 70)} (${e.message})`);
@@ -262,6 +309,7 @@ async function convertEdition({ rowsHtml, title: rawTitle, uuid, newsFiles }) {
   if (cut > 200) body = body.slice(0, cut).trim();
   if (body.length < 200) {
     console.warn(`  ${title}: converted body suspiciously short (${body.length} chars) — refusing to publish.`);
+    await Promise.all(created.map((f) => rm(f, { force: true })));
     return null;
   }
 

@@ -28,15 +28,15 @@ This week I am reading: Embracing Justice: Isabelle Hamley
 
 _Image: Mary Magdalene and Christ - Noli me tangere; Fra Angelico (1442)_
 
-<img src="/images/news/newsletter-2026-07-19-5cb84c73-ff1.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-07-19-5cb84c73-ff1.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-07-19-aba59131-ff2.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-07-19-aba59131-ff2.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-07-19-a4c27db2-ff3.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-07-19-a4c27db2-ff3.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-07-19-cbe7b8e1-ff4.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-07-19-cbe7b8e1-ff4.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-07-19-c5ee546f-tosca.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-28-c5ee546f-tosca.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async" width="431" height="442">
 
 Pitshanger Pictures
 
@@ -52,7 +52,7 @@ Tickets are just £10. No booking necessary, pay on the door.
 
 There will be refreshments available to purchase before and during the interval.
 
-<img src="/images/news/newsletter-2026-07-19-f3f037a8-bloom.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-07-05-f3f037a8-bloom.webp" alt="Weekly News — 19 July 2026" loading="lazy" decoding="async" width="700" height="576">
 
 Ealing Flower Festival - Cinema in Bloom
 

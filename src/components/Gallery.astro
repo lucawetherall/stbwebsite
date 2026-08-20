@@ -1,12 +1,13 @@
 ---
+import { imageSrcset } from '../lib/images';
+
 interface Img { src: string; alt: string; }
 interface Props { images: Img[] }
 const { images } = Astro.props;
 
-// Thumbnails draw the -800 sibling (the prep-script convention, as in Figure.astro);
+// Thumbnails draw the -800 sibling (the house convention, src/lib/images.ts);
 // the lightbox keeps the full-size file, which only downloads when opened.
-const thumbSrcset = (src: string) =>
-  src.endsWith('.webp') ? `${src.replace(/\.webp$/, '-800.webp')} 800w, ${src} 1600w` : undefined;
+const thumbSrcset = (src: string) => imageSrcset(src);
 ---
 <div class="gallery" data-gallery>
   <ul class="gallery__grid">
@@ -16,7 +17,7 @@ const thumbSrcset = (src: string) =>
           <img
             src={img.src}
             srcset={thumbSrcset(img.src)}
-            sizes="(max-width: 760px) 50vw, 340px"
+            sizes={thumbSrcset(img.src) ? '(max-width: 760px) 50vw, 340px' : undefined}
             alt={img.alt}
             loading="lazy"
             decoding="async"

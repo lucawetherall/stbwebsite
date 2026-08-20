@@ -12,7 +12,7 @@ import { site } from '../data/site';
   <PageHeader
     kicker="Get in touch"
     title="Contact Us"
-    intro="We would love to hear from you — whether you are planning a visit, an enquiry or a booking."
+    intro="We would love to hear from you, whether you are planning a visit, making an enquiry or booking a space."
   />
   <div class="wrap">
     <Figure
@@ -20,6 +20,8 @@ import { site } from '../data/site';
       alt="St Barnabas Church on Pitshanger Lane"
       caption="St Barnabas — on the corner of Pitshanger Lane and Denison Road"
       aspect="16 / 9"
+      sizes="(max-width: 1140px) 100vw, 1100px"
+      eager
     />
   </div>
   <div class="wrap page-body contact">
@@ -37,7 +39,7 @@ import { site } from '../data/site';
 
       <div class="contact__block">
         <h2 class="label">Telephone</h2>
-        <p><a class="content-link" href={`tel:${site.phoneIntl.replace(/\s+/g, '')}`}>{site.phone}</a></p>
+        <p><a class="content-link" href={site.phoneHref}>{site.phone}</a></p>
       </div>
 
       <div class="contact__block">
