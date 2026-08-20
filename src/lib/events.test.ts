@@ -22,6 +22,7 @@ import {
   toIcs,
   toLondonCivil,
   upcomingEvents,
+  worshipEventUrl,
   type EventEntry,
   type SiteEvent,
 } from './events';
@@ -472,6 +473,30 @@ describe('shortLocation', () => {
     expect(shortLocation('Ealing Abbey, Charlbury Grove')).toBe('Ealing Abbey, Charlbury Grove');
     expect(shortLocation('The small hall')).toBe('The small hall');
     expect(shortLocation(undefined)).toBeUndefined();
+  });
+});
+
+describe('worshipEventUrl', () => {
+  it('sends the regular pattern of worship to our own pages', () => {
+    expect(worshipEventUrl('Sunday Mass')).toBe('/worship/sundays');
+    expect(worshipEventUrl('Sung Mass')).toBe('/worship/sundays');
+    expect(worshipEventUrl('Said Mass (BCP)')).toBe('/worship/sundays');
+    expect(worshipEventUrl('Choral Evensong')).toBe('/worship/sundays');
+    expect(worshipEventUrl('Noisy Mass')).toBe('/families-children/noisy');
+    expect(worshipEventUrl('Noisy Mass with Stay & Play')).toBe('/families-children/noisy');
+    expect(worshipEventUrl('Children’s Church')).toBe(
+      '/families-children/childrens-church-ages-5-9'
+    );
+    expect(worshipEventUrl('Midweek Mass')).toBe('/worship/weekdays');
+    expect(worshipEventUrl('Morning Prayer')).toBe('/worship/weekdays');
+    expect(worshipEventUrl('Dementia-Friendly Worship')).toBe('/worship/weekdays');
+  });
+
+  it('leaves special services and everything else alone', () => {
+    expect(worshipEventUrl('Midnight Mass')).toBeUndefined();
+    expect(worshipEventUrl('Harvest Festival')).toBeUndefined();
+    expect(worshipEventUrl('Memory Café')).toBeUndefined();
+    expect(worshipEventUrl('Organ Recital')).toBeUndefined();
   });
 });
 

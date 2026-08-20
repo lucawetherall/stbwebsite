@@ -26,7 +26,8 @@ describe('parseIcsEvents', () => {
         title: 'Sunday Mass',
         category: 'Worship',
         location: undefined,
-        url: undefined,
+        // Regular worship always links to our own page for the service.
+        url: '/worship/sundays',
         source: 'feed',
       },
     ]);

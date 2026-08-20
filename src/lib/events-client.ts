@@ -1,5 +1,5 @@
 import { toEventCategory, type EventCategory } from '../data/eventCategories';
-import { addDays, normaliseTitle, tidyFeedTitle, toLondonCivil } from './events';
+import { addDays, normaliseTitle, tidyFeedTitle, toLondonCivil, worshipEventUrl } from './events';
 
 /**
  * The calendar view's in-browser half.
@@ -101,16 +101,19 @@ export function parseIcsEvents(text: string): CalendarEvent[] {
       }
     }
 
+    const title = tidyFeedTitle(unescapeText(prop(body, 'SUMMARY')?.value ?? '')) || 'Event';
     out.push({
       date: start.date,
       endDate,
       time: start.allDay ? undefined : start.time,
       endTime,
       allDay: start.allDay,
-      title: tidyFeedTitle(unescapeText(prop(body, 'SUMMARY')?.value ?? '')) || 'Event',
+      title,
       category: toEventCategory(unescapeText(prop(body, 'CATEGORIES')?.value ?? '')),
       location: unescapeText(prop(body, 'LOCATION')?.value ?? '').trim() || undefined,
-      url: prop(body, 'URL')?.value || undefined,
+      // Regular worship always links home rather than to ChurchDesk's event page — the same
+      // rule the build-time pipeline applies (events-feed.ts).
+      url: worshipEventUrl(title) ?? (prop(body, 'URL')?.value || undefined),
       source: 'feed',
     });
   }

@@ -161,7 +161,8 @@ const payload = {
     }
 
     function eventNode(e: CalendarEvent): HTMLElement {
-      const isLink = !!e.url && /^https?:\/\//i.test(e.url);
+      // Absolute links come from the feed; site-relative ones point at our own pages.
+      const isLink = !!e.url && /^(https?:\/\/|\/)/i.test(e.url);
       const node = document.createElement(isLink ? 'a' : 'span');
       node.className = 'wo-cal__ev';
       if (isLink) (node as HTMLAnchorElement).href = e.url!;
@@ -355,7 +356,7 @@ const payload = {
           loc.textContent = venue;
           li.append(loc);
         }
-        if (e.url && /^https?:\/\//i.test(e.url)) {
+        if (e.url && /^(https?:\/\/|\/)/i.test(e.url)) {
           const p = document.createElement('p');
           const a = document.createElement('a');
           a.className = 'txt-link';
@@ -405,7 +406,11 @@ const payload = {
       ? [...toggle.querySelectorAll<HTMLButtonElement>('[data-wo-view]')]
       : [];
 
-    function setView(view: string, focusTarget = false) {
+    // A fresh key on purpose: the old script saved the view on every visit, not just on a
+    // choice, so honouring 'whats-on-view' would pin long-standing readers to the old default.
+    const VIEW_KEY = 'whats-on-view-2';
+
+    function setView(view: string, focusTarget = false, remember = false) {
       const showCalendar = view === 'calendar';
       root!.hidden = !showCalendar;
       if (diary) diary.hidden = showCalendar;
@@ -414,10 +419,12 @@ const payload = {
         b.setAttribute('aria-pressed', String(active));
         b.classList.toggle('is-active', active);
       }
-      try {
-        localStorage.setItem('whats-on-view', view);
-      } catch {
-        /* private browsing — the toggle still works, it just isn't remembered */
+      if (remember) {
+        try {
+          localStorage.setItem(VIEW_KEY, view);
+        } catch {
+          /* private browsing — the toggle still works, it just isn't remembered */
+        }
       }
       if (focusTarget && showCalendar) monthTitle.scrollIntoView({ block: 'nearest' });
     }
@@ -425,10 +432,11 @@ const payload = {
     if (toggle && diary) {
       toggle.hidden = false;
       for (const b of buttons)
-        b.addEventListener('click', () => setView(b.dataset.woView ?? 'diary', true));
-      let initial = 'diary';
+        b.addEventListener('click', () => setView(b.dataset.woView ?? 'calendar', true, true));
+      // The calendar is the default; only an explicit choice of the list view overrides it.
+      let initial = 'calendar';
       try {
-        initial = localStorage.getItem('whats-on-view') ?? 'diary';
+        initial = localStorage.getItem(VIEW_KEY) ?? 'calendar';
       } catch {
         /* ignored */
       }

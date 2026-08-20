@@ -9,6 +9,7 @@ import {
   tidyFeedDescription,
   tidyFeedTitle,
   weekdayOf,
+  worshipEventUrl,
   type SiteEvent,
 } from './events';
 
@@ -278,11 +279,12 @@ function toSiteEvent(
   }
 
   const seriesId = String(vevent.uid ?? `${startCivil.date}-${vevent.summary ?? 'event'}`);
+  const title = tidyFeedTitle(String(vevent.summary ?? 'Event')) || 'Event';
 
   return {
     id: occurrence ? `${seriesId}@${startCivil.date}` : seriesId,
     seriesId,
-    title: tidyFeedTitle(String(vevent.summary ?? 'Event')) || 'Event',
+    title,
     start,
     end: end instanceof Date && !Number.isNaN(end.getTime()) ? end : undefined,
     date: startCivil.date,
@@ -299,7 +301,8 @@ function toSiteEvent(
     ),
     location: cleanText(vevent.location),
     description: tidyFeedDescription(cleanText(vevent.description)),
-    url: typeof vevent.url === 'string' ? vevent.url : undefined,
+    // Regular worship always links home rather than to ChurchDesk's event page.
+    url: worshipEventUrl(title) ?? (typeof vevent.url === 'string' ? vevent.url : undefined),
     featured: false,
     source: 'feed',
   };

@@ -356,7 +356,8 @@ function baseEvent(entry: EventEntry, date: string, isSeries: boolean): SiteEven
     category: d.category ?? DEFAULT_EVENT_CATEGORY,
     location: d.location,
     description: d.description,
-    url: d.url,
+    // An editor's own link always wins; the fallback keeps regular worship pointing home.
+    url: d.url ?? worshipEventUrl(d.title),
     urlLabel: d.urlLabel,
     image: d.image,
     imageAlt: d.imageAlt,
@@ -579,6 +580,23 @@ export function shortLocation(location: string | undefined): string | undefined 
   const venue = parts.join(', ');
   if (/^st\.?\s*barnabas(\s+church)?$/i.test(venue)) return undefined;
   return venue || undefined;
+}
+
+/**
+ * The page on this site a regular act of worship should link to. The feed's own URL points at
+ * ChurchDesk's event page, which restates the time and nothing more — a visitor tapping
+ * "Sunday Mass" or "Noisy Mass" is better served by our own description of that service. Matched
+ * against the parish's standing service names (serviceTimes.json), deliberately narrowly: a
+ * special service ("Midnight Mass") is not the regular pattern, so it keeps whatever link it had.
+ */
+export function worshipEventUrl(title: string): string | undefined {
+  const t = title.toLowerCase();
+  if (/noisy\s+mass/.test(t)) return '/families-children/noisy';
+  if (/children[’']?s\s+church/.test(t)) return '/families-children/childrens-church-ages-5-9';
+  if (/\b(sung|sunday|said)\s+mass\b|evensong/.test(t)) return '/worship/sundays';
+  if (/midweek\s+mass|morning\s+prayer|evening\s+prayer|dementia/.test(t))
+    return '/worship/weekdays';
+  return undefined;
 }
 
 /**
