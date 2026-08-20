@@ -61,7 +61,20 @@ violations** on the page types tested (home, content, contact, news article).
   requirement) using the glob/loader API, not the legacy `src/content/config.ts`.
 - **Scroll-container bug fixed.** The brief's `body { overflow-x: hidden }` makes `<body>` a
   scroll container, which breaks `window.scrollTo`, anchor jumps and sticky positioning. Changed
-  to `overflow-x: clip` (same clipping, no scroll container).
+  to `overflow-x: clip` (same clipping, no scroll container). **Clipping is the backstop, not the
+  fix (August 2026).** Phones could still be swiped sideways, because Safari below 16 drops
+  `overflow-x: clip` it does not understand, and because clipping only hides content that is
+  genuinely too wide. An audit of every built page at 320–1024px found 41 that overflowed: 39 news
+  posts and the safeguarding contact list, from raw URLs and long email addresses pasted into
+  editor-owned copy (one unbreakable word, wider than the screen), and `/music/`, where the month
+  bar's `.sr-only` spans were absolutely positioned against the sticky `.ml-bar` rather than the
+  scroller, so they escaped its clipping and sat hundreds of pixels off-screen. Fixed at source —
+  `overflow-wrap: break-word` on `body`, `anywhere` on content links (it also lowers their
+  min-content width, so a long address can no longer stretch a grid track), and
+  `position: relative` on the month bar's scroller — with a `@supports not (overflow-x: clip)`
+  fallback putting `overflow-x: hidden` on **`html`** (whose overflow propagates to the viewport,
+  so `<body>` still never becomes a scroll container) for older Safari. All 195 pages now measure
+  zero horizontal overflow.
 - **Hero/MusicBand accessibility.** Art-led bands use a CSS background image plus a visually
   hidden (`.sr-only`) description rather than `role="img"` (which would be an invalid
   nested-interactive container, since the bands contain links). Fixed during the a11y pass.
