@@ -150,7 +150,10 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
   }
   .site-header__bar {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 1.5rem; padding-block: .8rem;
+    /* 1rem, down from 1.5rem: main's Hire item made this a ten-item row, and the two
+       group gaps were the cheapest width left — the lockup and search still sit clear
+       of the menu at 1rem, and the ~18px reclaimed goes to the item gaps instead. */
+    gap: 1rem; padding-block: .8rem;
   }
 
   /* The nav is desktop-only; below the breakpoint the hamburger takes over. */
@@ -181,7 +184,7 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
   .primary-nav__item { position: relative; }
   /* The CTA is a bordered box, so the gap that reads as generous beside a text label
      reads as a collision beside its frame. It gets its own separation from "News". */
-  .primary-nav__item:last-child { margin-left: .45rem; }
+  .primary-nav__item:last-child { margin-left: .3rem; }
   .primary-nav__link {
     display: inline-block; white-space: nowrap; text-decoration: none; color: inherit;
     font-family: var(--font-ui); text-transform: uppercase;
@@ -189,8 +192,11 @@ const isTopActive = (item: NavItem) => bestTop >= 0 && item.href === activeTopHr
        the logo left the items ~17px apart, and tracking is the one lever that buys space
        back without touching the type size — which the congregation's eyesight rules out.
        It also earns its keep on its own terms: tighter labels cohere as units, so the
-       gaps between them do more of the work of separating one item from the next. */
-    letter-spacing: .07em; font-size: .82rem; font-weight: 600;
+       gaps between them do more of the work of separating one item from the next.
+       .8rem, down from .82: the band-era size, trimmed when Hire made this a ten-item
+       row — at the desktop root that is 14.2px against 14.6px, invisible in isolation,
+       and it buys the row ~16px of ink back. */
+    letter-spacing: .07em; font-size: .8rem; font-weight: 600;
     padding-block: .5rem; border-bottom: 1px solid transparent;
     transition: border-color .2s, color .2s;
   }
