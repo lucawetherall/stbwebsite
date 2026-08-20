@@ -214,6 +214,17 @@ the source of truth is always `src/content.config.ts`.
 - **A whole new page:** see §A "How to add a new editable page" — and remember step 3 (register it
   in `config.yml`).
 
+- **A seasonal feature** (the homepage hero insert, the notice line, the season panels): there
+  is normally nothing to add — the features derive from the music list. `src/lib/seasons.ts`
+  computes the live feature from civil-date windows anchored on `liturgicalDates()`
+  (liturgy.ts), gathering each window's services **by date containment, never by matching
+  office names** — the Director of Music's wording is displayed verbatim. The copy (label,
+  standfirst, CTA) lives in `src/data/seasonFeatures.ts`; each entry's `standfirst` is
+  required so a cheerful default can never ship onto the Triduum, and `notice: true`
+  (Christmas and Holy Week only — never the Requiem) admits it to the site notice line. To
+  adjust a window or add a season: edit those two files and extend `src/lib/seasons.test.ts`,
+  which runs the derivation over the **real** collection across the whole choir year.
+
 ### Liturgical-engine guardrails
 
 `src/lib/liturgy.ts` is unit-tested (`src/lib/liturgy.test.ts`). To add a feast: add it in the

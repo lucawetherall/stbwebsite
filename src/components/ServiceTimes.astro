@@ -5,8 +5,15 @@ interface Props {
   only?: 'sundays' | 'weekdays';
   /** Block-title heading level — 'h2' when the component sits directly under a page h1. */
   headingLevel?: 'h2' | 'h3';
+  /**
+   * The digest form: one line per service (time — name — day — note), no descriptions,
+   * the two blocks side by side where they fit. Used at the top of What's On, where the
+   * standing pattern must answer quickly and then hand over to the diary; the full
+   * reference table stays on /worship/sundays and /worship/weekdays.
+   */
+  compact?: boolean;
 }
-const { only, headingLevel = 'h3' } = Astro.props;
+const { only, headingLevel = 'h3', compact = false } = Astro.props;
 const Heading = headingLevel;
 
 const blocks: { title: string; items: ServiceTime[] }[] = [];
@@ -14,19 +21,19 @@ if (only !== 'weekdays') blocks.push({ title: 'Sundays', items: serviceTimes.sun
 if (only !== 'sundays')
   blocks.push({ title: 'Weekdays · in the Lady Chapel', items: serviceTimes.weekdays });
 ---
-<div class="service-times">
+<div class:list={['service-times', compact && 'service-times--compact']}>
   {blocks.map((block) => (
     <section class="service-block">
       <Heading class="service-block__title label">{block.title}</Heading>
       <dl class="service-list">
         {block.items.map((s) => (
-          <div class="service-row">
-            <dt class="service-row__time">{s.time}</dt>
-            <dd class="service-row__detail">
+          <div class:list={['service-row', compact && 'service-row--compact']}>
+            <dt class:list={['service-row__time', compact && 'service-row__time--compact']}>{s.time}</dt>
+            <dd class:list={['service-row__detail', compact && 'service-row__detail--compact']}>
               <span class="service-row__name">{s.name}</span>
               {s.when && <span class="service-row__when">{s.when}</span>}
               {s.note && <span class="service-row__note">{s.note}</span>}
-              {s.description && <span class="service-row__desc">{s.description}</span>}
+              {!compact && s.description && <span class="service-row__desc">{s.description}</span>}
             </dd>
           </div>
         ))}
@@ -66,7 +73,37 @@ if (only !== 'sundays')
   .service-row__note { color: var(--ink-soft); font-size: .98rem; }
   .service-row__desc { margin-top: .35rem; max-width: 56ch; }
 
+  /* ---- compact (digest) form — the service-band's quiet row idiom ---- */
+  .service-times--compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 3.5rem;
+    align-items: start;
+  }
+  .service-times--compact .service-list { gap: .55rem; }
+  .service-row--compact {
+    grid-template-columns: 5.2rem 1fr;
+    gap: .9rem;
+    padding-top: .55rem;
+  }
+  .service-row__time--compact {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .service-row__detail--compact {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .1rem .6rem;
+  }
+  .service-row__detail--compact .service-row__name { font-size: 1.05rem; }
+  .service-row__detail--compact .service-row__note { font-size: .92rem; }
+
+  @media (max-width: 720px) {
+    .service-times--compact { grid-template-columns: 1fr; gap: 2.2rem; }
+  }
   @media (max-width: 520px) {
-    .service-row { grid-template-columns: 1fr; gap: .3rem; }
+    .service-row:not(.service-row--compact) { grid-template-columns: 1fr; gap: .3rem; }
   }
 </style>

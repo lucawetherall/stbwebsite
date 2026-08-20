@@ -66,7 +66,7 @@ collections:
   - name: services
     label: 🎵 This Sunday's Music
     label_singular: Service sheet
-    description: The music list for a Sunday, shown in the "This Sunday" block.
+    description: The music list for a Sunday, shown in the "This Sunday" block. Around the great feasts these sheets also fill the seasonal panel on the homepage and What's On — deleting a sheet removes its services there too.
     folder: src/content/services
     create: true
     extension: json

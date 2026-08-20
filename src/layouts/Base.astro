@@ -6,6 +6,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Consent from '../components/Consent.astro';
+import SeasonRibbon from '../components/SeasonRibbon.astro';
 import { site } from '../data/site';
 import { siteJsonLd } from '../lib/seo';
 import { crumbsFor } from '../lib/breadcrumbs';
@@ -115,6 +116,8 @@ const section = crumbs.length > 1 ? crumbs[1].label : 'Home';
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <SiteHeader />
+    {/* The seasonal notice line — outside <main>, so outside the search index. */}
+    <SeasonRibbon pathname={Astro.url.pathname} suppress={noindex} />
     {/* `data-pagefind-body` marks the region the search index is built from; a noindex page
         (the 404, /search itself) carries no such marker and so stays out of the index. */}
     <main id="main" data-pagefind-body={noindex ? undefined : true} data-pagefind-weight={searchWeight}>

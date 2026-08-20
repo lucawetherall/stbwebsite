@@ -10,7 +10,24 @@ import ParishLifeStrip from '../components/ParishLifeStrip.astro';
 import NewsIndex from '../components/NewsIndex.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import GiveCTA from '../components/GiveCTA.astro';
+import SeasonCard from '../components/SeasonCard.astro';
+import { getCollection } from 'astro:content';
+import { activeFeature } from '../lib/seasons';
+import { getLiturgicalDay } from '../lib/liturgy';
+import { heroFor } from '../data/artwork';
 import { site } from '../data/site';
+
+// The seasonal feature, derived from the music list (src/lib/seasons.ts). Out of season
+// it is null and the page is exactly what it always was.
+const sheets = (await getCollection('services')).map((e) => e.data);
+const feature = activeFeature(sheets);
+
+// The mid-page photography breathes with the calendar the way the hero already does —
+// unless the season's artwork is the very image the hero is showing, in which case the
+// band keeps its own default rather than repeating it.
+const seasonArt = heroFor(getLiturgicalDay().key);
+const musicImage =
+  seasonArt.image === '/images/hero/altar.webp' ? undefined : seasonArt.image;
 ---
 {/* serviceSchema: the homepage is where "mass times in Ealing" tends to land, so it carries the
     standing-service markup as well as the worship pages. */}
@@ -24,7 +41,9 @@ import { site } from '../data/site';
       { label: 'Plan your visit', href: '/about-us/visiting' },
       { label: 'Our worship', href: '/worship' },
     ]}
-  />
+  >
+    {feature && <SeasonCard slot="aside" feature={feature} variant="hero" />}
+  </Hero>
 
   <ServiceTimesBand />
 
@@ -47,6 +66,8 @@ import { site } from '../data/site';
     title="A church that sings"
     body="Our choir leads the Sung Mass each Sunday in the Anglican choral tradition, under our Director of Music (Luca) and our Organist (Hugh)."
     link={{ label: 'The music of St Barnabas', href: '/music' }}
+    image={musicImage}
+    imageAlt={musicImage ? seasonArt.alt : undefined}
   />
 
   <NewsIndex limit={3} />

@@ -73,13 +73,38 @@ export function getLiturgicalDay(today = new Date()): LiturgicalDay {
   })();
   const t = D(today);
 
-  // Principal feasts (override season for hero/text). Extend as needed.
+  // Principal feasts and holy days (override season for hero/text). Names follow the
+  // parish's printed usage (Common Worship style, as on the music list). Note the parish
+  // often keeps a feast *transferred* to the nearest Sunday — the engine states the
+  // kalendar date; the music list states the parish's keeping (DECISIONS.md).
+  const remembrance = (() => {
+    // Remembrance Sunday: the Sunday nearest 11 November (8–14 Nov).
+    const x = D(new Date(y, 10, 11));
+    const off = ((7 - x.getDay()) % 7) <= 3 ? (7 - x.getDay()) % 7 : -x.getDay();
+    return add(x, off);
+  })();
   const feasts: [Date, string, Season][] = [
-    [new Date(y, 5, 11), 'Feast of St Barnabas', 'Ordinary Time'], // patronal, 11 Jun
-    [new Date(y, 7, 15), 'The Blessed Virgin Mary', 'Ordinary Time'], // 15 Aug
-    [new Date(y, 10, 1), 'All Saints', 'Ordinary Time'], // 1 Nov
+    [new Date(y, 0, 6), 'The Epiphany', 'Epiphany'], // 6 Jan
+    [new Date(y, 1, 2), 'Candlemas', 'Epiphany'], // 2 Feb — closes the Epiphany season
+    [ash, 'Ash Wednesday', 'Lent'],
+    [add(e, -21), 'Mothering Sunday', 'Lent'], // Lent 4
+    [palm, 'Palm Sunday', 'Holy Week'],
+    [add(e, -3), 'Maundy Thursday', 'Holy Week'],
+    [add(e, -2), 'Good Friday', 'Holy Week'],
+    [add(e, -1), 'Holy Saturday', 'Holy Week'],
+    [e, 'Easter Day', 'Eastertide'],
     [ascension, 'Ascension Day', 'Eastertide'],
     [trinity, 'Trinity Sunday', 'Ordinary Time'],
+    [add(e, 60), 'Corpus Christi', 'Ordinary Time'], // Thursday after Trinity
+    [new Date(y, 5, 11), 'St Barnabas the Apostle', 'Ordinary Time'], // patronal, 11 Jun
+    [new Date(y, 7, 15), 'The Blessed Virgin Mary', 'Ordinary Time'], // 15 Aug
+    [new Date(y, 10, 1), "All Saints' Day", 'Ordinary Time'], // 1 Nov
+    [new Date(y, 10, 2), 'The Commemoration of the Faithful Departed', 'Ordinary Time'], // 2 Nov
+    [remembrance, 'Remembrance Sunday', 'Ordinary Time'],
+    [add(adventStart, -7), 'Christ the King', 'Ordinary Time'],
+    [adventStart, 'Advent Sunday', 'Advent'],
+    [new Date(y, 11, 24), 'Christmas Eve', 'Advent'], // Advent until sundown
+    [new Date(y, 11, 25), 'Christmas Day', 'Christmastide'],
   ];
   for (const [d, name, season] of feasts) if (eq(t, d)) return { season, feast: name, key: slug(name) };
 
@@ -95,6 +120,55 @@ export function getLiturgicalDay(today = new Date()): LiturgicalDay {
   function s(season: Season): LiturgicalDay {
     return { season, key: slug(season) };
   }
+}
+
+
+/**
+ * The year's liturgical boundary dates, as civil-date `YYYY-MM-DD` strings.
+ *
+ * Strings, deliberately: this module builds Dates with the local constructor, while the
+ * services/events machinery works in London-civil-dates-on-UTC-midnight. A raw Date crossing
+ * that boundary is a BST off-by-one waiting to ship (it only shows off-CI), so only civil
+ * strings cross it. Consumers compare them lexicographically, like `todayInLondon()`.
+ */
+export interface LiturgicalDates {
+  ash: string;
+  passiontide: string;
+  palm: string;
+  easter: string;
+  ascension: string;
+  pentecost: string;
+  trinity: string;
+  adventStart: string;
+  christmas: string;
+}
+
+const civil = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+export function liturgicalDates(y: number): LiturgicalDates {
+  const e = easter(y);
+  const adventStart = (() => {
+    const x = D(new Date(y, 11, 25));
+    let s = x,
+      n = 0;
+    while (n < 4) {
+      s = add(s, -1);
+      if (s.getDay() === 0) n++;
+    }
+    return s;
+  })();
+  return {
+    ash: civil(add(e, -46)),
+    passiontide: civil(add(e, -14)),
+    palm: civil(add(e, -7)),
+    easter: civil(e),
+    ascension: civil(add(e, 39)),
+    pentecost: civil(add(e, 49)),
+    trinity: civil(add(e, 56)),
+    adventStart: civil(adventStart),
+    christmas: `${y}-12-25`,
+  };
 }
 
 /** A quiet monochrome line, e.g. "Sunday, 7 June 2026 · Corpus Christi". */

@@ -22,6 +22,10 @@ on:
   # reach the built diary the same afternoon (the What's On *calendar view* also re-reads the
   # feeds live in the browser, so it never waits for a build). Off the hour, to avoid the
   # crowded top-of-hour runner queue.
+  # NOTE: GitHub disables `schedule` triggers after ~60 days without repo activity, and a
+  # failed scheduled run fails silently. Both are accepted and tracked in DECISIONS.md's
+  # runbook — the seasonal panels and "This Sunday" band make a stalled cron more visible
+  # than it used to be, so check the Actions tab if the site seems frozen in time.
   schedule:
     - cron: '12 3 * * *'
     - cron: '42 12 * * *'

@@ -1,35 +1,98 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import EventsList from '../../components/EventsList.astro';
 import Figure from '../../components/Figure.astro';
+import SeasonCard from '../../components/SeasonCard.astro';
 import { getDiaryEvents } from '../../lib/events-source';
 import { eventsJsonLd } from '../../lib/events-jsonld';
+import { activeFeature } from '../../lib/seasons';
+import { liturgicalDates } from '../../lib/liturgy';
+import { civilFromDateOnly, formatCivilDate, todayInLondon } from '../../lib/events';
 
 // This page keeps the liturgical year; What's On carries everything else — including the
 // regular weekly pattern the feed repeats, which is filtered out here (`regular`).
 const upcoming = (await getDiaryEvents()).filter((e) => e.category === 'Worship' && !e.regular);
 
 const eventLd = eventsJsonLd(upcoming);
+
+// The live seasonal feature and the music list, which supplies each feast's next date and
+// time. Names below follow the music list's own wording (the Director of Music's printed
+// usage) — the rename from "The Great Vigil" / "Easter Sunday" / "All Souls' Requiem" is
+// flagged for parish sign-off in the PR.
+const sheets = (await getCollection('services')).map((e) => e.data);
+const season = activeFeature(sheets);
+const today = todayInLondon();
+
+// Every office, flattened onto civil dates, today onwards.
+const offices = sheets
+  .flatMap((sheet) =>
+    sheet.offices.map((o) => ({ date: civilFromDateOnly(sheet.date), time: o.time, name: o.name }))
+  )
+  .filter((o) => o.date >= today)
+  .sort((a, b) => (a.date < b.date ? -1 : 1));
+
+// Each feast resolves to a date either from the liturgical calendar (then the time is read
+// off that day's sheet) or — where the parish's keeping moves, like the Requiem on All
+// Saints' evening — from the sheet itself, looked up by the office's exact printed name.
+const y = Number(today.slice(0, 4));
+const nextDates = (pick: (d: ReturnType<typeof liturgicalDates>) => string): string =>
+  [liturgicalDates(y), liturgicalDates(y + 1)].map(pick).find((d) => d >= today) ?? '';
+const addDaysLocal = (date: string, n: number) => {
+  const [yy, mm, dd] = date.split('-').map(Number);
+  const t = new Date(Date.UTC(yy, mm - 1, dd + n));
+  return t.toISOString().slice(0, 10);
+};
+
+type Resolver = { byDate?: (d: ReturnType<typeof liturgicalDates>) => string; byName?: string };
+const when = (r: Resolver): string | undefined => {
+  let date = '';
+  let time: string | undefined;
+  if (r.byName) {
+    const office = offices.find((o) => o.name === r.byName);
+    if (!office) return undefined;
+    date = office.date;
+    time = office.time;
+  } else if (r.byDate) {
+    date = nextDates(r.byDate);
+    if (!date) return undefined;
+    time = offices.find((o) => o.date === date)?.time;
+  }
+  const label = formatCivilDate(date, { weekday: true, year: false });
+  return time ? `${label}, ${time}` : label;
+};
+
 const groups = [
   {
     title: 'Lent, Holy Week & Easter',
     feasts: [
-      'Ash Wednesday',
-      'Palm Sunday',
-      'Maundy Thursday',
-      'Good Friday',
-      'The Great Vigil & First Mass of Easter',
-      'Easter Sunday',
+      { name: 'Ash Wednesday', when: when({ byDate: (d) => d.ash }) },
+      { name: 'Palm Sunday', when: when({ byDate: (d) => d.palm }) },
+      { name: 'Maundy Thursday', when: when({ byDate: (d) => addDaysLocal(d.easter, -3) }) },
+      { name: 'Good Friday', when: when({ byDate: (d) => addDaysLocal(d.easter, -2) }) },
+      {
+        name: 'The Easter Vigil & First Mass of Easter',
+        when: when({ byDate: (d) => addDaysLocal(d.easter, -1) }),
+      },
+      { name: 'Easter Day', when: when({ byDate: (d) => d.easter }) },
     ],
   },
   {
     title: 'Remembrance, Advent & Christmas',
     feasts: [
-      'All Souls’ Requiem',
-      'A Festival of Nine Lessons & Carols',
-      'Midnight Mass',
-      'Christmas Day',
+      {
+        name: 'Solemn Requiem for the Faithful Departed',
+        gloss:
+          'Keeping All Souls, we remember by name those we have loved and lost; all who mourn are welcome.',
+        when: when({ byName: 'Solemn Requiem for the Faithful Departed' }),
+      },
+      {
+        name: 'A Festival of Nine Lessons & Carols',
+        when: when({ byName: 'A Festival of Nine Lessons & Carols' }),
+      },
+      { name: 'Midnight Mass', when: when({ byName: 'Midnight Mass' }) },
+      { name: 'Christmas Day', when: when({ byDate: (d) => d.christmas }) },
     ],
   },
 ];
@@ -45,6 +108,11 @@ const groups = [
     intro="We celebrate the Christian year in its fullness. These are some of the services we keep through the year."
   />
   <div class="wrap page-body">
+    {season && (
+      <div class="page-season">
+        <SeasonCard feature={season} variant="page" />
+      </div>
+    )}
     {upcoming.length > 0 && (
       <section class="upcoming" aria-labelledby="upcoming-heading">
         <div class="upcoming__head">
@@ -60,7 +128,13 @@ const groups = [
         <section class="feast-group">
           <h2 class="label feast-group__title">{group.title}</h2>
           <ul class="feast-list">
-            {group.feasts.map((f) => <li class="feast-list__item serif">{f}</li>)}
+            {group.feasts.map((f) => (
+              <li class="feast-list__item serif">
+                {f.name}
+                {f.when && <span class="feast-list__when">{f.when}</span>}
+                {'gloss' in f && f.gloss && <span class="feast-list__gloss">{f.gloss}</span>}
+              </li>
+            ))}
           </ul>
         </section>
       ))}
@@ -99,6 +173,28 @@ const groups = [
     border-top: 1px solid var(--line);
     padding-top: .9rem;
   }
+  /* The date sits inside a Cormorant li, so it takes the body face explicitly —
+     never inherited display italic for a datum (the .serif trap, guardrails §B). */
+  .feast-list__when {
+    display: block;
+    margin-top: .25rem;
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 600;
+    font-size: .95rem;
+    color: var(--ink-soft);
+  }
+  .feast-list__gloss {
+    display: block;
+    margin-top: .35rem;
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 400;
+    font-size: .95rem;
+    color: var(--ink-soft);
+    max-width: 44ch;
+  }
+  .page-season { margin-bottom: 3.4rem; }
   @media (max-width: 640px) {
     .feast-groups { grid-template-columns: 1fr; gap: 2.2rem; }
   }
