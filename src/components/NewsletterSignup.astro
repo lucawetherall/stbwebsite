@@ -1,10 +1,16 @@
 ---
+import { getCollection } from 'astro:content';
 import { site } from '../data/site';
 
 interface Props { ground?: 'paper' | 'paper-2' }
 const { ground = 'paper-2' } = Astro.props;
 
 const endpoint = `${site.churchdeskSubscribeApi}?organizationId=${site.churchdeskOrgId}`;
+
+const weeklyNews = (await getCollection('news', ({ data }) => !data.draft && data.category === 'Weekly News'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latestNewsletter = weeklyNews[0];
+const latestNewsletterHref = latestNewsletter ? `/news/${latestNewsletter.id}/` : '/news';
 ---
 <section class:list={['newsletter', `is-${ground}`]} aria-labelledby="nl-heading">
   <div class="wrap newsletter__inner">
@@ -37,7 +43,7 @@ const endpoint = `${site.churchdeskSubscribeApi}?organizationId=${site.churchdes
       </div>
       <div class="nl-submit">
         <button class="btn btn--solid" type="submit">Sign up</button>
-        <a class="txt-link" href={site.newsletterArchive} target="_blank" rel="noopener">
+        <a class="txt-link" href={latestNewsletterHref}>
           Read the latest newsletter
         </a>
       </div>
