@@ -706,7 +706,7 @@ export function toIcs(events: SiteEvent[], opts: IcsOptions): string {
   const lines: string[] = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    `PRODID:-//${name}//Events//EN`,
+    `PRODID:-//${escapeIcs(name)}//Events//EN`,
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     `X-WR-CALNAME:${escapeIcs(name)}`,
@@ -737,7 +737,8 @@ export function toIcs(events: SiteEvent[], opts: IcsOptions): string {
     lines.push(`SUMMARY:${escapeIcs(event.title)}`);
     if (event.description) lines.push(`DESCRIPTION:${escapeIcs(event.description)}`);
     if (event.location) lines.push(`LOCATION:${escapeIcs(event.location)}`);
-    if (event.url) lines.push(`URL:${escapeIcs(absoluteUrl(event.url, opts.siteUrl))}`);
+    // URL is a URI value, not TEXT — RFC 5545 forbids backslash-escaping it.
+    if (event.url) lines.push(`URL:${absoluteUrl(event.url, opts.siteUrl)}`);
     lines.push(`CATEGORIES:${escapeIcs(event.category)}`);
     lines.push('END:VEVENT');
   }

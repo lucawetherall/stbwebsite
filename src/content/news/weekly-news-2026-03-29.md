@@ -28,11 +28,11 @@ I am currently reading: Dappled Beauty: reflections on poems of Gerard Manley Ho
 
 _image: Entry into Jerusalem, Giotto di Bondone c.1305_
 
-<img src="/images/news/newsletter-2026-03-29-a5785198-harry.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-03-29-a5785198-harry.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async" width="516" height="436">
 
 Harry Guthrie ends his role as Director of Music on 5 April 2026. He joined us on Ascension Day 2023, and over the past three years, he has revolutionised our choir and brought joy back into singing choral music. Regular Sunday evening Choral Evensongs feature on the calendar, and we now sing psalms set to Anglican Chant each Sunday morning. We have sung a wide range of mass settings by Haydn, Mozart, Duruflé and Darke, as well as a very broad range of anthems, both ancient & modern. A particular highlight has been the introduction of some contemporary female composers' works. Harry led a very successful 'Come & Sing' event in 2025 and last month the choir took part in a superb joint concert with Ealing Junior Music School Adult Chorale. Above all, we have been a happy band of choristers under his leadership, and it has been immensely enjoyable. He will be missed enormously. His last service will be the Easter Sunday Mass at 10.30am on 5 April 2026. [We are collecting donations for a farewell gift.](https://donate.churchdesk.com/en-gb/1/VS-Sffwo9k) [You can make an online donation here.](https://donate.churchdesk.com/en-gb/1/VS-Sffwo9k)
 
-<img src="/images/news/newsletter-2026-03-29-84bff7a6-pitshanger.pictures.square.size.april.2026_1.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-03-29-84bff7a6-pitshanger.pictures.square.size.april.2026_1.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Pitshanger Pictures
 
@@ -42,7 +42,7 @@ Live organ accompanying this stunning film.
 
 Sunday 19 April at 7pm
 
-<img src="/images/news/newsletter-2026-03-29-e405afe2-271478.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-03-29-e405afe2-271478.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Electoral Roll
 
@@ -52,7 +52,7 @@ Everyone is able to join the electoral roll if they worship here or if they live
 
 Being on the electoral roll can make a difference with school applications, as well as being a part of our belonging and commitment within our Christian faith.
 
-<img src="/images/news/newsletter-2026-03-29-bdd70b95-copy.of.social.media.banner.walk.of.witness.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-03-29-bdd70b95-copy.of.social.media.banner.walk.of.witness.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async" width="700" height="587">
 
 Ealing Churches Walk of Witness
 
@@ -62,7 +62,7 @@ or Ealing Abbey 10.15
 
 If you are joining us, might you also consider being a steward? If so, speak to John Newbegin or Mthr Sarah
 
-[<img src="/images/news/newsletter-2026-03-29-bad393dc-581181.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async">](https://www.bbc.co.uk/programmes/m002sqff)
+[<img src="/images/news/newsletter-2026-03-29-bad393dc-581181.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async" width="659" height="547">](https://www.bbc.co.uk/programmes/m002sqff)
 
  
 
@@ -118,7 +118,7 @@ Please consider donating items from the list in church. Donations may be left af
 
 Small amounts of fresh produce can be accepted ONLY when the Pantry is open on Wednesdays.
 
-[<img src="/images/news/newsletter-2026-03-29-f8e14afd-placeholder.webp" alt="Video" loading="lazy" decoding="async">](https://www.facebook.com/reel/1658610538827371/?fs=e&mibextid=wwXIfr&rdid=KJEeF47vjvkRIvN7&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1HojCwKZ84%2F%3Fmibextid%3DwwXIfr)
+[<img src="/images/news/newsletter-2026-03-29-f8e14afd-placeholder.webp" alt="Video" loading="lazy" decoding="async" width="1200" height="673">](https://www.facebook.com/reel/1658610538827371/?fs=e&mibextid=wwXIfr&rdid=KJEeF47vjvkRIvN7&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1HojCwKZ84%2F%3Fmibextid%3DwwXIfr)
 
 Do you want to see an inclusive national Church of England?
 
@@ -184,9 +184,9 @@ _**Sunday**_
 
 **Followed by Easter Egg Hunt** in the gardens
 
-<img src="/images/news/newsletter-2026-03-29-3f1a5d42-holy.week.dates.details.poster.2026.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-03-29-3f1a5d42-holy.week.dates.details.poster.2026.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async" width="700" height="990">
 
-<img src="/images/news/newsletter-2026-03-29-fdb4572a-easter.egg.hunt.2026.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-03-29-fdb4572a-easter.egg.hunt.2026.webp" alt="Weekly News — 29 March 2026" loading="lazy" decoding="async" width="700" height="990">
 
 ## **Forward Look - coming dates**
 

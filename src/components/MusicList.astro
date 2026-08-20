@@ -444,10 +444,13 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
 
     window.addEventListener('hashchange', () => {
       const i = keys.indexOf(location.hash.slice(1));
-      if (i >= 0) show(i, false);
+      // moveView: the month is display:none at native-scroll time, so without our own
+      // scroll the address changes and the page appears to do nothing.
+      if (i >= 0) show(i, true);
     });
 
     const fromHash = keys.indexOf(location.hash.slice(1));
-    show(fromHash >= 0 ? fromHash : current, false);
+    // A shared link like /music#2027-03 should land on the list, not the top of the page.
+    show(fromHash >= 0 ? fromHash : current, fromHash >= 0);
   }
 </script>

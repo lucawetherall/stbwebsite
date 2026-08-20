@@ -135,9 +135,12 @@ const payload = {
 
     function index(events: CalendarEvent[]): Map<string, CalendarEvent[]> {
       const map = new Map<string, CalendarEvent[]>();
+      const from = `${Math.floor(minMonth / 12)}-${String((minMonth % 12) + 1).padStart(2, '0')}-01`;
       for (const e of events) {
         const last = e.endDate && e.endDate > e.date ? e.endDate : e.date;
-        let d = e.date;
+        // Start indexing at the visible window, not the event's start: a long-running
+        // event that began months ago must not exhaust the span cap before today.
+        let d = e.date < from ? from : e.date;
         for (let i = 0; i < MAX_SPAN_DAYS && d <= last; i++, d = addDays(d, 1)) {
           const list = map.get(d);
           if (list) list.push(e);
@@ -430,7 +433,9 @@ const payload = {
         /* ignored */
       }
       if (window.location.hash === '#calendar') initial = 'calendar';
-      setView(initial);
+      // focusTarget when the reader asked for #calendar: the view is far below the intro
+      // prose, and landing at the top makes the link look broken.
+      setView(initial, window.location.hash === '#calendar');
       // Someone can land on /whats-on and then follow an in-page #calendar link.
       window.addEventListener('hashchange', () => {
         if (window.location.hash === '#calendar') setView('calendar', true);
@@ -476,6 +481,11 @@ const payload = {
         // Rebuild only when something actually changed, keeping any open day panel.
         const key = JSON.stringify(merged);
         if (key !== lastDataKey) {
+          // Rebuilding replaces the focused node and drops keyboard focus to <body>;
+          // wait for the next cycle rather than interrupt a reader mid-interaction.
+          if (root!.contains(document.activeElement) && document.activeElement !== document.body) {
+            return;
+          }
           lastDataKey = key;
           byDate = index(merged);
           render(true);

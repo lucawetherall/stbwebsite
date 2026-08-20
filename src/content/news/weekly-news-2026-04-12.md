@@ -38,11 +38,11 @@ Thursday - Memory Cafe break
 
 Sunday 12 April - Mass with hymns at 10.30; Noisy Mass, no Children's Church or Youth Groups.
 
-<img src="/images/news/newsletter-2026-04-12-3d134892-pitshanger.pictures.square.size.april.18.2026.webp" alt="Weekly News — 12 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-12-3d134892-pitshanger.pictures.square.size.april.18.2026.webp" alt="Weekly News — 12 April 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-04-12-84bff7a6-pitshanger.pictures.square.size.april.2026_1.webp" alt="Weekly News — 12 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-12-84bff7a6-pitshanger.pictures.square.size.april.2026_1.webp" alt="Weekly News — 12 April 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-04-12-e405afe2-271478.webp" alt="Weekly News — 12 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-12-e405afe2-271478.webp" alt="Weekly News — 12 April 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Electoral Roll
 
@@ -52,9 +52,9 @@ Everyone is able to join the electoral roll if they worship here or if they live
 
 Being on the electoral roll can make a difference with school applications, as well as being a part of our belonging and commitment within our Christian faith.
 
-[<img src="/images/news/newsletter-2026-04-12-bad393dc-581181.webp" alt="Weekly News — 12 April 2026" loading="lazy" decoding="async">](https://www.bbc.co.uk/programmes/m002sqff)
+[<img src="/images/news/newsletter-2026-04-12-bad393dc-581181.webp" alt="Weekly News — 12 April 2026" loading="lazy" decoding="async" width="659" height="547">](https://www.bbc.co.uk/programmes/m002sqff)
 
-<img src="/images/news/newsletter-2026-04-12-f53f4345-listening.to.the.music.of.the.soul.webp" alt="Weekly News — 12 April 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-04-12-f53f4345-listening.to.the.music.of.the.soul.webp" alt="Weekly News — 12 April 2026" loading="lazy" decoding="async" width="700" height="851">
 
 Supper and chat
 
@@ -102,7 +102,7 @@ Please consider donating items from the list in church. Donations may be left af
 
 Small amounts of fresh produce can be accepted ONLY when the Pantry is open on Wednesdays.
 
-[<img src="/images/news/newsletter-2026-04-12-f8e14afd-placeholder.webp" alt="Video" loading="lazy" decoding="async">](https://www.facebook.com/reel/1658610538827371/?fs=e&mibextid=wwXIfr&rdid=dGIlpKOwheyTVW3T&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1HojCwKZ84%2F%3Fmibextid%3DwwXIfr)
+[<img src="/images/news/newsletter-2026-04-12-f8e14afd-placeholder.webp" alt="Video" loading="lazy" decoding="async" width="1200" height="673">](https://www.facebook.com/reel/1658610538827371/?fs=e&mibextid=wwXIfr&rdid=dGIlpKOwheyTVW3T&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1HojCwKZ84%2F%3Fmibextid%3DwwXIfr)
 
 Do you want to see an inclusive national Church of England?
 

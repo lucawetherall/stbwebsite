@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import Figure from '../../components/Figure.astro';
 import Gallery from '../../components/Gallery.astro';
+import ChurchHireRates from '../../components/ChurchHireRates.astro';
 import { hire } from '../../data/hire';
 import { site } from '../../data/site';
 const c = hire.concerts;
@@ -10,20 +11,12 @@ const c = hire.concerts;
 <Base title="Hire the church for concerts — Ealing" breadcrumbTitle="Concerts" description={c.description} image={c.hero.image}>
   <PageHeader kicker={c.kicker} title={c.title} intro={c.intro} />
   <div class="wrap page-body">
-    <Figure src={c.hero.image} alt={c.hero.alt} eager aspect="16 / 9" />
+    <Figure src={c.hero.image} alt={c.hero.alt} eager aspect="16 / 9" sizes="(max-width: 1140px) 100vw, 1100px" />
     <div class="prose">{c.body.map((p) => <p>{p}</p>)}</div>
 
-    <section class="hire-section">
-      <h2 class="label hire-section__label">Recording &amp; concert hire rates</h2>
-      <div class="rate-table-wrap">
-        <table class="rate-table">
-          <thead><tr><th scope="col">Item</th><th scope="col">Rate</th></tr></thead>
-          <tbody>{hire.churchHireRates.map((row) => (<tr><th scope="row">{row.item}</th><td>{row.rate}</td></tr>))}</tbody>
-        </table>
-      </div>
-      <p class="venue-note">{hire.churchHireNote} For the organ, see the <a class="content-link" href="/music/st-barnabas-organ">St Barnabas organ</a>.</p>
-      {c.capacity && <p class="venue-note">Capacity: {c.capacity}.</p>}
-    </section>
+    <ChurchHireRates capacity={c.capacity}>
+      For the organ, see the <a class="content-link" href="/music/st-barnabas-organ">St Barnabas organ</a>.
+    </ChurchHireRates>
 
     <section class="hire-section">
       <h2 class="label hire-section__label">The space</h2>
@@ -32,7 +25,7 @@ const c = hire.concerts;
 
     <section class="hire-section">
       <h2 class="label hire-section__label">How to book</h2>
-      <p>To discuss a concert, contact the parish office on <a class="content-link" href={`tel:${site.phoneIntl.replace(/\s+/g, '')}`}>{site.phone}</a> or <a class="content-link" href={`mailto:${site.emails.office}`}>{site.emails.office}</a>. Upcoming concerts appear on <a class="content-link" href="/whats-on">What's On</a>.</p>
+      <p>To discuss a concert, contact the parish office on <a class="content-link" href={site.phoneHref}>{site.phone}</a> or <a class="content-link" href={`mailto:${site.emails.office}`}>{site.emails.office}</a>. Upcoming concerts appear on <a class="content-link" href="/whats-on">What's On</a>.</p>
     </section>
   </div>
 </Base>
@@ -42,10 +35,4 @@ const c = hire.concerts;
   .prose { margin-top: 1.6rem; }
   .hire-section { margin-top: 2.8rem; }
   .hire-section__label { color: var(--burgundy); display: block; margin-bottom: 1.2rem; }
-  .rate-table-wrap { overflow-x: auto; }
-  .rate-table { width: 100%; border-collapse: collapse; }
-  .rate-table th, .rate-table td { text-align: left; padding: .8rem 1rem; border-bottom: 1px solid var(--line); }
-  .rate-table thead th { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: .1em; font-size: .66rem; font-weight: 600; color: var(--burgundy); border-bottom-color: var(--ink); }
-  .rate-table tbody th { font-weight: 600; }
-  .venue-note { margin-top: 1.2rem; color: var(--ink-soft); }
 </style>

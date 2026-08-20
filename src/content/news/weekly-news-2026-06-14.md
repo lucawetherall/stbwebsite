@@ -28,17 +28,17 @@ I look forward to seeing those of you who can there - and we hold our whole news
 
 **Mother Sarah**
 
-<img src="/images/news/newsletter-2026-06-14-126e18f4-nature.count.2026.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-14-126e18f4-nature.count.2026.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async" width="700" height="796">
 
 Last Saturday the Churches Nature Count took place - the team was joined by our expert botanist Roger Watson alongside Garden Team co-lead Dilys Griffiths.  Despite tough weather, the Count went well, and found our wild flowers flourishing in number.
 
-<img src="/images/news/newsletter-2026-06-14-14f1c8bf-edited-image_161.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-14-14f1c8bf-edited-image_161.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async" width="615" height="526">
 
 Next Choral Evensong Sunday 5 July at 6pm
 
 Join us.
 
-<img src="/images/news/newsletter-2026-06-14-31aad026-summer.fayre.tombola.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-14-31aad026-summer.fayre.tombola.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
 TOMBOLA! ROLL UP, ROLL UP! \- last donations sought for the Tombola stall at the Fayre.
 
@@ -46,11 +46,11 @@ Bottles, gifts, kids items in particular. Good quality stuff of all kinds welcom
 
 Leave at the back of church even on the day if necessary!
 
-<img src="/images/news/newsletter-2026-06-14-780ccffe-summer.fayre.cakes.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-14-780ccffe-summer.fayre.cakes.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
 CAKE STALL donations \- please contact Janet if you will be donating a cake or baked goods. Even if last minute, it helps for the team to plan!
 
-<img src="/images/news/newsletter-2026-06-14-e77ef14b-payg.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-14-e77ef14b-payg.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async" width="382" height="355">
 
 Pray as you Go
 
@@ -128,7 +128,7 @@ _**Sunday**_
 
 **Sung Mass at 10.30**; Noisy Mass and Youth Groups; Children's Church
 
-<img src="/images/news/newsletter-2026-06-14-d38d0a0f-strawberry.tea.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-14-d38d0a0f-strawberry.tea.webp" alt="Weekly News — 14 June 2026" loading="lazy" decoding="async" width="700" height="990">
 
 ## **Forward Look - coming dates**
 

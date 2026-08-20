@@ -36,19 +36,19 @@ This week I am reading: Thinking again about marriage: key theological questions
 
 _Image: Archbishop Sarah on pilgrimage in Nazareth last week_
 
-<img src="/images/news/newsletter-2026-06-28-14f1c8bf-edited-image_161.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-28-14f1c8bf-edited-image_161.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async" width="615" height="526">
 
 Next Choral Evensong Sunday 5 July at 6pm
 
 Join us.
 
-<img src="/images/news/newsletter-2026-06-28-9e807499-nick.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-28-9e807499-nick.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Bring and Share Lunch - Sunday 5 July Come and celebrate Nick's 40 years of St Barnabas with a whole parish lunch after the 10.30 Mass! For details and contributions for the Bring and Share please contact Sue Proud (if you're not in contact with her, please let Mthr Sarah know and she will introduce you).
 
 Photo of Nick - as ever on the move and fixing things!
 
-<img src="/images/news/newsletter-2026-06-28-c5ee546f-tosca.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-28-c5ee546f-tosca.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async" width="431" height="442">
 
 Pitshanger Pictures
 
@@ -64,7 +64,7 @@ Tickets are just £10. No booking necessary, pay on the door.
 
 There will be refreshments available to purchase before and during the interval.
 
-<img src="/images/news/newsletter-2026-06-28-b8a5875c-film.2026.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-28-b8a5875c-film.2026.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async" width="456" height="606">
 
 Pitshanger Pictures - Ealing Cinema Night
 
@@ -72,7 +72,7 @@ Pitshanger Pictures - Ealing Cinema Night
 
 The second film is "No Limit" (70 mins). This film stars George Formby and was made in 1936 by Associated Talking Pictures, the parent company of Ealing Studios. He plays the part of a chimney sweep aspiring to become a TT Motorcycle racer on the Isle of Man. It's a comedy. The film is also shown every year at the TT races!
 
-<img src="/images/news/newsletter-2026-06-28-77598c56-chance.arts.illustrated.picnic.poster-3.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-06-28-77598c56-chance.arts.illustrated.picnic.poster-3.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async" width="700" height="920">
 
 ## **Giving to St Barnabas - we need your help!**
 

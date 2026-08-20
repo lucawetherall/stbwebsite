@@ -1,4 +1,6 @@
 ---
+import { imageSrcset } from '../lib/images';
+
 // A single, restrained "life of the parish" strip for the homepage — one quiet
 // photographic moment low on the page, each tile linking into its section.
 // Developer-owned (part of the homepage "cornerstone" layer, like the other bands),
@@ -18,7 +20,16 @@ const items: Item[] = [
       {items.map((it) => (
         <li>
           <a class="parish-life__item" href={it.href}>
-            <img src={it.image} alt={it.alt} width="800" height="1000" loading="lazy" decoding="async" />
+            <img
+              src={it.image}
+              srcset={imageSrcset(it.image)}
+              sizes={imageSrcset(it.image) ? '(max-width: 720px) 50vw, 280px' : undefined}
+              alt={it.alt}
+              width="800"
+              height="1000"
+              loading="lazy"
+              decoding="async"
+            />
             <span class="parish-life__label">{it.label}</span>
           </a>
         </li>

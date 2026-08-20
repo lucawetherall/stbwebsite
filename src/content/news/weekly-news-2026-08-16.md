@@ -24,7 +24,7 @@ Prayers and best wishes until I next see you,
 
 This week I am reading chapters of: After Whiteness - Willie James Jennings
 
-<img src="/images/news/newsletter-2026-08-16-07db5bbf-fayre.21.webp" alt="Weekly News — 16 August 2026" loading="lazy" decoding="async">
+<img src="/images/news/newsletter-2026-08-16-07db5bbf-fayre.21.webp" alt="Weekly News — 16 August 2026" loading="lazy" decoding="async" width="700" height="739">
 
 At the beginning of September we say a fond farewell to Sanjit Sil, our Office Manager of the last 3 and a half years. Sanjit is a highly sought-after teacher of English for Speakers of Other Languages (ESOL), and has worked at St Barnabas alongside his career in that field. He has been invited to expand his work with Ealing Council and West London College - we wish him very well in this enhanced role.
 

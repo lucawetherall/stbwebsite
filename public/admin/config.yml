@@ -430,6 +430,7 @@ collections:
           - { name: description, label: Summary (shown to search engines), widget: text, required: false }
           - { name: seoTitle, label: Search-engine title (optional), widget: string, required: false, hint: 'The headline people see in Google, when it should differ from the page Title above — a page headed "Sundays" might use "Sunday Mass Times" here. Leave empty to use the Title. Around 50 characters; our church name is added for you.' }
           - { name: draft, label: Draft (hide from the site), widget: boolean, required: false, default: false }
+          - { name: updated, label: 'Last updated (optional)', widget: datetime, format: 'YYYY-MM-DD', time_format: false, required: false, hint: 'Set this when the wording meaningfully changes — search engines are told the date. Leave empty otherwise.' }
           - { name: hero, label: Banner photo (optional), widget: image, required: false, hint: 'A wide landscape photo. Leave empty for a text-only page.' }
           - { name: heroAlt, label: Banner photo description (for screen readers), widget: string, required: false }
           - name: body

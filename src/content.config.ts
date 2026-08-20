@@ -18,7 +18,6 @@ const pages = defineCollection({
     intro: z.string().optional(),
     hero: z.string().optional(),
     heroAlt: z.string().optional(),
-    order: z.number().optional(),
     updated: z.coerce.date().optional(),
     draft: z.boolean().default(false),
     gallery: z
@@ -108,7 +107,6 @@ const documents = defineCollection({
     description: z.string().optional(),
     category: z.string().optional(),
     external: z.boolean().default(false),
-    updated: z.coerce.date().optional(),
     order: z.number().optional(),
   }),
 });

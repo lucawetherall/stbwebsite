@@ -3,10 +3,8 @@ import { describeWhen, formatCivilDate, weekdayOf, type SiteEvent } from '../lib
 
 interface Props {
   event: SiteEvent;
-  /** Show the weekday above the numeral. Off inside a tight strip. */
-  showWeekday?: boolean;
 }
-const { event, showWeekday = true } = Astro.props;
+const { event } = Astro.props;
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -31,7 +29,7 @@ const fullDate = event.endDate
 ---
 <li class="event-row">
   <time class="event-row__date" datetime={event.date}>
-    {showWeekday && <span class="event-row__weekday">{weekday}</span>}
+    <span class="event-row__weekday">{weekday}</span>
     <span class="event-row__day serif">{numeral}</span>
     <span class="sr-only">{fullDate}</span>
   </time>

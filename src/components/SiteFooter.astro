@@ -11,15 +11,18 @@ const links = [
   { label: 'Give', href: '/give' },
   { label: 'Safeguarding', href: '/safeguarding' },
   { label: 'Accessibility', href: '/about-us/accessibility' },
-  { label: 'Inclusive Church', href: site.affiliations[0].url, external: true },
-  { label: 'Church of England', href: site.affiliations[1].url, external: true },
+  // The editor owns this list (site.json → Affiliations): use their names and order,
+  // and skip a half-filled row rather than failing the build on it.
+  ...site.affiliations
+    .filter((a) => a?.name && a?.url)
+    .map((a) => ({ label: a.name, href: a.url, external: true })),
 ];
-const tel = `tel:${site.phoneIntl.replace(/\s+/g, '')}`;
+const tel = site.phoneHref;
 ---
 <footer class="site-footer">
   <div class="wrap footer-top">
     <a href="/" class="footer-brand" aria-label="St Barnabas Church, Ealing — home">
-      <Logo size={32} />
+      <Logo size={32} use />
       <span class="footer-brand__text">
         <span class="serif footer-brand__name">St Barnabas Church, Ealing</span>
         <span class="serif footer-brand__locality">The Church of England parish church of Pitshanger</span>
@@ -142,6 +145,8 @@ const tel = `tel:${site.phoneIntl.replace(/\s+/g, '')}`;
     .footer-info { flex-direction: column; align-items: flex-start; gap: .25rem; }
     .footer-info > * + *::before { content: none; }
   }
+  /* The global burgundy ring vanishes against the ink-dark footer. */
+  .site-footer :is(a, button):focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
 </style>
 
 <script>

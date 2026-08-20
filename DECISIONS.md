@@ -148,6 +148,7 @@ the `optimise-images` skill in `.claude/skills/`):
 | `fetch-history-images.mjs` | one-time | Download + optimise the history-page photographs |
 | `list-history-images.mjs` | one-off helper | Print candidate history images (src/alt/caption) for sourcing |
 | `optimise-news-images.mjs` | idempotent | Convert legacy news PNGs to WebP and rewrite references |
+| `generate-image-variants.mjs` | idempotent | Write the -1200/-800/-256 responsive siblings srcsets offer (from the committed WebPs; downscale only) |
 | `dimension-news-images.mjs` | idempotent | Stamp `width`/`height` onto news `<img>` tags (no layout shift) |
 
 > After re-running `scrape-blog.mjs`, re-merge `public/_redirects.blog` into `public/_redirects`
@@ -168,8 +169,10 @@ the `optimise-images` skill in `.claude/skills/`):
    publish also triggers one, so a parish that edits events in Sveltia needs no cron at all.
 3. Add `barnabites.org` as a custom domain on the Pages project. Move the domain's nameservers
    to Cloudflare (or add the zone). **Keep ChurchDesk hosting live during propagation.**
-4. Point `www` (CNAME) at the Pages project; apex via CNAME-flattening; the apex→www redirect is
-   in `_redirects` as belt-and-braces.
+4. Point `www` (CNAME) at the Pages project; apex via CNAME-flattening. **Apex→www must be a
+   zone-level Redirect Rule (or Bulk Redirect)** — `barnabites.org/*` →
+   `https://www.barnabites.org/$1`, 301 — because Pages `_redirects` rejects absolute-URL
+   sources, so no Pages-level rule can do this (the file documents the same).
 5. Verify 301s on a sample of old URLs; submit the new `sitemap-index.xml` to Search Console.
 6. Decommission ChurchDesk *hosting* only after the new site is confirmed live and indexed.
    **ChurchDesk stays the backend** (calendar, contacts, bookings, newsletter, giving).

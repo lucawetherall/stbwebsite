@@ -41,7 +41,7 @@ const endpoint = `${site.churchdeskSubscribeApi}?organizationId=${site.churchdes
           Read the latest newsletter
         </a>
       </div>
-      <p class="nl-status" role="status" aria-live="polite"></p>
+      <p class="nl-status" role="status" aria-live="polite" tabindex="-1"></p>
       <p class="nl-consent">
         By signing up you consent to being contacted by St Barnabas Church. We look after your
         details in line with our
@@ -105,6 +105,7 @@ const endpoint = `${site.churchdeskSubscribeApi}?organizationId=${site.churchdes
       try {
         const res = await fetch(form.dataset.endpoint!, {
           method: 'POST',
+          signal: AbortSignal.timeout(10_000),
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             name,

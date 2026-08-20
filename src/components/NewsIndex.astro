@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { imageSrcset } from '../lib/images';
 import { groupByYear, sortNewest } from '../lib/news';
 
 interface Props {
@@ -25,7 +26,11 @@ const fmtDayMonth = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'UTC' });
 ---
 {shown.length > 0 && (
-  <section class="news-index section" aria-labelledby="news-heading">
+  <section
+    class="news-index section"
+    aria-labelledby={showHeading ? 'news-heading' : undefined}
+    aria-label={showHeading ? undefined : heading}
+  >
     <div class="wrap">
       {showHeading && (
         <div class="news-index__head">
@@ -67,6 +72,8 @@ const fmtDayMonth = (d: Date) =>
                         <img
                           class="news-row__thumb"
                           src={post.data.hero}
+                          srcset={imageSrcset(post.data.hero)}
+                          sizes={imageSrcset(post.data.hero) ? '(max-width: 560px) 100vw, 128px' : undefined}
                           alt=""
                           loading="lazy"
                           decoding="async"
@@ -97,6 +104,8 @@ const fmtDayMonth = (d: Date) =>
                   <img
                     class="news-row__thumb"
                     src={post.data.hero}
+                    srcset={imageSrcset(post.data.hero)}
+                    sizes={imageSrcset(post.data.hero) ? '(max-width: 560px) 100vw, 128px' : undefined}
                     alt=""
                     loading="lazy"
                     decoding="async"

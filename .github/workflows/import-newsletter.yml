@@ -15,8 +15,9 @@ name: Import Weekly News newsletter
 #   • push touching settings/site.json — catches the case where an editor updates
 #     the "Newsletter archive link" in the CMS to point at a new edition.
 #
-# The commit lands on main, which triggers the normal Pages deploy. The commit only
-# touches src/content/news/ and public/images/news/, so it cannot re-trigger the
+# The commit lands on main and the Pages deploy is then started explicitly (a
+# GITHUB_TOKEN push does not fire `on: push` workflows). The commit only touches
+# src/content/news/ and public/images/news/, so it cannot re-trigger the
 # path-filtered push event (no loop).
 
 on:
@@ -42,6 +43,8 @@ on:
 
 permissions:
   contents: write
+  # to start deploy.yml after a push (see the final step)
+  actions: write
 
 concurrency:
   group: import-newsletter
@@ -77,22 +80,23 @@ jobs:
           STALENESS_CHECK: ${{ github.event_name == 'schedule' && '1' || '0' }}
           # A repository_dispatch (inbound-email hook) names the edition directly.
           SHARE_URL: ${{ github.event.client_payload.share_url }}
-        run: node scripts/import-newsletter.mjs $SHARE_URL
+        run: node scripts/import-newsletter.mjs "$SHARE_URL"
 
       # A broken post committed straight to main would break the production deploy's
       # build. Prove the site still builds WITH the imported content before pushing;
       # a failure here leaves main untouched and emails the repository owner.
       - name: Verify the site builds with the imported content
         run: |
-          if [ -n "$(git status --porcelain src/content/news public/images/news)" ]; then
+          if [ -n "$(git status --porcelain src/content/news)" ]; then
             npm run build
           else
             echo "No new content — skipping build check."
           fi
 
       - name: Commit the new post (if any)
+        id: commit
         run: |
-          if [ -n "$(git status --porcelain src/content/news public/images/news)" ]; then
+          if [ -n "$(git status --porcelain src/content/news)" ]; then
             slugs=$(git status --porcelain src/content/news | awk '{print $2}' | xargs -n1 basename | sed 's/\.md$//' | paste -sd ', ' -)
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -101,6 +105,18 @@ jobs:
               -m "Automated import of ChurchDesk email newsletter(s) as news posts." \
               -m "Co-Authored-By: Claude <noreply@anthropic.com>"
             git push
+            echo "pushed=1" >> "$GITHUB_OUTPUT"
           else
             echo "No new edition — nothing to commit."
+            echo "pushed=0" >> "$GITHUB_OUTPUT"
           fi
+
+      # A push made with the workflow's own GITHUB_TOKEN does not trigger `on: push`
+      # workflows (GitHub's recursion guard), so without this the imported post would
+      # sit unpublished until the next scheduled deploy — hours after the parish sent
+      # the newsletter. workflow_dispatch is exempt from the guard.
+      - name: Trigger the Pages deploy
+        if: steps.commit.outputs.pushed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
