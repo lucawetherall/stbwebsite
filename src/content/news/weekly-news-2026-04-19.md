@@ -50,11 +50,11 @@ Compline; the deserted Gethsemane; sacristan and vicar planning!; Ealing Churche
 
 <img src="/images/news/newsletter-2026-04-19-09d83a7f-img_4538.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="819">
 
-<img src="/images/news/newsletter-2026-04-19-8bfc3aff-easter.decorations.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="668">
+<img src="/images/news/newsletter-2026-04-12-8bfc3aff-easter.decorations.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="668">
 
-<img src="/images/news/newsletter-2026-04-19-3d134892-pitshanger.pictures.square.size.april.18.2026.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-04-05-3d134892-pitshanger.pictures.square.size.april.18.2026.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-04-19-84bff7a6-pitshanger.pictures.square.size.april.2026_1.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-03-29-84bff7a6-pitshanger.pictures.square.size.april.2026_1.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="700">
 
 <img src="/images/news/newsletter-2026-04-19-e405afe2-271478.webp" alt="Weekly News — 19 April 2026" loading="lazy" decoding="async" width="700" height="700">
 

@@ -36,7 +36,7 @@ with prayers and best wishes,
 
 <img src="/images/news/newsletter-2026-06-21-952c3347-fayre.2.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-06-21-14f1c8bf-edited-image_161.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="615" height="526">
+<img src="/images/news/newsletter-2026-05-24-14f1c8bf-edited-image_161.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="615" height="526">
 
 Next Choral Evensong Sunday 5 July at 6pm
 
@@ -122,7 +122,7 @@ _**Sunday**_
 
 **Sung Mass at 10.30**; Noisy Mass and Youth Groups; Children's Church
 
-<img src="/images/news/newsletter-2026-06-21-d38d0a0f-strawberry.tea.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="990">
+<img src="/images/news/newsletter-2026-06-14-d38d0a0f-strawberry.tea.webp" alt="Weekly News — 21 June 2026" loading="lazy" decoding="async" width="700" height="990">
 
 ## **Forward Look - coming dates**
 

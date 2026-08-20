@@ -34,19 +34,19 @@ This week I am reading: Thinking again about marriage: key theological questions
 
 _Image: Camino shell, Hermitage of Guadalupe, Hondarribia_
 
-<img src="/images/news/newsletter-2026-07-05-14f1c8bf-edited-image_161.webp" alt="Weekly News — 5 July 2026" loading="lazy" decoding="async" width="615" height="526">
+<img src="/images/news/newsletter-2026-05-24-14f1c8bf-edited-image_161.webp" alt="Weekly News — 5 July 2026" loading="lazy" decoding="async" width="615" height="526">
 
 Next Choral Evensong Sunday 5 July at 6pm
 
 Join us.
 
-<img src="/images/news/newsletter-2026-07-05-9e807499-nick.webp" alt="Weekly News — 5 July 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-06-21-9e807499-nick.webp" alt="Weekly News — 5 July 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Bring and Share Lunch - Sunday 5 July Come and celebrate Nick's 40 years of St Barnabas with a whole parish lunch after the 10.30 Mass! Come!
 
 Photo of Nick - as ever on the move and fixing things!
 
-<img src="/images/news/newsletter-2026-07-05-c5ee546f-tosca.webp" alt="Weekly News — 5 July 2026" loading="lazy" decoding="async" width="431" height="442">
+<img src="/images/news/newsletter-2026-06-28-c5ee546f-tosca.webp" alt="Weekly News — 5 July 2026" loading="lazy" decoding="async" width="431" height="442">
 
 Pitshanger Pictures
 
@@ -62,7 +62,7 @@ Tickets are just £10. No booking necessary, pay on the door.
 
 There will be refreshments available to purchase before and during the interval.
 
-<img src="/images/news/newsletter-2026-07-05-b8a5875c-film.2026.webp" alt="Weekly News — 5 July 2026" loading="lazy" decoding="async" width="456" height="606">
+<img src="/images/news/newsletter-2026-06-28-b8a5875c-film.2026.webp" alt="Weekly News — 5 July 2026" loading="lazy" decoding="async" width="456" height="606">
 
 Pitshanger Pictures - Ealing Cinema Night
 

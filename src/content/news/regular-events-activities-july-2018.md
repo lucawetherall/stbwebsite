@@ -9,7 +9,7 @@ legacySlug: "b/blog-31771-regular-events-activities-july-2018"
 
 **Ealing Gospel Choir | 8th July & 15th July, 3 - 5pm**
 
-**<img src="/images/news/a80d4e99-o_2F1901_2Fscreen.shot.2018-05-03.at.11.31.33.webp" alt="Regular Events & Activities | July 2018" loading="lazy" decoding="async" width="370" height="208">**
+**<img src="/images/news/6aa3e968-screen.shot.2018-05-03.at.11.31.33.webp" alt="Regular Events & Activities | July 2018" loading="lazy" decoding="async" width="370" height="208">**
 
 Join the Gospel Choir every second and third Sunday of the month for a great time of energetic singing. No experience necessary! There is a small charge of £2 per person for rehearsal. All ages welcome from 8 years old upwards. 
 

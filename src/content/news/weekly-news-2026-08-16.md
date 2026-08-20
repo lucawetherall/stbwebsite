@@ -4,7 +4,7 @@ date: 2026-08-16
 category: "Weekly News"
 author: "St Barnabas Church"
 description: "It has been a refreshing break for me over the past two weeks and I have enjoyed the time away with family and the change of pace in Amsterdam and in South…"
-hero: "/images/news/newsletter-2026-08-16-40599bb0-garden.bush.webp"
+hero: "/images/news/newsletter-2026-05-03-40599bb0-garden.bush.webp"
 heroAlt: "Weekly News — 16 August 2026"
 ---
 

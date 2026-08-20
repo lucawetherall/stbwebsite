@@ -4,7 +4,7 @@ date: 2026-06-07
 category: "Weekly News"
 author: "St Barnabas Church"
 description: "Preparations continue at real pace for our Summer Fayre - next Sunday 14 June at 12noon-4pm."
-hero: "/images/news/newsletter-2026-06-07-d273e26a-st.barnabas.summer.fayre.2026.webp"
+hero: "/images/news/newsletter-2026-05-10-d273e26a-st.barnabas.summer.fayre.2026.webp"
 heroAlt: "Weekly News — 7 June 2026"
 ---
 
@@ -46,7 +46,7 @@ Lots happens at St Barnabas between Sundays! This week a professional recording 
 
 The warm acoustic, concert-grade piano and organ, and quiet location together make us one of London's growing recording venues - ask via the office for more details!
 
-<img src="/images/news/newsletter-2026-06-07-14f1c8bf-edited-image_161.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async" width="615" height="526">
+<img src="/images/news/newsletter-2026-05-24-14f1c8bf-edited-image_161.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async" width="615" height="526">
 
 Next Choral Evensong this Sunday at 6pm
 
@@ -66,7 +66,7 @@ Pentecost 2026
 
 Thanks to Valerie for her preaching and vivid visual aid (now captured here!)
 
-<img src="/images/news/newsletter-2026-06-07-31aad026-summer.fayre.tombola.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-05-31-31aad026-summer.fayre.tombola.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
 TOMBOLA! ROLL UP, ROLL UP! \- donations sought now for the Tombola stall at the Fayre.
 
@@ -74,11 +74,11 @@ Bottles, gifts, kids items in particular. Good quality stuff of all kinds welcom
 
 Leave at the back of church anytime - before the day!
 
-<img src="/images/news/newsletter-2026-06-07-780ccffe-summer.fayre.cakes.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-05-31-780ccffe-summer.fayre.cakes.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
 CAKE STALL donations \- please contact Janet if you will be donating a cake or baked goods.
 
-<img src="/images/news/newsletter-2026-06-07-e77ef14b-payg.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async" width="382" height="355">
+<img src="/images/news/newsletter-2026-05-03-e77ef14b-payg.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async" width="382" height="355">
 
 Pray as you Go
 
@@ -164,7 +164,7 @@ _**Sunday**_
 
 **Summer Fayre** 12-4pm
 
-<img src="/images/news/newsletter-2026-06-07-c4dd04c1-creation.care.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async" width="700" height="379">
+<img src="/images/news/newsletter-2026-05-17-c4dd04c1-creation.care.webp" alt="Weekly News — 7 June 2026" loading="lazy" decoding="async" width="700" height="379">
 
 ## **Forward Look - coming dates**
 

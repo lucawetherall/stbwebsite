@@ -24,11 +24,11 @@ I am reading: _Enlightenment_, by Sarah Perry
 
 _image: Lady Chapel reredos detail_
 
-<img src="/images/news/newsletter-2026-05-10-114d9d53-jeanny.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="455" height="483">
+<img src="/images/news/newsletter-2026-04-26-114d9d53-jeanny.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="455" height="483">
 
 We welcome the Revd Jeanny Wang in mid May onwards in her 3rd year of curacy. We will be delighted to have Jeanny with us for just under a year, and are excited to be encouraged in new ways in our faith through her gifts. Jeanny has in particular a passion for enabling children's spirituality through Godly Play, which will be a blessing to revive at St Barnabas.
 
-<img src="/images/news/newsletter-2026-05-10-4477ec7e-garden.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="700" height="749">
+<img src="/images/news/newsletter-2026-04-26-4477ec7e-garden.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="700" height="749">
 
 Celebrate Ascension Day with vicarage garden sparkling drinks, and Mass for 30 mins beforehand.
 
@@ -36,7 +36,7 @@ Thursday 14 May, mass at 7pm in the church, drinks follow straight after at 7.30
 
 Please note, this will be drinks only, so do eat before you set out!
 
-<img src="/images/news/newsletter-2026-05-10-29e1c553-annual.report.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="330" height="335">
+<img src="/images/news/newsletter-2026-04-26-29e1c553-annual.report.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="330" height="335">
 
 Read the [St Barnabas annual report to the APCM](https://api2.churchdesk.com/files/390c9660-8cc2-4bdc-b2d4-bcfc68f1c845/view).
 
@@ -44,19 +44,19 @@ Also the [financial report and accounts for 2025](https://api2.churchdesk.com/fi
 
 Download from these separate links - or pick up a hard copy in church.
 
-<img src="/images/news/newsletter-2026-05-10-05ef2e6d-choral.evensong.square.2025.v2.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-04-26-05ef2e6d-choral.evensong.square.2025.v2.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Next Choral Evensong is on Sunday 17 May, at 6pm.
 
 Join us.
 
-<img src="/images/news/newsletter-2026-05-10-40599bb0-garden.bush.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-05-03-40599bb0-garden.bush.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Garden Team - and No Mow May and the Nature Count
 
 This year is from Saturday 6 June when we will survey plants, insects and birds in the church grounds. Last year we had 10 volunteers so we would like more as it makes it easier to have more help. [gardenteam@barnabites.net](mailto:gardenteam@barnabites.net)
 
-<img src="/images/news/newsletter-2026-05-10-e77ef14b-payg.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="382" height="355">
+<img src="/images/news/newsletter-2026-05-03-e77ef14b-payg.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="382" height="355">
 
 Pray as you Go
 
@@ -136,7 +136,7 @@ _**Sunday**_
 
 <img src="/images/news/newsletter-2026-05-10-d273e26a-st.barnabas.summer.fayre.2026.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="256" height="320">
 
-<img src="/images/news/newsletter-2026-05-10-dc8c07f8-16may26.fresh.ayres.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="700" height="993">
+<img src="/images/news/newsletter-2026-04-26-dc8c07f8-16may26.fresh.ayres.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="700" height="993">
 
 <img src="/images/news/newsletter-2026-05-10-1a7037b4-flower.event.poster.webp" alt="Weekly News — 10 May 2026" loading="lazy" decoding="async" width="700" height="990">
 

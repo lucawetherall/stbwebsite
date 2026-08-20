@@ -4,7 +4,7 @@ date: 2026-08-09
 category: "Weekly News"
 author: "St Barnabas Church"
 description: "Our newsletter comes to its Summer break."
-hero: "/images/news/newsletter-2026-08-09-40599bb0-garden.bush.webp"
+hero: "/images/news/newsletter-2026-05-03-40599bb0-garden.bush.webp"
 heroAlt: "Weekly News — 9 August 2026"
 ---
 
@@ -24,13 +24,13 @@ To all our readers, many best wishes and blessings for August, in whatever circu
 
 This week I am reading: holiday fiction and the Amsterdam guide book
 
-<img src="/images/news/newsletter-2026-08-09-5cb84c73-ff1.webp" alt="Weekly News — 9 August 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-07-19-5cb84c73-ff1.webp" alt="Weekly News — 9 August 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-08-09-aba59131-ff2.webp" alt="Weekly News — 9 August 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-07-19-aba59131-ff2.webp" alt="Weekly News — 9 August 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-08-09-a4c27db2-ff3.webp" alt="Weekly News — 9 August 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-07-19-a4c27db2-ff3.webp" alt="Weekly News — 9 August 2026" loading="lazy" decoding="async" width="700" height="700">
 
-<img src="/images/news/newsletter-2026-08-09-cbe7b8e1-ff4.webp" alt="Weekly News — 9 August 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-07-19-cbe7b8e1-ff4.webp" alt="Weekly News — 9 August 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Memories from the Flower Festival last week!
 

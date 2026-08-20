@@ -149,6 +149,7 @@ the `optimise-images` skill in `.claude/skills/`):
 | `list-history-images.mjs` | one-off helper | Print candidate history images (src/alt/caption) for sourcing |
 | `optimise-news-images.mjs` | idempotent | Convert legacy news PNGs to WebP and rewrite references |
 | `generate-image-variants.mjs` | idempotent | Write the -1200/-800/-256 responsive siblings srcsets offer (from the committed WebPs; downscale only) |
+| `dedupe-news-images.mjs` | idempotent | Fold byte-identical newsletter images onto one URL and rewrite the posts' references |
 | `dimension-news-images.mjs` | idempotent | Stamp `width`/`height` onto news `<img>` tags (no layout shift) |
 
 > After re-running `scrape-blog.mjs`, re-merge `public/_redirects.blog` into `public/_redirects`

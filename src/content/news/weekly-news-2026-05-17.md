@@ -38,7 +38,7 @@ _image: Ascension, Jorge Cocco Santángelo (b.1936)_
 
 "A good measure, pressed down, shaken together, running over, will be put in your lap; for the measure you give will be the measure you get back." Luke 6:38
 
-<img src="/images/news/newsletter-2026-05-17-4477ec7e-garden.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="700" height="749">
+<img src="/images/news/newsletter-2026-04-26-4477ec7e-garden.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="700" height="749">
 
 Celebrate Ascension Day with vicarage garden sparkling drinks, and Mass for 30 mins beforehand.
 
@@ -46,7 +46,7 @@ Thursday 14 May, mass at 7pm in the church, drinks follow straight after at 7.30
 
 Please note, this will be drinks only, so do eat before you set out!
 
-<img src="/images/news/newsletter-2026-05-17-29e1c553-annual.report.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="330" height="335">
+<img src="/images/news/newsletter-2026-04-26-29e1c553-annual.report.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="330" height="335">
 
 APCM - this Sunday at 12.15 in the Large Hall
 
@@ -58,7 +58,7 @@ Also the [financial report and accounts for 2025](https://api2.churchdesk.com/fi
 
 Download from these separate links - or pick up a hard copy in church.
 
-<img src="/images/news/newsletter-2026-05-17-05ef2e6d-choral.evensong.square.2025.v2.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-04-26-05ef2e6d-choral.evensong.square.2025.v2.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Next Choral Evensong is on Sunday 17 May, at 6pm.
 
@@ -74,7 +74,7 @@ Old candles from homes, restaurants and churches are collected by Recycled Wax a
 
 Browse their collection online, and buy back the wax we have donated!
 
-<img src="/images/news/newsletter-2026-05-17-e77ef14b-payg.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="382" height="355">
+<img src="/images/news/newsletter-2026-05-03-e77ef14b-payg.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="382" height="355">
 
 Pray as you Go
 
@@ -160,11 +160,11 @@ _**Sunday**_
 
 **Sung Mass at 10.30**; Noisy Mass and Youth Groups; Children's Church
 
-<img src="/images/news/newsletter-2026-05-17-d273e26a-st.barnabas.summer.fayre.2026.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="256" height="320">
+<img src="/images/news/newsletter-2026-05-10-d273e26a-st.barnabas.summer.fayre.2026.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="256" height="320">
 
-<img src="/images/news/newsletter-2026-05-17-dc8c07f8-16may26.fresh.ayres.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="700" height="993">
+<img src="/images/news/newsletter-2026-04-26-dc8c07f8-16may26.fresh.ayres.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="700" height="993">
 
-<img src="/images/news/newsletter-2026-05-17-1a7037b4-flower.event.poster.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="700" height="990">
+<img src="/images/news/newsletter-2026-05-10-1a7037b4-flower.event.poster.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="700" height="990">
 
 <img src="/images/news/newsletter-2026-05-17-c4dd04c1-creation.care.webp" alt="Weekly News — 17 May 2026" loading="lazy" decoding="async" width="700" height="379">
 

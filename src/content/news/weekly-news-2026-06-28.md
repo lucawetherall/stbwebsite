@@ -36,13 +36,13 @@ This week I am reading: Thinking again about marriage: key theological questions
 
 _Image: Archbishop Sarah on pilgrimage in Nazareth last week_
 
-<img src="/images/news/newsletter-2026-06-28-14f1c8bf-edited-image_161.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async" width="615" height="526">
+<img src="/images/news/newsletter-2026-05-24-14f1c8bf-edited-image_161.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async" width="615" height="526">
 
 Next Choral Evensong Sunday 5 July at 6pm
 
 Join us.
 
-<img src="/images/news/newsletter-2026-06-28-9e807499-nick.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async" width="700" height="700">
+<img src="/images/news/newsletter-2026-06-21-9e807499-nick.webp" alt="Weekly News — 28 June 2026" loading="lazy" decoding="async" width="700" height="700">
 
 Bring and Share Lunch - Sunday 5 July Come and celebrate Nick's 40 years of St Barnabas with a whole parish lunch after the 10.30 Mass! For details and contributions for the Bring and Share please contact Sue Proud (if you're not in contact with her, please let Mthr Sarah know and she will introduce you).
 

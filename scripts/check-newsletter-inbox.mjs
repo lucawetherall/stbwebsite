@@ -38,6 +38,8 @@ const allowedFrom = (process.env.NEWSLETTER_ALLOWED_FROM || 'churchdesk,barnabit
   .map((s) => s.trim().toLowerCase())
   .filter(Boolean);
 
+// `after` is AgentMail's documented timestamp filter on list-messages (pagination is a
+// separate page_token parameter): docs.agentmail.to/api-reference/inboxes/messages/list
 const after = new Date(Date.now() - 30 * 86400000).toISOString();
 const listRes = await fetch(
   `${API}/inboxes/${encodeURIComponent(inbox)}/messages?limit=50&after=${encodeURIComponent(after)}`,
