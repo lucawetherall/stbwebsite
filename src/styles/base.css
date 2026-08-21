@@ -25,6 +25,19 @@ body {
   /* clip (not hidden): prevents horizontal overflow without making <body> a
      scroll container, which would break window scrolling / anchor jumps / sticky */
   overflow-x: clip;
+  /* Editors paste raw URLs, addresses and long email addresses into news and page copy,
+     and an unbreakable token is wider than a phone screen. Allow a break inside a word
+     that could not fit on a line of its own; ordinary prose is untouched, because
+     break-word only applies when the word has a line to itself and still overflows. */
+  overflow-wrap: break-word;
+}
+
+/* Safari below 16 does not understand `clip` and drops the declaration above, leaving the
+   page free to scroll sideways. There the same protection comes from the root element,
+   whose overflow propagates to the viewport — so <body> still never becomes a scroll
+   container and window scrolling, anchor jumps and sticky positioning all keep working. */
+@supports not (overflow-x: clip) {
+  html { overflow-x: hidden; }
 }
 
 /* top violet ribbon (constant, never season-variable) */
@@ -144,6 +157,12 @@ a, button { cursor: pointer; }
 /* in-prose text links keep the violet underline */
 .prose a { text-decoration: none; border-bottom: 1px solid var(--violet); transition: color .2s, border-color .2s; }
 .prose a:hover { color: var(--violet-deep); border-color: var(--violet-deep); }
+
+/* A pasted URL or a long email address is one unbreakable word, and it is nearly always
+   inside a link. `anywhere` (not `break-word`) on purpose: it also lowers the link's
+   min-content width, so such a link can no longer stretch the grid or flex track it sits
+   in — which is what pushed the safeguarding contact list past the edge of the screen. */
+.prose a, .content-link, .page-aside a { overflow-wrap: anywhere; }
 
 /* hairline rule */
 hr, .rule { border: none; border-top: 1px solid var(--line); margin-block: 2rem; }

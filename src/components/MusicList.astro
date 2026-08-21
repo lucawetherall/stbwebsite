@@ -170,6 +170,13 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
     padding: .55rem 0;
     overflow-x: auto;
     scrollbar-width: none;
+    /* The chips scroll sideways inside this bar, and each carries an .sr-only span. Those
+       spans are absolutely positioned, so without a positioned scroller they resolve
+       against the sticky .ml-bar instead — escaping this box's clipping and sitting at
+       their static position hundreds of pixels off-screen, which widened the whole page.
+       Making the scroller their containing block keeps them clipped and scrolled with the
+       chips they belong to. */
+    position: relative;
   }
   .ml-bar__list::-webkit-scrollbar { display: none; }
   .ml-bar__year {
